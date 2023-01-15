@@ -100,10 +100,6 @@ Mlle Lylou PONSING
     - [7.7.2. Javadoc](#772-javadoc)
     - [7.7.3. PlantUML](#773-plantuml)
 - [8. Réalisations](#8-réalisations)
-  - [8.1. Description des features réalisées](#81-description-des-features-réalisées)
-  - [8.2. Description des fonctions implémentées](#82-description-des-fonctions-implémentées)
-  - [8.3. Description des actions réalisées sur la BDD](#83-description-des-actions-réalisées-sur-la-bdd)
-  - [8.4. Description des tests unitaires/EtE(EndtoEnd)](#84-description-des-tests-unitaireseteendtoend)
 - [9. Présentation du jeu d'essai le plus représentatif](#9-présentation-du-jeu-dessai-le-plus-représentatif)
 - [10. Veille sur les vulnérabilités de sécurité](#10-veille-sur-les-vulnérabilités-de-sécurité)
   - [10.1. SQL Injection](#101-sql-injection)
@@ -653,86 +649,79 @@ Les objectifs qualité sont:
 
 ### 6.1. Front office
 
-Ce projet contient une landing page avec une animation.
-Une page de connexion et d’inscription. 
+Ce projet contient une **landing page avec une animation**. Une page de **connexion et d’inscription**.
 
-Une fois connecté sur toutes les pages, il y aura une aside qui contient la liste des catégories créées par l’utilisateur afin qu’il puisse y accéder d’où il veut, ainsi qu’une barre de recherche afin d’accéder au produit depuis n’importe quelle page et un menu déroulant concernant l’utilisateur. 
+Une fois connecté sur toutes les pages, il y aura une aside qui contient la **liste des catégories** créées par l’utilisateur afin qu’il puisse y accéder d’où il veut, ainsi qu’une **barre de recherche** afin d’accéder au produit depuis n’importe quelle page et un **menu déroulant concernant l’utilisateur**.
 
-Le site contient une page d’ajout de catégorie, une page informative d’une catégorie et une page de modification d’une catégorie. 
+Le site contient une page d’**ajout de catégorie**, une **page informative** d’une catégorie et une page de **modification d’une catégorie**.
 
-Sur la page informative d’une catégorie, il y a la liste des produits que contient la catégorie. Les produits sont représentés par des boutons. Si l’utilisateur clique dessus il atterrira sur la page d’information du produit. Il y aura aussi une page de modification du produit qui sera accessible à partir des informations du produit.
+Sur la page informative d’une catégorie, il y a la **liste des produits que contient la catégorie**. Les produits sont représentés par des boutons. Si l’utilisateur **clique** dessus il atterrira sur la **page d’information du produit**. Il y aura aussi une page de **modification du produit** qui sera accessible à partir des informations du produit.
 
+#### 6.1.1. Landing page<!-- OK -->
 
-#### 6.1.1. Landing page
+La landing page a une **interface stylisée différemment** du reste du site. Une landing page se doit d’être attractive et de pousser l’utilisateur à utiliser le produit ou le service qu’elle essaie de vendre.
+Pour la landing page, nous avons fait le choix de faire une **animation qui s’active une fois** au lancement de la page.
 
-La landing page a une interface stylisée différemment du reste du site. Une landing page se doit d’être attractive et de pousser l’utilisateur à utiliser le produit ou le service qu’elle essaie de vendre.
+Cette animation comporte trois boîtes qui s’ouvrent et qui se referment. Pendant que la boite s’ouvre, il y a 4 petites boîtes qui descendent jusqu’à se retrouver dans les grandes boîtes. Les grandes boîtes symbolisent les catégories et les petites boîtes symbolisent les produits.
 
-Pour la landing page, nous avons fait le choix de faire une animation qui s’active une fois au lancement de la page.
+Sur la landing page l’utilisateur peut **accéder aux espaces d’inscription et de connexion**.
 
-Cette animation comporte trois boîtes qui s’ouvrent et qui se referment. Pendant que la boite s’ouvre, il y a 4 petites boîtes qui descendent jusqu’à se retrouver dans les grandes boîtes. Les grandes boîtes symbolisent les catégories et les petites boîtes symbolisent les produits. 
+#### 6.1.2. Inscription et connexion<!-- OK -->
 
-Sur la landing page l’utilisateur peut accéder aux espaces d’inscription et de connexion. 
+Les espaces de connexion et d’inscription sont accessibles à partir du **header de la landing page**. Comme fait conventionnellement, tout à droite on retrouve en premier l’inscription et ensuite la connexion.
+La page de connexion contient le label : email avec son input, ainsi que le label : mot de passe avec son input.
+A droite, l’utilisateur peut cliquer sur **se connecter** et à gauche **s’inscrire**.
 
+#### 6.1.3. Catégories<!-- OK -->
 
-#### 6.1.2. Inscription et connexion
+##### 6.1.3.1. Menu catégorie<!-- OK -->
 
-Les espaces de connexion et d’inscription sont accessibles à partir du header de la landing page. Comme fait conventionnellement, tout à droite on retrouve en premier l’inscription et ensuite la connexion. 
+Une fois connecté, l’utilisateur aura accès à un **menu disposé à gauche de l’interface** et qui sera **disponible sur toutes les pages** du site. Ce menu contient une **liste des catégories** que l’utilisateur aura créé au préalable. Pour chaque catégorie, un lien sera créé avec comme valeur le nom que l’utilisateur lui aura donné. Au survol du bouton, le bouton changera de couleur afin d’indiquer à l’utilisateur qu’il s’agit d’un lien cliquable. Ce lien dirige vers la **page informative de la catégorie**.
 
-La page de connexion contient le label : email avec son input, ainsi que le label : mot de passe avec son input. 
+##### 6.1.3.2. Ajout d’une catégorie<!-- OK -->
 
-A droite, l’utilisateur peut cliquer sur se connecter et à gauche s’inscrire. 
+Quand l’utilisateur se sera connecté, la première page du site auquel il aura accès est la page d’ajout d’une catégorie. Sur cette page, l’utilisateur devra **indiquer le nom de la catégorie ainsi que sa description** puis il devra ajouter la catégorie en cliquant sur le bouton correspondant. Lorsque l’utilisateur ajoute une catégorie, elle est **directement visible dans le menu catégorie**.
 
-#### 6.1.3. Catégories
+##### 6.1.3.3. Information et modification d’une catégorie<!-- OK -->
 
-##### 6.1.3.1. Menu catégorie
+Une fois que l’utilisateur a accès à la page informative de la catégorie, il peut cliquer sur le bouton modifier la catégorie. En cliquant sur ce bouton l’utilisateur est redirigé vers la page de **modification de la catégorie**. Il peut **modifier les champs `nom` et `description`** et pour valider les modifications, l’utilisateur devra cliquer sur le bouton **valider les modifications**.
 
-Une fois connecté, l’utilisateur aura accès à un menu disposé à gauche de l’interface et qui sera disponible sur toutes les pages du site. Ce menu contient une liste des catégories que l’utilisateur aura créé au préalable. Pour chaque catégorie, un lien sera créé avec comme valeur le nom que l’utilisateur lui aura donné. Au survol du bouton, le bouton changera de couleur afin d’indiquer à l’utilisateur qu’il s’agit d’un lien cliquable. Ce lien dirige vers la page informative de la catégorie.
+##### 6.1.3.4. Suppression d’une catégorie<!-- OK -->
 
-##### 6.1.3.2. Ajout d’une catégorie
+Sur la **page de modification de la catégorie**, l’utilisateur devra **cliquer sur supprimer** pour supprimer la catégorie.
 
-Quand l’utilisateur se sera connecté, la première page du site auquel il aura accès est la page d’ajout d’une catégorie. Sur cette page, l’utilisateur devra indiquer le nom de la catégorie ainsi que sa description puis il devra ajouter la catégorie en cliquant sur le bouton correspondant. Lorsque l’utilisateur ajoute une catégorie, elle est directement visible dans le menu catégorie. 
+#### 6.1.4. Produits<!-- OK -->
 
-##### 6.1.3.3. Information et modification d’une catégorie
+##### 6.1.4.1. Information produit<!-- OK -->
 
-Une fois que l’utilisateur a accès à la page informative de la catégorie, il peut cliquer sur le bouton modifier la catégorie. En cliquant sur ce bouton l’utilisateur est redirigé vers la page de modification de la catégorie. Il peut modifier les champs “nom” et “description” et pour valider les modifications, l’utilisateur devra cliquer sur le bouton valider les modifications.
+L’utilisateur peut accéder aux informations d’un produit de deux manières :
 
-##### 6.1.3.4. Suppression d’une catégorie
+- Quand l’utilisateur arrive sur la **page d’information d’une catégorie**, il y a la liste des produits qui sont affichés. Si l’utilisateur **clique sur le bouton indiquant le nom du produit**, il est redirigé vers la page d’information du produit.
+- Quand l’utilisateur recherche un produit, **depuis la barre de recherche**, il obtient une liste de produits correspondant à sa recherche. Si l’utilisateur **clique sur un produit souhaité** il atterrira sur la page d’information du produit.
 
-Sur la page de modification de la catégorie, l’utilisateur devra cliquer sur supprimer pour supprimer la catégorie.
+##### 6.1.4.2. Ajout d’un produit<!-- OK -->
 
-#### 6.1.4. Produits
+Sur la **page d’information de la catégorie** contenant la liste des produits de celle-ci, si l’utilisateur clique sur ajouter un produit, il atterrira sur la page d’édition du produit. Il devra **remplir les champs** et appuyer sur le bouton ajouter pour **valider l'ajout du produit**.
 
-##### 6.1.4.1. Information produit
+##### 6.1.4.3. Modifier un produit<!-- OK -->
 
-L’utilisateur peut accéder aux informations d’un produit de deux manières.
+Pour modifier le produit, l’utilisateur devra cliquer sur le bouton **modifier le produit sur la page d’information du produit.** Il sera redirigé vers la page de modification du produit, dans laquelle il pourra modifier les champs et **valider les modifications**.
 
-Quand l’utilisateur arrive sur la page d'information d’une catégorie, il y a la liste des produits qui sont affichés. Si l’utilisateur clique sur le bouton, indiquant le nom du produit, il est redirigé vers la page d’information du produit.
+##### 6.1.4.4. Supprimer un produit<!-- OK -->
 
-Quand l’utilisateur recherche un produit, depuis la barre de recherche, il obtient une liste de produits correspondant à sa recherche. Si l’utilisateur clique sur un produit souhaité il atterrira sur la d’information du produit.
+Sur la **page de modification d’un produit**, l’utilisateur peut **cliquer sur supprimer** le produit pour supprimer le produit.
 
-##### 6.1.4.2. Ajout d’un produit
+#### 6.1.5. Menu user<!-- CHECK -->
 
-Sur la page d’information de la catégorie contenant la liste des produits de celle-ci, si l’utilisateur clique sur ajouter une catégorie, il atterrira sur la page d'édition du produit. Il devra remplir les champs et appuyer sur le bouton add product pour l’ajouter.
+Une fois l’utilisateur **connecté**, il pourra accéder au **menu user**. L’utilisateur devra **cliquer sur le user ou son symbole**. A partir de là un **menu déroulant** s’abaisse et l’utilisateur peut cliquer sur : modification du profil, modification du mot de passe ou déconnexion.
 
-##### 6.1.4.3. Modifier un produit
+### 6.2. Back office<!-- CHECK -->
 
-Pour modifier le produit, l'utilisateur devra cliquer sur le bouton modifier le produit sur la page d’information du produit. Il sera redirigé vers la page de modification du produit, dans laquelle il pourra modifier les champs et valider les modifications.
+### 6.3. Arborescence<!-- CHECK -->
 
-##### 6.1.4.4. Supprimer un produit
+Le diagramme de flux est utile dans la création de nouveaux processus métiers. Il permet d’identifier les éléments clés et de définir clairement le début et la fin. Modéliser un processus permet de gagner en qualité et en efficacité.
 
-Sur la page de modification d’un produit, l’utilisateur peut cliquer sur supprimer le produit pour supprimer le produit.
-
-#### 6.1.5. Menu user
-
-Une fois l’utilisateur connecté, il pourra accéder au menu user. L’utilisateur devra cliquer sur le user ou son symbole. A partir de là un menu déroulant s’abaisse et l’utilisateur peut cliquer sur : modification du profil, modification du mot de passe ou déconnexion.
-
-### 6.2. Back office
-
-### 6.3. Arborescence
-
-Le diagramme de flux est utile dans la création de nouveaux processus métiers. Il permet d'identifier les éléments clés et de définir clairement le début et la fin. Modéliser un processus permet de gagner en qualité et en efficacité.
-
-### 6.4. Aperçu des contenus
+### 6.4. Aperçu des contenus<!-- CHECK -->
 
 <div style="page-break-after: always;"></div>
 
@@ -2174,7 +2163,7 @@ MariaDB est un **système de gestion de base de données relationnelles** édit�
 
 ### 7.5. Outils de maquettage
 
-#### 7.5.1. Figma<!-- CHECK:Lylou: Add your stuff  -->
+#### 7.5.1. Figma<!-- CHECK  -->
 
 Figma est une **application web collaborative d'édition de graphiques vectoriels et de prototypage**. Il est principalement basé sur le web, avec des fonctionnalités hors ligne supplémentaires activées par des applications de bureau.
 
@@ -2184,7 +2173,7 @@ L'ensemble des fonctionnalités de Figma est **axé sur l'utilisation**, dans la
 - contexte
 ```
 
-#### 7.5.2. PlantUML<!-- CHECK: Add my stuff -->
+#### 7.5.2. PlantUML<!-- CHECK -->
 
 PlantUML est un **outil libre** permettant de **créer des diagrammes UML a partir de fichiers texte**. En dehors des UML classiques, PlantUML supporte de nombreux autres formats (Archimate, Block diagram, BPMN, C4, Computer network diagram, ERD, Gantt chart, Mind map, and WBD), ainsi que la visualisation des fichier JSON et YAML.
 
@@ -2194,7 +2183,7 @@ La création et l'édition d'UML simples permet de représenter et de concevoir 
 - contexte
 ```
 
-### 7.6. Plateforme de développement<!-- OK -->
+### 7.6. Plateforme de développement
 
 #### 7.6.1. Automatisation de build<!-- OK -->
 
@@ -2393,7 +2382,7 @@ task itest(type: Test) {
 ```
 <!-- cSpell:enable -->
 
-#### 7.6.2. Containérisation et services<!-- OK -->
+#### 7.6.2. Containérisation et services
 
 Docker est un outil qui permet de gérer les conteneurs logiciels.
 
@@ -2419,7 +2408,7 @@ docker run --rm -v $(pwd):/data pandoc/core pandoc -s -o sortie.html entree.md
 
 Cette commande suppose que le fichier markdown se trouve dans le répertoire courant et créera un fichier HTML nommé `sortie.html` dans le même répertoire.
 
-##### 7.6.2.2. Docker Compose<!-- OK -->
+##### 7.6.2.2. Docker Compose<!-- UML -->
 
 Docker Compose est une extension de docker permettant de définir et d'exécuter des applications à partir de **multiples conteneurs**. Il est basé sur un fichier YAML qui permet de **définir les services et les paramètres de leurs créations** et ainsi de les démarrer par une commande unique.
 
@@ -2496,7 +2485,7 @@ services:
 ```
 <!-- cSpell:enable -->
 
-##### 7.6.2.3. Docker Swarm<!-- OK -->
+##### 7.6.2.3. Docker Swarm<!-- UML -->
 
 Docker swarm mode, inclus dans les versions actuelles de Docker, permet de **gérer un cluster de moteur Docker**, appelé swarm. En utilisant la ligne de commande docker, il est possible de créer un swarm, d'y déployer des services applicatifs, et de gérer le comportement du swarm. Docker swarm est **l'orchestrateur natif de docker** (équivalent Kubernetes).
 
@@ -2701,24 +2690,6 @@ La majorité des diagrammes ont été réalisés grâce à cet outil. Voici en e
   - Description des actions réalisées sur la BDD
   - Description des tests unitaires/EtE (EndtoEnd)
 ```
-
-### 8.1. Description des features réalisées
-
-### 8.2. Description des fonctions implémentées
-
-### 8.3. Description des actions réalisées sur la BDD
-
-- **Create**
-- **Read**
-- **Update**
-- **Delete**
-
-### 8.4. Description des tests unitaires/EtE(EndtoEnd)
-
-Static Application Security Testing
-
-
-<div style="page-break-after: always;"></div>
 
 ## 9. Présentation du jeu d'essai le plus représentatif
 

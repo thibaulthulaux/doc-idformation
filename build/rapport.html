@@ -166,13 +166,7 @@
       <li><a href="#773-plantuml">7.7.3. PlantUML</a></li>
       </ul></li>
       </ul></li>
-      <li><a href="#8-réalisations">8. Réalisations</a>
-      <ul>
-      <li><a href="#81-description-des-features-réalisées">8.1. Description des features réalisées</a></li>
-      <li><a href="#82-description-des-fonctions-implémentées">8.2. Description des fonctions implémentées</a></li>
-      <li><a href="#83-description-des-actions-réalisées-sur-la-bdd">8.3. Description des actions réalisées sur la BDD</a></li>
-      <li><a href="#84-description-des-tests-unitaireseteendtoend">8.4. Description des tests unitaires/EtE(EndtoEnd)</a></li>
-      </ul></li>
+      <li><a href="#8-réalisations">8. Réalisations</a></li>
       <li><a href="#9-présentation-du-jeu-dessai-le-plus-représentatif">9. Présentation du jeu d’essai le plus représentatif</a></li>
       <li><a href="#10-veille-sur-les-vulnérabilités-de-sécurité">10. Veille sur les vulnérabilités de sécurité</a>
       <ul>
@@ -923,45 +917,44 @@
       <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="ss">- </span>Arborescence</span>
       <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="ss">- </span>Aperçu des contenus</span></code></pre></div>
       <h3 id="front-office">6.1. Front office</h3>
-      <p>Ce projet contient une landing page avec une animation. Une page de connexion et d’inscription.</p>
-      <p>Une fois connecté sur toutes les pages, il y aura une aside qui contient la liste des catégories créées par l’utilisateur afin qu’il puisse y accéder d’où il veut, ainsi qu’une barre de recherche afin d’accéder au produit depuis n’importe quelle page et un menu déroulant concernant l’utilisateur.</p>
-      <p>Le site contient une page d’ajout de catégorie, une page informative d’une catégorie et une page de modification d’une catégorie.</p>
-      <p>Sur la page informative d’une catégorie, il y a la liste des produits que contient la catégorie. Les produits sont représentés par des boutons. Si l’utilisateur clique dessus il atterrira sur la page d’information du produit. Il y aura aussi une page de modification du produit qui sera accessible à partir des informations du produit.</p>
-      <h4 id="landing-page">6.1.1. Landing page</h4>
-      <p>La landing page a une interface stylisée différemment du reste du site. Une landing page se doit d’être attractive et de pousser l’utilisateur à utiliser le produit ou le service qu’elle essaie de vendre.</p>
-      <p>Pour la landing page, nous avons fait le choix de faire une animation qui s’active une fois au lancement de la page.</p>
+      <p>Ce projet contient une <strong>landing page avec une animation</strong>. Une page de <strong>connexion et d’inscription</strong>.</p>
+      <p>Une fois connecté sur toutes les pages, il y aura une aside qui contient la <strong>liste des catégories</strong> créées par l’utilisateur afin qu’il puisse y accéder d’où il veut, ainsi qu’une <strong>barre de recherche</strong> afin d’accéder au produit depuis n’importe quelle page et un <strong>menu déroulant concernant l’utilisateur</strong>.</p>
+      <p>Le site contient une page d’<strong>ajout de catégorie</strong>, une <strong>page informative</strong> d’une catégorie et une page de <strong>modification d’une catégorie</strong>.</p>
+      <p>Sur la page informative d’une catégorie, il y a la <strong>liste des produits que contient la catégorie</strong>. Les produits sont représentés par des boutons. Si l’utilisateur <strong>clique</strong> dessus il atterrira sur la <strong>page d’information du produit</strong>. Il y aura aussi une page de <strong>modification du produit</strong> qui sera accessible à partir des informations du produit.</p>
+      <h4 id="landing-page">6.1.1. Landing page<!-- OK --></h4>
+      <p>La landing page a une <strong>interface stylisée différemment</strong> du reste du site. Une landing page se doit d’être attractive et de pousser l’utilisateur à utiliser le produit ou le service qu’elle essaie de vendre. Pour la landing page, nous avons fait le choix de faire une <strong>animation qui s’active une fois</strong> au lancement de la page.</p>
       <p>Cette animation comporte trois boîtes qui s’ouvrent et qui se referment. Pendant que la boite s’ouvre, il y a 4 petites boîtes qui descendent jusqu’à se retrouver dans les grandes boîtes. Les grandes boîtes symbolisent les catégories et les petites boîtes symbolisent les produits.</p>
-      <p>Sur la landing page l’utilisateur peut accéder aux espaces d’inscription et de connexion.</p>
-      <h4 id="inscription-et-connexion">6.1.2. Inscription et connexion</h4>
-      <p>Les espaces de connexion et d’inscription sont accessibles à partir du header de la landing page. Comme fait conventionnellement, tout à droite on retrouve en premier l’inscription et ensuite la connexion.</p>
-      <p>La page de connexion contient le label : email avec son input, ainsi que le label : mot de passe avec son input.</p>
-      <p>A droite, l’utilisateur peut cliquer sur se connecter et à gauche s’inscrire.</p>
-      <h4 id="catégories">6.1.3. Catégories</h4>
-      <h5 id="menu-catégorie">6.1.3.1. Menu catégorie</h5>
-      <p>Une fois connecté, l’utilisateur aura accès à un menu disposé à gauche de l’interface et qui sera disponible sur toutes les pages du site. Ce menu contient une liste des catégories que l’utilisateur aura créé au préalable. Pour chaque catégorie, un lien sera créé avec comme valeur le nom que l’utilisateur lui aura donné. Au survol du bouton, le bouton changera de couleur afin d’indiquer à l’utilisateur qu’il s’agit d’un lien cliquable. Ce lien dirige vers la page informative de la catégorie.</p>
-      <h5 id="ajout-dune-catégorie">6.1.3.2. Ajout d’une catégorie</h5>
-      <p>Quand l’utilisateur se sera connecté, la première page du site auquel il aura accès est la page d’ajout d’une catégorie. Sur cette page, l’utilisateur devra indiquer le nom de la catégorie ainsi que sa description puis il devra ajouter la catégorie en cliquant sur le bouton correspondant. Lorsque l’utilisateur ajoute une catégorie, elle est directement visible dans le menu catégorie.</p>
-      <h5 id="information-et-modification-dune-catégorie">6.1.3.3. Information et modification d’une catégorie</h5>
-      <p>Une fois que l’utilisateur a accès à la page informative de la catégorie, il peut cliquer sur le bouton modifier la catégorie. En cliquant sur ce bouton l’utilisateur est redirigé vers la page de modification de la catégorie. Il peut modifier les champs “nom” et “description” et pour valider les modifications, l’utilisateur devra cliquer sur le bouton valider les modifications.</p>
-      <h5 id="suppression-dune-catégorie">6.1.3.4. Suppression d’une catégorie</h5>
-      <p>Sur la page de modification de la catégorie, l’utilisateur devra cliquer sur supprimer pour supprimer la catégorie.</p>
-      <h4 id="produits">6.1.4. Produits</h4>
-      <h5 id="information-produit">6.1.4.1. Information produit</h5>
-      <p>L’utilisateur peut accéder aux informations d’un produit de deux manières.</p>
-      <p>Quand l’utilisateur arrive sur la page d’information d’une catégorie, il y a la liste des produits qui sont affichés. Si l’utilisateur clique sur le bouton, indiquant le nom du produit, il est redirigé vers la page d’information du produit.</p>
-      <p>Quand l’utilisateur recherche un produit, depuis la barre de recherche, il obtient une liste de produits correspondant à sa recherche. Si l’utilisateur clique sur un produit souhaité il atterrira sur la d’information du produit.</p>
-      <h5 id="ajout-dun-produit">6.1.4.2. Ajout d’un produit</h5>
-      <p>Sur la page d’information de la catégorie contenant la liste des produits de celle-ci, si l’utilisateur clique sur ajouter une catégorie, il atterrira sur la page d’édition du produit. Il devra remplir les champs et appuyer sur le bouton add product pour l’ajouter.</p>
-      <h5 id="modifier-un-produit">6.1.4.3. Modifier un produit</h5>
-      <p>Pour modifier le produit, l’utilisateur devra cliquer sur le bouton modifier le produit sur la page d’information du produit. Il sera redirigé vers la page de modification du produit, dans laquelle il pourra modifier les champs et valider les modifications.</p>
-      <h5 id="supprimer-un-produit">6.1.4.4. Supprimer un produit</h5>
-      <p>Sur la page de modification d’un produit, l’utilisateur peut cliquer sur supprimer le produit pour supprimer le produit.</p>
-      <h4 id="menu-user">6.1.5. Menu user</h4>
-      <p>Une fois l’utilisateur connecté, il pourra accéder au menu user. L’utilisateur devra cliquer sur le user ou son symbole. A partir de là un menu déroulant s’abaisse et l’utilisateur peut cliquer sur : modification du profil, modification du mot de passe ou déconnexion.</p>
-      <h3 id="back-office">6.2. Back office</h3>
-      <h3 id="arborescence">6.3. Arborescence</h3>
+      <p>Sur la landing page l’utilisateur peut <strong>accéder aux espaces d’inscription et de connexion</strong>.</p>
+      <h4 id="inscription-et-connexion">6.1.2. Inscription et connexion<!-- OK --></h4>
+      <p>Les espaces de connexion et d’inscription sont accessibles à partir du <strong>header de la landing page</strong>. Comme fait conventionnellement, tout à droite on retrouve en premier l’inscription et ensuite la connexion. La page de connexion contient le label : email avec son input, ainsi que le label : mot de passe avec son input. A droite, l’utilisateur peut cliquer sur <strong>se connecter</strong> et à gauche <strong>s’inscrire</strong>.</p>
+      <h4 id="catégories">6.1.3. Catégories<!-- OK --></h4>
+      <h5 id="menu-catégorie">6.1.3.1. Menu catégorie<!-- OK --></h5>
+      <p>Une fois connecté, l’utilisateur aura accès à un <strong>menu disposé à gauche de l’interface</strong> et qui sera <strong>disponible sur toutes les pages</strong> du site. Ce menu contient une <strong>liste des catégories</strong> que l’utilisateur aura créé au préalable. Pour chaque catégorie, un lien sera créé avec comme valeur le nom que l’utilisateur lui aura donné. Au survol du bouton, le bouton changera de couleur afin d’indiquer à l’utilisateur qu’il s’agit d’un lien cliquable. Ce lien dirige vers la <strong>page informative de la catégorie</strong>.</p>
+      <h5 id="ajout-dune-catégorie">6.1.3.2. Ajout d’une catégorie<!-- OK --></h5>
+      <p>Quand l’utilisateur se sera connecté, la première page du site auquel il aura accès est la page d’ajout d’une catégorie. Sur cette page, l’utilisateur devra <strong>indiquer le nom de la catégorie ainsi que sa description</strong> puis il devra ajouter la catégorie en cliquant sur le bouton correspondant. Lorsque l’utilisateur ajoute une catégorie, elle est <strong>directement visible dans le menu catégorie</strong>.</p>
+      <h5 id="information-et-modification-dune-catégorie">6.1.3.3. Information et modification d’une catégorie<!-- OK --></h5>
+      <p>Une fois que l’utilisateur a accès à la page informative de la catégorie, il peut cliquer sur le bouton modifier la catégorie. En cliquant sur ce bouton l’utilisateur est redirigé vers la page de <strong>modification de la catégorie</strong>. Il peut <strong>modifier les champs <code>nom</code> et <code>description</code></strong> et pour valider les modifications, l’utilisateur devra cliquer sur le bouton <strong>valider les modifications</strong>.</p>
+      <h5 id="suppression-dune-catégorie">6.1.3.4. Suppression d’une catégorie<!-- OK --></h5>
+      <p>Sur la <strong>page de modification de la catégorie</strong>, l’utilisateur devra <strong>cliquer sur supprimer</strong> pour supprimer la catégorie.</p>
+      <h4 id="produits">6.1.4. Produits<!-- OK --></h4>
+      <h5 id="information-produit">6.1.4.1. Information produit<!-- OK --></h5>
+      <p>L’utilisateur peut accéder aux informations d’un produit de deux manières :</p>
+      <ul>
+      <li>Quand l’utilisateur arrive sur la <strong>page d’information d’une catégorie</strong>, il y a la liste des produits qui sont affichés. Si l’utilisateur <strong>clique sur le bouton indiquant le nom du produit</strong>, il est redirigé vers la page d’information du produit.</li>
+      <li>Quand l’utilisateur recherche un produit, <strong>depuis la barre de recherche</strong>, il obtient une liste de produits correspondant à sa recherche. Si l’utilisateur <strong>clique sur un produit souhaité</strong> il atterrira sur la page d’information du produit.</li>
+      </ul>
+      <h5 id="ajout-dun-produit">6.1.4.2. Ajout d’un produit<!-- OK --></h5>
+      <p>Sur la <strong>page d’information de la catégorie</strong> contenant la liste des produits de celle-ci, si l’utilisateur clique sur ajouter un produit, il atterrira sur la page d’édition du produit. Il devra <strong>remplir les champs</strong> et appuyer sur le bouton ajouter pour <strong>valider l’ajout du produit</strong>.</p>
+      <h5 id="modifier-un-produit">6.1.4.3. Modifier un produit<!-- OK --></h5>
+      <p>Pour modifier le produit, l’utilisateur devra cliquer sur le bouton <strong>modifier le produit sur la page d’information du produit.</strong> Il sera redirigé vers la page de modification du produit, dans laquelle il pourra modifier les champs et <strong>valider les modifications</strong>.</p>
+      <h5 id="supprimer-un-produit">6.1.4.4. Supprimer un produit<!-- OK --></h5>
+      <p>Sur la <strong>page de modification d’un produit</strong>, l’utilisateur peut <strong>cliquer sur supprimer</strong> le produit pour supprimer le produit.</p>
+      <h4 id="menu-user">6.1.5. Menu user<!-- CHECK --></h4>
+      <p>Une fois l’utilisateur <strong>connecté</strong>, il pourra accéder au <strong>menu user</strong>. L’utilisateur devra <strong>cliquer sur le user ou son symbole</strong>. A partir de là un <strong>menu déroulant</strong> s’abaisse et l’utilisateur peut cliquer sur : modification du profil, modification du mot de passe ou déconnexion.</p>
+      <h3 id="back-office">6.2. Back office<!-- CHECK --></h3>
+      <h3 id="arborescence">6.3. Arborescence<!-- CHECK --></h3>
       <p>Le diagramme de flux est utile dans la création de nouveaux processus métiers. Il permet d’identifier les éléments clés et de définir clairement le début et la fin. Modéliser un processus permet de gagner en qualité et en efficacité.</p>
-      <h3 id="aperçu-des-contenus">6.4. Aperçu des contenus</h3>
+      <h3 id="aperçu-des-contenus">6.4. Aperçu des contenus<!-- CHECK --></h3>
       <div style="page-break-after: always;">
 
       </div>
@@ -2254,15 +2247,15 @@
       <h4 id="mariadb">7.4.1. MariaDB<!-- OK --></h4>
       <p>MariaDB est un <strong>système de gestion de base de données relationnelles</strong> édité sous licence GPL. Il s’agit d’une <strong>branche communautaire</strong> de MySQL. L’objectif est de maintenir une haute <strong>compatibilité avec MySQL</strong>, une parité des librairies et une correspondance parfaite avec l’API ainsi que les commandes MySQL. Ceci permettant, dans la plupart des cas de fonctionner en remplacement direct de MySQL.</p>
       <h3 id="outils-de-maquettage">7.5. Outils de maquettage</h3>
-      <h4 id="figma">7.5.1. Figma<!-- CHECK:Lylou: Add your stuff  --></h4>
+      <h4 id="figma">7.5.1. Figma<!-- CHECK  --></h4>
       <p>Figma est une <strong>application web collaborative d’édition de graphiques vectoriels et de prototypage</strong>. Il est principalement basé sur le web, avec des fonctionnalités hors ligne supplémentaires activées par des applications de bureau.</p>
       <p>L’ensemble des fonctionnalités de Figma est <strong>axé sur l’utilisation</strong>, dans la conception, <strong>de l’interface utilisateur et de l’expérience utilisateur</strong>, en mettant l’accent sur la collaboration en temps réel.</p>
       <div class="sourceCode" id="cb26"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
-      <h4 id="plantuml">7.5.2. PlantUML<!-- CHECK: Add my stuff --></h4>
+      <h4 id="plantuml">7.5.2. PlantUML<!-- CHECK --></h4>
       <p>PlantUML est un <strong>outil libre</strong> permettant de <strong>créer des diagrammes UML a partir de fichiers texte</strong>. En dehors des UML classiques, PlantUML supporte de nombreux autres formats (Archimate, Block diagram, BPMN, C4, Computer network diagram, ERD, Gantt chart, Mind map, and WBD), ainsi que la visualisation des fichier JSON et YAML.</p>
       <p>La création et l’édition d’UML simples permet de représenter et de concevoir la structure ou les fonctionnalités recherches d’un logiciel (Activité, Acteurs, Processus, Schéma de base de données, Composants logiciels), et fait partie intégrante du prototypage.</p>
       <div class="sourceCode" id="cb27"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
-      <h3 id="plateforme-de-développement">7.6. Plateforme de développement<!-- OK --></h3>
+      <h3 id="plateforme-de-développement">7.6. Plateforme de développement</h3>
       <h4 id="automatisation-de-build">7.6.1. Automatisation de build<!-- OK --></h4>
       <p>Le choix du moteur de production s’est appuyé sur les elements suivants :</p>
       <ul>
@@ -2453,7 +2446,7 @@
       <span id="cb28-163"><a href="#cb28-163" aria-hidden="true"></a></span>
       <span id="cb28-164"><a href="#cb28-164" aria-hidden="true"></a>...</span></code></pre></div>
       <!-- cSpell:enable -->
-      <h4 id="containérisation-et-services">7.6.2. Containérisation et services<!-- OK --></h4>
+      <h4 id="containérisation-et-services">7.6.2. Containérisation et services</h4>
       <p>Docker est un outil qui permet de gérer les conteneurs logiciels.</p>
       <p>Containériser une application facilite <strong>l’isolation des différentes parties</strong>, <strong>la portabilité</strong> entre différents environnements, <strong>l’optimisation des ressources</strong>, <strong>l’automatisation du déploiement</strong> et le partage des images de conteneurs.</p>
       <p>Docker est populaire pour la création, le déploiement et la gestion des conteneurs dans les applications modernes containérisées.</p>
@@ -2466,7 +2459,7 @@
       <span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a><span class="ex">docker</span> run --rm -v <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/data pandoc/core pandoc -s -o sortie.html entree.md</span></code></pre></div>
       <!-- cSpell:enable -->
       <p>Cette commande suppose que le fichier markdown se trouve dans le répertoire courant et créera un fichier HTML nommé <code>sortie.html</code> dans le même répertoire.</p>
-      <h5 id="docker-compose">7.6.2.2. Docker Compose<!-- OK --></h5>
+      <h5 id="docker-compose">7.6.2.2. Docker Compose<!-- UML --></h5>
       <p>Docker Compose est une extension de docker permettant de définir et d’exécuter des applications à partir de <strong>multiples conteneurs</strong>. Il est basé sur un fichier YAML qui permet de <strong>définir les services et les paramètres de leurs créations</strong> et ainsi de les démarrer par une commande unique.</p>
       <figure>
       <img src="img/docker-compose-uml.png" alt="" /><figcaption>Docker Compose Diagram</figcaption>
@@ -2537,7 +2530,7 @@
       <span id="cb30-62"><a href="#cb30-62" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_USER</span><span class="kw">:</span><span class="at"> ${MARIADB_USER}</span></span>
       <span id="cb30-63"><a href="#cb30-63" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_PASSWORD</span><span class="kw">:</span><span class="at"> ${MARIADB_PASSWORD}</span></span></code></pre></div>
       <!-- cSpell:enable -->
-      <h5 id="docker-swarm">7.6.2.3. Docker Swarm<!-- OK --></h5>
+      <h5 id="docker-swarm">7.6.2.3. Docker Swarm<!-- UML --></h5>
       <p>Docker swarm mode, inclus dans les versions actuelles de Docker, permet de <strong>gérer un cluster de moteur Docker</strong>, appelé swarm. En utilisant la ligne de commande docker, il est possible de créer un swarm, d’y déployer des services applicatifs, et de gérer le comportement du swarm. Docker swarm est <strong>l’orchestrateur natif de docker</strong> (équivalent Kubernetes).</p>
       <p>Les fonctions les plus représentatives sont les suivantes :</p>
       <ul>
@@ -2734,20 +2727,6 @@
       <span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a><span class="ss">  - </span>Description des fonctions implémentées</span>
       <span id="cb34-3"><a href="#cb34-3" aria-hidden="true"></a><span class="ss">  - </span>Description des actions réalisées sur la BDD</span>
       <span id="cb34-4"><a href="#cb34-4" aria-hidden="true"></a><span class="ss">  - </span>Description des tests unitaires/EtE (EndtoEnd)</span></code></pre></div>
-      <h3 id="description-des-features-réalisées">8.1. Description des features réalisées</h3>
-      <h3 id="description-des-fonctions-implémentées">8.2. Description des fonctions implémentées</h3>
-      <h3 id="description-des-actions-réalisées-sur-la-bdd">8.3. Description des actions réalisées sur la BDD</h3>
-      <ul>
-      <li><strong>Create</strong></li>
-      <li><strong>Read</strong></li>
-      <li><strong>Update</strong></li>
-      <li><strong>Delete</strong></li>
-      </ul>
-      <h3 id="description-des-tests-unitaireseteendtoend">8.4. Description des tests unitaires/EtE(EndtoEnd)</h3>
-      <p>Static Application Security Testing</p>
-      <div style="page-break-after: always;">
-
-      </div>
       <h2 id="présentation-du-jeu-dessai-le-plus-représentatif">9. Présentation du jeu d’essai le plus représentatif</h2>
       <div class="sourceCode" id="cb35"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a><span class="ss">- </span>Description des scénarios désirées sur la fonctionnalité et vérification de la conformité du résultat</span>
       <span id="cb35-2"><a href="#cb35-2" aria-hidden="true"></a><span class="ss">- </span>Le jeu d&#39;essai permet de contrôler la réaction du code pour tous les types de données reçus par les méthodes et fonctions, qu&#39;ils soient valides ou non. Pour la fonctionnalité la plus complète de votre application, expliquez &quot;Données en entrée -&gt; données attendues -&gt; Données obtenues&quot;</span></code></pre></div>

@@ -1865,6 +1865,21 @@
       <p>L’idée de YAML est que presque toute donnée peut être représentée par combinaison de listes, tableaux associatifs et données scalaires. Ce langage est couramment utilisé pour des <strong>fichiers de configuration</strong>, et dans les applications ou les données sont stockées ou transmises.</p>
       <p>Pour un exemple de fichier YAML, merci de vous référer à <a href="#7622-docker-compose">Docker Compose</a> ou <a href="#7623-docker-swarm">Docker Swarm</a>.</p>
       <h3 id="frameworks">7.2. Frameworks<!-- OK --></h3>
+      <p>Dans la mesure ou ce <strong>projet est réalisé dans le cadre d’une formation</strong>, le but étant d’acquérir de solides bases sur les différents composants, il semblait naturel d’<strong>écarter la grande majorité des frameworks de développement</strong>.</p>
+      <p>En effet, les diverses couches d’abstractions, bien que simplifiant grandement le développement d’une application, peuvent ici être contre-productifs :</p>
+      <ul>
+      <li>ils <strong>masquent les détails de la conception et de la mise en œuvre</strong>, ce qui rend plus difficile de comprendre comment les choses fonctionnent réellement.</li>
+      <li>ils rendent plus difficile l’apprentissage des concepts de base de la programmation, car ils <strong>fournissent des solutions toutes faites</strong>, plutôt que de permettre aux développeurs de les <strong>résoudre les problemes par eux-mêmes</strong>.</li>
+      <li>ils rendent les <strong>applications plus lourdes et plus difficiles à déboguer</strong>, car ils ajoutent une couche supplémentaire d’abstraction.</li>
+      <li>les différentes <strong>options existantes pour résoudre un problème donné sont limités</strong> aux solutions proposées par le framework.</li>
+      </ul>
+      <p>Il est cependant important de noter que <strong>lorsque l’on maîtrise les concepts de base</strong> et que l’on a une bonne compréhension de la façon dont les frameworks fonctionnent, ils peuvent être très <strong>utiles pour accélérer le développement</strong> et améliorer la qualité du code.</p>
+      <p>Dans le cadre de ce projet, un des choix de framework aurait été Java <a href="https://spring.io/projects/spring-framework">Spring</a>.</p>
+      <p>Nous avons cependant retenu <strong>deux frameworks pour ce projet</strong> :</p>
+      <ul>
+      <li>Java Authentication And Authorization Service</li>
+      <li>reveal.js</li>
+      </ul>
       <h4 id="jaas">7.2.1. JAAS<!-- OK --></h4>
       <p><strong>Java Authentication And Authorization Service</strong> (JAAS) est un <strong>framework de sécurité de bas niveau</strong> de la plateforme Java SE. En améliorant l’architecture de la sécurité de Java, ce framework ajoute la capacité de forcer un contrôle d’accès sur l’utilisateur qui exécute le code.</p>
       <p>Il est utilisé pour deux raisons:</p>

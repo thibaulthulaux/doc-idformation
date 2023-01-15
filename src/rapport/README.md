@@ -1735,6 +1735,24 @@ Pour un exemple de fichier YAML, merci de vous référer à [Docker Compose](#76
 
 ### 7.2. Frameworks<!-- OK -->
 
+Dans la mesure ou ce **projet est réalisé dans le cadre d'une formation**, le but étant d’acquérir de solides bases sur les différents composants, il semblait naturel d’**écarter la grande majorité des frameworks de développement**.
+
+En effet, les diverses couches d’abstractions, bien que simplifiant grandement le développement d'une application, peuvent ici être contre-productifs :
+
+- ils **masquent les détails de la conception et de la mise en œuvre**, ce qui rend plus difficile de comprendre comment les choses fonctionnent réellement.
+- ils rendent plus difficile l'apprentissage des concepts de base de la programmation, car ils **fournissent des solutions toutes faites**, plutôt que de permettre aux développeurs de les **résoudre les problemes par eux-mêmes**.
+- ils rendent les **applications plus lourdes et plus difficiles à déboguer**, car ils ajoutent une couche supplémentaire d'abstraction.
+- les différentes **options existantes pour résoudre un problème donné sont limités** aux solutions proposées par le framework.
+
+Il est cependant important de noter que **lorsque l'on maîtrise les concepts de base** et que l'on a une bonne compréhension de la façon dont les frameworks fonctionnent, ils peuvent être très **utiles pour accélérer le développement** et améliorer la qualité du code.
+
+Dans le cadre de ce projet, un des choix de framework aurait été Java [Spring](https://spring.io/projects/spring-framework).
+
+Nous avons cependant retenu **deux frameworks pour ce projet** :
+
+- Java Authentication And Authorization Service
+- reveal.js
+
 #### 7.2.1. JAAS<!-- OK -->
 
 **Java Authentication And Authorization Service** (JAAS) est un **framework de sécurité de bas niveau** de la plateforme Java SE. En améliorant l'architecture de la sécurité de Java, ce framework ajoute la capacité de forcer un contrôle d'accès sur l'utilisateur qui exécute le code.

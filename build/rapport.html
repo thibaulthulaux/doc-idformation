@@ -1864,8 +1864,8 @@
       <p>YAML, acronyme de Yet Another Markup Language, un <strong>format de représentation de données</strong> par sérialisation Unicode, lisible facilement par l’homme.</p>
       <p>L’idée de YAML est que presque toute donnée peut être représentée par combinaison de listes, tableaux associatifs et données scalaires. Ce langage est couramment utilisé pour des <strong>fichiers de configuration</strong>, et dans les applications ou les données sont stockées ou transmises.</p>
       <p>Pour un exemple de fichier YAML, merci de vous référer à <a href="#7622-docker-compose">Docker Compose</a> ou <a href="#7623-docker-swarm">Docker Swarm</a>.</p>
-      <h3 id="frameworks">7.2. Frameworks</h3>
-      <h4 id="jaas">7.2.1. JAAS<!-- EX --></h4>
+      <h3 id="frameworks">7.2. Frameworks<!-- OK --></h3>
+      <h4 id="jaas">7.2.1. JAAS<!-- OK --></h4>
       <p><strong>Java Authentication And Authorization Service</strong> (JAAS) est un <strong>framework de sécurité de bas niveau</strong> de la plateforme Java SE. En améliorant l’architecture de la sécurité de Java, ce framework ajoute la capacité de forcer un contrôle d’accès sur l’utilisateur qui exécute le code.</p>
       <p>Il est utilisé pour deux raisons:</p>
       <ul>
@@ -1874,7 +1874,7 @@
       </ul>
       <p>L’intégration du JAAS à l’application a été réalisé de la manière suivante :</p>
       <ul>
-      <li>Création de deux classes java <code>UserPrincipal.java</code> et <code>RolePrincipal.java</code>, définissant les principaux :</li>
+      <li><strong>Création de deux classes</strong> java <code>UserPrincipal.java</code> et <code>RolePrincipal.java</code>, définissant les principaux :</li>
       </ul>
       <!-- cSpell:disable -->
       <div class="sourceCode" id="cb17"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a></span>
@@ -1947,7 +1947,7 @@
       <span id="cb18-32"><a href="#cb18-32" aria-hidden="true"></a>}</span></code></pre></div>
       <!-- cSpell:enable -->
       <ul>
-      <li>Implémentation de la méthode <code>login()</code> de la classe <code>JAASLoginModule.java</code> :</li>
+      <li><strong>Implémentation</strong> de la méthode <code>login()</code> de la classe <code>JAASLoginModule.java</code> :</li>
       </ul>
       <!-- cSpell:disable -->
       <div class="sourceCode" id="cb19"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a></span>
@@ -2002,7 +2002,7 @@
       <span id="cb19-50"><a href="#cb19-50" aria-hidden="true"></a>  }</span></code></pre></div>
       <!-- cSpell:enable -->
       <ul>
-      <li>Création d’un fichier <code>context.xml</code> qui déclenche et configure la couche JAAS :</li>
+      <li><strong>Configurer le contexte</strong> de la couche JAAS avec le fichier <code>context.xml</code> :</li>
       </ul>
       <!-- cSpell:disable -->
       <div class="sourceCode" id="cb20"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a></span>
@@ -2015,67 +2015,135 @@
       <span id="cb20-8"><a href="#cb20-8" aria-hidden="true"></a><span class="kw">&lt;/Context&gt;</span></span></code></pre></div>
       <!-- cSpell:enable -->
       <ul>
-      <li>Ajout des paramètres supplémentaires dans <code>web.xml</code> qui configure la sécurité et les autorisations dans l’application (extraits) :</li>
+      <li>Ajout du fichier <code>jaas.config</code> sur le serveur Tomcat :</li>
       </ul>
       <!-- cSpell:disable -->
-      <div class="sourceCode" id="cb21"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a></span>
-      <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a><span class="co">&lt;!-- ............................................................... PUBLIC --&gt;</span></span>
-      <span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a>  <span class="kw">&lt;security-constraint&gt;</span></span>
-      <span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a>    <span class="kw">&lt;web-resource-collection&gt;</span></span>
-      <span id="cb21-5"><a href="#cb21-5" aria-hidden="true"></a>      <span class="kw">&lt;web-resource-name&gt;</span>All Access - Web public content<span class="kw">&lt;/web-resource-name&gt;</span></span>
-      <span id="cb21-6"><a href="#cb21-6" aria-hidden="true"></a>      <span class="kw">&lt;url-pattern&gt;</span>/www/*<span class="kw">&lt;/url-pattern&gt;</span></span>
-      <span id="cb21-7"><a href="#cb21-7" aria-hidden="true"></a>      <span class="kw">&lt;http-method&gt;</span>GET<span class="kw">&lt;/http-method&gt;</span></span>
-      <span id="cb21-8"><a href="#cb21-8" aria-hidden="true"></a>      <span class="co">&lt;!-- &lt;http-method&gt;POST&lt;/http-method&gt; --&gt;</span></span>
-      <span id="cb21-9"><a href="#cb21-9" aria-hidden="true"></a>    <span class="kw">&lt;/web-resource-collection&gt;</span></span>
-      <span id="cb21-10"><a href="#cb21-10" aria-hidden="true"></a>    <span class="co">&lt;!-- Omitting &lt;auth-constraint&gt; to get public access --&gt;</span></span>
-      <span id="cb21-11"><a href="#cb21-11" aria-hidden="true"></a>    <span class="kw">&lt;user-data-constraint&gt;</span></span>
-      <span id="cb21-12"><a href="#cb21-12" aria-hidden="true"></a>      <span class="kw">&lt;transport-guarantee&gt;</span>NONE<span class="kw">&lt;/transport-guarantee&gt;</span></span>
-      <span id="cb21-13"><a href="#cb21-13" aria-hidden="true"></a>    <span class="kw">&lt;/user-data-constraint&gt;</span></span>
-      <span id="cb21-14"><a href="#cb21-14" aria-hidden="true"></a>  <span class="kw">&lt;/security-constraint&gt;</span></span>
-      <span id="cb21-15"><a href="#cb21-15" aria-hidden="true"></a><span class="co">&lt;!-- ........................................................... RESTRICTED --&gt;</span></span>
-      <span id="cb21-16"><a href="#cb21-16" aria-hidden="true"></a> <span class="kw">&lt;security-constraint&gt;</span></span>
-      <span id="cb21-17"><a href="#cb21-17" aria-hidden="true"></a>    <span class="kw">&lt;web-resource-collection&gt;</span></span>
-      <span id="cb21-18"><a href="#cb21-18" aria-hidden="true"></a>      <span class="kw">&lt;web-resource-name&gt;</span>Restricted Access - admin only<span class="kw">&lt;/web-resource-name&gt;</span></span>
-      <span id="cb21-19"><a href="#cb21-19" aria-hidden="true"></a>      <span class="kw">&lt;url-pattern&gt;</span>/admin/*<span class="kw">&lt;/url-pattern&gt;</span></span>
-      <span id="cb21-20"><a href="#cb21-20" aria-hidden="true"></a>      <span class="kw">&lt;http-method&gt;</span>GET<span class="kw">&lt;/http-method&gt;</span></span>
-      <span id="cb21-21"><a href="#cb21-21" aria-hidden="true"></a>      <span class="kw">&lt;http-method&gt;</span>POST<span class="kw">&lt;/http-method&gt;</span></span>
-      <span id="cb21-22"><a href="#cb21-22" aria-hidden="true"></a>    <span class="kw">&lt;/web-resource-collection&gt;</span></span>
-      <span id="cb21-23"><a href="#cb21-23" aria-hidden="true"></a>    <span class="kw">&lt;auth-constraint&gt;</span></span>
-      <span id="cb21-24"><a href="#cb21-24" aria-hidden="true"></a>      <span class="kw">&lt;role-name&gt;</span>admin<span class="kw">&lt;/role-name&gt;</span></span>
-      <span id="cb21-25"><a href="#cb21-25" aria-hidden="true"></a>    <span class="kw">&lt;/auth-constraint&gt;</span></span>
-      <span id="cb21-26"><a href="#cb21-26" aria-hidden="true"></a>    <span class="kw">&lt;user-data-constraint&gt;</span></span>
-      <span id="cb21-27"><a href="#cb21-27" aria-hidden="true"></a>      <span class="kw">&lt;transport-guarantee&gt;</span>NONE<span class="kw">&lt;/transport-guarantee&gt;</span></span>
-      <span id="cb21-28"><a href="#cb21-28" aria-hidden="true"></a>    <span class="kw">&lt;/user-data-constraint&gt;</span></span>
-      <span id="cb21-29"><a href="#cb21-29" aria-hidden="true"></a>  <span class="kw">&lt;/security-constraint&gt;</span></span>
-      <span id="cb21-30"><a href="#cb21-30" aria-hidden="true"></a><span class="co">&lt;!-- ................................................................ ROLES --&gt;</span></span>
-      <span id="cb21-31"><a href="#cb21-31" aria-hidden="true"></a>  <span class="kw">&lt;security-role&gt;</span></span>
-      <span id="cb21-32"><a href="#cb21-32" aria-hidden="true"></a>    <span class="kw">&lt;role-name&gt;</span>admin<span class="kw">&lt;/role-name&gt;</span></span>
-      <span id="cb21-33"><a href="#cb21-33" aria-hidden="true"></a>    <span class="kw">&lt;role-name&gt;</span>user<span class="kw">&lt;/role-name&gt;</span></span>
-      <span id="cb21-34"><a href="#cb21-34" aria-hidden="true"></a>  <span class="kw">&lt;/security-role&gt;</span></span>
-      <span id="cb21-35"><a href="#cb21-35" aria-hidden="true"></a><span class="co">&lt;!-- ................................................................ LOGIN --&gt;</span></span>
-      <span id="cb21-36"><a href="#cb21-36" aria-hidden="true"></a>  <span class="kw">&lt;login-config&gt;</span></span>
-      <span id="cb21-37"><a href="#cb21-37" aria-hidden="true"></a>    <span class="kw">&lt;auth-method&gt;</span>FORM<span class="kw">&lt;/auth-method&gt;</span></span>
-      <span id="cb21-38"><a href="#cb21-38" aria-hidden="true"></a>    <span class="kw">&lt;realm-name&gt;</span>default<span class="kw">&lt;/realm-name&gt;</span></span>
-      <span id="cb21-39"><a href="#cb21-39" aria-hidden="true"></a>    <span class="kw">&lt;form-login-config&gt;</span></span>
-      <span id="cb21-40"><a href="#cb21-40" aria-hidden="true"></a>      <span class="kw">&lt;form-login-page&gt;</span>/Login<span class="kw">&lt;/form-login-page&gt;</span></span>
-      <span id="cb21-41"><a href="#cb21-41" aria-hidden="true"></a>      <span class="kw">&lt;form-login-error&gt;</span>/Error<span class="kw">&lt;/form-login-error&gt;</span></span>
-      <span id="cb21-42"><a href="#cb21-42" aria-hidden="true"></a>    <span class="kw">&lt;/form-login-config&gt;</span></span>
-      <span id="cb21-43"><a href="#cb21-43" aria-hidden="true"></a>  <span class="kw">&lt;/login-config&gt;</span></span>
-      <span id="cb21-44"><a href="#cb21-44" aria-hidden="true"></a>...</span>
-      <span id="cb21-45"><a href="#cb21-45" aria-hidden="true"></a></span></code></pre></div>
+      <pre class="config"><code>
+      webapp { // appName is defined in webapp/META-INF/context.xml
+        app.auth.JAASLoginModule required debug=true;
+      };
+      </code></pre>
       <!-- cSpell:enable -->
-      <h4 id="reveal.js">7.2.2. reveal.js<!-- EX --></h4>
-      <p>reveal.js est un <strong>framework de présentation HTML</strong> opensource. Il permet de réaliser facilement, a l’aide de n’importe quel navigateur web, des présentations de qualité.</p>
-      <p>Le framework dispose de nombreuses fonctions dont les vues verticales, le support du Markdown, l’animation automatique, l’export en PDF, les notes de présentation. Il dispose aussi d’une API étendue.</p>
+      <ul>
+      <li>Ajout des paramètres supplémentaires au fichier <code>web.xml</code> pour <strong>configurer la sécurité et les autorisations dans l’application</strong> (extraits) :</li>
+      </ul>
       <!-- cSpell:disable -->
-      <div class="sourceCode" id="cb22"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>- addexemple framework de presentation</span></code></pre></div>
+      <div class="sourceCode" id="cb22"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a></span>
+      <span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a>...</span>
+      <span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a><span class="co">&lt;!-- ............................................................... PUBLIC --&gt;</span></span>
+      <span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a>  <span class="kw">&lt;security-constraint&gt;</span></span>
+      <span id="cb22-5"><a href="#cb22-5" aria-hidden="true"></a>    <span class="kw">&lt;web-resource-collection&gt;</span></span>
+      <span id="cb22-6"><a href="#cb22-6" aria-hidden="true"></a>      <span class="kw">&lt;web-resource-name&gt;</span>All Access - Web public content<span class="kw">&lt;/web-resource-name&gt;</span></span>
+      <span id="cb22-7"><a href="#cb22-7" aria-hidden="true"></a>      <span class="kw">&lt;url-pattern&gt;</span>/www/*<span class="kw">&lt;/url-pattern&gt;</span></span>
+      <span id="cb22-8"><a href="#cb22-8" aria-hidden="true"></a>      <span class="kw">&lt;http-method&gt;</span>GET<span class="kw">&lt;/http-method&gt;</span></span>
+      <span id="cb22-9"><a href="#cb22-9" aria-hidden="true"></a>      <span class="co">&lt;!-- &lt;http-method&gt;POST&lt;/http-method&gt; --&gt;</span></span>
+      <span id="cb22-10"><a href="#cb22-10" aria-hidden="true"></a>    <span class="kw">&lt;/web-resource-collection&gt;</span></span>
+      <span id="cb22-11"><a href="#cb22-11" aria-hidden="true"></a>    <span class="co">&lt;!-- Omitting &lt;auth-constraint&gt; to get public access --&gt;</span></span>
+      <span id="cb22-12"><a href="#cb22-12" aria-hidden="true"></a>    <span class="kw">&lt;user-data-constraint&gt;</span></span>
+      <span id="cb22-13"><a href="#cb22-13" aria-hidden="true"></a>      <span class="kw">&lt;transport-guarantee&gt;</span>NONE<span class="kw">&lt;/transport-guarantee&gt;</span></span>
+      <span id="cb22-14"><a href="#cb22-14" aria-hidden="true"></a>    <span class="kw">&lt;/user-data-constraint&gt;</span></span>
+      <span id="cb22-15"><a href="#cb22-15" aria-hidden="true"></a>  <span class="kw">&lt;/security-constraint&gt;</span></span>
+      <span id="cb22-16"><a href="#cb22-16" aria-hidden="true"></a><span class="co">&lt;!-- ........................................................... RESTRICTED --&gt;</span></span>
+      <span id="cb22-17"><a href="#cb22-17" aria-hidden="true"></a> <span class="kw">&lt;security-constraint&gt;</span></span>
+      <span id="cb22-18"><a href="#cb22-18" aria-hidden="true"></a>    <span class="kw">&lt;web-resource-collection&gt;</span></span>
+      <span id="cb22-19"><a href="#cb22-19" aria-hidden="true"></a>      <span class="kw">&lt;web-resource-name&gt;</span>Restricted Access - admin only<span class="kw">&lt;/web-resource-name&gt;</span></span>
+      <span id="cb22-20"><a href="#cb22-20" aria-hidden="true"></a>      <span class="kw">&lt;url-pattern&gt;</span>/admin/*<span class="kw">&lt;/url-pattern&gt;</span></span>
+      <span id="cb22-21"><a href="#cb22-21" aria-hidden="true"></a>      <span class="kw">&lt;http-method&gt;</span>GET<span class="kw">&lt;/http-method&gt;</span></span>
+      <span id="cb22-22"><a href="#cb22-22" aria-hidden="true"></a>      <span class="kw">&lt;http-method&gt;</span>POST<span class="kw">&lt;/http-method&gt;</span></span>
+      <span id="cb22-23"><a href="#cb22-23" aria-hidden="true"></a>    <span class="kw">&lt;/web-resource-collection&gt;</span></span>
+      <span id="cb22-24"><a href="#cb22-24" aria-hidden="true"></a>    <span class="kw">&lt;auth-constraint&gt;</span></span>
+      <span id="cb22-25"><a href="#cb22-25" aria-hidden="true"></a>      <span class="kw">&lt;role-name&gt;</span>admin<span class="kw">&lt;/role-name&gt;</span></span>
+      <span id="cb22-26"><a href="#cb22-26" aria-hidden="true"></a>    <span class="kw">&lt;/auth-constraint&gt;</span></span>
+      <span id="cb22-27"><a href="#cb22-27" aria-hidden="true"></a>    <span class="kw">&lt;user-data-constraint&gt;</span></span>
+      <span id="cb22-28"><a href="#cb22-28" aria-hidden="true"></a>      <span class="kw">&lt;transport-guarantee&gt;</span>NONE<span class="kw">&lt;/transport-guarantee&gt;</span></span>
+      <span id="cb22-29"><a href="#cb22-29" aria-hidden="true"></a>    <span class="kw">&lt;/user-data-constraint&gt;</span></span>
+      <span id="cb22-30"><a href="#cb22-30" aria-hidden="true"></a>  <span class="kw">&lt;/security-constraint&gt;</span></span>
+      <span id="cb22-31"><a href="#cb22-31" aria-hidden="true"></a><span class="co">&lt;!-- ................................................................ ROLES --&gt;</span></span>
+      <span id="cb22-32"><a href="#cb22-32" aria-hidden="true"></a>  <span class="kw">&lt;security-role&gt;</span></span>
+      <span id="cb22-33"><a href="#cb22-33" aria-hidden="true"></a>    <span class="kw">&lt;role-name&gt;</span>admin<span class="kw">&lt;/role-name&gt;</span></span>
+      <span id="cb22-34"><a href="#cb22-34" aria-hidden="true"></a>    <span class="kw">&lt;role-name&gt;</span>user<span class="kw">&lt;/role-name&gt;</span></span>
+      <span id="cb22-35"><a href="#cb22-35" aria-hidden="true"></a>  <span class="kw">&lt;/security-role&gt;</span></span>
+      <span id="cb22-36"><a href="#cb22-36" aria-hidden="true"></a><span class="co">&lt;!-- ................................................................ LOGIN --&gt;</span></span>
+      <span id="cb22-37"><a href="#cb22-37" aria-hidden="true"></a>  <span class="kw">&lt;login-config&gt;</span></span>
+      <span id="cb22-38"><a href="#cb22-38" aria-hidden="true"></a>    <span class="kw">&lt;auth-method&gt;</span>FORM<span class="kw">&lt;/auth-method&gt;</span></span>
+      <span id="cb22-39"><a href="#cb22-39" aria-hidden="true"></a>    <span class="kw">&lt;realm-name&gt;</span>default<span class="kw">&lt;/realm-name&gt;</span></span>
+      <span id="cb22-40"><a href="#cb22-40" aria-hidden="true"></a>    <span class="kw">&lt;form-login-config&gt;</span></span>
+      <span id="cb22-41"><a href="#cb22-41" aria-hidden="true"></a>      <span class="kw">&lt;form-login-page&gt;</span>/Login<span class="kw">&lt;/form-login-page&gt;</span></span>
+      <span id="cb22-42"><a href="#cb22-42" aria-hidden="true"></a>      <span class="kw">&lt;form-login-error&gt;</span>/Error<span class="kw">&lt;/form-login-error&gt;</span></span>
+      <span id="cb22-43"><a href="#cb22-43" aria-hidden="true"></a>    <span class="kw">&lt;/form-login-config&gt;</span></span>
+      <span id="cb22-44"><a href="#cb22-44" aria-hidden="true"></a>  <span class="kw">&lt;/login-config&gt;</span></span>
+      <span id="cb22-45"><a href="#cb22-45" aria-hidden="true"></a>...</span></code></pre></div>
+      <!-- cSpell:enable -->
+      <ul>
+      <li><strong>Configurer le serveur</strong> pour démarrer en intégrant le JAAS. Ici on ajoute l’option en passant une variable d’environnement au Tomcat :</li>
+      </ul>
+      <!-- cSpell:disable -->
+      <pre class="shell"><code>
+      $JAVA_OPTS &quot;-Djava.security.auth.login.config=$CATALINA_HOME/conf/jaas.config&quot;
+      </code></pre>
+      <!-- cSpell:enable -->
+      <h4 id="reveal.js">7.2.2. reveal.js<!-- OK --></h4>
+      <p>reveal.js est un <strong>framework de présentation HTML</strong> opensource. Il permet de réaliser facilement, à l’aide de n’importe quel navigateur web, des présentations de qualité.</p>
+      <p>Le framework dispose de nombreuses fonctions dont les vues verticales, le support du Markdown, l’animation automatique, l’export en PDF, les notes de présentation. Il dispose aussi d’une API étendue.</p>
+      <p>Dans le cadre de ce projet, les éléments de présentations utilisent le framework reveal.js.</p>
+      <p>Dans l’exemple suivant on utilise un fichier <code>README.md</code> en <strong>Markdown</strong> pour créer la <strong>présentation</strong>. Les attributs de la section permettent de détecter les enchaînements de ligne vide comme délimiteur de diapositives :</p>
+      <!-- cSpell:disable -->
+      <div class="sourceCode" id="cb24"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a></span>
+      <span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a><span class="dt">&lt;!doctype </span>html<span class="dt">&gt;</span></span>
+      <span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-4"><a href="#cb24-4" aria-hidden="true"></a>  <span class="kw">&lt;head&gt;</span></span>
+      <span id="cb24-5"><a href="#cb24-5" aria-hidden="true"></a>    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-6"><a href="#cb24-6" aria-hidden="true"></a>    <span class="kw">&lt;title&gt;</span>reveal.js - The HTML Presentation Framework<span class="kw">&lt;/title&gt;</span></span>
+      <span id="cb24-7"><a href="#cb24-7" aria-hidden="true"></a>    <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;description&quot;</span><span class="ot"> content=</span><span class="st">&quot;short description&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-8"><a href="#cb24-8" aria-hidden="true"></a>    <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;author&quot;</span><span class="ot"> content=</span><span class="st">&quot;Thibault HULAUX&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-9"><a href="#cb24-9" aria-hidden="true"></a>    <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;apple-mobile-web-app-capable&quot;</span><span class="ot"> content=</span><span class="st">&quot;yes&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-10"><a href="#cb24-10" aria-hidden="true"></a>    <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;apple-mobile-web-app-status-bar-style&quot;</span><span class="ot"> content=</span><span class="st">&quot;black-translucent&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-11"><a href="#cb24-11" aria-hidden="true"></a>    <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-12"><a href="#cb24-12" aria-hidden="true"></a>    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;dist/reset.css&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-13"><a href="#cb24-13" aria-hidden="true"></a>    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;dist/reveal.css&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-14"><a href="#cb24-14" aria-hidden="true"></a>    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;dist/theme/black.css&quot;</span><span class="ot"> id=</span><span class="st">&quot;theme&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-15"><a href="#cb24-15" aria-hidden="true"></a>    <span class="co">&lt;!-- Theme used for syntax highlighting of code --&gt;</span></span>
+      <span id="cb24-16"><a href="#cb24-16" aria-hidden="true"></a>    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;plugin/highlight/monokai.css&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-17"><a href="#cb24-17" aria-hidden="true"></a>  <span class="kw">&lt;/head&gt;</span></span>
+      <span id="cb24-18"><a href="#cb24-18" aria-hidden="true"></a>  <span class="kw">&lt;body&gt;</span></span>
+      <span id="cb24-19"><a href="#cb24-19" aria-hidden="true"></a>    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;reveal&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-20"><a href="#cb24-20" aria-hidden="true"></a>      <span class="co">&lt;!-- Any section element inside of this container is displayed as a slide --&gt;</span></span>
+      <span id="cb24-21"><a href="#cb24-21" aria-hidden="true"></a>      <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;slides&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-22"><a href="#cb24-22" aria-hidden="true"></a>        <span class="kw">&lt;section</span><span class="ot"> data-markdown=</span><span class="st">&quot;README.md&quot;</span></span>
+      <span id="cb24-23"><a href="#cb24-23" aria-hidden="true"></a><span class="ot">          data-separator=</span><span class="st">&quot;^\n\n\n&quot;</span></span>
+      <span id="cb24-24"><a href="#cb24-24" aria-hidden="true"></a><span class="ot">          data-separator-vertical=</span><span class="st">&quot;^\n\n&quot;</span></span>
+      <span id="cb24-25"><a href="#cb24-25" aria-hidden="true"></a><span class="ot">          data-separator-notes=</span><span class="st">&quot;^Note:&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb24-26"><a href="#cb24-26" aria-hidden="true"></a>        <span class="kw">&lt;/section&gt;</span></span>
+      <span id="cb24-27"><a href="#cb24-27" aria-hidden="true"></a>      <span class="kw">&lt;/div&gt;</span></span>
+      <span id="cb24-28"><a href="#cb24-28" aria-hidden="true"></a>    <span class="kw">&lt;/div&gt;</span></span>
+      <span id="cb24-29"><a href="#cb24-29" aria-hidden="true"></a>    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;dist/reveal.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+      <span id="cb24-30"><a href="#cb24-30" aria-hidden="true"></a>    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;plugin/zoom/zoom.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+      <span id="cb24-31"><a href="#cb24-31" aria-hidden="true"></a>    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;plugin/notes/notes.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+      <span id="cb24-32"><a href="#cb24-32" aria-hidden="true"></a>    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;plugin/search/search.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+      <span id="cb24-33"><a href="#cb24-33" aria-hidden="true"></a>    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;plugin/markdown/markdown.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+      <span id="cb24-34"><a href="#cb24-34" aria-hidden="true"></a>    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;plugin/highlight/highlight.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span>
+      <span id="cb24-35"><a href="#cb24-35" aria-hidden="true"></a>    <span class="kw">&lt;script&gt;</span></span>
+      <span id="cb24-36"><a href="#cb24-36" aria-hidden="true"></a>      <span class="co">// Also available as an ES module, see:</span></span>
+      <span id="cb24-37"><a href="#cb24-37" aria-hidden="true"></a>      <span class="co">// https://revealjs.com/initialization/</span></span>
+      <span id="cb24-38"><a href="#cb24-38" aria-hidden="true"></a>      Reveal<span class="op">.</span><span class="fu">initialize</span>({</span>
+      <span id="cb24-39"><a href="#cb24-39" aria-hidden="true"></a>        <span class="dt">controls</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+      <span id="cb24-40"><a href="#cb24-40" aria-hidden="true"></a>        <span class="dt">progress</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+      <span id="cb24-41"><a href="#cb24-41" aria-hidden="true"></a>        <span class="dt">center</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+      <span id="cb24-42"><a href="#cb24-42" aria-hidden="true"></a>        <span class="dt">hash</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+      <span id="cb24-43"><a href="#cb24-43" aria-hidden="true"></a>        <span class="co">// Learn about plugins: https://revealjs.com/plugins/</span></span>
+      <span id="cb24-44"><a href="#cb24-44" aria-hidden="true"></a>        <span class="dt">plugins</span><span class="op">:</span> [ RevealZoom<span class="op">,</span> RevealNotes<span class="op">,</span> RevealSearch<span class="op">,</span> RevealMarkdown<span class="op">,</span> RevealHighlight ]</span>
+      <span id="cb24-45"><a href="#cb24-45" aria-hidden="true"></a>        })<span class="op">;</span></span>
+      <span id="cb24-46"><a href="#cb24-46" aria-hidden="true"></a>    <span class="kw">&lt;/script&gt;</span></span>
+      <span id="cb24-47"><a href="#cb24-47" aria-hidden="true"></a>  <span class="kw">&lt;/body&gt;</span></span>
+      <span id="cb24-48"><a href="#cb24-48" aria-hidden="true"></a><span class="kw">&lt;/html&gt;</span></span>
+      <span id="cb24-49"><a href="#cb24-49" aria-hidden="true"></a></span></code></pre></div>
       <!-- cSpell:enable -->
       <h3 id="versioning-gitlabgithub">7.3. Versioning (gitlab/github)</h3>
       <h4 id="gitlab">7.3.1. GitLab<!-- CHECK: Add my stuff --></h4>
       <p>GitLab est un <strong>logiciel libre de forge</strong> (système de gestion et de maintenance collaborative) basé sur git, proposant les fonctionnalités de wiki, un système de suivi des bugs, l’intégration continue et la livraison continue. Ses fonctionnalités étendues en font bien plus qu’un simple un outil de contrôle de version.</p>
       <p>Il est par exemple possible d’y attacher un <strong>helpdesk</strong>, lié au système de <strong>suivi de bugs</strong>, afin de <strong>planifier et allouer des taches</strong> aux différents intervenants du projet.</p>
       <p>GitLab permet aussi, au travers de sa <strong>gestion du pipeline et des runners</strong>, de tester et de construire la couche applicative, de produire la documentation, d’automatiser le provisionnement des serveurs nécessaires et d’y déployer l’application finalisée.</p>
-      <div class="sourceCode" id="cb23"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
+      <div class="sourceCode" id="cb25"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
       <h5 id="github">7.3.1.1. GitHub<!-- CHECK: Do everything --></h5>
       <h3 id="sgbd-utilisé-mysqlpostgresql">7.4. SGBD utilisé (MYSQL/PostgreSQL)<!-- OK --></h3>
       <p>Le choix du Système de Gestion de Base de Données s’est appuyé sur les elements suivants :</p>
@@ -2104,11 +2172,11 @@
       <h4 id="figma">7.5.1. Figma<!-- CHECK:Lylou: Add your stuff  --></h4>
       <p>Figma est une <strong>application web collaborative d’édition de graphiques vectoriels et de prototypage</strong>. Il est principalement basé sur le web, avec des fonctionnalités hors ligne supplémentaires activées par des applications de bureau.</p>
       <p>L’ensemble des fonctionnalités de Figma est <strong>axé sur l’utilisation</strong>, dans la conception, <strong>de l’interface utilisateur et de l’expérience utilisateur</strong>, en mettant l’accent sur la collaboration en temps réel.</p>
-      <div class="sourceCode" id="cb24"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
+      <div class="sourceCode" id="cb26"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
       <h4 id="plantuml">7.5.2. PlantUML<!-- CHECK: Add my stuff --></h4>
       <p>PlantUML est un <strong>outil libre</strong> permettant de <strong>créer des diagrammes UML a partir de fichiers texte</strong>. En dehors des UML classiques, PlantUML supporte de nombreux autres formats (Archimate, Block diagram, BPMN, C4, Computer network diagram, ERD, Gantt chart, Mind map, and WBD), ainsi que la visualisation des fichier JSON et YAML.</p>
       <p>La création et l’édition d’UML simples permet de représenter et de concevoir la structure ou les fonctionnalités recherches d’un logiciel (Activité, Acteurs, Processus, Schéma de base de données, Composants logiciels), et fait partie intégrante du prototypage.</p>
-      <div class="sourceCode" id="cb25"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
+      <div class="sourceCode" id="cb27"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
       <h3 id="plateforme-de-développement">7.6. Plateforme de développement<!-- OK --></h3>
       <h4 id="automatisation-de-build">7.6.1. Automatisation de build<!-- OK --></h4>
       <p>Le choix du moteur de production s’est appuyé sur les elements suivants :</p>
@@ -2135,170 +2203,170 @@
       <p><strong>Notes :</strong> Les taches construites pour gradle sont également appelées lors des différentes phases du pipeline DevOps.</p>
       <p>Voici des extraits du fichier <code>build.gradle</code> utilisé dans le cadre de notre projet :</p>
       <!-- cSpell:disable -->
-      <div class="sourceCode" id="cb26"><pre class="sourceCode go"><code class="sourceCode go"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a></span>
-      <span id="cb26-2"><a href="#cb26-2" aria-hidden="true"></a>...</span>
-      <span id="cb26-3"><a href="#cb26-3" aria-hidden="true"></a></span>
-      <span id="cb26-4"><a href="#cb26-4" aria-hidden="true"></a><span class="co">// -------------------------------------------------------------------- Plugins</span></span>
-      <span id="cb26-5"><a href="#cb26-5" aria-hidden="true"></a>plugins {</span>
-      <span id="cb26-6"><a href="#cb26-6" aria-hidden="true"></a>  <span class="co">// Apply the application plugin to add support for building a CLI application in Java.</span></span>
-      <span id="cb26-7"><a href="#cb26-7" aria-hidden="true"></a>  <span class="co">// [https://docs.gradle.org/current/userguide/java_plugin.html]</span></span>
-      <span id="cb26-8"><a href="#cb26-8" aria-hidden="true"></a>  id &#39;java&#39;</span>
-      <span id="cb26-9"><a href="#cb26-9" aria-hidden="true"></a></span>
-      <span id="cb26-10"><a href="#cb26-10" aria-hidden="true"></a>  <span class="co">// Apply the JVM Test Suite plugin (applied automatically by the java plugin)</span></span>
-      <span id="cb26-11"><a href="#cb26-11" aria-hidden="true"></a>  <span class="co">// [https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html]</span></span>
-      <span id="cb26-12"><a href="#cb26-12" aria-hidden="true"></a>  id &#39;jvm-test-suite&#39;</span>
-      <span id="cb26-13"><a href="#cb26-13" aria-hidden="true"></a></span>
-      <span id="cb26-14"><a href="#cb26-14" aria-hidden="true"></a>  <span class="co">// Apply the war plugin</span></span>
-      <span id="cb26-15"><a href="#cb26-15" aria-hidden="true"></a>  <span class="co">// [https://docs.gradle.org/current/userguide/war_plugin.html]</span></span>
-      <span id="cb26-16"><a href="#cb26-16" aria-hidden="true"></a>  id &#39;war&#39;</span>
-      <span id="cb26-17"><a href="#cb26-17" aria-hidden="true"></a></span>
-      <span id="cb26-18"><a href="#cb26-18" aria-hidden="true"></a>  <span class="co">// Apply the ssh plugin</span></span>
-      <span id="cb26-19"><a href="#cb26-19" aria-hidden="true"></a>  <span class="co">// [https://gradle-ssh-plugin.github.io/docs/]</span></span>
-      <span id="cb26-20"><a href="#cb26-20" aria-hidden="true"></a>  id &#39;org.hidetake.ssh&#39; version &#39;<span class="dv">2</span>.<span class="dv">10</span><span class="fl">.1</span>&#39;</span>
-      <span id="cb26-21"><a href="#cb26-21" aria-hidden="true"></a></span>
-      <span id="cb26-22"><a href="#cb26-22" aria-hidden="true"></a>  <span class="co">// Apply the SpotBugs plugin (Static Application Security Testing)</span></span>
-      <span id="cb26-23"><a href="#cb26-23" aria-hidden="true"></a>  <span class="co">// [https://github.com/spotbugs/spotbugs-gradle-plugin]</span></span>
-      <span id="cb26-24"><a href="#cb26-24" aria-hidden="true"></a>  <span class="co">// [https://spotbugs.readthedocs.io/en/latest/]</span></span>
-      <span id="cb26-25"><a href="#cb26-25" aria-hidden="true"></a>  id <span class="st">&quot;com.github.spotbugs&quot;</span> version <span class="st">&quot;5.0.9&quot;</span></span>
-      <span id="cb26-26"><a href="#cb26-26" aria-hidden="true"></a>}</span>
-      <span id="cb26-27"><a href="#cb26-27" aria-hidden="true"></a></span>
-      <span id="cb26-28"><a href="#cb26-28" aria-hidden="true"></a>...</span>
-      <span id="cb26-29"><a href="#cb26-29" aria-hidden="true"></a></span>
-      <span id="cb26-30"><a href="#cb26-30" aria-hidden="true"></a><span class="co">// --------------------------------------------------------------- Repositories</span></span>
-      <span id="cb26-31"><a href="#cb26-31" aria-hidden="true"></a>repositories {</span>
-      <span id="cb26-32"><a href="#cb26-32" aria-hidden="true"></a>  <span class="co">// Order here is important. Repositories are queried sequentially.</span></span>
-      <span id="cb26-33"><a href="#cb26-33" aria-hidden="true"></a>  mavenLocal() <span class="co">// Local repository</span></span>
-      <span id="cb26-34"><a href="#cb26-34" aria-hidden="true"></a>  mavenCentral() <span class="co">// Central repository</span></span>
-      <span id="cb26-35"><a href="#cb26-35" aria-hidden="true"></a>  maven {</span>
-      <span id="cb26-36"><a href="#cb26-36" aria-hidden="true"></a>      url = uri(&#39;https:<span class="co">//repo.maven.apache.org/maven2/&#39;)</span></span>
-      <span id="cb26-37"><a href="#cb26-37" aria-hidden="true"></a>  }</span>
-      <span id="cb26-38"><a href="#cb26-38" aria-hidden="true"></a>}</span>
-      <span id="cb26-39"><a href="#cb26-39" aria-hidden="true"></a></span>
-      <span id="cb26-40"><a href="#cb26-40" aria-hidden="true"></a><span class="co">// --------------------------------------------------------------- Dependencies</span></span>
-      <span id="cb26-41"><a href="#cb26-41" aria-hidden="true"></a><span class="co">// [https://docs.gradle.org/current/userguide/core_dependency_management.html]</span></span>
-      <span id="cb26-42"><a href="#cb26-42" aria-hidden="true"></a><span class="co">// implementation = compileClasspath + runtimeClasspath (integrated in war)</span></span>
-      <span id="cb26-43"><a href="#cb26-43" aria-hidden="true"></a><span class="co">// providedCompile = compileClasspath (not integrated in war)</span></span>
-      <span id="cb26-44"><a href="#cb26-44" aria-hidden="true"></a>dependencies {</span>
-      <span id="cb26-45"><a href="#cb26-45" aria-hidden="true"></a>    <span class="co">// Use JUnit Jupiter for unit testing</span></span>
-      <span id="cb26-46"><a href="#cb26-46" aria-hidden="true"></a>    testImplementation &#39;org.junit.jupiter:junit-jupiter-api:<span class="dv">5</span>.<span class="dv">9</span><span class="fl">.0</span>&#39; <span class="co">// API</span></span>
-      <span id="cb26-47"><a href="#cb26-47" aria-hidden="true"></a>    testRuntimeOnly &#39;org.junit.jupiter:junit-jupiter-engine:<span class="dv">5</span>.<span class="dv">9</span><span class="fl">.0</span>&#39; <span class="co">// Runtime</span></span>
-      <span id="cb26-48"><a href="#cb26-48" aria-hidden="true"></a></span>
-      <span id="cb26-49"><a href="#cb26-49" aria-hidden="true"></a>    <span class="co">// Use Mockito for unit testing [https://site.mockito.org/]</span></span>
-      <span id="cb26-50"><a href="#cb26-50" aria-hidden="true"></a>    testImplementation <span class="st">&quot;org.mockito:mockito-core:3.+&quot;</span></span>
-      <span id="cb26-51"><a href="#cb26-51" aria-hidden="true"></a></span>
-      <span id="cb26-52"><a href="#cb26-52" aria-hidden="true"></a>    <span class="co">// Use JUnit Jupiter for integration testing</span></span>
-      <span id="cb26-53"><a href="#cb26-53" aria-hidden="true"></a>    itestImplementation &#39;org.junit.jupiter:junit-jupiter-api:<span class="dv">5</span>.<span class="dv">9</span><span class="fl">.0</span>&#39; <span class="co">// API</span></span>
-      <span id="cb26-54"><a href="#cb26-54" aria-hidden="true"></a>    itestRuntimeOnly &#39;org.junit.jupiter:junit-jupiter-engine:<span class="dv">5</span>.<span class="dv">9</span><span class="fl">.0</span>&#39; <span class="co">// Runtime</span></span>
-      <span id="cb26-55"><a href="#cb26-55" aria-hidden="true"></a></span>
-      <span id="cb26-56"><a href="#cb26-56" aria-hidden="true"></a>    implementation &#39;javax.servlet:jstl:<span class="dv">1</span><span class="fl">.2</span>&#39; <span class="co">// JSTL</span></span>
-      <span id="cb26-57"><a href="#cb26-57" aria-hidden="true"></a>    implementation &#39;mysql:mysql-connector-java:<span class="dv">8</span>.<span class="dv">0</span><span class="fl">.29</span>&#39; <span class="co">// MySQL</span></span>
-      <span id="cb26-58"><a href="#cb26-58" aria-hidden="true"></a>    implementation &#39;commons-codec:commons-codec:<span class="dv">1</span><span class="fl">.15</span>&#39; <span class="co">// DigestUtils.sha512Hex</span></span>
-      <span id="cb26-59"><a href="#cb26-59" aria-hidden="true"></a>    providedCompile &#39;javax.servlet:javax.servlet-api:<span class="dv">4</span>.<span class="dv">0</span><span class="fl">.1</span>&#39; <span class="co">// Servlet</span></span>
-      <span id="cb26-60"><a href="#cb26-60" aria-hidden="true"></a></span>
-      <span id="cb26-61"><a href="#cb26-61" aria-hidden="true"></a>...</span>
-      <span id="cb26-62"><a href="#cb26-62" aria-hidden="true"></a></span>
-      <span id="cb26-63"><a href="#cb26-63" aria-hidden="true"></a>    <span class="co">// https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api</span></span>
-      <span id="cb26-64"><a href="#cb26-64" aria-hidden="true"></a>    implementation &#39;javax.xml.bind:jaxb-api:<span class="dv">2</span>.<span class="dv">3</span><span class="fl">.1</span>&#39; <span class="co">// JAXB (xml&lt;&gt;java)</span></span>
-      <span id="cb26-65"><a href="#cb26-65" aria-hidden="true"></a>}</span>
-      <span id="cb26-66"><a href="#cb26-66" aria-hidden="true"></a></span>
-      <span id="cb26-67"><a href="#cb26-67" aria-hidden="true"></a>...</span>
-      <span id="cb26-68"><a href="#cb26-68" aria-hidden="true"></a></span>
-      <span id="cb26-69"><a href="#cb26-69" aria-hidden="true"></a><span class="co">// ------------------------------------------------------------------------ ssh</span></span>
-      <span id="cb26-70"><a href="#cb26-70" aria-hidden="true"></a>ssh.settings {</span>
-      <span id="cb26-71"><a href="#cb26-71" aria-hidden="true"></a>  dryRun = project.hasProperty(&#39;dryRun&#39;)</span>
-      <span id="cb26-72"><a href="#cb26-72" aria-hidden="true"></a>  timeoutSec = <span class="dv">600</span></span>
-      <span id="cb26-73"><a href="#cb26-73" aria-hidden="true"></a>}</span>
-      <span id="cb26-74"><a href="#cb26-74" aria-hidden="true"></a></span>
-      <span id="cb26-75"><a href="#cb26-75" aria-hidden="true"></a>remotes {</span>
-      <span id="cb26-76"><a href="#cb26-76" aria-hidden="true"></a>  app {</span>
-      <span id="cb26-77"><a href="#cb26-77" aria-hidden="true"></a>    role &#39;tomcat&#39;</span>
-      <span id="cb26-78"><a href="#cb26-78" aria-hidden="true"></a>    host = &#39;localhost&#39;</span>
-      <span id="cb26-79"><a href="#cb26-79" aria-hidden="true"></a>    port = <span class="dv">2222</span></span>
-      <span id="cb26-80"><a href="#cb26-80" aria-hidden="true"></a>    user = &#39;root&#39;</span>
-      <span id="cb26-81"><a href="#cb26-81" aria-hidden="true"></a>    password = &#39;root&#39;</span>
-      <span id="cb26-82"><a href="#cb26-82" aria-hidden="true"></a>    knownHosts = allowAnyHosts <span class="co">// Bypass ~/.ssh/known_hosts</span></span>
-      <span id="cb26-83"><a href="#cb26-83" aria-hidden="true"></a>    <span class="co">// identity = file(&#39;id_rsa&#39;)</span></span>
-      <span id="cb26-84"><a href="#cb26-84" aria-hidden="true"></a>  }</span>
-      <span id="cb26-85"><a href="#cb26-85" aria-hidden="true"></a>}</span>
-      <span id="cb26-86"><a href="#cb26-86" aria-hidden="true"></a></span>
-      <span id="cb26-87"><a href="#cb26-87" aria-hidden="true"></a>...</span>
-      <span id="cb26-88"><a href="#cb26-88" aria-hidden="true"></a></span>
-      <span id="cb26-89"><a href="#cb26-89" aria-hidden="true"></a>task deploy(dependsOn: war) {</span>
-      <span id="cb26-90"><a href="#cb26-90" aria-hidden="true"></a>  description = <span class="st">&quot;Deploy on dev server&quot;</span></span>
-      <span id="cb26-91"><a href="#cb26-91" aria-hidden="true"></a>  doLast {</span>
-      <span id="cb26-92"><a href="#cb26-92" aria-hidden="true"></a>    def webapps = &#39;/usr/local/tomcat/webapps&#39;</span>
-      <span id="cb26-93"><a href="#cb26-93" aria-hidden="true"></a>    def app = &#39;ROOT.war&#39;</span>
-      <span id="cb26-94"><a href="#cb26-94" aria-hidden="true"></a>    ssh.run {</span>
-      <span id="cb26-95"><a href="#cb26-95" aria-hidden="true"></a>      session(remotes.app) {</span>
-      <span id="cb26-96"><a href="#cb26-96" aria-hidden="true"></a>        <span class="bu">println</span> <span class="st">&quot;- Uploading new war&quot;</span></span>
-      <span id="cb26-97"><a href="#cb26-97" aria-hidden="true"></a>        put from: war.archivePath.absolutePath, into: <span class="st">&quot;${webapps}/${app}.new&quot;</span></span>
-      <span id="cb26-98"><a href="#cb26-98" aria-hidden="true"></a></span>
-      <span id="cb26-99"><a href="#cb26-99" aria-hidden="true"></a>        <span class="bu">println</span> <span class="st">&quot;- Removing old war&quot;</span></span>
-      <span id="cb26-100"><a href="#cb26-100" aria-hidden="true"></a>        execute <span class="st">&quot;rm ${webapps}/${app}&quot;</span>, ignoreError: <span class="ot">true</span></span>
-      <span id="cb26-101"><a href="#cb26-101" aria-hidden="true"></a></span>
-      <span id="cb26-102"><a href="#cb26-102" aria-hidden="true"></a>        <span class="bu">println</span> <span class="st">&quot;- Renaming new war&quot;</span></span>
-      <span id="cb26-103"><a href="#cb26-103" aria-hidden="true"></a>        execute <span class="st">&quot;mv ${webapps}/${app}.new ${webapps}/${app}&quot;</span></span>
-      <span id="cb26-104"><a href="#cb26-104" aria-hidden="true"></a></span>
-      <span id="cb26-105"><a href="#cb26-105" aria-hidden="true"></a>        <span class="bu">println</span> <span class="st">&quot;${webapps}/${app} deployed&quot;</span></span>
-      <span id="cb26-106"><a href="#cb26-106" aria-hidden="true"></a>      }</span>
-      <span id="cb26-107"><a href="#cb26-107" aria-hidden="true"></a>    }</span>
-      <span id="cb26-108"><a href="#cb26-108" aria-hidden="true"></a>  }</span>
-      <span id="cb26-109"><a href="#cb26-109" aria-hidden="true"></a>}</span>
-      <span id="cb26-110"><a href="#cb26-110" aria-hidden="true"></a></span>
-      <span id="cb26-111"><a href="#cb26-111" aria-hidden="true"></a>...</span>
-      <span id="cb26-112"><a href="#cb26-112" aria-hidden="true"></a></span>
-      <span id="cb26-113"><a href="#cb26-113" aria-hidden="true"></a><span class="co">// ----------------------------------------------------------------------- SAST</span></span>
-      <span id="cb26-114"><a href="#cb26-114" aria-hidden="true"></a>spotbugs {</span>
-      <span id="cb26-115"><a href="#cb26-115" aria-hidden="true"></a>  effort = &#39;max&#39;</span>
-      <span id="cb26-116"><a href="#cb26-116" aria-hidden="true"></a>  ignoreFailures = <span class="ot">true</span></span>
-      <span id="cb26-117"><a href="#cb26-117" aria-hidden="true"></a>  <span class="co">// reportLevel = &#39;high&#39;</span></span>
-      <span id="cb26-118"><a href="#cb26-118" aria-hidden="true"></a>  reportLevel = &#39;<span class="kw">default</span>&#39;</span>
-      <span id="cb26-119"><a href="#cb26-119" aria-hidden="true"></a>  showProgress = <span class="ot">true</span></span>
-      <span id="cb26-120"><a href="#cb26-120" aria-hidden="true"></a>  showStackTraces = <span class="ot">true</span></span>
-      <span id="cb26-121"><a href="#cb26-121" aria-hidden="true"></a>  maxHeapSize = &#39;1g&#39;</span>
-      <span id="cb26-122"><a href="#cb26-122" aria-hidden="true"></a>  reportsDir = file(<span class="st">&quot;$buildDir/reports/spotbugs&quot;</span>)</span>
-      <span id="cb26-123"><a href="#cb26-123" aria-hidden="true"></a>}</span>
-      <span id="cb26-124"><a href="#cb26-124" aria-hidden="true"></a></span>
-      <span id="cb26-125"><a href="#cb26-125" aria-hidden="true"></a>spotbugsMain {</span>
-      <span id="cb26-126"><a href="#cb26-126" aria-hidden="true"></a>  reports {</span>
-      <span id="cb26-127"><a href="#cb26-127" aria-hidden="true"></a>    xml.enabled = <span class="ot">true</span></span>
-      <span id="cb26-128"><a href="#cb26-128" aria-hidden="true"></a>    html.enabled = <span class="ot">true</span></span>
-      <span id="cb26-129"><a href="#cb26-129" aria-hidden="true"></a>  }</span>
-      <span id="cb26-130"><a href="#cb26-130" aria-hidden="true"></a>}</span>
-      <span id="cb26-131"><a href="#cb26-131" aria-hidden="true"></a></span>
-      <span id="cb26-132"><a href="#cb26-132" aria-hidden="true"></a>spotbugsTest {</span>
-      <span id="cb26-133"><a href="#cb26-133" aria-hidden="true"></a>  reports {</span>
-      <span id="cb26-134"><a href="#cb26-134" aria-hidden="true"></a>    xml.enabled = <span class="ot">true</span></span>
-      <span id="cb26-135"><a href="#cb26-135" aria-hidden="true"></a>    html.enabled = <span class="ot">true</span></span>
-      <span id="cb26-136"><a href="#cb26-136" aria-hidden="true"></a>  }</span>
-      <span id="cb26-137"><a href="#cb26-137" aria-hidden="true"></a>}</span>
-      <span id="cb26-138"><a href="#cb26-138" aria-hidden="true"></a></span>
-      <span id="cb26-139"><a href="#cb26-139" aria-hidden="true"></a>spotbugsItest {</span>
-      <span id="cb26-140"><a href="#cb26-140" aria-hidden="true"></a>  reports {</span>
-      <span id="cb26-141"><a href="#cb26-141" aria-hidden="true"></a>    xml.enabled = <span class="ot">true</span></span>
-      <span id="cb26-142"><a href="#cb26-142" aria-hidden="true"></a>    html.enabled = <span class="ot">true</span></span>
-      <span id="cb26-143"><a href="#cb26-143" aria-hidden="true"></a>  }</span>
-      <span id="cb26-144"><a href="#cb26-144" aria-hidden="true"></a>}</span>
-      <span id="cb26-145"><a href="#cb26-145" aria-hidden="true"></a></span>
-      <span id="cb26-146"><a href="#cb26-146" aria-hidden="true"></a><span class="co">// --------------------------------------------------------------- Unit testing</span></span>
-      <span id="cb26-147"><a href="#cb26-147" aria-hidden="true"></a>tasks.named(&#39;test&#39;) {</span>
-      <span id="cb26-148"><a href="#cb26-148" aria-hidden="true"></a>  description = <span class="st">&quot;Run unit test suite&quot;</span></span>
-      <span id="cb26-149"><a href="#cb26-149" aria-hidden="true"></a>  group = <span class="st">&quot;verification&quot;</span></span>
-      <span id="cb26-150"><a href="#cb26-150" aria-hidden="true"></a>  testClassesDirs = sourceSets.test.output.classesDirs</span>
-      <span id="cb26-151"><a href="#cb26-151" aria-hidden="true"></a>  classpath = sourceSets.test.runtimeClasspath</span>
-      <span id="cb26-152"><a href="#cb26-152" aria-hidden="true"></a>  <span class="co">// Use JUnit Platform for unit tests.</span></span>
-      <span id="cb26-153"><a href="#cb26-153" aria-hidden="true"></a>  useJUnitPlatform()</span>
-      <span id="cb26-154"><a href="#cb26-154" aria-hidden="true"></a>}</span>
-      <span id="cb26-155"><a href="#cb26-155" aria-hidden="true"></a></span>
-      <span id="cb26-156"><a href="#cb26-156" aria-hidden="true"></a><span class="co">// -------------------------------------------------------- Integration testing</span></span>
-      <span id="cb26-157"><a href="#cb26-157" aria-hidden="true"></a>task itest(<span class="kw">type</span>: Test) {</span>
-      <span id="cb26-158"><a href="#cb26-158" aria-hidden="true"></a>  description = <span class="st">&quot;Run integration test suite&quot;</span></span>
-      <span id="cb26-159"><a href="#cb26-159" aria-hidden="true"></a>  group = <span class="st">&quot;verification&quot;</span></span>
-      <span id="cb26-160"><a href="#cb26-160" aria-hidden="true"></a>  testClassesDirs = sourceSets.itest.output.classesDirs</span>
-      <span id="cb26-161"><a href="#cb26-161" aria-hidden="true"></a>  classpath = sourceSets.itest.runtimeClasspath</span>
-      <span id="cb26-162"><a href="#cb26-162" aria-hidden="true"></a>}</span>
-      <span id="cb26-163"><a href="#cb26-163" aria-hidden="true"></a></span>
-      <span id="cb26-164"><a href="#cb26-164" aria-hidden="true"></a>...</span></code></pre></div>
+      <div class="sourceCode" id="cb28"><pre class="sourceCode go"><code class="sourceCode go"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a></span>
+      <span id="cb28-2"><a href="#cb28-2" aria-hidden="true"></a>...</span>
+      <span id="cb28-3"><a href="#cb28-3" aria-hidden="true"></a></span>
+      <span id="cb28-4"><a href="#cb28-4" aria-hidden="true"></a><span class="co">// -------------------------------------------------------------------- Plugins</span></span>
+      <span id="cb28-5"><a href="#cb28-5" aria-hidden="true"></a>plugins {</span>
+      <span id="cb28-6"><a href="#cb28-6" aria-hidden="true"></a>  <span class="co">// Apply the application plugin to add support for building a CLI application in Java.</span></span>
+      <span id="cb28-7"><a href="#cb28-7" aria-hidden="true"></a>  <span class="co">// [https://docs.gradle.org/current/userguide/java_plugin.html]</span></span>
+      <span id="cb28-8"><a href="#cb28-8" aria-hidden="true"></a>  id &#39;java&#39;</span>
+      <span id="cb28-9"><a href="#cb28-9" aria-hidden="true"></a></span>
+      <span id="cb28-10"><a href="#cb28-10" aria-hidden="true"></a>  <span class="co">// Apply the JVM Test Suite plugin (applied automatically by the java plugin)</span></span>
+      <span id="cb28-11"><a href="#cb28-11" aria-hidden="true"></a>  <span class="co">// [https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html]</span></span>
+      <span id="cb28-12"><a href="#cb28-12" aria-hidden="true"></a>  id &#39;jvm-test-suite&#39;</span>
+      <span id="cb28-13"><a href="#cb28-13" aria-hidden="true"></a></span>
+      <span id="cb28-14"><a href="#cb28-14" aria-hidden="true"></a>  <span class="co">// Apply the war plugin</span></span>
+      <span id="cb28-15"><a href="#cb28-15" aria-hidden="true"></a>  <span class="co">// [https://docs.gradle.org/current/userguide/war_plugin.html]</span></span>
+      <span id="cb28-16"><a href="#cb28-16" aria-hidden="true"></a>  id &#39;war&#39;</span>
+      <span id="cb28-17"><a href="#cb28-17" aria-hidden="true"></a></span>
+      <span id="cb28-18"><a href="#cb28-18" aria-hidden="true"></a>  <span class="co">// Apply the ssh plugin</span></span>
+      <span id="cb28-19"><a href="#cb28-19" aria-hidden="true"></a>  <span class="co">// [https://gradle-ssh-plugin.github.io/docs/]</span></span>
+      <span id="cb28-20"><a href="#cb28-20" aria-hidden="true"></a>  id &#39;org.hidetake.ssh&#39; version &#39;<span class="dv">2</span>.<span class="dv">10</span><span class="fl">.1</span>&#39;</span>
+      <span id="cb28-21"><a href="#cb28-21" aria-hidden="true"></a></span>
+      <span id="cb28-22"><a href="#cb28-22" aria-hidden="true"></a>  <span class="co">// Apply the SpotBugs plugin (Static Application Security Testing)</span></span>
+      <span id="cb28-23"><a href="#cb28-23" aria-hidden="true"></a>  <span class="co">// [https://github.com/spotbugs/spotbugs-gradle-plugin]</span></span>
+      <span id="cb28-24"><a href="#cb28-24" aria-hidden="true"></a>  <span class="co">// [https://spotbugs.readthedocs.io/en/latest/]</span></span>
+      <span id="cb28-25"><a href="#cb28-25" aria-hidden="true"></a>  id <span class="st">&quot;com.github.spotbugs&quot;</span> version <span class="st">&quot;5.0.9&quot;</span></span>
+      <span id="cb28-26"><a href="#cb28-26" aria-hidden="true"></a>}</span>
+      <span id="cb28-27"><a href="#cb28-27" aria-hidden="true"></a></span>
+      <span id="cb28-28"><a href="#cb28-28" aria-hidden="true"></a>...</span>
+      <span id="cb28-29"><a href="#cb28-29" aria-hidden="true"></a></span>
+      <span id="cb28-30"><a href="#cb28-30" aria-hidden="true"></a><span class="co">// --------------------------------------------------------------- Repositories</span></span>
+      <span id="cb28-31"><a href="#cb28-31" aria-hidden="true"></a>repositories {</span>
+      <span id="cb28-32"><a href="#cb28-32" aria-hidden="true"></a>  <span class="co">// Order here is important. Repositories are queried sequentially.</span></span>
+      <span id="cb28-33"><a href="#cb28-33" aria-hidden="true"></a>  mavenLocal() <span class="co">// Local repository</span></span>
+      <span id="cb28-34"><a href="#cb28-34" aria-hidden="true"></a>  mavenCentral() <span class="co">// Central repository</span></span>
+      <span id="cb28-35"><a href="#cb28-35" aria-hidden="true"></a>  maven {</span>
+      <span id="cb28-36"><a href="#cb28-36" aria-hidden="true"></a>      url = uri(&#39;https:<span class="co">//repo.maven.apache.org/maven2/&#39;)</span></span>
+      <span id="cb28-37"><a href="#cb28-37" aria-hidden="true"></a>  }</span>
+      <span id="cb28-38"><a href="#cb28-38" aria-hidden="true"></a>}</span>
+      <span id="cb28-39"><a href="#cb28-39" aria-hidden="true"></a></span>
+      <span id="cb28-40"><a href="#cb28-40" aria-hidden="true"></a><span class="co">// --------------------------------------------------------------- Dependencies</span></span>
+      <span id="cb28-41"><a href="#cb28-41" aria-hidden="true"></a><span class="co">// [https://docs.gradle.org/current/userguide/core_dependency_management.html]</span></span>
+      <span id="cb28-42"><a href="#cb28-42" aria-hidden="true"></a><span class="co">// implementation = compileClasspath + runtimeClasspath (integrated in war)</span></span>
+      <span id="cb28-43"><a href="#cb28-43" aria-hidden="true"></a><span class="co">// providedCompile = compileClasspath (not integrated in war)</span></span>
+      <span id="cb28-44"><a href="#cb28-44" aria-hidden="true"></a>dependencies {</span>
+      <span id="cb28-45"><a href="#cb28-45" aria-hidden="true"></a>    <span class="co">// Use JUnit Jupiter for unit testing</span></span>
+      <span id="cb28-46"><a href="#cb28-46" aria-hidden="true"></a>    testImplementation &#39;org.junit.jupiter:junit-jupiter-api:<span class="dv">5</span>.<span class="dv">9</span><span class="fl">.0</span>&#39; <span class="co">// API</span></span>
+      <span id="cb28-47"><a href="#cb28-47" aria-hidden="true"></a>    testRuntimeOnly &#39;org.junit.jupiter:junit-jupiter-engine:<span class="dv">5</span>.<span class="dv">9</span><span class="fl">.0</span>&#39; <span class="co">// Runtime</span></span>
+      <span id="cb28-48"><a href="#cb28-48" aria-hidden="true"></a></span>
+      <span id="cb28-49"><a href="#cb28-49" aria-hidden="true"></a>    <span class="co">// Use Mockito for unit testing [https://site.mockito.org/]</span></span>
+      <span id="cb28-50"><a href="#cb28-50" aria-hidden="true"></a>    testImplementation <span class="st">&quot;org.mockito:mockito-core:3.+&quot;</span></span>
+      <span id="cb28-51"><a href="#cb28-51" aria-hidden="true"></a></span>
+      <span id="cb28-52"><a href="#cb28-52" aria-hidden="true"></a>    <span class="co">// Use JUnit Jupiter for integration testing</span></span>
+      <span id="cb28-53"><a href="#cb28-53" aria-hidden="true"></a>    itestImplementation &#39;org.junit.jupiter:junit-jupiter-api:<span class="dv">5</span>.<span class="dv">9</span><span class="fl">.0</span>&#39; <span class="co">// API</span></span>
+      <span id="cb28-54"><a href="#cb28-54" aria-hidden="true"></a>    itestRuntimeOnly &#39;org.junit.jupiter:junit-jupiter-engine:<span class="dv">5</span>.<span class="dv">9</span><span class="fl">.0</span>&#39; <span class="co">// Runtime</span></span>
+      <span id="cb28-55"><a href="#cb28-55" aria-hidden="true"></a></span>
+      <span id="cb28-56"><a href="#cb28-56" aria-hidden="true"></a>    implementation &#39;javax.servlet:jstl:<span class="dv">1</span><span class="fl">.2</span>&#39; <span class="co">// JSTL</span></span>
+      <span id="cb28-57"><a href="#cb28-57" aria-hidden="true"></a>    implementation &#39;mysql:mysql-connector-java:<span class="dv">8</span>.<span class="dv">0</span><span class="fl">.29</span>&#39; <span class="co">// MySQL</span></span>
+      <span id="cb28-58"><a href="#cb28-58" aria-hidden="true"></a>    implementation &#39;commons-codec:commons-codec:<span class="dv">1</span><span class="fl">.15</span>&#39; <span class="co">// DigestUtils.sha512Hex</span></span>
+      <span id="cb28-59"><a href="#cb28-59" aria-hidden="true"></a>    providedCompile &#39;javax.servlet:javax.servlet-api:<span class="dv">4</span>.<span class="dv">0</span><span class="fl">.1</span>&#39; <span class="co">// Servlet</span></span>
+      <span id="cb28-60"><a href="#cb28-60" aria-hidden="true"></a></span>
+      <span id="cb28-61"><a href="#cb28-61" aria-hidden="true"></a>...</span>
+      <span id="cb28-62"><a href="#cb28-62" aria-hidden="true"></a></span>
+      <span id="cb28-63"><a href="#cb28-63" aria-hidden="true"></a>    <span class="co">// https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api</span></span>
+      <span id="cb28-64"><a href="#cb28-64" aria-hidden="true"></a>    implementation &#39;javax.xml.bind:jaxb-api:<span class="dv">2</span>.<span class="dv">3</span><span class="fl">.1</span>&#39; <span class="co">// JAXB (xml&lt;&gt;java)</span></span>
+      <span id="cb28-65"><a href="#cb28-65" aria-hidden="true"></a>}</span>
+      <span id="cb28-66"><a href="#cb28-66" aria-hidden="true"></a></span>
+      <span id="cb28-67"><a href="#cb28-67" aria-hidden="true"></a>...</span>
+      <span id="cb28-68"><a href="#cb28-68" aria-hidden="true"></a></span>
+      <span id="cb28-69"><a href="#cb28-69" aria-hidden="true"></a><span class="co">// ------------------------------------------------------------------------ ssh</span></span>
+      <span id="cb28-70"><a href="#cb28-70" aria-hidden="true"></a>ssh.settings {</span>
+      <span id="cb28-71"><a href="#cb28-71" aria-hidden="true"></a>  dryRun = project.hasProperty(&#39;dryRun&#39;)</span>
+      <span id="cb28-72"><a href="#cb28-72" aria-hidden="true"></a>  timeoutSec = <span class="dv">600</span></span>
+      <span id="cb28-73"><a href="#cb28-73" aria-hidden="true"></a>}</span>
+      <span id="cb28-74"><a href="#cb28-74" aria-hidden="true"></a></span>
+      <span id="cb28-75"><a href="#cb28-75" aria-hidden="true"></a>remotes {</span>
+      <span id="cb28-76"><a href="#cb28-76" aria-hidden="true"></a>  app {</span>
+      <span id="cb28-77"><a href="#cb28-77" aria-hidden="true"></a>    role &#39;tomcat&#39;</span>
+      <span id="cb28-78"><a href="#cb28-78" aria-hidden="true"></a>    host = &#39;localhost&#39;</span>
+      <span id="cb28-79"><a href="#cb28-79" aria-hidden="true"></a>    port = <span class="dv">2222</span></span>
+      <span id="cb28-80"><a href="#cb28-80" aria-hidden="true"></a>    user = &#39;root&#39;</span>
+      <span id="cb28-81"><a href="#cb28-81" aria-hidden="true"></a>    password = &#39;root&#39;</span>
+      <span id="cb28-82"><a href="#cb28-82" aria-hidden="true"></a>    knownHosts = allowAnyHosts <span class="co">// Bypass ~/.ssh/known_hosts</span></span>
+      <span id="cb28-83"><a href="#cb28-83" aria-hidden="true"></a>    <span class="co">// identity = file(&#39;id_rsa&#39;)</span></span>
+      <span id="cb28-84"><a href="#cb28-84" aria-hidden="true"></a>  }</span>
+      <span id="cb28-85"><a href="#cb28-85" aria-hidden="true"></a>}</span>
+      <span id="cb28-86"><a href="#cb28-86" aria-hidden="true"></a></span>
+      <span id="cb28-87"><a href="#cb28-87" aria-hidden="true"></a>...</span>
+      <span id="cb28-88"><a href="#cb28-88" aria-hidden="true"></a></span>
+      <span id="cb28-89"><a href="#cb28-89" aria-hidden="true"></a>task deploy(dependsOn: war) {</span>
+      <span id="cb28-90"><a href="#cb28-90" aria-hidden="true"></a>  description = <span class="st">&quot;Deploy on dev server&quot;</span></span>
+      <span id="cb28-91"><a href="#cb28-91" aria-hidden="true"></a>  doLast {</span>
+      <span id="cb28-92"><a href="#cb28-92" aria-hidden="true"></a>    def webapps = &#39;/usr/local/tomcat/webapps&#39;</span>
+      <span id="cb28-93"><a href="#cb28-93" aria-hidden="true"></a>    def app = &#39;ROOT.war&#39;</span>
+      <span id="cb28-94"><a href="#cb28-94" aria-hidden="true"></a>    ssh.run {</span>
+      <span id="cb28-95"><a href="#cb28-95" aria-hidden="true"></a>      session(remotes.app) {</span>
+      <span id="cb28-96"><a href="#cb28-96" aria-hidden="true"></a>        <span class="bu">println</span> <span class="st">&quot;- Uploading new war&quot;</span></span>
+      <span id="cb28-97"><a href="#cb28-97" aria-hidden="true"></a>        put from: war.archivePath.absolutePath, into: <span class="st">&quot;${webapps}/${app}.new&quot;</span></span>
+      <span id="cb28-98"><a href="#cb28-98" aria-hidden="true"></a></span>
+      <span id="cb28-99"><a href="#cb28-99" aria-hidden="true"></a>        <span class="bu">println</span> <span class="st">&quot;- Removing old war&quot;</span></span>
+      <span id="cb28-100"><a href="#cb28-100" aria-hidden="true"></a>        execute <span class="st">&quot;rm ${webapps}/${app}&quot;</span>, ignoreError: <span class="ot">true</span></span>
+      <span id="cb28-101"><a href="#cb28-101" aria-hidden="true"></a></span>
+      <span id="cb28-102"><a href="#cb28-102" aria-hidden="true"></a>        <span class="bu">println</span> <span class="st">&quot;- Renaming new war&quot;</span></span>
+      <span id="cb28-103"><a href="#cb28-103" aria-hidden="true"></a>        execute <span class="st">&quot;mv ${webapps}/${app}.new ${webapps}/${app}&quot;</span></span>
+      <span id="cb28-104"><a href="#cb28-104" aria-hidden="true"></a></span>
+      <span id="cb28-105"><a href="#cb28-105" aria-hidden="true"></a>        <span class="bu">println</span> <span class="st">&quot;${webapps}/${app} deployed&quot;</span></span>
+      <span id="cb28-106"><a href="#cb28-106" aria-hidden="true"></a>      }</span>
+      <span id="cb28-107"><a href="#cb28-107" aria-hidden="true"></a>    }</span>
+      <span id="cb28-108"><a href="#cb28-108" aria-hidden="true"></a>  }</span>
+      <span id="cb28-109"><a href="#cb28-109" aria-hidden="true"></a>}</span>
+      <span id="cb28-110"><a href="#cb28-110" aria-hidden="true"></a></span>
+      <span id="cb28-111"><a href="#cb28-111" aria-hidden="true"></a>...</span>
+      <span id="cb28-112"><a href="#cb28-112" aria-hidden="true"></a></span>
+      <span id="cb28-113"><a href="#cb28-113" aria-hidden="true"></a><span class="co">// ----------------------------------------------------------------------- SAST</span></span>
+      <span id="cb28-114"><a href="#cb28-114" aria-hidden="true"></a>spotbugs {</span>
+      <span id="cb28-115"><a href="#cb28-115" aria-hidden="true"></a>  effort = &#39;max&#39;</span>
+      <span id="cb28-116"><a href="#cb28-116" aria-hidden="true"></a>  ignoreFailures = <span class="ot">true</span></span>
+      <span id="cb28-117"><a href="#cb28-117" aria-hidden="true"></a>  <span class="co">// reportLevel = &#39;high&#39;</span></span>
+      <span id="cb28-118"><a href="#cb28-118" aria-hidden="true"></a>  reportLevel = &#39;<span class="kw">default</span>&#39;</span>
+      <span id="cb28-119"><a href="#cb28-119" aria-hidden="true"></a>  showProgress = <span class="ot">true</span></span>
+      <span id="cb28-120"><a href="#cb28-120" aria-hidden="true"></a>  showStackTraces = <span class="ot">true</span></span>
+      <span id="cb28-121"><a href="#cb28-121" aria-hidden="true"></a>  maxHeapSize = &#39;1g&#39;</span>
+      <span id="cb28-122"><a href="#cb28-122" aria-hidden="true"></a>  reportsDir = file(<span class="st">&quot;$buildDir/reports/spotbugs&quot;</span>)</span>
+      <span id="cb28-123"><a href="#cb28-123" aria-hidden="true"></a>}</span>
+      <span id="cb28-124"><a href="#cb28-124" aria-hidden="true"></a></span>
+      <span id="cb28-125"><a href="#cb28-125" aria-hidden="true"></a>spotbugsMain {</span>
+      <span id="cb28-126"><a href="#cb28-126" aria-hidden="true"></a>  reports {</span>
+      <span id="cb28-127"><a href="#cb28-127" aria-hidden="true"></a>    xml.enabled = <span class="ot">true</span></span>
+      <span id="cb28-128"><a href="#cb28-128" aria-hidden="true"></a>    html.enabled = <span class="ot">true</span></span>
+      <span id="cb28-129"><a href="#cb28-129" aria-hidden="true"></a>  }</span>
+      <span id="cb28-130"><a href="#cb28-130" aria-hidden="true"></a>}</span>
+      <span id="cb28-131"><a href="#cb28-131" aria-hidden="true"></a></span>
+      <span id="cb28-132"><a href="#cb28-132" aria-hidden="true"></a>spotbugsTest {</span>
+      <span id="cb28-133"><a href="#cb28-133" aria-hidden="true"></a>  reports {</span>
+      <span id="cb28-134"><a href="#cb28-134" aria-hidden="true"></a>    xml.enabled = <span class="ot">true</span></span>
+      <span id="cb28-135"><a href="#cb28-135" aria-hidden="true"></a>    html.enabled = <span class="ot">true</span></span>
+      <span id="cb28-136"><a href="#cb28-136" aria-hidden="true"></a>  }</span>
+      <span id="cb28-137"><a href="#cb28-137" aria-hidden="true"></a>}</span>
+      <span id="cb28-138"><a href="#cb28-138" aria-hidden="true"></a></span>
+      <span id="cb28-139"><a href="#cb28-139" aria-hidden="true"></a>spotbugsItest {</span>
+      <span id="cb28-140"><a href="#cb28-140" aria-hidden="true"></a>  reports {</span>
+      <span id="cb28-141"><a href="#cb28-141" aria-hidden="true"></a>    xml.enabled = <span class="ot">true</span></span>
+      <span id="cb28-142"><a href="#cb28-142" aria-hidden="true"></a>    html.enabled = <span class="ot">true</span></span>
+      <span id="cb28-143"><a href="#cb28-143" aria-hidden="true"></a>  }</span>
+      <span id="cb28-144"><a href="#cb28-144" aria-hidden="true"></a>}</span>
+      <span id="cb28-145"><a href="#cb28-145" aria-hidden="true"></a></span>
+      <span id="cb28-146"><a href="#cb28-146" aria-hidden="true"></a><span class="co">// --------------------------------------------------------------- Unit testing</span></span>
+      <span id="cb28-147"><a href="#cb28-147" aria-hidden="true"></a>tasks.named(&#39;test&#39;) {</span>
+      <span id="cb28-148"><a href="#cb28-148" aria-hidden="true"></a>  description = <span class="st">&quot;Run unit test suite&quot;</span></span>
+      <span id="cb28-149"><a href="#cb28-149" aria-hidden="true"></a>  group = <span class="st">&quot;verification&quot;</span></span>
+      <span id="cb28-150"><a href="#cb28-150" aria-hidden="true"></a>  testClassesDirs = sourceSets.test.output.classesDirs</span>
+      <span id="cb28-151"><a href="#cb28-151" aria-hidden="true"></a>  classpath = sourceSets.test.runtimeClasspath</span>
+      <span id="cb28-152"><a href="#cb28-152" aria-hidden="true"></a>  <span class="co">// Use JUnit Platform for unit tests.</span></span>
+      <span id="cb28-153"><a href="#cb28-153" aria-hidden="true"></a>  useJUnitPlatform()</span>
+      <span id="cb28-154"><a href="#cb28-154" aria-hidden="true"></a>}</span>
+      <span id="cb28-155"><a href="#cb28-155" aria-hidden="true"></a></span>
+      <span id="cb28-156"><a href="#cb28-156" aria-hidden="true"></a><span class="co">// -------------------------------------------------------- Integration testing</span></span>
+      <span id="cb28-157"><a href="#cb28-157" aria-hidden="true"></a>task itest(<span class="kw">type</span>: Test) {</span>
+      <span id="cb28-158"><a href="#cb28-158" aria-hidden="true"></a>  description = <span class="st">&quot;Run integration test suite&quot;</span></span>
+      <span id="cb28-159"><a href="#cb28-159" aria-hidden="true"></a>  group = <span class="st">&quot;verification&quot;</span></span>
+      <span id="cb28-160"><a href="#cb28-160" aria-hidden="true"></a>  testClassesDirs = sourceSets.itest.output.classesDirs</span>
+      <span id="cb28-161"><a href="#cb28-161" aria-hidden="true"></a>  classpath = sourceSets.itest.runtimeClasspath</span>
+      <span id="cb28-162"><a href="#cb28-162" aria-hidden="true"></a>}</span>
+      <span id="cb28-163"><a href="#cb28-163" aria-hidden="true"></a></span>
+      <span id="cb28-164"><a href="#cb28-164" aria-hidden="true"></a>...</span></code></pre></div>
       <!-- cSpell:enable -->
       <h4 id="containérisation-et-services">7.6.2. Containérisation et services<!-- OK --></h4>
       <p>Docker est un outil qui permet de gérer les conteneurs logiciels.</p>
@@ -2309,8 +2377,8 @@
       <p>Utiliser Docker pour créer et gérer des conteneurs peut simplifier la mise en œuvre de <strong>systèmes distribués</strong> en permettant à de multiples applications, tâches de fond et autres processus de s’exécuter de façon autonome sur une seule machine physique.</p>
       <p>Voici un exemple de commande qui peut être utilisée pour transformer un fichier Markdown <code>entree.md</code> en fichier HTML au moyen de l’applicatif Pandoc, mais en utilisant l’image Docker <code>pandoc/core</code> (disponible sur <a href="https://hub.docker.com/">Docker Hub</a> :</p>
       <!-- cSpell:disable -->
-      <div class="sourceCode" id="cb27"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a></span>
-      <span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a><span class="ex">docker</span> run --rm -v <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/data pandoc/core pandoc -s -o sortie.html entree.md</span></code></pre></div>
+      <div class="sourceCode" id="cb29"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a></span>
+      <span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a><span class="ex">docker</span> run --rm -v <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/data pandoc/core pandoc -s -o sortie.html entree.md</span></code></pre></div>
       <!-- cSpell:enable -->
       <p>Cette commande suppose que le fichier markdown se trouve dans le répertoire courant et créera un fichier HTML nommé <code>sortie.html</code> dans le même répertoire.</p>
       <h5 id="docker-compose">7.6.2.2. Docker Compose<!-- OK --></h5>
@@ -2320,69 +2388,69 @@
       </figure>
       <p>Voici en exemple le fichier <code>docker-compose.yml</code> qui définit le démarrage d’une grappe de 3 services composant la plateforme de développement attachée au projet (les variables sont interprétées au travers d’un fichier d’environnement) :</p>
       <!-- cSpell:disable -->
-      <div class="sourceCode" id="cb28"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a></span>
-      <span id="cb28-2"><a href="#cb28-2" aria-hidden="true"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;3&quot;</span></span>
-      <span id="cb28-3"><a href="#cb28-3" aria-hidden="true"></a><span class="fu">services</span><span class="kw">:</span></span>
-      <span id="cb28-4"><a href="#cb28-4" aria-hidden="true"></a><span class="co"># ------------------------------------------------------------------------- web</span></span>
-      <span id="cb28-5"><a href="#cb28-5" aria-hidden="true"></a><span class="at">  </span><span class="fu">web</span><span class="kw">:</span><span class="co"> # NGINX</span></span>
-      <span id="cb28-6"><a href="#cb28-6" aria-hidden="true"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span></span>
-      <span id="cb28-7"><a href="#cb28-7" aria-hidden="true"></a><span class="at">      </span><span class="fu">context</span><span class="kw">:</span><span class="at"> ${WEB_BUILD}</span></span>
-      <span id="cb28-8"><a href="#cb28-8" aria-hidden="true"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> ${PROJECT}-${WEB}</span></span>
-      <span id="cb28-9"><a href="#cb28-9" aria-hidden="true"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
-      <span id="cb28-10"><a href="#cb28-10" aria-hidden="true"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
-      <span id="cb28-11"><a href="#cb28-11" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> app</span></span>
-      <span id="cb28-12"><a href="#cb28-12" aria-hidden="true"></a><span class="at">    </span><span class="fu">links</span><span class="kw">:</span></span>
-      <span id="cb28-13"><a href="#cb28-13" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> app</span></span>
-      <span id="cb28-14"><a href="#cb28-14" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-      <span id="cb28-15"><a href="#cb28-15" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${HOST_IP}:${HOST_WEB_UNSECURE_PORT}:80</span></span>
-      <span id="cb28-16"><a href="#cb28-16" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${HOST_IP}:${HOST_WEB_SECURE_PORT}:443</span></span>
-      <span id="cb28-17"><a href="#cb28-17" aria-hidden="true"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-      <span id="cb28-18"><a href="#cb28-18" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${WEB_CONF}/nginx.conf:/etc/nginx/nginx.conf:ro</span><span class="co"> # Nginx conf (read-only)</span></span>
-      <span id="cb28-19"><a href="#cb28-19" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${WEB_CONF}/conf.d:/etc/nginx/conf.d:ro</span><span class="co"> # Nginx conf subsets for proxypass (read-only)</span></span>
-      <span id="cb28-20"><a href="#cb28-20" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${WEB_LOG}:/var/log/nginx</span><span class="co"> # Logs</span></span>
-      <span id="cb28-21"><a href="#cb28-21" aria-hidden="true"></a><span class="co">      # - ${WEB_DATA}:/usr/share/nginx/html # Data</span></span>
-      <span id="cb28-22"><a href="#cb28-22" aria-hidden="true"></a><span class="co"># ------------------------------------------------------------------------- app</span></span>
-      <span id="cb28-23"><a href="#cb28-23" aria-hidden="true"></a><span class="at">  </span><span class="fu">app</span><span class="kw">:</span><span class="co"> # TOMCAT</span></span>
-      <span id="cb28-24"><a href="#cb28-24" aria-hidden="true"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span></span>
-      <span id="cb28-25"><a href="#cb28-25" aria-hidden="true"></a><span class="at">      </span><span class="fu">context</span><span class="kw">:</span><span class="at"> ${APP_BUILD}</span></span>
-      <span id="cb28-26"><a href="#cb28-26" aria-hidden="true"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> ${PROJECT}-${APP}</span></span>
-      <span id="cb28-27"><a href="#cb28-27" aria-hidden="true"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
-      <span id="cb28-28"><a href="#cb28-28" aria-hidden="true"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
-      <span id="cb28-29"><a href="#cb28-29" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> db</span></span>
-      <span id="cb28-30"><a href="#cb28-30" aria-hidden="true"></a><span class="at">    </span><span class="fu">links</span><span class="kw">:</span></span>
-      <span id="cb28-31"><a href="#cb28-31" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> db</span></span>
-      <span id="cb28-32"><a href="#cb28-32" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-      <span id="cb28-33"><a href="#cb28-33" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${HOST_IP}:${HOST_APP_UNSECURE_PORT}:8080</span></span>
-      <span id="cb28-34"><a href="#cb28-34" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${HOST_IP}:${HOST_APP_SSH_PORT}:22</span></span>
-      <span id="cb28-35"><a href="#cb28-35" aria-hidden="true"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-      <span id="cb28-36"><a href="#cb28-36" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${APP_CONF}/jaas.config:${CATALINA_HOME}/conf/jaas.config:ro</span><span class="co"> # JAAS config file (read-only)</span></span>
-      <span id="cb28-37"><a href="#cb28-37" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${APP_LOG}:${CATALINA_HOME}/logs</span><span class="co"> # Logs</span></span>
-      <span id="cb28-38"><a href="#cb28-38" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${APP_DATA}:${CATALINA_HOME}/webapps</span><span class="co"> # Data</span></span>
-      <span id="cb28-39"><a href="#cb28-39" aria-hidden="true"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
-      <span id="cb28-40"><a href="#cb28-40" aria-hidden="true"></a><span class="co">      # Starts tomcat with jaas config file</span></span>
-      <span id="cb28-41"><a href="#cb28-41" aria-hidden="true"></a><span class="at">      </span><span class="fu">JAVA_OPTS</span><span class="kw">:</span><span class="at"> $JAVA_OPTS &quot;-Djava.security.auth.login.config=$CATALINA_HOME/conf/jaas.config&quot;</span></span>
-      <span id="cb28-42"><a href="#cb28-42" aria-hidden="true"></a><span class="co">      # Database</span></span>
-      <span id="cb28-43"><a href="#cb28-43" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_DATABASE</span><span class="kw">:</span><span class="at"> ${MARIADB_DATABASE}</span></span>
-      <span id="cb28-44"><a href="#cb28-44" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_USER</span><span class="kw">:</span><span class="at"> ${MARIADB_USER}</span></span>
-      <span id="cb28-45"><a href="#cb28-45" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_PASSWORD</span><span class="kw">:</span><span class="at"> ${MARIADB_PASSWORD}</span></span>
-      <span id="cb28-46"><a href="#cb28-46" aria-hidden="true"></a><span class="co"># -------------------------------------------------------------------------- db</span></span>
-      <span id="cb28-47"><a href="#cb28-47" aria-hidden="true"></a><span class="at">  </span><span class="fu">db</span><span class="kw">:</span><span class="co"> # MARIADB</span></span>
-      <span id="cb28-48"><a href="#cb28-48" aria-hidden="true"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span></span>
-      <span id="cb28-49"><a href="#cb28-49" aria-hidden="true"></a><span class="at">      </span><span class="fu">context</span><span class="kw">:</span><span class="at"> ${DB_BUILD}</span></span>
-      <span id="cb28-50"><a href="#cb28-50" aria-hidden="true"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> ${PROJECT}-${DB}</span></span>
-      <span id="cb28-51"><a href="#cb28-51" aria-hidden="true"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
-      <span id="cb28-52"><a href="#cb28-52" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-      <span id="cb28-53"><a href="#cb28-53" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${HOST_IP}:${HOST_DB_PORT}:3306</span></span>
-      <span id="cb28-54"><a href="#cb28-54" aria-hidden="true"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span><span class="at"> </span></span>
-      <span id="cb28-55"><a href="#cb28-55" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${DB_CONF}/initdb:/docker-entrypoint-initdb.d:ro</span><span class="co"> # SQL initdb</span></span>
-      <span id="cb28-56"><a href="#cb28-56" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${DB_LOG}:/var/log/mariadb</span><span class="co"> # Logs</span></span>
-      <span id="cb28-57"><a href="#cb28-57" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${DB_DATA}:/var/lib/mysql</span><span class="co"> # Data</span></span>
-      <span id="cb28-58"><a href="#cb28-58" aria-hidden="true"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
-      <span id="cb28-59"><a href="#cb28-59" aria-hidden="true"></a><span class="co">      # Database</span></span>
-      <span id="cb28-60"><a href="#cb28-60" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_ROOT_PASSWORD</span><span class="kw">:</span><span class="at"> ${MARIADB_ROOT_PASSWORD}</span></span>
-      <span id="cb28-61"><a href="#cb28-61" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_DATABASE</span><span class="kw">:</span><span class="at"> ${MARIADB_DATABASE}</span></span>
-      <span id="cb28-62"><a href="#cb28-62" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_USER</span><span class="kw">:</span><span class="at"> ${MARIADB_USER}</span></span>
-      <span id="cb28-63"><a href="#cb28-63" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_PASSWORD</span><span class="kw">:</span><span class="at"> ${MARIADB_PASSWORD}</span></span></code></pre></div>
+      <div class="sourceCode" id="cb30"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a></span>
+      <span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;3&quot;</span></span>
+      <span id="cb30-3"><a href="#cb30-3" aria-hidden="true"></a><span class="fu">services</span><span class="kw">:</span></span>
+      <span id="cb30-4"><a href="#cb30-4" aria-hidden="true"></a><span class="co"># ------------------------------------------------------------------------- web</span></span>
+      <span id="cb30-5"><a href="#cb30-5" aria-hidden="true"></a><span class="at">  </span><span class="fu">web</span><span class="kw">:</span><span class="co"> # NGINX</span></span>
+      <span id="cb30-6"><a href="#cb30-6" aria-hidden="true"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span></span>
+      <span id="cb30-7"><a href="#cb30-7" aria-hidden="true"></a><span class="at">      </span><span class="fu">context</span><span class="kw">:</span><span class="at"> ${WEB_BUILD}</span></span>
+      <span id="cb30-8"><a href="#cb30-8" aria-hidden="true"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> ${PROJECT}-${WEB}</span></span>
+      <span id="cb30-9"><a href="#cb30-9" aria-hidden="true"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+      <span id="cb30-10"><a href="#cb30-10" aria-hidden="true"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+      <span id="cb30-11"><a href="#cb30-11" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> app</span></span>
+      <span id="cb30-12"><a href="#cb30-12" aria-hidden="true"></a><span class="at">    </span><span class="fu">links</span><span class="kw">:</span></span>
+      <span id="cb30-13"><a href="#cb30-13" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> app</span></span>
+      <span id="cb30-14"><a href="#cb30-14" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+      <span id="cb30-15"><a href="#cb30-15" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${HOST_IP}:${HOST_WEB_UNSECURE_PORT}:80</span></span>
+      <span id="cb30-16"><a href="#cb30-16" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${HOST_IP}:${HOST_WEB_SECURE_PORT}:443</span></span>
+      <span id="cb30-17"><a href="#cb30-17" aria-hidden="true"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+      <span id="cb30-18"><a href="#cb30-18" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${WEB_CONF}/nginx.conf:/etc/nginx/nginx.conf:ro</span><span class="co"> # Nginx conf (read-only)</span></span>
+      <span id="cb30-19"><a href="#cb30-19" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${WEB_CONF}/conf.d:/etc/nginx/conf.d:ro</span><span class="co"> # Nginx conf subsets for proxypass (read-only)</span></span>
+      <span id="cb30-20"><a href="#cb30-20" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${WEB_LOG}:/var/log/nginx</span><span class="co"> # Logs</span></span>
+      <span id="cb30-21"><a href="#cb30-21" aria-hidden="true"></a><span class="co">      # - ${WEB_DATA}:/usr/share/nginx/html # Data</span></span>
+      <span id="cb30-22"><a href="#cb30-22" aria-hidden="true"></a><span class="co"># ------------------------------------------------------------------------- app</span></span>
+      <span id="cb30-23"><a href="#cb30-23" aria-hidden="true"></a><span class="at">  </span><span class="fu">app</span><span class="kw">:</span><span class="co"> # TOMCAT</span></span>
+      <span id="cb30-24"><a href="#cb30-24" aria-hidden="true"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span></span>
+      <span id="cb30-25"><a href="#cb30-25" aria-hidden="true"></a><span class="at">      </span><span class="fu">context</span><span class="kw">:</span><span class="at"> ${APP_BUILD}</span></span>
+      <span id="cb30-26"><a href="#cb30-26" aria-hidden="true"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> ${PROJECT}-${APP}</span></span>
+      <span id="cb30-27"><a href="#cb30-27" aria-hidden="true"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+      <span id="cb30-28"><a href="#cb30-28" aria-hidden="true"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+      <span id="cb30-29"><a href="#cb30-29" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> db</span></span>
+      <span id="cb30-30"><a href="#cb30-30" aria-hidden="true"></a><span class="at">    </span><span class="fu">links</span><span class="kw">:</span></span>
+      <span id="cb30-31"><a href="#cb30-31" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> db</span></span>
+      <span id="cb30-32"><a href="#cb30-32" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+      <span id="cb30-33"><a href="#cb30-33" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${HOST_IP}:${HOST_APP_UNSECURE_PORT}:8080</span></span>
+      <span id="cb30-34"><a href="#cb30-34" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${HOST_IP}:${HOST_APP_SSH_PORT}:22</span></span>
+      <span id="cb30-35"><a href="#cb30-35" aria-hidden="true"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+      <span id="cb30-36"><a href="#cb30-36" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${APP_CONF}/jaas.config:${CATALINA_HOME}/conf/jaas.config:ro</span><span class="co"> # JAAS config file (read-only)</span></span>
+      <span id="cb30-37"><a href="#cb30-37" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${APP_LOG}:${CATALINA_HOME}/logs</span><span class="co"> # Logs</span></span>
+      <span id="cb30-38"><a href="#cb30-38" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${APP_DATA}:${CATALINA_HOME}/webapps</span><span class="co"> # Data</span></span>
+      <span id="cb30-39"><a href="#cb30-39" aria-hidden="true"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+      <span id="cb30-40"><a href="#cb30-40" aria-hidden="true"></a><span class="co">      # Starts tomcat with jaas config file</span></span>
+      <span id="cb30-41"><a href="#cb30-41" aria-hidden="true"></a><span class="at">      </span><span class="fu">JAVA_OPTS</span><span class="kw">:</span><span class="at"> $JAVA_OPTS &quot;-Djava.security.auth.login.config=$CATALINA_HOME/conf/jaas.config&quot;</span></span>
+      <span id="cb30-42"><a href="#cb30-42" aria-hidden="true"></a><span class="co">      # Database</span></span>
+      <span id="cb30-43"><a href="#cb30-43" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_DATABASE</span><span class="kw">:</span><span class="at"> ${MARIADB_DATABASE}</span></span>
+      <span id="cb30-44"><a href="#cb30-44" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_USER</span><span class="kw">:</span><span class="at"> ${MARIADB_USER}</span></span>
+      <span id="cb30-45"><a href="#cb30-45" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_PASSWORD</span><span class="kw">:</span><span class="at"> ${MARIADB_PASSWORD}</span></span>
+      <span id="cb30-46"><a href="#cb30-46" aria-hidden="true"></a><span class="co"># -------------------------------------------------------------------------- db</span></span>
+      <span id="cb30-47"><a href="#cb30-47" aria-hidden="true"></a><span class="at">  </span><span class="fu">db</span><span class="kw">:</span><span class="co"> # MARIADB</span></span>
+      <span id="cb30-48"><a href="#cb30-48" aria-hidden="true"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span></span>
+      <span id="cb30-49"><a href="#cb30-49" aria-hidden="true"></a><span class="at">      </span><span class="fu">context</span><span class="kw">:</span><span class="at"> ${DB_BUILD}</span></span>
+      <span id="cb30-50"><a href="#cb30-50" aria-hidden="true"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> ${PROJECT}-${DB}</span></span>
+      <span id="cb30-51"><a href="#cb30-51" aria-hidden="true"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+      <span id="cb30-52"><a href="#cb30-52" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+      <span id="cb30-53"><a href="#cb30-53" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${HOST_IP}:${HOST_DB_PORT}:3306</span></span>
+      <span id="cb30-54"><a href="#cb30-54" aria-hidden="true"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span><span class="at"> </span></span>
+      <span id="cb30-55"><a href="#cb30-55" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${DB_CONF}/initdb:/docker-entrypoint-initdb.d:ro</span><span class="co"> # SQL initdb</span></span>
+      <span id="cb30-56"><a href="#cb30-56" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${DB_LOG}:/var/log/mariadb</span><span class="co"> # Logs</span></span>
+      <span id="cb30-57"><a href="#cb30-57" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ${DB_DATA}:/var/lib/mysql</span><span class="co"> # Data</span></span>
+      <span id="cb30-58"><a href="#cb30-58" aria-hidden="true"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+      <span id="cb30-59"><a href="#cb30-59" aria-hidden="true"></a><span class="co">      # Database</span></span>
+      <span id="cb30-60"><a href="#cb30-60" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_ROOT_PASSWORD</span><span class="kw">:</span><span class="at"> ${MARIADB_ROOT_PASSWORD}</span></span>
+      <span id="cb30-61"><a href="#cb30-61" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_DATABASE</span><span class="kw">:</span><span class="at"> ${MARIADB_DATABASE}</span></span>
+      <span id="cb30-62"><a href="#cb30-62" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_USER</span><span class="kw">:</span><span class="at"> ${MARIADB_USER}</span></span>
+      <span id="cb30-63"><a href="#cb30-63" aria-hidden="true"></a><span class="at">      </span><span class="fu">MARIADB_PASSWORD</span><span class="kw">:</span><span class="at"> ${MARIADB_PASSWORD}</span></span></code></pre></div>
       <!-- cSpell:enable -->
       <h5 id="docker-swarm">7.6.2.3. Docker Swarm<!-- OK --></h5>
       <p>Docker swarm mode, inclus dans les versions actuelles de Docker, permet de <strong>gérer un cluster de moteur Docker</strong>, appelé swarm. En utilisant la ligne de commande docker, il est possible de créer un swarm, d’y déployer des services applicatifs, et de gérer le comportement du swarm. Docker swarm est <strong>l’orchestrateur natif de docker</strong> (équivalent Kubernetes).</p>
@@ -2401,80 +2469,80 @@
       </figure>
       <p>Voici en exemple un autre fichier <code>docker-compose.yml</code>, cette fois-ci utilise par un script python d’intégration chargé de déployer des stacks de services sur un swarm (Les parties commentées correspondent à la configuration nécessaire pour la persistance des données grâce à un partage nfs) :</p>
       <!-- cSpell:disable -->
-      <div class="sourceCode" id="cb29"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a></span>
-      <span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;3.6&#39;</span></span>
-      <span id="cb29-3"><a href="#cb29-3" aria-hidden="true"></a><span class="co"># -------------------------------------------------------------------- networks</span></span>
-      <span id="cb29-4"><a href="#cb29-4" aria-hidden="true"></a><span class="fu">networks</span><span class="kw">:</span></span>
-      <span id="cb29-5"><a href="#cb29-5" aria-hidden="true"></a><span class="at">  </span><span class="fu">swarm</span><span class="kw">:</span></span>
-      <span id="cb29-6"><a href="#cb29-6" aria-hidden="true"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;swarm&#39;</span></span>
-      <span id="cb29-7"><a href="#cb29-7" aria-hidden="true"></a><span class="at">    </span><span class="fu">external</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-      <span id="cb29-8"><a href="#cb29-8" aria-hidden="true"></a><span class="co"># --------------------------------------------------------------------- volumes</span></span>
-      <span id="cb29-9"><a href="#cb29-9" aria-hidden="true"></a><span class="co"># volumes:</span></span>
-      <span id="cb29-10"><a href="#cb29-10" aria-hidden="true"></a><span class="co">#   prometheus:</span></span>
-      <span id="cb29-11"><a href="#cb29-11" aria-hidden="true"></a><span class="co">#     driver: local</span></span>
-      <span id="cb29-12"><a href="#cb29-12" aria-hidden="true"></a><span class="co">#     driver_opts:</span></span>
-      <span id="cb29-13"><a href="#cb29-13" aria-hidden="true"></a><span class="co">#       type: &quot;nfs&quot;</span></span>
-      <span id="cb29-14"><a href="#cb29-14" aria-hidden="true"></a><span class="co">#       o: &quot;addr=${MANAGER},nolock,soft,rw&quot; # nolock and soft ensure docker doesn&#39;t freeze if the nfs connection is lost.</span></span>
-      <span id="cb29-15"><a href="#cb29-15" aria-hidden="true"></a><span class="co">#       device: &quot;:/data/${STACK}/prometheus&quot;</span></span>
-      <span id="cb29-16"><a href="#cb29-16" aria-hidden="true"></a><span class="co">#   grafana:</span></span>
-      <span id="cb29-17"><a href="#cb29-17" aria-hidden="true"></a><span class="co">#     driver: local</span></span>
-      <span id="cb29-18"><a href="#cb29-18" aria-hidden="true"></a><span class="co">#     driver_opts:</span></span>
-      <span id="cb29-19"><a href="#cb29-19" aria-hidden="true"></a><span class="co">#       type: &quot;nfs&quot;</span></span>
-      <span id="cb29-20"><a href="#cb29-20" aria-hidden="true"></a><span class="co">#       o: &quot;addr=${MANAGER},nolock,soft,rw&quot; # nolock and soft ensure docker doesn&#39;t freeze if the nfs connection is lost.</span></span>
-      <span id="cb29-21"><a href="#cb29-21" aria-hidden="true"></a><span class="co">#       device: &quot;:/data/${STACK}/grafana&quot;</span></span>
-      <span id="cb29-22"><a href="#cb29-22" aria-hidden="true"></a><span class="co"># -------------------------------------------------------------------- services</span></span>
-      <span id="cb29-23"><a href="#cb29-23" aria-hidden="true"></a><span class="fu">services</span><span class="kw">:</span></span>
-      <span id="cb29-24"><a href="#cb29-24" aria-hidden="true"></a><span class="at">  </span><span class="fu">visualizer</span><span class="kw">:</span></span>
-      <span id="cb29-25"><a href="#cb29-25" aria-hidden="true"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> dockersamples/visualizer</span></span>
-      <span id="cb29-26"><a href="#cb29-26" aria-hidden="true"></a><span class="at">    </span><span class="fu">labels</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">prometheus-job=visualizer</span><span class="kw">]</span></span>
-      <span id="cb29-27"><a href="#cb29-27" aria-hidden="true"></a><span class="at">    </span><span class="fu">deploy</span><span class="kw">:</span></span>
-      <span id="cb29-28"><a href="#cb29-28" aria-hidden="true"></a><span class="at">      </span><span class="fu">replicas</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-      <span id="cb29-29"><a href="#cb29-29" aria-hidden="true"></a><span class="at">      </span><span class="fu">placement</span><span class="kw">:</span></span>
-      <span id="cb29-30"><a href="#cb29-30" aria-hidden="true"></a><span class="at">        </span><span class="fu">constraints</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">node.role == manager</span><span class="kw">]</span></span>
-      <span id="cb29-31"><a href="#cb29-31" aria-hidden="true"></a><span class="at">    </span><span class="fu">networks</span><span class="kw">:</span></span>
-      <span id="cb29-32"><a href="#cb29-32" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> swarm</span></span>
-      <span id="cb29-33"><a href="#cb29-33" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-      <span id="cb29-34"><a href="#cb29-34" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 5050:8080</span></span>
-      <span id="cb29-35"><a href="#cb29-35" aria-hidden="true"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-      <span id="cb29-36"><a href="#cb29-36" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /var/run/docker.sock:/var/run/docker.sock</span></span>
-      <span id="cb29-37"><a href="#cb29-37" aria-hidden="true"></a><span class="at">  </span><span class="fu">prometheus</span><span class="kw">:</span></span>
-      <span id="cb29-38"><a href="#cb29-38" aria-hidden="true"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> 127.0.0.1:5000/${STACK}-prometheus</span></span>
-      <span id="cb29-39"><a href="#cb29-39" aria-hidden="true"></a><span class="at">    </span><span class="fu">labels</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">prometheus-job=prometheus</span><span class="kw">]</span></span>
-      <span id="cb29-40"><a href="#cb29-40" aria-hidden="true"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./builds/prometheus/</span></span>
-      <span id="cb29-41"><a href="#cb29-41" aria-hidden="true"></a><span class="at">    </span><span class="fu">deploy</span><span class="kw">:</span></span>
-      <span id="cb29-42"><a href="#cb29-42" aria-hidden="true"></a><span class="at">      </span><span class="fu">replicas</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-      <span id="cb29-43"><a href="#cb29-43" aria-hidden="true"></a><span class="at">      </span><span class="fu">placement</span><span class="kw">:</span></span>
-      <span id="cb29-44"><a href="#cb29-44" aria-hidden="true"></a><span class="at">        </span><span class="fu">constraints</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">node.role == manager</span><span class="kw">]</span></span>
-      <span id="cb29-45"><a href="#cb29-45" aria-hidden="true"></a><span class="at">    </span><span class="fu">networks</span><span class="kw">:</span></span>
-      <span id="cb29-46"><a href="#cb29-46" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> swarm</span></span>
-      <span id="cb29-47"><a href="#cb29-47" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-      <span id="cb29-48"><a href="#cb29-48" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 9090:9090</span></span>
-      <span id="cb29-49"><a href="#cb29-49" aria-hidden="true"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-      <span id="cb29-50"><a href="#cb29-50" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /var/run/docker.sock:/var/run/docker.sock</span></span>
-      <span id="cb29-51"><a href="#cb29-51" aria-hidden="true"></a><span class="co">      # - type: volume</span></span>
-      <span id="cb29-52"><a href="#cb29-52" aria-hidden="true"></a><span class="co">      #   source: prometheus</span></span>
-      <span id="cb29-53"><a href="#cb29-53" aria-hidden="true"></a><span class="co">      #   target: /prometheus</span></span>
-      <span id="cb29-54"><a href="#cb29-54" aria-hidden="true"></a><span class="co">      #   volume:</span></span>
-      <span id="cb29-55"><a href="#cb29-55" aria-hidden="true"></a><span class="co">      #     nocopy: true</span></span>
-      <span id="cb29-56"><a href="#cb29-56" aria-hidden="true"></a><span class="at">    </span><span class="fu">command</span><span class="kw">:</span><span class="at"> --web.enable-lifecycle --config.file=/etc/prometheus/prometheus.yml </span></span>
-      <span id="cb29-57"><a href="#cb29-57" aria-hidden="true"></a><span class="at">  </span><span class="fu">grafana</span><span class="kw">:</span></span>
-      <span id="cb29-58"><a href="#cb29-58" aria-hidden="true"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> 127.0.0.1:5000/${STACK}-grafana</span></span>
-      <span id="cb29-59"><a href="#cb29-59" aria-hidden="true"></a><span class="at">    </span><span class="fu">labels</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">prometheus-job=grafana</span><span class="kw">]</span></span>
-      <span id="cb29-60"><a href="#cb29-60" aria-hidden="true"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./builds/grafana/</span></span>
-      <span id="cb29-61"><a href="#cb29-61" aria-hidden="true"></a><span class="at">    </span><span class="fu">deploy</span><span class="kw">:</span></span>
-      <span id="cb29-62"><a href="#cb29-62" aria-hidden="true"></a><span class="at">      </span><span class="fu">replicas</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-      <span id="cb29-63"><a href="#cb29-63" aria-hidden="true"></a><span class="at">      </span><span class="fu">placement</span><span class="kw">:</span></span>
-      <span id="cb29-64"><a href="#cb29-64" aria-hidden="true"></a><span class="at">        </span><span class="fu">constraints</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">node.role == manager</span><span class="kw">]</span></span>
-      <span id="cb29-65"><a href="#cb29-65" aria-hidden="true"></a><span class="at">    </span><span class="fu">networks</span><span class="kw">:</span></span>
-      <span id="cb29-66"><a href="#cb29-66" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> swarm</span></span>
-      <span id="cb29-67"><a href="#cb29-67" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-      <span id="cb29-68"><a href="#cb29-68" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 3000:3000</span></span>
-      <span id="cb29-69"><a href="#cb29-69" aria-hidden="true"></a><span class="co">    # volumes:</span></span>
-      <span id="cb29-70"><a href="#cb29-70" aria-hidden="true"></a><span class="co">    #   - type: volume</span></span>
-      <span id="cb29-71"><a href="#cb29-71" aria-hidden="true"></a><span class="co">    #     source: grafana</span></span>
-      <span id="cb29-72"><a href="#cb29-72" aria-hidden="true"></a><span class="co">    #     target: /var/lib/grafana</span></span>
-      <span id="cb29-73"><a href="#cb29-73" aria-hidden="true"></a><span class="co">    #     volume:</span></span>
-      <span id="cb29-74"><a href="#cb29-74" aria-hidden="true"></a><span class="co">    #       nocopy: true</span></span></code></pre></div>
+      <div class="sourceCode" id="cb31"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a></span>
+      <span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;3.6&#39;</span></span>
+      <span id="cb31-3"><a href="#cb31-3" aria-hidden="true"></a><span class="co"># -------------------------------------------------------------------- networks</span></span>
+      <span id="cb31-4"><a href="#cb31-4" aria-hidden="true"></a><span class="fu">networks</span><span class="kw">:</span></span>
+      <span id="cb31-5"><a href="#cb31-5" aria-hidden="true"></a><span class="at">  </span><span class="fu">swarm</span><span class="kw">:</span></span>
+      <span id="cb31-6"><a href="#cb31-6" aria-hidden="true"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;swarm&#39;</span></span>
+      <span id="cb31-7"><a href="#cb31-7" aria-hidden="true"></a><span class="at">    </span><span class="fu">external</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+      <span id="cb31-8"><a href="#cb31-8" aria-hidden="true"></a><span class="co"># --------------------------------------------------------------------- volumes</span></span>
+      <span id="cb31-9"><a href="#cb31-9" aria-hidden="true"></a><span class="co"># volumes:</span></span>
+      <span id="cb31-10"><a href="#cb31-10" aria-hidden="true"></a><span class="co">#   prometheus:</span></span>
+      <span id="cb31-11"><a href="#cb31-11" aria-hidden="true"></a><span class="co">#     driver: local</span></span>
+      <span id="cb31-12"><a href="#cb31-12" aria-hidden="true"></a><span class="co">#     driver_opts:</span></span>
+      <span id="cb31-13"><a href="#cb31-13" aria-hidden="true"></a><span class="co">#       type: &quot;nfs&quot;</span></span>
+      <span id="cb31-14"><a href="#cb31-14" aria-hidden="true"></a><span class="co">#       o: &quot;addr=${MANAGER},nolock,soft,rw&quot; # nolock and soft ensure docker doesn&#39;t freeze if the nfs connection is lost.</span></span>
+      <span id="cb31-15"><a href="#cb31-15" aria-hidden="true"></a><span class="co">#       device: &quot;:/data/${STACK}/prometheus&quot;</span></span>
+      <span id="cb31-16"><a href="#cb31-16" aria-hidden="true"></a><span class="co">#   grafana:</span></span>
+      <span id="cb31-17"><a href="#cb31-17" aria-hidden="true"></a><span class="co">#     driver: local</span></span>
+      <span id="cb31-18"><a href="#cb31-18" aria-hidden="true"></a><span class="co">#     driver_opts:</span></span>
+      <span id="cb31-19"><a href="#cb31-19" aria-hidden="true"></a><span class="co">#       type: &quot;nfs&quot;</span></span>
+      <span id="cb31-20"><a href="#cb31-20" aria-hidden="true"></a><span class="co">#       o: &quot;addr=${MANAGER},nolock,soft,rw&quot; # nolock and soft ensure docker doesn&#39;t freeze if the nfs connection is lost.</span></span>
+      <span id="cb31-21"><a href="#cb31-21" aria-hidden="true"></a><span class="co">#       device: &quot;:/data/${STACK}/grafana&quot;</span></span>
+      <span id="cb31-22"><a href="#cb31-22" aria-hidden="true"></a><span class="co"># -------------------------------------------------------------------- services</span></span>
+      <span id="cb31-23"><a href="#cb31-23" aria-hidden="true"></a><span class="fu">services</span><span class="kw">:</span></span>
+      <span id="cb31-24"><a href="#cb31-24" aria-hidden="true"></a><span class="at">  </span><span class="fu">visualizer</span><span class="kw">:</span></span>
+      <span id="cb31-25"><a href="#cb31-25" aria-hidden="true"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> dockersamples/visualizer</span></span>
+      <span id="cb31-26"><a href="#cb31-26" aria-hidden="true"></a><span class="at">    </span><span class="fu">labels</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">prometheus-job=visualizer</span><span class="kw">]</span></span>
+      <span id="cb31-27"><a href="#cb31-27" aria-hidden="true"></a><span class="at">    </span><span class="fu">deploy</span><span class="kw">:</span></span>
+      <span id="cb31-28"><a href="#cb31-28" aria-hidden="true"></a><span class="at">      </span><span class="fu">replicas</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+      <span id="cb31-29"><a href="#cb31-29" aria-hidden="true"></a><span class="at">      </span><span class="fu">placement</span><span class="kw">:</span></span>
+      <span id="cb31-30"><a href="#cb31-30" aria-hidden="true"></a><span class="at">        </span><span class="fu">constraints</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">node.role == manager</span><span class="kw">]</span></span>
+      <span id="cb31-31"><a href="#cb31-31" aria-hidden="true"></a><span class="at">    </span><span class="fu">networks</span><span class="kw">:</span></span>
+      <span id="cb31-32"><a href="#cb31-32" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> swarm</span></span>
+      <span id="cb31-33"><a href="#cb31-33" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+      <span id="cb31-34"><a href="#cb31-34" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 5050:8080</span></span>
+      <span id="cb31-35"><a href="#cb31-35" aria-hidden="true"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+      <span id="cb31-36"><a href="#cb31-36" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /var/run/docker.sock:/var/run/docker.sock</span></span>
+      <span id="cb31-37"><a href="#cb31-37" aria-hidden="true"></a><span class="at">  </span><span class="fu">prometheus</span><span class="kw">:</span></span>
+      <span id="cb31-38"><a href="#cb31-38" aria-hidden="true"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> 127.0.0.1:5000/${STACK}-prometheus</span></span>
+      <span id="cb31-39"><a href="#cb31-39" aria-hidden="true"></a><span class="at">    </span><span class="fu">labels</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">prometheus-job=prometheus</span><span class="kw">]</span></span>
+      <span id="cb31-40"><a href="#cb31-40" aria-hidden="true"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./builds/prometheus/</span></span>
+      <span id="cb31-41"><a href="#cb31-41" aria-hidden="true"></a><span class="at">    </span><span class="fu">deploy</span><span class="kw">:</span></span>
+      <span id="cb31-42"><a href="#cb31-42" aria-hidden="true"></a><span class="at">      </span><span class="fu">replicas</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+      <span id="cb31-43"><a href="#cb31-43" aria-hidden="true"></a><span class="at">      </span><span class="fu">placement</span><span class="kw">:</span></span>
+      <span id="cb31-44"><a href="#cb31-44" aria-hidden="true"></a><span class="at">        </span><span class="fu">constraints</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">node.role == manager</span><span class="kw">]</span></span>
+      <span id="cb31-45"><a href="#cb31-45" aria-hidden="true"></a><span class="at">    </span><span class="fu">networks</span><span class="kw">:</span></span>
+      <span id="cb31-46"><a href="#cb31-46" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> swarm</span></span>
+      <span id="cb31-47"><a href="#cb31-47" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+      <span id="cb31-48"><a href="#cb31-48" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 9090:9090</span></span>
+      <span id="cb31-49"><a href="#cb31-49" aria-hidden="true"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+      <span id="cb31-50"><a href="#cb31-50" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /var/run/docker.sock:/var/run/docker.sock</span></span>
+      <span id="cb31-51"><a href="#cb31-51" aria-hidden="true"></a><span class="co">      # - type: volume</span></span>
+      <span id="cb31-52"><a href="#cb31-52" aria-hidden="true"></a><span class="co">      #   source: prometheus</span></span>
+      <span id="cb31-53"><a href="#cb31-53" aria-hidden="true"></a><span class="co">      #   target: /prometheus</span></span>
+      <span id="cb31-54"><a href="#cb31-54" aria-hidden="true"></a><span class="co">      #   volume:</span></span>
+      <span id="cb31-55"><a href="#cb31-55" aria-hidden="true"></a><span class="co">      #     nocopy: true</span></span>
+      <span id="cb31-56"><a href="#cb31-56" aria-hidden="true"></a><span class="at">    </span><span class="fu">command</span><span class="kw">:</span><span class="at"> --web.enable-lifecycle --config.file=/etc/prometheus/prometheus.yml </span></span>
+      <span id="cb31-57"><a href="#cb31-57" aria-hidden="true"></a><span class="at">  </span><span class="fu">grafana</span><span class="kw">:</span></span>
+      <span id="cb31-58"><a href="#cb31-58" aria-hidden="true"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> 127.0.0.1:5000/${STACK}-grafana</span></span>
+      <span id="cb31-59"><a href="#cb31-59" aria-hidden="true"></a><span class="at">    </span><span class="fu">labels</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">prometheus-job=grafana</span><span class="kw">]</span></span>
+      <span id="cb31-60"><a href="#cb31-60" aria-hidden="true"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./builds/grafana/</span></span>
+      <span id="cb31-61"><a href="#cb31-61" aria-hidden="true"></a><span class="at">    </span><span class="fu">deploy</span><span class="kw">:</span></span>
+      <span id="cb31-62"><a href="#cb31-62" aria-hidden="true"></a><span class="at">      </span><span class="fu">replicas</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+      <span id="cb31-63"><a href="#cb31-63" aria-hidden="true"></a><span class="at">      </span><span class="fu">placement</span><span class="kw">:</span></span>
+      <span id="cb31-64"><a href="#cb31-64" aria-hidden="true"></a><span class="at">        </span><span class="fu">constraints</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">node.role == manager</span><span class="kw">]</span></span>
+      <span id="cb31-65"><a href="#cb31-65" aria-hidden="true"></a><span class="at">    </span><span class="fu">networks</span><span class="kw">:</span></span>
+      <span id="cb31-66"><a href="#cb31-66" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> swarm</span></span>
+      <span id="cb31-67"><a href="#cb31-67" aria-hidden="true"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+      <span id="cb31-68"><a href="#cb31-68" aria-hidden="true"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 3000:3000</span></span>
+      <span id="cb31-69"><a href="#cb31-69" aria-hidden="true"></a><span class="co">    # volumes:</span></span>
+      <span id="cb31-70"><a href="#cb31-70" aria-hidden="true"></a><span class="co">    #   - type: volume</span></span>
+      <span id="cb31-71"><a href="#cb31-71" aria-hidden="true"></a><span class="co">    #     source: grafana</span></span>
+      <span id="cb31-72"><a href="#cb31-72" aria-hidden="true"></a><span class="co">    #     target: /var/lib/grafana</span></span>
+      <span id="cb31-73"><a href="#cb31-73" aria-hidden="true"></a><span class="co">    #     volume:</span></span>
+      <span id="cb31-74"><a href="#cb31-74" aria-hidden="true"></a><span class="co">    #       nocopy: true</span></span></code></pre></div>
       <!-- cSpell:enable -->
       <h4 id="virtualisation">7.6.3. Virtualisation<!-- OK --></h4>
       <p>Utiliser les hyperviseurs de type 1 (bare-metal) ou de type 2 (logiciels) pour la virtualisation apporte les avantages respectifs suivants :</p>
@@ -2534,36 +2602,36 @@
       <p>L’ensemble de la <strong>documentation de ce projet</strong> (dont le present rapport) a été créée à partir de fichiers en Markdown. Les fichiers sont <strong>nativement affiches en HTML sur GitHub et GitLab</strong>, ou bien transformés a l’aide d’un programme comme <a href="https://pandoc.org/">Pandoc</a> (Cf. Exemple d’utilisation <a href="#7621-docker">Docker</a>).</p>
       <p>Voici un exemple de la syntaxe :</p>
       <!-- cSpell:disable -->
-      <div class="sourceCode" id="cb30"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a></span>
-      <span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a><span class="fu"># Heading 1</span></span>
-      <span id="cb30-3"><a href="#cb30-3" aria-hidden="true"></a><span class="fu">## Heading 2</span></span>
-      <span id="cb30-4"><a href="#cb30-4" aria-hidden="true"></a><span class="fu">### Heading 3</span></span>
-      <span id="cb30-5"><a href="#cb30-5" aria-hidden="true"></a></span>
-      <span id="cb30-6"><a href="#cb30-6" aria-hidden="true"></a>---</span>
-      <span id="cb30-7"><a href="#cb30-7" aria-hidden="true"></a></span>
-      <span id="cb30-8"><a href="#cb30-8" aria-hidden="true"></a>**Bold** __Bold__</span>
-      <span id="cb30-9"><a href="#cb30-9" aria-hidden="true"></a>*Italic* _Italic_</span>
-      <span id="cb30-10"><a href="#cb30-10" aria-hidden="true"></a>~~Strikethrough~~</span>
-      <span id="cb30-11"><a href="#cb30-11" aria-hidden="true"></a></span>
-      <span id="cb30-12"><a href="#cb30-12" aria-hidden="true"></a><span class="ss">- </span>Bullet point 1</span>
-      <span id="cb30-13"><a href="#cb30-13" aria-hidden="true"></a><span class="ss">- </span>Bullet point 2</span>
-      <span id="cb30-14"><a href="#cb30-14" aria-hidden="true"></a><span class="ss">    - </span>Sub-bullet point</span>
-      <span id="cb30-15"><a href="#cb30-15" aria-hidden="true"></a><span class="ss">1. </span>Numbered point 1</span>
-      <span id="cb30-16"><a href="#cb30-16" aria-hidden="true"></a><span class="ss">2. </span>Numbered point 2</span>
-      <span id="cb30-17"><a href="#cb30-17" aria-hidden="true"></a></span>
-      <span id="cb30-18"><a href="#cb30-18" aria-hidden="true"></a>Links: <span class="co">[</span><span class="ot">Link text</span><span class="co">](http://linkurl.com)</span></span>
-      <span id="cb30-19"><a href="#cb30-19" aria-hidden="true"></a></span>
-      <span id="cb30-20"><a href="#cb30-20" aria-hidden="true"></a>Images: <span class="al">![Alt text](imageurl.jpg)</span></span>
-      <span id="cb30-21"><a href="#cb30-21" aria-hidden="true"></a></span>
-      <span id="cb30-22"><a href="#cb30-22" aria-hidden="true"></a>| Column 1 | Column 2 | Column 3 |</span>
-      <span id="cb30-23"><a href="#cb30-23" aria-hidden="true"></a>|----------|----------|----------|</span>
-      <span id="cb30-24"><a href="#cb30-24" aria-hidden="true"></a>| Row 1, Column 1 | Row 1, Column 2 | Row 1, Column 3 |</span>
-      <span id="cb30-25"><a href="#cb30-25" aria-hidden="true"></a>| Row 2, Column 1 | Row 2, Column 2 | Row 2, Column 3 |</span></code></pre></div>
+      <div class="sourceCode" id="cb32"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a></span>
+      <span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a><span class="fu"># Heading 1</span></span>
+      <span id="cb32-3"><a href="#cb32-3" aria-hidden="true"></a><span class="fu">## Heading 2</span></span>
+      <span id="cb32-4"><a href="#cb32-4" aria-hidden="true"></a><span class="fu">### Heading 3</span></span>
+      <span id="cb32-5"><a href="#cb32-5" aria-hidden="true"></a></span>
+      <span id="cb32-6"><a href="#cb32-6" aria-hidden="true"></a>---</span>
+      <span id="cb32-7"><a href="#cb32-7" aria-hidden="true"></a></span>
+      <span id="cb32-8"><a href="#cb32-8" aria-hidden="true"></a>**Bold** __Bold__</span>
+      <span id="cb32-9"><a href="#cb32-9" aria-hidden="true"></a>*Italic* _Italic_</span>
+      <span id="cb32-10"><a href="#cb32-10" aria-hidden="true"></a>~~Strikethrough~~</span>
+      <span id="cb32-11"><a href="#cb32-11" aria-hidden="true"></a></span>
+      <span id="cb32-12"><a href="#cb32-12" aria-hidden="true"></a><span class="ss">- </span>Bullet point 1</span>
+      <span id="cb32-13"><a href="#cb32-13" aria-hidden="true"></a><span class="ss">- </span>Bullet point 2</span>
+      <span id="cb32-14"><a href="#cb32-14" aria-hidden="true"></a><span class="ss">    - </span>Sub-bullet point</span>
+      <span id="cb32-15"><a href="#cb32-15" aria-hidden="true"></a><span class="ss">1. </span>Numbered point 1</span>
+      <span id="cb32-16"><a href="#cb32-16" aria-hidden="true"></a><span class="ss">2. </span>Numbered point 2</span>
+      <span id="cb32-17"><a href="#cb32-17" aria-hidden="true"></a></span>
+      <span id="cb32-18"><a href="#cb32-18" aria-hidden="true"></a>Links: <span class="co">[</span><span class="ot">Link text</span><span class="co">](http://linkurl.com)</span></span>
+      <span id="cb32-19"><a href="#cb32-19" aria-hidden="true"></a></span>
+      <span id="cb32-20"><a href="#cb32-20" aria-hidden="true"></a>Images: <span class="al">![Alt text](imageurl.jpg)</span></span>
+      <span id="cb32-21"><a href="#cb32-21" aria-hidden="true"></a></span>
+      <span id="cb32-22"><a href="#cb32-22" aria-hidden="true"></a>| Column 1 | Column 2 | Column 3 |</span>
+      <span id="cb32-23"><a href="#cb32-23" aria-hidden="true"></a>|----------|----------|----------|</span>
+      <span id="cb32-24"><a href="#cb32-24" aria-hidden="true"></a>| Row 1, Column 1 | Row 1, Column 2 | Row 1, Column 3 |</span>
+      <span id="cb32-25"><a href="#cb32-25" aria-hidden="true"></a>| Row 2, Column 1 | Row 2, Column 2 | Row 2, Column 3 |</span></code></pre></div>
       <!-- cSpell:enable -->
       <h4 id="javadoc">7.7.2. Javadoc</h4>
       <p>Javadoc est un outil développé par Oracle, permettant de <strong>créer une documentation d’API en format HTML</strong> depuis les commentaires présents dans un code source en Java. C’est le standard industriel pour la documentation des classes Java.</p>
       <p>La plupart des IDE aident a la génération et au formatage des blocs de commentaires Javadoc. Ces commentaires permettent également aux IDE modernes d’apporter a l’utilisateur des informations contextuelles (definition de classe, de méthode, paramètres d’entrée et valeur de retour attendue).</p>
-      <div class="sourceCode" id="cb31"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
+      <div class="sourceCode" id="cb33"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
       <h4 id="plantuml-1">7.7.3. PlantUML<!-- EX --></h4>
       <p>PlantUML est un <strong>outil libre</strong> permettant de <strong>créer des diagrammes UML a partir de fichier texte</strong>.</p>
       <p>Du fait du format texte des fichiers utilises par PlantUML, cet outil <strong>s’intègre parfaitement dans un pipeline</strong> d’integration et de d2ploiement.</p>
@@ -2578,10 +2646,10 @@
 
       </div>
       <h2 id="réalisations">8. Réalisations</h2>
-      <div class="sourceCode" id="cb33"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a><span class="ss">  - </span>Description des features réalisées</span>
-      <span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a><span class="ss">  - </span>Description des fonctions implémentées</span>
-      <span id="cb33-3"><a href="#cb33-3" aria-hidden="true"></a><span class="ss">  - </span>Description des actions réalisées sur la BDD</span>
-      <span id="cb33-4"><a href="#cb33-4" aria-hidden="true"></a><span class="ss">  - </span>Description des tests unitaires/EtE (EndtoEnd)</span></code></pre></div>
+      <div class="sourceCode" id="cb35"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a><span class="ss">  - </span>Description des features réalisées</span>
+      <span id="cb35-2"><a href="#cb35-2" aria-hidden="true"></a><span class="ss">  - </span>Description des fonctions implémentées</span>
+      <span id="cb35-3"><a href="#cb35-3" aria-hidden="true"></a><span class="ss">  - </span>Description des actions réalisées sur la BDD</span>
+      <span id="cb35-4"><a href="#cb35-4" aria-hidden="true"></a><span class="ss">  - </span>Description des tests unitaires/EtE (EndtoEnd)</span></code></pre></div>
       <h3 id="description-des-features-réalisées">8.1. Description des features réalisées</h3>
       <h3 id="description-des-fonctions-implémentées">8.2. Description des fonctions implémentées</h3>
       <h3 id="description-des-actions-réalisées-sur-la-bdd">8.3. Description des actions réalisées sur la BDD</h3>
@@ -2597,16 +2665,16 @@
 
       </div>
       <h2 id="présentation-du-jeu-dessai-le-plus-représentatif">9. Présentation du jeu d’essai le plus représentatif</h2>
-      <div class="sourceCode" id="cb34"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a><span class="ss">- </span>Description des scénarios désirées sur la fonctionnalité et vérification de la conformité du résultat</span>
-      <span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a><span class="ss">- </span>Le jeu d&#39;essai permet de contrôler la réaction du code pour tous les types de données reçus par les méthodes et fonctions, qu&#39;ils soient valides ou non. Pour la fonctionnalité la plus complète de votre application, expliquez &quot;Données en entrée -&gt; données attendues -&gt; Données obtenues&quot;</span></code></pre></div>
+      <div class="sourceCode" id="cb36"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true"></a><span class="ss">- </span>Description des scénarios désirées sur la fonctionnalité et vérification de la conformité du résultat</span>
+      <span id="cb36-2"><a href="#cb36-2" aria-hidden="true"></a><span class="ss">- </span>Le jeu d&#39;essai permet de contrôler la réaction du code pour tous les types de données reçus par les méthodes et fonctions, qu&#39;ils soient valides ou non. Pour la fonctionnalité la plus complète de votre application, expliquez &quot;Données en entrée -&gt; données attendues -&gt; Données obtenues&quot;</span></code></pre></div>
       <div style="page-break-after: always;">
 
       </div>
       <h2 id="veille-sur-les-vulnérabilités-de-sécurité">10. Veille sur les vulnérabilités de sécurité</h2>
-      <div class="sourceCode" id="cb35"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a><span class="ss">- </span>Description de la veille, effectuée par le candidat pendant le projet, sur les vulnérabilités de sécurité</span>
-      <span id="cb35-2"><a href="#cb35-2" aria-hidden="true"></a><span class="ss">- </span>Prise en compte des conventions liées à la sécurité imposée par la structure d&#39;accueil du stagiaire</span>
-      <span id="cb35-3"><a href="#cb35-3" aria-hidden="true"></a><span class="ss">- </span>Mise à jour éventuelle des librairies/frameworks</span>
-      <span id="cb35-4"><a href="#cb35-4" aria-hidden="true"></a><span class="ss">- </span>Auto-formation aux failles de sécurité déclarées sur telle ou telle technologie (lecture des documentations officielles, prise en compte des mesures préventives, mise en place des verrous recommandés)</span></code></pre></div>
+      <div class="sourceCode" id="cb37"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true"></a><span class="ss">- </span>Description de la veille, effectuée par le candidat pendant le projet, sur les vulnérabilités de sécurité</span>
+      <span id="cb37-2"><a href="#cb37-2" aria-hidden="true"></a><span class="ss">- </span>Prise en compte des conventions liées à la sécurité imposée par la structure d&#39;accueil du stagiaire</span>
+      <span id="cb37-3"><a href="#cb37-3" aria-hidden="true"></a><span class="ss">- </span>Mise à jour éventuelle des librairies/frameworks</span>
+      <span id="cb37-4"><a href="#cb37-4" aria-hidden="true"></a><span class="ss">- </span>Auto-formation aux failles de sécurité déclarées sur telle ou telle technologie (lecture des documentations officielles, prise en compte des mesures préventives, mise en place des verrous recommandés)</span></code></pre></div>
       <h3 id="sql-injection">10.1. SQL Injection</h3>
       <p>[https://www.journaldev.com/34028/sql-injection-in-java]</p>
       <p>[https://sqlmap.org/] [https://github.com/sqlmapproject/sqlmap]</p>

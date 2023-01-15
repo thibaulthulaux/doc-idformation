@@ -1733,9 +1733,9 @@ L'idée de YAML est que presque toute donnée peut être représentée par combi
 
 Pour un exemple de fichier YAML, merci de vous référer à [Docker Compose](#7622-docker-compose) ou [Docker Swarm](#7623-docker-swarm).
 
-### 7.2. Frameworks
+### 7.2. Frameworks<!-- OK -->
 
-#### 7.2.1. JAAS<!-- EX -->
+#### 7.2.1. JAAS<!-- OK -->
 
 **Java Authentication And Authorization Service** (JAAS) est un **framework de sécurité de bas niveau** de la plateforme Java SE. En améliorant l'architecture de la sécurité de Java, ce framework ajoute la capacité de forcer un contrôle d'accès sur l'utilisateur qui exécute le code.
 
@@ -1746,7 +1746,7 @@ Il est utilisé pour deux raisons:
 
 L'intégration du JAAS à l'application a été réalisé de la manière suivante :
 
-- Création de deux classes java `UserPrincipal.java` et `RolePrincipal.java`, définissant les principaux :
+- **Création de deux classes** java `UserPrincipal.java` et `RolePrincipal.java`, définissant les principaux :
 
 <!-- cSpell:disable -->
 ```java
@@ -1826,7 +1826,7 @@ public class RolePrincipal implements Principal {
 ```
 <!-- cSpell:enable -->
 
-- Implémentation de la méthode `login()` de la classe `JAASLoginModule.java` :
+- **Implémentation** de la méthode `login()` de la classe `JAASLoginModule.java` :
 
 <!-- cSpell:disable -->
 ```java
@@ -1884,7 +1884,7 @@ public class RolePrincipal implements Principal {
 ```
 <!-- cSpell:enable -->
 
-- Création d'un fichier `context.xml` qui déclenche et configure la couche JAAS :
+- **Configurer le contexte** de la couche JAAS avec le fichier `context.xml` :
 
 <!-- cSpell:disable -->
 ```xml
@@ -1900,11 +1900,24 @@ public class RolePrincipal implements Principal {
 ```
 <!-- cSpell:enable -->
 
-- Ajout des paramètres supplémentaires dans `web.xml` qui configure la sécurité et les autorisations dans l'application (extraits) :
+- Ajout du fichier `jaas.config` sur le serveur Tomcat :
+
+<!-- cSpell:disable -->
+```config
+
+webapp { // appName is defined in webapp/META-INF/context.xml
+  app.auth.JAASLoginModule required debug=true;
+};
+
+```
+<!-- cSpell:enable -->
+
+- Ajout des paramètres supplémentaires au fichier `web.xml` pour **configurer la sécurité et les autorisations dans l'application** (extraits) :
 
 <!-- cSpell:disable -->
 ```xml
 
+...
 <!-- ............................................................... PUBLIC -->
   <security-constraint>
     <web-resource-collection>
@@ -1949,19 +1962,81 @@ public class RolePrincipal implements Principal {
   </login-config>
 ...
 
+```
+<!-- cSpell:enable -->
+
+- **Configurer le serveur** pour démarrer en intégrant le JAAS. Ici on ajoute l'option en passant une variable d’environnement au Tomcat :
+
+<!-- cSpell:disable -->
+```shell
+
+$JAVA_OPTS "-Djava.security.auth.login.config=$CATALINA_HOME/conf/jaas.config"
 
 ```
 <!-- cSpell:enable -->
 
-#### 7.2.2. reveal.js<!-- EX -->
+#### 7.2.2. reveal.js<!-- OK -->
 
-reveal.js est un **framework de présentation HTML** opensource. Il permet de réaliser facilement, a l'aide de n'importe quel navigateur web, des présentations de qualité.
+reveal.js est un **framework de présentation HTML** opensource. Il permet de réaliser facilement, à l'aide de n'importe quel navigateur web, des présentations de qualité.
 
 Le framework dispose de nombreuses fonctions dont les vues verticales, le support du Markdown, l'animation automatique, l'export en PDF, les notes de présentation. Il dispose aussi d'une API étendue.
 
+Dans le cadre de ce projet, les éléments de présentations utilisent le framework reveal.js.
+
+Dans l'exemple suivant on utilise un fichier `README.md` en **Markdown** pour créer la **présentation**. Les attributs de la section permettent de détecter les enchaînements de ligne vide comme délimiteur de diapositives :
+
 <!-- cSpell:disable -->
 ```html
-- addexemple framework de presentation
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>reveal.js - The HTML Presentation Framework</title>
+    <meta name="description" content="short description">
+    <meta name="author" content="Thibault HULAUX">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section data-markdown="README.md"
+          data-separator="^\n\n\n"
+          data-separator-vertical="^\n\n"
+          data-separator-notes="^Note:">
+        </section>
+      </div>
+    </div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // Also available as an ES module, see:
+      // https://revealjs.com/initialization/
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+        });
+    </script>
+  </body>
+</html>
+
+
 ```
 <!-- cSpell:enable -->
 

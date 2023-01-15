@@ -1013,14 +1013,138 @@
       <p>En somme, Java, JSP, JSTL et SQL sont des <strong>technologies éprouvées</strong> qui permettent de construire des applications web <strong>robustes</strong>, <strong>fiables</strong>, <strong>performantes</strong>, et <strong>facile à maintenir</strong>.</p>
       <p>Java permet de gérer les logiques métiers, JSP et JSTL de générer les pages web dynamiques, et SQL de gérer les données de l’application.</p>
       <p>Ces technologies sont particulièrement <strong>adaptées à une architecture MVC</strong>, et permettent de faciliter la gestion des données et la génération de pages web dynamiques.</p>
-      <h5 id="java">7.1.2.1. Java<!-- EX --></h5>
+      <h5 id="java">7.1.2.1. Java<!-- OK --></h5>
       <p>Java est un <strong>langage de programmation orienté objet</strong> de haut niveau, basé sur des classes, conçu pour avoir le moins de dépendances d’implémentation possible.</p>
       <p>Une particularité de Java est que les logiciels écrits dans ce langage sont <strong>compilés vers une représentation binaire</strong> intermédiaire qui peut être <strong>exécutée dans une machine virtuelle Java</strong> (JVM) en faisant abstraction du système d’exploitation.</p>
       <p>Java permet de développer des applications client-serveur. Côté client, les applets sont à l’origine de la notoriété du langage. C’est surtout côté serveur que Java s’est imposé dans le milieu de l’entreprise grâce aux <strong>servlets</strong>, le pendant serveur des applets, et plus récemment les <strong>JSP</strong> (JavaServer Pages) qui peuvent se substituer à PHP, ASP et ASP.NET.</p>
-      <div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>- addexemple</span></code></pre></div>
+      <p>Voici en exemple le ficher <code>CategoryInfo.java</code>, constituant une partie le code du servlet exécuté le serveur lors du traitement d’une requête sur l’url <code>/CategoryInfo</code> :</p>
+      <!-- cSpell:disable -->
+      <div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a></span>
+      <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="kw">package</span><span class="im"> servlet.category;</span></span>
+      <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a></span>
+      <span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="kw">import</span><span class="im"> java.io.IOException;</span></span>
+      <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="kw">import</span><span class="im"> java.sql.SQLException;</span></span>
+      <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="kw">import</span><span class="im"> java.util.ArrayList;</span></span>
+      <span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a><span class="kw">import</span><span class="im"> java.util.List;</span></span>
+      <span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a><span class="kw">import</span><span class="im"> java.util.logging.Level;</span></span>
+      <span id="cb9-9"><a href="#cb9-9" aria-hidden="true"></a><span class="kw">import</span><span class="im"> java.util.logging.Logger;</span></span>
+      <span id="cb9-10"><a href="#cb9-10" aria-hidden="true"></a><span class="kw">import</span><span class="im"> javax.servlet.http.HttpServlet;</span></span>
+      <span id="cb9-11"><a href="#cb9-11" aria-hidden="true"></a><span class="kw">import</span><span class="im"> javax.servlet.http.HttpServletRequest;</span></span>
+      <span id="cb9-12"><a href="#cb9-12" aria-hidden="true"></a><span class="kw">import</span><span class="im"> javax.servlet.http.HttpServletResponse;</span></span>
+      <span id="cb9-13"><a href="#cb9-13" aria-hidden="true"></a><span class="kw">import</span><span class="im"> javax.servlet.http.HttpSession;</span></span>
+      <span id="cb9-14"><a href="#cb9-14" aria-hidden="true"></a><span class="kw">import</span><span class="im"> javax.servlet.ServletException;</span></span>
+      <span id="cb9-15"><a href="#cb9-15" aria-hidden="true"></a></span>
+      <span id="cb9-16"><a href="#cb9-16" aria-hidden="true"></a><span class="kw">import</span><span class="im"> app.jdbc.dao.CategoryDAO;</span></span>
+      <span id="cb9-17"><a href="#cb9-17" aria-hidden="true"></a><span class="kw">import</span><span class="im"> app.jdbc.dao.ProductDAO;</span></span>
+      <span id="cb9-18"><a href="#cb9-18" aria-hidden="true"></a><span class="kw">import</span><span class="im"> app.model.Category;</span></span>
+      <span id="cb9-19"><a href="#cb9-19" aria-hidden="true"></a><span class="kw">import</span><span class="im"> app.model.Product;</span></span>
+      <span id="cb9-20"><a href="#cb9-20" aria-hidden="true"></a><span class="kw">import</span><span class="im"> app.model.User;</span></span>
+      <span id="cb9-21"><a href="#cb9-21" aria-hidden="true"></a></span>
+      <span id="cb9-22"><a href="#cb9-22" aria-hidden="true"></a><span class="kw">public</span> <span class="kw">class</span> CategoryInfo <span class="kw">extends</span> HttpServlet {</span>
+      <span id="cb9-23"><a href="#cb9-23" aria-hidden="true"></a></span>
+      <span id="cb9-24"><a href="#cb9-24" aria-hidden="true"></a>  <span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="dt">long</span> serialVersionUID = <span class="dv">1L</span>;</span>
+      <span id="cb9-25"><a href="#cb9-25" aria-hidden="true"></a>  <span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="bu">Logger</span> log = <span class="bu">Logger</span>.<span class="fu">getLogger</span>(<span class="bu">Thread</span>.<span class="fu">currentThread</span>().<span class="fu">getStackTrace</span>()[<span class="dv">1</span>].<span class="fu">getClassName</span>());</span>
+      <span id="cb9-26"><a href="#cb9-26" aria-hidden="true"></a></span>
+      <span id="cb9-27"><a href="#cb9-27" aria-hidden="true"></a>  <span class="kw">private</span> Category category = <span class="kw">new</span> <span class="fu">Category</span>();</span>
+      <span id="cb9-28"><a href="#cb9-28" aria-hidden="true"></a></span>
+      <span id="cb9-29"><a href="#cb9-29" aria-hidden="true"></a>  <span class="co">/*</span></span>
+      <span id="cb9-30"><a href="#cb9-30" aria-hidden="true"></a><span class="co">   * (non-Javadoc)</span></span>
+      <span id="cb9-31"><a href="#cb9-31" aria-hidden="true"></a><span class="co">   * </span></span>
+      <span id="cb9-32"><a href="#cb9-32" aria-hidden="true"></a><span class="co">   * @see javax.servlet.GenericServlet#init()</span></span>
+      <span id="cb9-33"><a href="#cb9-33" aria-hidden="true"></a><span class="co">   */</span></span>
+      <span id="cb9-34"><a href="#cb9-34" aria-hidden="true"></a>  <span class="at">@Override</span></span>
+      <span id="cb9-35"><a href="#cb9-35" aria-hidden="true"></a>  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">init</span>() <span class="kw">throws</span> ServletException {</span>
+      <span id="cb9-36"><a href="#cb9-36" aria-hidden="true"></a>    <span class="co">// Do initialization</span></span>
+      <span id="cb9-37"><a href="#cb9-37" aria-hidden="true"></a>    log.<span class="fu">info</span>(<span class="st">&quot;Done&quot;</span>);</span>
+      <span id="cb9-38"><a href="#cb9-38" aria-hidden="true"></a>  }</span>
+      <span id="cb9-39"><a href="#cb9-39" aria-hidden="true"></a></span>
+      <span id="cb9-40"><a href="#cb9-40" aria-hidden="true"></a>  <span class="co">/*</span></span>
+      <span id="cb9-41"><a href="#cb9-41" aria-hidden="true"></a><span class="co">   * (non-Javadoc)</span></span>
+      <span id="cb9-42"><a href="#cb9-42" aria-hidden="true"></a><span class="co">   * </span></span>
+      <span id="cb9-43"><a href="#cb9-43" aria-hidden="true"></a><span class="co">   * @see</span></span>
+      <span id="cb9-44"><a href="#cb9-44" aria-hidden="true"></a><span class="co">   * javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest,</span></span>
+      <span id="cb9-45"><a href="#cb9-45" aria-hidden="true"></a><span class="co">   * javax.servlet.http.HttpServletResponse)</span></span>
+      <span id="cb9-46"><a href="#cb9-46" aria-hidden="true"></a><span class="co">   */</span></span>
+      <span id="cb9-47"><a href="#cb9-47" aria-hidden="true"></a>  <span class="at">@Override</span></span>
+      <span id="cb9-48"><a href="#cb9-48" aria-hidden="true"></a>  <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">doGet</span>(HttpServletRequest request, HttpServletResponse response)</span>
+      <span id="cb9-49"><a href="#cb9-49" aria-hidden="true"></a>      <span class="kw">throws</span> ServletException, <span class="bu">IOException</span> {</span>
+      <span id="cb9-50"><a href="#cb9-50" aria-hidden="true"></a></span>
+      <span id="cb9-51"><a href="#cb9-51" aria-hidden="true"></a>    <span class="co">// Retrieve session</span></span>
+      <span id="cb9-52"><a href="#cb9-52" aria-hidden="true"></a>    HttpSession session = request.<span class="fu">getSession</span>(<span class="kw">false</span>);</span>
+      <span id="cb9-53"><a href="#cb9-53" aria-hidden="true"></a></span>
+      <span id="cb9-54"><a href="#cb9-54" aria-hidden="true"></a>    <span class="co">// Retrieve user from session</span></span>
+      <span id="cb9-55"><a href="#cb9-55" aria-hidden="true"></a>    User user = (User) session.<span class="fu">getAttribute</span>(<span class="st">&quot;user&quot;</span>);</span>
+      <span id="cb9-56"><a href="#cb9-56" aria-hidden="true"></a></span>
+      <span id="cb9-57"><a href="#cb9-57" aria-hidden="true"></a>    <span class="co">// Retrieve category from request parameter</span></span>
+      <span id="cb9-58"><a href="#cb9-58" aria-hidden="true"></a>    <span class="kw">try</span> (CategoryDAO DAO = <span class="kw">new</span> <span class="fu">CategoryDAO</span>();) {</span>
+      <span id="cb9-59"><a href="#cb9-59" aria-hidden="true"></a>      <span class="dt">int</span> id = <span class="bu">Integer</span>.<span class="fu">parseInt</span>(request.<span class="fu">getParameter</span>(<span class="st">&quot;categoryId&quot;</span>));</span>
+      <span id="cb9-60"><a href="#cb9-60" aria-hidden="true"></a>      category = DAO.<span class="fu">getCategoryById</span>(id);</span>
+      <span id="cb9-61"><a href="#cb9-61" aria-hidden="true"></a>    } <span class="kw">catch</span> (<span class="bu">SQLException</span> e) {</span>
+      <span id="cb9-62"><a href="#cb9-62" aria-hidden="true"></a>      <span class="co">// </span><span class="al">TODO</span><span class="co"> Auto-generated catch block</span></span>
+      <span id="cb9-63"><a href="#cb9-63" aria-hidden="true"></a>      log.<span class="fu">log</span>(<span class="bu">Level</span>.<span class="fu">SEVERE</span>, <span class="st">&quot;Error getting category&quot;</span>, e);</span>
+      <span id="cb9-64"><a href="#cb9-64" aria-hidden="true"></a>      e.<span class="fu">printStackTrace</span>();</span>
+      <span id="cb9-65"><a href="#cb9-65" aria-hidden="true"></a>      category = <span class="kw">null</span>;</span>
+      <span id="cb9-66"><a href="#cb9-66" aria-hidden="true"></a>    } <span class="kw">catch</span> (<span class="bu">Exception</span> e) { <span class="co">// Catch block for java.lang.AutoCloseable#close() throw.</span></span>
+      <span id="cb9-67"><a href="#cb9-67" aria-hidden="true"></a>      log.<span class="fu">log</span>(<span class="bu">Level</span>.<span class="fu">SEVERE</span>, <span class="kw">null</span>, e.<span class="fu">getMessage</span>());</span>
+      <span id="cb9-68"><a href="#cb9-68" aria-hidden="true"></a>      e.<span class="fu">printStackTrace</span>();</span>
+      <span id="cb9-69"><a href="#cb9-69" aria-hidden="true"></a>    }</span>
+      <span id="cb9-70"><a href="#cb9-70" aria-hidden="true"></a></span>
+      <span id="cb9-71"><a href="#cb9-71" aria-hidden="true"></a>    <span class="co">// Retrieve list of products</span></span>
+      <span id="cb9-72"><a href="#cb9-72" aria-hidden="true"></a>    <span class="bu">List</span>&lt;Product&gt; productList = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;&gt;();</span>
+      <span id="cb9-73"><a href="#cb9-73" aria-hidden="true"></a>    <span class="bu">Integer</span> categoryId = <span class="bu">Integer</span>.<span class="fu">parseInt</span>(request.<span class="fu">getParameter</span>(<span class="st">&quot;categoryId&quot;</span>));</span>
+      <span id="cb9-74"><a href="#cb9-74" aria-hidden="true"></a>    <span class="kw">try</span> (ProductDAO DAO = <span class="kw">new</span> <span class="fu">ProductDAO</span>();) {</span>
+      <span id="cb9-75"><a href="#cb9-75" aria-hidden="true"></a>      productList = DAO.<span class="fu">getProductsByCategory</span>(user.<span class="fu">getId</span>(), categoryId);</span>
+      <span id="cb9-76"><a href="#cb9-76" aria-hidden="true"></a>    } <span class="kw">catch</span> (<span class="bu">SQLException</span> e) {</span>
+      <span id="cb9-77"><a href="#cb9-77" aria-hidden="true"></a>      log.<span class="fu">log</span>(<span class="bu">Level</span>.<span class="fu">SEVERE</span>, <span class="st">&quot;Error getting products&quot;</span>, e);</span>
+      <span id="cb9-78"><a href="#cb9-78" aria-hidden="true"></a>      e.<span class="fu">printStackTrace</span>();</span>
+      <span id="cb9-79"><a href="#cb9-79" aria-hidden="true"></a>      productList = <span class="kw">null</span>;</span>
+      <span id="cb9-80"><a href="#cb9-80" aria-hidden="true"></a>    } <span class="kw">catch</span> (<span class="bu">Exception</span> e) {</span>
+      <span id="cb9-81"><a href="#cb9-81" aria-hidden="true"></a>      <span class="co">// </span><span class="al">TODO</span><span class="co"> Auto-generated catch block for java.lang.AutoCloseable#close() throw.</span></span>
+      <span id="cb9-82"><a href="#cb9-82" aria-hidden="true"></a>      log.<span class="fu">log</span>(<span class="bu">Level</span>.<span class="fu">SEVERE</span>, <span class="kw">null</span>, e.<span class="fu">getMessage</span>());</span>
+      <span id="cb9-83"><a href="#cb9-83" aria-hidden="true"></a>      e.<span class="fu">printStackTrace</span>();</span>
+      <span id="cb9-84"><a href="#cb9-84" aria-hidden="true"></a>    }</span>
+      <span id="cb9-85"><a href="#cb9-85" aria-hidden="true"></a></span>
+      <span id="cb9-86"><a href="#cb9-86" aria-hidden="true"></a>    <span class="co">// Set attributes to request</span></span>
+      <span id="cb9-87"><a href="#cb9-87" aria-hidden="true"></a>    request.<span class="fu">setAttribute</span>(<span class="st">&quot;productList&quot;</span>, productList);</span>
+      <span id="cb9-88"><a href="#cb9-88" aria-hidden="true"></a>    request.<span class="fu">setAttribute</span>(<span class="st">&quot;category&quot;</span>, category);</span>
+      <span id="cb9-89"><a href="#cb9-89" aria-hidden="true"></a></span>
+      <span id="cb9-90"><a href="#cb9-90" aria-hidden="true"></a>    <span class="co">// Dispatch view and forward request</span></span>
+      <span id="cb9-91"><a href="#cb9-91" aria-hidden="true"></a>    request.<span class="fu">getRequestDispatcher</span>(<span class="st">&quot;/WEB-INF/views/category/CategoryInfo.jsp&quot;</span>).<span class="fu">forward</span>(request, response);</span>
+      <span id="cb9-92"><a href="#cb9-92" aria-hidden="true"></a></span>
+      <span id="cb9-93"><a href="#cb9-93" aria-hidden="true"></a>    log.<span class="fu">info</span>(<span class="st">&quot;Done&quot;</span>);</span>
+      <span id="cb9-94"><a href="#cb9-94" aria-hidden="true"></a>  }</span>
+      <span id="cb9-95"><a href="#cb9-95" aria-hidden="true"></a></span>
+      <span id="cb9-96"><a href="#cb9-96" aria-hidden="true"></a>  <span class="co">/*</span></span>
+      <span id="cb9-97"><a href="#cb9-97" aria-hidden="true"></a><span class="co">   * (non-Javadoc)</span></span>
+      <span id="cb9-98"><a href="#cb9-98" aria-hidden="true"></a><span class="co">   * </span></span>
+      <span id="cb9-99"><a href="#cb9-99" aria-hidden="true"></a><span class="co">   * @see</span></span>
+      <span id="cb9-100"><a href="#cb9-100" aria-hidden="true"></a><span class="co">   * javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest,</span></span>
+      <span id="cb9-101"><a href="#cb9-101" aria-hidden="true"></a><span class="co">   * javax.servlet.http.HttpServletResponse)</span></span>
+      <span id="cb9-102"><a href="#cb9-102" aria-hidden="true"></a><span class="co">   */</span></span>
+      <span id="cb9-103"><a href="#cb9-103" aria-hidden="true"></a>  <span class="at">@Override</span></span>
+      <span id="cb9-104"><a href="#cb9-104" aria-hidden="true"></a>  <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">doPost</span>(HttpServletRequest request, HttpServletResponse response)</span>
+      <span id="cb9-105"><a href="#cb9-105" aria-hidden="true"></a>      <span class="kw">throws</span> ServletException, <span class="bu">IOException</span> {</span>
+      <span id="cb9-106"><a href="#cb9-106" aria-hidden="true"></a></span>
+      <span id="cb9-107"><a href="#cb9-107" aria-hidden="true"></a>    <span class="co">// Do post</span></span>
+      <span id="cb9-108"><a href="#cb9-108" aria-hidden="true"></a>    log.<span class="fu">info</span>(<span class="st">&quot;Done&quot;</span>);</span>
+      <span id="cb9-109"><a href="#cb9-109" aria-hidden="true"></a>  }</span>
+      <span id="cb9-110"><a href="#cb9-110" aria-hidden="true"></a></span>
+      <span id="cb9-111"><a href="#cb9-111" aria-hidden="true"></a>  <span class="co">/*</span></span>
+      <span id="cb9-112"><a href="#cb9-112" aria-hidden="true"></a><span class="co">   * (non-Javadoc)</span></span>
+      <span id="cb9-113"><a href="#cb9-113" aria-hidden="true"></a><span class="co">   * </span></span>
+      <span id="cb9-114"><a href="#cb9-114" aria-hidden="true"></a><span class="co">   * @see javax.servlet.GenericServlet#destroy()</span></span>
+      <span id="cb9-115"><a href="#cb9-115" aria-hidden="true"></a><span class="co">   */</span></span>
+      <span id="cb9-116"><a href="#cb9-116" aria-hidden="true"></a>  <span class="at">@Override</span></span>
+      <span id="cb9-117"><a href="#cb9-117" aria-hidden="true"></a>  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">destroy</span>() {</span>
+      <span id="cb9-118"><a href="#cb9-118" aria-hidden="true"></a>    <span class="co">// Do clean up</span></span>
+      <span id="cb9-119"><a href="#cb9-119" aria-hidden="true"></a>    log.<span class="fu">info</span>(<span class="st">&quot;Done&quot;</span>);</span>
+      <span id="cb9-120"><a href="#cb9-120" aria-hidden="true"></a>  }</span>
+      <span id="cb9-121"><a href="#cb9-121" aria-hidden="true"></a></span>
+      <span id="cb9-122"><a href="#cb9-122" aria-hidden="true"></a>}</span></code></pre></div>
+      <!-- cSpell:enable -->
       <h5 id="jsp">7.1.2.2. JSP<!-- OK --></h5>
       <p><strong>Jakarta Server Pages</strong> (anciennement JavaServer Pages) ou JSP est une collection de technologies qui permet aux développeurs de <strong>créer dynamiquement du code HTML</strong>, XML, SOAP ou tout autre type de page web. JSP est semblable a PHP ou ASP, mais pour le langage de programmation Java.</p>
-      <p>Voici en exemple le fichier <code>CategoryInfo.jsp</code>, fichier de vue de notre modèle, qui est utilisé pour produire le code de la page HTML renvoyée à l’utilisateur.</p>
+      <p>Voici en exemple le fichier <code>CategoryInfo.jsp</code> (utilisé comme fichier de vue par <code>CategoryInfo.java</code> de notre exemple précédent), qui est utilisé pour produire le code de la page HTML renvoyée à l’utilisateur.</p>
       <p>Veuillez également noter l’utilisation de la balise <code>&lt;jsp:include&gt;</code> afin d’agréger les différents éléments constitutifs de la page complète :</p>
       <!-- cSpell:disable -->
       <div class="sourceCode" id="cb10"><pre class="sourceCode jsp"><code class="sourceCode jsp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a></span>
@@ -1204,7 +1328,7 @@
       <span id="cb13-27"><a href="#cb13-27" aria-hidden="true"></a><span class="co"># Set root password.</span></span>
       <span id="cb13-28"><a href="#cb13-28" aria-hidden="true"></a><span class="kw">RUN</span> echo <span class="st">&#39;root:root&#39;</span> | chpasswd</span>
       <span id="cb13-29"><a href="#cb13-29" aria-hidden="true"></a></span>
-      <span id="cb13-30"><a href="#cb13-30" aria-hidden="true"></a><span class="co"># Copy default webapps</span></span>
+      <span id="cb13-30"><a href="#cb13-30" aria-hidden="true"></a><span class="co"># Copy default webapps (avoid in production)</span></span>
       <span id="cb13-31"><a href="#cb13-31" aria-hidden="true"></a><span class="co"># RUN cp -rv webapps.dist/* webapps/</span></span>
       <span id="cb13-32"><a href="#cb13-32" aria-hidden="true"></a></span>
       <span id="cb13-33"><a href="#cb13-33" aria-hidden="true"></a><span class="co"># Copying and running start script.</span></span>
@@ -1221,7 +1345,7 @@
       <li>Création et configuration d’un docker swarm</li>
       <li>Déploiement de stack docker (build, registry, orchestration)</li>
       </ul>
-      <p>Voici des extraits représentatifs du fichier <code>swarm.py</code>. Veuillez noter que le script est encore en développement (absence de DocStrings, manque de structures de contrôle…) :</p>
+      <p>Voici des extraits représentatifs du fichier <code>swarm.py</code>. Veuillez noter que le script est encore en développement (absence de DocStrings, manque de structures de contrôle…), mais qu’il gère le logging et l’interpretation de la ligne de commande :</p>
       <!-- cSpell:disable -->
       <div class="sourceCode" id="cb14"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a></span>
       <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="co">#!/usr/bin/env python3</span></span>
@@ -1629,7 +1753,7 @@
       <h5 id="xml">7.1.3.4. XML<!-- OK --></h5>
       <p>Le <strong>langage de balisage extensible</strong>, abrégé XML de l’anglais Extensible Markup Language est un <strong>métalangage de balisage générique</strong>, pour stocker, transmettre et reconstruire des données arbitraires. Il définit un jeux de règles pour construire des documents dans un format lisible facilement par l’homme ou la machine.</p>
       <p>L’objectif initial du XML est de <strong>faciliter l’échange automatisé</strong> de contenus complexes (arbres, texte enrichi, etc.) entre systèmes d’informations hétérogènes (interopérabilité).</p>
-      <p>Voici en exemple des extraits de <code>web.xml</code>, fichier XML utilisé par le serveur Tomcat pour configurer l’application, dans lequel on peut voir des éléments sur l’authentification et la sécurité, ou la configuration des servlets :</p>
+      <p>Voici des extraits de <code>web.xml</code>, fichier XML utilisé par le serveur Tomcat pour configurer l’application, dans lequel on peut voir des éléments sur l’authentification et la sécurité, ou la configuration des servlets :</p>
       <!-- cSpell:disable -->
       <div class="sourceCode" id="cb16"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a></span>
       <span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span></span>
@@ -1718,20 +1842,23 @@
       <span id="cb16-85"><a href="#cb16-85" aria-hidden="true"></a>...</span>
       <span id="cb16-86"><a href="#cb16-86" aria-hidden="true"></a></span>
       <span id="cb16-87"><a href="#cb16-87" aria-hidden="true"></a><span class="co">&lt;!-- ============================================================= Servlets --&gt;</span></span>
-      <span id="cb16-88"><a href="#cb16-88" aria-hidden="true"></a><span class="co">&lt;!-- .............................................................. WELCOME --&gt;</span></span>
-      <span id="cb16-89"><a href="#cb16-89" aria-hidden="true"></a>  <span class="kw">&lt;servlet&gt;</span> <span class="co">&lt;!--                                                   /Welcome --&gt;</span></span>
-      <span id="cb16-90"><a href="#cb16-90" aria-hidden="true"></a>    <span class="kw">&lt;servlet-name&gt;</span>Welcome<span class="kw">&lt;/servlet-name&gt;</span></span>
-      <span id="cb16-91"><a href="#cb16-91" aria-hidden="true"></a>    <span class="kw">&lt;servlet-class&gt;</span>servlet.Welcome<span class="kw">&lt;/servlet-class&gt;</span></span>
-      <span id="cb16-92"><a href="#cb16-92" aria-hidden="true"></a>    <span class="co">&lt;!-- &lt;load-on-startup&gt;0&lt;/load-on-startup&gt; --&gt;</span></span>
-      <span id="cb16-93"><a href="#cb16-93" aria-hidden="true"></a>  <span class="kw">&lt;/servlet&gt;</span></span>
-      <span id="cb16-94"><a href="#cb16-94" aria-hidden="true"></a>  <span class="kw">&lt;servlet-mapping&gt;</span></span>
-      <span id="cb16-95"><a href="#cb16-95" aria-hidden="true"></a>    <span class="kw">&lt;servlet-name&gt;</span>Welcome<span class="kw">&lt;/servlet-name&gt;</span></span>
-      <span id="cb16-96"><a href="#cb16-96" aria-hidden="true"></a>    <span class="kw">&lt;url-pattern&gt;</span>/Welcome<span class="kw">&lt;/url-pattern&gt;</span></span>
-      <span id="cb16-97"><a href="#cb16-97" aria-hidden="true"></a>  <span class="kw">&lt;/servlet-mapping&gt;</span></span>
-      <span id="cb16-98"><a href="#cb16-98" aria-hidden="true"></a></span>
-      <span id="cb16-99"><a href="#cb16-99" aria-hidden="true"></a>...</span>
-      <span id="cb16-100"><a href="#cb16-100" aria-hidden="true"></a></span>
-      <span id="cb16-101"><a href="#cb16-101" aria-hidden="true"></a><span class="kw">&lt;/web-app&gt;</span></span></code></pre></div>
+      <span id="cb16-88"><a href="#cb16-88" aria-hidden="true"></a></span>
+      <span id="cb16-89"><a href="#cb16-89" aria-hidden="true"></a>...</span>
+      <span id="cb16-90"><a href="#cb16-90" aria-hidden="true"></a></span>
+      <span id="cb16-91"><a href="#cb16-91" aria-hidden="true"></a><span class="co">&lt;!-- ............................................................. CATEGORY --&gt;</span></span>
+      <span id="cb16-92"><a href="#cb16-92" aria-hidden="true"></a>  <span class="kw">&lt;servlet&gt;</span> <span class="co">&lt;!--                                              /CategoryInfo --&gt;</span></span>
+      <span id="cb16-93"><a href="#cb16-93" aria-hidden="true"></a>    <span class="kw">&lt;servlet-name&gt;</span>CategoryInfo<span class="kw">&lt;/servlet-name&gt;</span></span>
+      <span id="cb16-94"><a href="#cb16-94" aria-hidden="true"></a>    <span class="kw">&lt;servlet-class&gt;</span>servlet.category.CategoryInfo<span class="kw">&lt;/servlet-class&gt;</span></span>
+      <span id="cb16-95"><a href="#cb16-95" aria-hidden="true"></a>    <span class="co">&lt;!-- &lt;load-on-startup&gt;0&lt;/load-on-startup&gt; --&gt;</span></span>
+      <span id="cb16-96"><a href="#cb16-96" aria-hidden="true"></a>  <span class="kw">&lt;/servlet&gt;</span></span>
+      <span id="cb16-97"><a href="#cb16-97" aria-hidden="true"></a>  <span class="kw">&lt;servlet-mapping&gt;</span></span>
+      <span id="cb16-98"><a href="#cb16-98" aria-hidden="true"></a>    <span class="kw">&lt;servlet-name&gt;</span>CategoryInfo<span class="kw">&lt;/servlet-name&gt;</span></span>
+      <span id="cb16-99"><a href="#cb16-99" aria-hidden="true"></a>    <span class="kw">&lt;url-pattern&gt;</span>/CategoryInfo<span class="kw">&lt;/url-pattern&gt;</span></span>
+      <span id="cb16-100"><a href="#cb16-100" aria-hidden="true"></a>  <span class="kw">&lt;/servlet-mapping&gt;</span></span>
+      <span id="cb16-101"><a href="#cb16-101" aria-hidden="true"></a></span>
+      <span id="cb16-102"><a href="#cb16-102" aria-hidden="true"></a>...</span>
+      <span id="cb16-103"><a href="#cb16-103" aria-hidden="true"></a></span>
+      <span id="cb16-104"><a href="#cb16-104" aria-hidden="true"></a><span class="kw">&lt;/web-app&gt;</span></span></code></pre></div>
       <!-- cSpell:enable -->
       <h5 id="yaml">7.1.3.5. YAML<!-- OK --></h5>
       <p>YAML, acronyme de Yet Another Markup Language, un <strong>format de représentation de données</strong> par sérialisation Unicode, lisible facilement par l’homme.</p>

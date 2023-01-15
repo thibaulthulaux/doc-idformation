@@ -812,7 +812,7 @@ Java permet de gérer les logiques métiers, JSP et JSTL de générer les pages 
 
 Ces technologies sont particulièrement **adaptées à une architecture MVC**, et permettent de faciliter la gestion des données et la génération de pages web dynamiques.
 
-##### 7.1.2.1. Java<!-- EX -->
+##### 7.1.2.1. Java<!-- OK -->
 
 Java est un **langage de programmation orienté objet** de haut niveau, basé sur des classes, conçu pour avoir le moins de dépendances d'implémentation possible.
 
@@ -820,15 +820,141 @@ Une particularité de Java est que les logiciels écrits dans ce langage sont **
 
 Java permet de développer des applications client-serveur. Côté client, les applets sont à l’origine de la notoriété du langage. C’est surtout côté serveur que Java s’est imposé dans le milieu de l’entreprise grâce aux **servlets**, le pendant serveur des applets, et plus récemment les **JSP** (JavaServer Pages) qui peuvent se substituer à PHP, ASP et ASP.NET.
 
+Voici en exemple le ficher `CategoryInfo.java`, constituant une partie le code du servlet exécuté le serveur lors du traitement d'une requête sur l'url `/CategoryInfo` :
+
+<!-- cSpell:disable -->
 ```java
-- addexemple
+
+package servlet.category;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.ServletException;
+
+import app.jdbc.dao.CategoryDAO;
+import app.jdbc.dao.ProductDAO;
+import app.model.Category;
+import app.model.Product;
+import app.model.User;
+
+public class CategoryInfo extends HttpServlet {
+
+  private static final long serialVersionUID = 1L;
+  private static final Logger log = Logger.getLogger(Thread.currentThread().getStackTrace()[1].getClassName());
+
+  private Category category = new Category();
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see javax.servlet.GenericServlet#init()
+   */
+  @Override
+  public void init() throws ServletException {
+    // Do initialization
+    log.info("Done");
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest,
+   * javax.servlet.http.HttpServletResponse)
+   */
+  @Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+
+    // Retrieve session
+    HttpSession session = request.getSession(false);
+
+    // Retrieve user from session
+    User user = (User) session.getAttribute("user");
+
+    // Retrieve category from request parameter
+    try (CategoryDAO DAO = new CategoryDAO();) {
+      int id = Integer.parseInt(request.getParameter("categoryId"));
+      category = DAO.getCategoryById(id);
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      log.log(Level.SEVERE, "Error getting category", e);
+      e.printStackTrace();
+      category = null;
+    } catch (Exception e) { // Catch block for java.lang.AutoCloseable#close() throw.
+      log.log(Level.SEVERE, null, e.getMessage());
+      e.printStackTrace();
+    }
+
+    // Retrieve list of products
+    List<Product> productList = new ArrayList<>();
+    Integer categoryId = Integer.parseInt(request.getParameter("categoryId"));
+    try (ProductDAO DAO = new ProductDAO();) {
+      productList = DAO.getProductsByCategory(user.getId(), categoryId);
+    } catch (SQLException e) {
+      log.log(Level.SEVERE, "Error getting products", e);
+      e.printStackTrace();
+      productList = null;
+    } catch (Exception e) {
+      // TODO Auto-generated catch block for java.lang.AutoCloseable#close() throw.
+      log.log(Level.SEVERE, null, e.getMessage());
+      e.printStackTrace();
+    }
+
+    // Set attributes to request
+    request.setAttribute("productList", productList);
+    request.setAttribute("category", category);
+
+    // Dispatch view and forward request
+    request.getRequestDispatcher("/WEB-INF/views/category/CategoryInfo.jsp").forward(request, response);
+
+    log.info("Done");
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest,
+   * javax.servlet.http.HttpServletResponse)
+   */
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+
+    // Do post
+    log.info("Done");
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see javax.servlet.GenericServlet#destroy()
+   */
+  @Override
+  public void destroy() {
+    // Do clean up
+    log.info("Done");
+  }
+
+}
+
 ```
+<!-- cSpell:enable -->
 
 ##### 7.1.2.2. JSP<!-- OK -->
 
 **Jakarta Server Pages** (anciennement JavaServer Pages) ou JSP est une collection de technologies qui permet aux développeurs de **créer dynamiquement du code HTML**, XML, SOAP ou tout autre type de page web. JSP est semblable a PHP ou ASP, mais pour le langage de programmation Java.
 
-Voici en exemple le fichier `CategoryInfo.jsp`, fichier de vue de notre modèle, qui est utilisé pour produire le code de la page HTML renvoyée à l'utilisateur.
+Voici en exemple le fichier `CategoryInfo.jsp` (utilisé comme fichier de vue par `CategoryInfo.java` de notre exemple précédent), qui est utilisé pour produire le code de la page HTML renvoyée à l'utilisateur.
 
 Veuillez également noter l'utilisation de la balise `<jsp:include>` afin d’agréger les différents éléments constitutifs de la page complète :
 
@@ -1040,7 +1166,7 @@ RUN rm -rf /var/cache/apt/* && \
 # Set root password.
 RUN echo 'root:root' | chpasswd
 
-# Copy default webapps
+# Copy default webapps (avoid in production)
 # RUN cp -rv webapps.dist/* webapps/
 
 # Copying and running start script.
@@ -1063,7 +1189,7 @@ Dans le cadre de ce projet, un script en Python a été crée afin de **piloter*
 - Création et configuration d'un docker swarm
 - Déploiement de stack docker (build, registry, orchestration)
 
-Voici des extraits représentatifs du fichier `swarm.py`. Veuillez noter que le script est encore en développement (absence de DocStrings, manque de structures de contrôle...) :
+Voici des extraits représentatifs du fichier `swarm.py`. Veuillez noter que le script est encore en développement (absence de DocStrings, manque de structures de contrôle...), mais qu'il gère le logging et l'interpretation de la ligne de commande :
 
 <!-- cSpell:disable -->
 ```py
@@ -1487,7 +1613,7 @@ Le **langage de balisage extensible**, abrégé XML de l'anglais Extensible Mark
 
 L'objectif initial du XML est de **faciliter l'échange automatisé** de contenus complexes (arbres, texte enrichi, etc.) entre systèmes d'informations hétérogènes (interopérabilité).
 
-Voici en exemple des extraits de `web.xml`, fichier XML utilisé par le serveur Tomcat pour configurer l'application, dans lequel on peut voir des éléments sur l'authentification et la sécurité, ou la configuration des servlets :
+Voici des extraits de `web.xml`, fichier XML utilisé par le serveur Tomcat pour configurer l'application, dans lequel on peut voir des éléments sur l'authentification et la sécurité, ou la configuration des servlets :
 
 <!-- cSpell:disable -->
 ```xml
@@ -1578,15 +1704,18 @@ Voici en exemple des extraits de `web.xml`, fichier XML utilisé par le serveur 
 ...
 
 <!-- ============================================================= Servlets -->
-<!-- .............................................................. WELCOME -->
-  <servlet> <!--                                                   /Welcome -->
-    <servlet-name>Welcome</servlet-name>
-    <servlet-class>servlet.Welcome</servlet-class>
+
+...
+
+<!-- ............................................................. CATEGORY -->
+  <servlet> <!--                                              /CategoryInfo -->
+    <servlet-name>CategoryInfo</servlet-name>
+    <servlet-class>servlet.category.CategoryInfo</servlet-class>
     <!-- <load-on-startup>0</load-on-startup> -->
   </servlet>
   <servlet-mapping>
-    <servlet-name>Welcome</servlet-name>
-    <url-pattern>/Welcome</url-pattern>
+    <servlet-name>CategoryInfo</servlet-name>
+    <url-pattern>/CategoryInfo</url-pattern>
   </servlet-mapping>
 
 ...

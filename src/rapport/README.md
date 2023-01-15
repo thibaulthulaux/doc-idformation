@@ -2575,23 +2575,19 @@ Images: ![Alt text](imageurl.jpg)
 ```
 <!-- cSpell:enable -->
 
-#### 7.7.2. Javadoc
+#### 7.7.2. Javadoc<!-- OK -->
 
 Javadoc est un outil développé par Oracle, permettant de **créer une documentation d'API en format HTML** depuis les commentaires présents dans un code source en Java. C'est le standard industriel pour la documentation des classes Java.
 
-La plupart des IDE aident a la génération et au formatage des blocs de commentaires Javadoc. Ces commentaires permettent également aux IDE modernes d'apporter a l'utilisateur des informations contextuelles (definition de classe, de méthode, paramètres d'entrée et valeur de retour attendue).
-
-```md
-- contexte
-```
+La plupart des **IDE aident à la génération** et au formatage des blocs de commentaires Javadoc. Ces commentaires permettent également aux IDE modernes d'apporter à l'utilisateur des **informations contextuelles** (definition de classe, de méthode, paramètres d'entrée et valeur de retour attendue).
 
 #### 7.7.3. PlantUML<!-- EX -->
 
-PlantUML est un **outil libre** permettant de **créer des diagrammes UML a partir de fichier texte**.
+PlantUML est un **outil libre** permettant de **créer des diagrammes UML à partir de fichier texte**.
 
-Du fait du format texte des fichiers utilises par PlantUML, cet outil **s’intègre parfaitement dans un pipeline** d'integration et de d2ploiement.
+Du fait du format texte des fichiers utilisés par PlantUML, cet outil **s’intègre parfaitement dans un pipeline** d'intégration et de déploiement.
 
-Il est par exemple possible de **générer automatiquement des UML** de Modèle Physique de Donnees (MPD), afin d'avoir une représentation actualisée d'une base de données, ou bien de créer dynamiquement des diagrammes de classes a partir du code source.
+Il est par exemple possible de **générer automatiquement des UML** de Modèle Physique de Données (MPD), afin d'avoir une représentation actualisée d'une base de données, ou bien de créer dynamiquement des diagrammes de classes à partir du code source.
 
 La majorité des diagrammes ont été réalisés grâce à cet outil. Voici en exemple le fichier PlantUML `something.puml` qui permet de générer le fichier PNG `.png` inséré dans le présent rapport.
 

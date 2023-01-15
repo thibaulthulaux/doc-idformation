@@ -1,0 +1,90 @@
+@startuml
+
+left to right direction
+
+header 
+<font color=red>Warning:</font> Do not use in production
+endheader
+
+footer
+"Generated with plantuml"
+endfooter
+
+' !define engine(x)
+
+!define service(x) entity x << (S, LightBlue) >>
+!define port(x) card <b><color:#000000><&transfer></color> x</b>
+!define vol(x) <b><color:#000000><&folder></color> x </b>
+!define env(x) <b><color:#000000><&dollar></color> x </b>
+
+
+service( NGINX ) {
+    ' build:
+    '   context: ${WEB_BUILD}
+    ' container_name: ${PROJECT}-${WEB}
+    ' restart: unless-stopped
+    ' depends_on:
+    '   - app
+    ' links:
+    '   - app
+--
+PORTS:
+  port( "80:80" ) Unsecure http
+  port( "80:443" ) Secure http
+--
+VOLUMES:
+  vol( "${WEB_CONF}nginx/nginx.conf:/etc/nginx/nginx.conf:ro" )  # Nginx conf (read-only)
+  vol( "${WEB_CONF}nginx/conf.d:/etc/nginx/conf.d:ro" ) # Nginx conf subsets for proxypass (read-only)
+  vol( "${WEB_LOG}nginx:/var/log/nginx" ) # Logs
+  vol( "${WEB_DATA}nginx:/usr/share/nginx/html" ) # Data
+}
+service( TOMCAT ) {
+    ' build:
+    '   context: ${APP_BUILD}
+    ' container_name: ${PROJECT}-${APP}
+    ' restart: unless-stopped
+    ' depends_on:
+    '   - db
+    ' links:
+    '   - db
+--
+PORTS:
+  port( "8080:8080" ) unsecure http
+  port( "2222:22" ) ssh
+--
+VOLUMES:
+  vol( "${APP_CONF}/jaas.config:/usr/local/tomcat/conf/jaas.config:ro" ) # JAAS config file (read-only)
+  vol( "${APP_LOG}:/usr/local/tomcat/logs" ) # Logs
+  vol( "${APP_DATA}:/usr/local/tomcat/webapps" ) # Data
+--
+ENVIRONMENT:
+# Starts tomcat with jaas config file
+  env( "JAVA_OPTS: $JAVA_OPTS '-Djava.security.auth.login.config=$CATALINA_HOME/conf/jaas.config'" )
+# Database
+  env( "MARIADB_DATABASE=app") # Database name
+  env( "MARIADB_USER=app") # Database user name
+  env( "MARIADB_PASSWORD=app") # Database user password
+}
+service( MARIADB ) {
+    ' build:
+    '   context: ${DB_BUILD}
+    ' container_name: ${PROJECT}-${DB}
+    ' restart: unless-stopped
+--
+PORTS:
+  port( "3306:3306" )
+--
+VOLUMES:
+  vol( "${DB_CONF}/initdb:/docker-entrypoint-initdb.d:ro" ) SQL initdb (read-only)
+  vol( "${DB_LOG}:/var/log/mariadb" ) # Logs
+  vol( "${DB_DATA}:/var/lib/mysql" ) # Data
+--
+ENVIRONMENT:
+"Database"
+  env( "MARIADB_ROOT_PASSWORD=root") # Database root password
+  env( "MARIADB_DATABASE=app") # Database name
+  env( "MARIADB_USER=app") # Database user name
+  env( "MARIADB_PASSWORD=app") # Database user password
+}
+
+@enduml

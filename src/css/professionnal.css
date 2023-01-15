@@ -1,0 +1,93 @@
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-size: 36px;
+}
+h2 {
+    font-size: 28px;
+}
+h3 {
+    font-size: 24px;
+}
+h4 {
+    font-size: 20px;
+}
+h5 {
+    font-size: 18px;
+}
+h6 {
+    font-size: 16px;
+}
+
+/* Links */
+a {
+    color: #0000ff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Code Blocks */
+code {
+    background-color: #f0f0f0;
+    color: #000000;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+/* Preformatted Text */
+pre {
+    background-color: #f0f0f0;
+    color: #000000;
+    padding: 16px;
+    overflow: auto;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+/* Blockquotes */
+blockquote {
+    background-color: #f0f0f0;
+    color: #000000;
+    padding: 16px;
+    margin: 16px 0;
+    border-left: 4px solid #0000ff;
+    border-radius: 3px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #000000;
+    padding: 8px;
+}
+th {
+    background-color: #f0f0f0;
+    color: #000000;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+}

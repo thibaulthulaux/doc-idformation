@@ -1,0 +1,77 @@
+@startuml
+
+' left to right direction
+
+header 
+
+endheader
+
+title Class Diagram - Conceptual
+
+footer
+<font color=red>Warning:</font> Do not use in production
+endfooter
+
+folder webapp {
+  folder META-INF {
+    file context.xml
+  }
+  folder WEB-INF {
+    folder views {
+      folder auth{
+        file Login.jsp
+      }
+      folder category{
+        file CategoryAdmin.jsp
+        file CategoryAdd.jsp
+      }
+      folder product{
+        file ProductAdmin.jsp
+        file ProductAdd.jsp
+      }
+      folder search{
+        file SearchResult.jsp
+      }
+      folder template{
+
+      }
+      folder user{
+        file UserAdmin.jsp
+        file UserAdmin.jsp
+        file UserAdmin.jsp
+        file UserAdmin.jsp
+      }
+      file Home.jsp
+      file Welcome.jsp
+    }
+    file web.xml
+  }
+  folder www {
+    folder css {
+      file aside.css
+      file category.css
+      file cta.css
+      file footer.css
+      file general.css
+      file header.css
+      file login.css
+      file main.css
+      file mobile.css
+      file nav.css
+      file product.css
+      file registration.css
+      file search.css
+      file style.css
+      file userEdit.css
+      file welcome.css
+
+    }
+    folder js {
+      file dev.js
+      file main.js
+      file welcome.js
+    }
+  }
+}
+
+@enduml

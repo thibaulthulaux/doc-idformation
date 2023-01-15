@@ -1,0 +1,80 @@
+@startuml class-concept-UML
+
+' left to right direction
+
+header 
+
+endheader
+
+title Class Diagram - Conceptual
+
+footer
+<font color=red>Warning:</font> Do not use in production
+endfooter
+
+
+
+!define filter(x) entity x << (F, Orange) >>
+!define listener(x) entity x << (L, Red) >>
+!define model(x) entity x << (M, LightGreen) >>
+!define servlet(x) entity x << (S, LightBlue) >>
+!define admin_servlet(x) entity x << (S, LightBlue) >>
+
+package java {
+  package app {
+    package auth {
+      class JAASLoginModule {}
+      class RolePrincipal {}
+      class UserPrincipal {}
+    }
+    package email {
+      class SendHtmlEmail {}
+    }
+    package jdbc {
+      package dao {
+        class CategoryDAO {}
+        class ProductDAO {}
+        class UserDAO {}
+      }
+      package util {
+        class DatabaseConnection {}
+      }
+    }
+    package models {
+      model(user) {}
+      model(category) {}
+      model(product) {}
+    }
+  }
+  package servlets {
+    admin_servlet(CategoryAdmin) {}
+    admin_servlet(ProductAdmin) {}
+    admin_servlet(UserAdd) {}
+    admin_servlet(UserAdmin) {}
+    admin_servlet(UserDelete) {}
+    servlet(CategoryAdd) {}
+    servlet(CategoryDelete) {}
+    servlet(CategoryEdit) {}
+    servlet(Login) {}
+    servlet(Logout) {}
+    servlet(ProductAdd) {}
+    servlet(ProductDelete) {}
+    servlet(ProductEdit) {}
+    servlet(Search) {}
+    servlet(UserEdit) {}
+    servlet(UserRegister) {}
+    servlet(UserValidate) {}
+
+    servlet(Home) {}
+    servlet(Welcome) {}
+  }
+  package filters {
+    filter(SetSessionAttributes) {}
+    filter(Debug) {}
+  }
+  package listeners {
+    listener(Initializer) {}
+  }
+}
+
+@enduml

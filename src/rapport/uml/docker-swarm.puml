@@ -1,0 +1,36 @@
+@startuml docker-swarm-UML
+
+' left to right direction
+
+header 
+
+endheader
+
+title Class Diagram - Conceptual
+
+footer
+<font color=red>Warning:</font> Do not use in production
+endfooter
+
+
+
+rectangle swarm {
+  node "Manager" as M {
+    card "core-registry" as registry #Red
+    card "monitoring-visualizer" as visualizer #YellowGreen
+    card "monitoring-prometheus" as prometheus #YellowGreen
+    card "monitoring-grafana" as grafana #YellowGreen
+    card "pipeline-gitlab-runner" as runner #Orange
+  } 
+    node "Worker 1" as W1 {
+    card "app-nginx" as nginx #LightBlue
+  }
+    node "Worker 2" as W2 {
+    card "app-tomcat" as tomcat #LightBlue
+  }
+    node "Worker 3" as W3 {
+    card "app-mariadb" as mariadb #LightBlue
+  }
+}
+
+@enduml

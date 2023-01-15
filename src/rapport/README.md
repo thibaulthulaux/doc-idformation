@@ -1048,7 +1048,7 @@ Il permet de gérer les données d'une base de données en utilisant des command
 
 Le SQL est reconnu par la grande majorité des systèmes de gestion de bases de données relationnelles (abrégé SGBDR) du marché.
 
-Voici un extrait du fichier `_app.sql`, dont le code SQL est utilisé pour construire trois tables nécessaires a l'authentification de l'utilisateur dans la base de données :
+Voici un extrait du fichier `_app.sql`, dont le code SQL est utilisé pour construire trois tables nécessaires à l'authentification de l'utilisateur dans la base de données de développement :
 
 <!-- cSpell:disable -->
 ```sql
@@ -1744,9 +1744,212 @@ Il est utilisé pour deux raisons:
 - **Authentification**: identification fiable et sécurisé de l'entité qui exécute actuellement le code, quelque soit son contexte d'exécution (application, applet, bean, servlet)
 - **Autorisation**: vérification des droits de contrôle d'accès ou des autorisations requises pour exécuter du code sensible
 
+L'intégration du JAAS à l'application a été réalisé de la manière suivante :
+
+- Création de deux classes java `UserPrincipal.java` et `RolePrincipal.java`, définissant les principaux :
+
 <!-- cSpell:disable -->
 ```java
-- addexemple
+
+package app.auth;
+import java.security.Principal;
+
+public class UserPrincipal implements Principal {
+
+  private String name;
+
+  /**
+   * @param name
+   */
+  public UserPrincipal(String name) {
+    super();
+    this.name = name;
+  }
+
+  /**
+   * @param name
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.security.Principal#getName()
+   */
+  @Override
+  public String getName() {
+    return name;
+  }
+}
+
+
+```
+<!-- cSpell:enable -->
+
+<!-- cSpell:disable -->
+```java
+
+package app.auth;
+import java.security.Principal;
+
+public class RolePrincipal implements Principal {
+  private String name;
+
+  /**
+   * @param name
+   */
+  public RolePrincipal(String name) {
+    super();
+    this.name = name;
+  }
+
+  /**
+   * @param name
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.security.Principal#getName()
+   */
+  @Override
+  public String getName() {
+    return name;
+  }
+}
+
+```
+<!-- cSpell:enable -->
+
+- Implémentation de la méthode `login()` de la classe `JAASLoginModule.java` :
+
+<!-- cSpell:disable -->
+```java
+
+  /*
+   * (non-Javadoc)
+   * 
+   * In the login() method, we invoke the CallbackHandler.handle() method with a
+   * NameCallback and a PasswordCallback to prompt and get the username and
+   * password. Then, we compare these provided credentials with the hardcoded
+   * ones.
+   * 
+   * @see javax.security.auth.spi.LoginModule#login()
+   */
+  @Override
+  public boolean login() throws LoginException {
+    NameCallback nameCallback = new NameCallback("username: ");
+    PasswordCallback passwordCallback = new PasswordCallback("password: ", false);
+    try {
+      callbackHandler.handle(new Callback[] { nameCallback, passwordCallback });
+      String login = nameCallback.getName();
+      String password = new String(passwordCallback.getPassword());
+      // WARN: secrets in logfiles
+      log.info("#### Authenticating with: " + login + " : " + password);
+
+      UserDAO userDAO = new UserDAO();
+      User user = new User();
+
+      try {
+        // User retrieval
+        user = userDAO.getUserByCredentials(login, password);
+        log.info("#### Retrieved user: " + user.getId() + " : " + user.getEmail() + " : " + user.getPassword());
+      } catch (SQLException e) {
+        // TODO: Auto-generated catch block
+        e.printStackTrace();
+      }
+
+      if (user != null) {
+        userGroups = new ArrayList<String>();
+        for (String role : user.getRoleList()) {
+          userGroups.add(role);
+        }
+        loginSucceeded = true;
+      }
+
+    } catch (IOException | UnsupportedCallbackException e) {
+      throw new LoginException(e.getMessage());
+    }
+    // The login() method should return true for a successful operation and false
+    // for a failed login.
+    log.info("Done");
+    return loginSucceeded;
+  }
+
+```
+<!-- cSpell:enable -->
+
+- Création d'un fichier `context.xml` qui déclenche et configure la couche JAAS :
+
+<!-- cSpell:disable -->
+```xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+  <Realm className="org.apache.catalina.realm.JAASRealm" 
+    appName="webapp"
+    userClassNames="app.auth.UserPrincipal"
+    roleClassNames="app.auth.RolePrincipal" />
+</Context>
+
+```
+<!-- cSpell:enable -->
+
+- Ajout des paramètres supplémentaires dans `web.xml` qui configure la sécurité et les autorisations dans l'application (extraits) :
+
+<!-- cSpell:disable -->
+```xml
+
+<!-- ............................................................... PUBLIC -->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>All Access - Web public content</web-resource-name>
+      <url-pattern>/www/*</url-pattern>
+      <http-method>GET</http-method>
+      <!-- <http-method>POST</http-method> -->
+    </web-resource-collection>
+    <!-- Omitting <auth-constraint> to get public access -->
+    <user-data-constraint>
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+<!-- ........................................................... RESTRICTED -->
+ <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Restricted Access - admin only</web-resource-name>
+      <url-pattern>/admin/*</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+<!-- ................................................................ ROLES -->
+  <security-role>
+    <role-name>admin</role-name>
+    <role-name>user</role-name>
+  </security-role>
+<!-- ................................................................ LOGIN -->
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>default</realm-name>
+    <form-login-config>
+      <form-login-page>/Login</form-login-page>
+      <form-login-error>/Error</form-login-error>
+    </form-login-config>
+  </login-config>
+...
+
+
 ```
 <!-- cSpell:enable -->
 

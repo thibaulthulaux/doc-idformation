@@ -281,7 +281,7 @@
       <div style="page-break-after: always;">
 
       </div>
-      <h2 id="cahier-des-charges">4. Cahier des charges</h2>
+      <h2 id="cahier-des-charges">4. Cahier des charges<!-- OK --></h2>
       <div class="sourceCode" id="cb2"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ss">- </span>Contexte de l&#39;entreprise</span>
       <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ss">- </span>Définition du besoin</span>
       <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ss">- </span>Objectif du projet</span>
@@ -450,7 +450,7 @@
       <li>Génération de <strong>revenus supplémentaires</strong> grâce à la vente de l’application en ligne en tant que service payant.</li>
       <li><strong>Augmentation de la productivité</strong> des clients grâce à l’utilisation de l’application de gestion de stockage.</li>
       </ul>
-      <h3 id="description-de-toutes-les-fonctionnalités-attendues">4.4. Description de toutes les fonctionnalités attendues</h3>
+      <h3 id="description-de-toutes-les-fonctionnalités-attendues">4.4. Description de toutes les fonctionnalités attendues<!-- OK --></h3>
       <!-- TODO: PlantUml integration:  $feature description > $feature.puml -->
       <h4 id="inscription">4.4.1. Inscription<!-- OK --></h4>
       <h5 id="fonctionnalité-inscription">4.4.1.1. Fonctionnalité : Inscription<!-- OK --></h5>
@@ -597,7 +597,7 @@
       <li>Alors j’accède à la page info de cette catégorie</li>
       <li>Et je suis redirigé2 vers la page info de celle-ci</li>
       </ul>
-      <h4 id="produit">4.4.4. Produit</h4>
+      <h4 id="produit">4.4.4. Produit<!-- OK --></h4>
       <h5 id="fonctionnalité-ajouter-un-produit">4.4.4.1. Fonctionnalité: Ajouter un produit<!-- OK --></h5>
       <p><em>“En tant qu’utilisateur, je veux ajouter un produit afin de pouvoir la gérer (modifier, supprimer,info).”</em></p>
       <p><strong>Scénario 1:</strong> Ajouter un produit depuis une page info catégorie</p>
@@ -628,7 +628,7 @@
       <li>Alors je supprime un produit</li>
       <li>Et je suis redirigé sur la page info catégorie qui contenait le produit</li>
       </ul>
-      <h5 id="fonctionnalité-accéder-aux-informations-dun-produit">4.4.4.4. Fonctionnalité: Accéder aux informations d’un produit<!-- CHECK: search result --></h5>
+      <h5 id="fonctionnalité-accéder-aux-informations-dun-produit">4.4.4.4. Fonctionnalité: Accéder aux informations d’un produit<!-- OK --></h5>
       <p><em>“En tant qu’utilisateur, je veux pouvoir accéder au informations de mes produits afin d’y relever les différentes valeurs.”</em></p>
       <p><strong>Scénario 1:</strong> Accéder aux informations d’un produit depuis la page information de la catégorie contenant le produit</p>
       <ul>
@@ -637,21 +637,27 @@
       <li>Alors j’accède à ces informations</li>
       <li>Et je suis redirigé sur la page information de ce produit</li>
       </ul>
-      <p><strong>Scénario 2:</strong> Accéder aux informations d’un produit depuis la barre de recherche en écrivant le nom d’un produit<!-- CHECK: search result like 4,5 product.name is not UNIQUE --></p>
+      <p><strong>Scénario 2:</strong> Accéder aux informations d’un produit depuis la barre de recherche en écrivant le nom d’un produit</p>
       <ul>
       <li>Étant donné que je suis sur n’importe quel page de mon compte utilisateur</li>
       <li>Et que je clique sur la barre de recherche</li>
       <li>Et que j’écris le nom d’un produit</li>
       <li>Et que je clique sur la touche entrée de mon clavier</li>
+      <li>Et que j’accède à la page m’indiquant les produits trouvé selon ma recherche</li>
+      <li>Et que je clique sur le produit voulu</li>
       <li>Alors j’accède à la page information du produit</li>
+      <li>Et je suis redirigé sur la page information du produit</li>
       </ul>
-      <p><strong>Scénario 3:</strong> Accéder aux informations d’un produit depuis la barre de recherche en écrivant la référence d’un produit<!-- CHECK: search result like 4,5 product.name is not UNIQUE --></p>
+      <p><strong>Scénario 3:</strong> Accéder aux informations d’un produit depuis la barre de recherche en écrivant la référence d’un produit</p>
       <ul>
       <li>Étant donné que je suis sur n’importe quel page de mon compte utilisateur</li>
       <li>Et que je clique sur la barre de recherche</li>
       <li>Et que j’écris la référence d’un produit</li>
       <li>Et que je clique sur la touche entrée de mon clavier</li>
+      <li>Et que j’accède à la page m’indiquant les produits trouvé selon ma recherche</li>
+      <li>Et que je clique sur le produit voulu</li>
       <li>Alors j’accède à la page information du produit</li>
+      <li>Et je suis redirigé sur la page information du produit</li>
       </ul>
       <p><strong>Scénario 4:</strong> Accéder aux informations d’un produit depuis la barre de recherche en écrivant le début du nom (1 lettre obligatoire)</p>
       <ul>
@@ -1023,7 +1029,7 @@
       <p>Le <strong>langage de requête structurée</strong>, abrégé SQL de l’anglais Structured Query Language est un <strong>langage informatique normalisé</strong> servant à exploiter des <strong>bases de données relationnelles</strong>.</p>
       <p>Il permet de gérer les données d’une base de données en utilisant des commandes pour <strong>créer, lire, mettre à jour et supprimer des données</strong> (CRUD operations). Il permet également de <strong>gérer les relations</strong> entre les tables de la base de données et de faire des requêtes pour <strong>récupérer des données spécifiques</strong>.</p>
       <p>Le SQL est reconnu par la grande majorité des systèmes de gestion de bases de données relationnelles (abrégé SGBDR) du marché.</p>
-      <p>Voici un exemple partiel de SQL utilisé pour construire trois tables nécessaires a l’authentification de l’utilisateur dans la base de données :</p>
+      <p>Voici un extrait du fichier <code>_app.sql</code>, dont le code SQL est utilisé pour construire trois tables nécessaires a l’authentification de l’utilisateur dans la base de données :</p>
       <!-- cSpell:disable -->
       <div class="sourceCode" id="cb12"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a></span>
       <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="kw">SET</span> <span class="kw">time_zone</span> <span class="op">=</span> <span class="st">&#39;+00:00&#39;</span>;</span>
@@ -1100,7 +1106,7 @@
       <h4 id="autres">7.1.3. Autres<!-- OK --></h4>
       <h5 id="dockerfile">7.1.3.1. Dockerfile<!-- OK --></h5>
       <p>Docker (Cf. <a href="#7621-docker">docker</a>) peut <strong>construire des images automatiquement</strong> grâce aux instructions présentes dans un Dockerfile. Un Dockerfile est un <strong>document texte contenant toutes les commandes</strong> qu’un utilisateur peut utiliser en ligne de commandes.</p>
-      <p>Voici un exemple de Dockerfile pour construire une image de conteneur Tomcat dans le cadre d’un environnement de développement :</p>
+      <p>Voici en exemple le fichier <code>Dockerfile</code> pour construire une image de conteneur Tomcat dans le cadre d’un environnement de développement :</p>
       <!-- cSpell:disable -->
       <div class="sourceCode" id="cb13"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a></span>
       <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="kw">FROM</span> tomcat:9</span>
@@ -1138,10 +1144,396 @@
       <span id="cb13-34"><a href="#cb13-34" aria-hidden="true"></a><span class="kw">COPY</span> /start.sh /start.sh</span>
       <span id="cb13-35"><a href="#cb13-35" aria-hidden="true"></a><span class="kw">CMD</span> [<span class="st">&quot;/bin/bash&quot;</span>, <span class="st">&quot;/start.sh&quot;</span>]</span></code></pre></div>
       <!-- cSpell:enable -->
-      <h5 id="python">7.1.3.2. Python<!-- EX --></h5>
+      <h5 id="python">7.1.3.2. Python<!-- OK --></h5>
       <p>Python est un <strong>langage de programmation interprété</strong>, multi paradigme et <strong>multi plateformes</strong>. Il favorise la programmation impérative structurée, fonctionnelle et <strong>orientée objet</strong>. Il est doté d’un typage dynamique fort, d’une gestion automatique de la mémoire par garbage collector et d’un système de gestion d’exceptions.</p>
       <p>C’est un langage qui peut s’utiliser dans de nombreux contextes et s’adapter à tout type d’utilisation grâce à des <strong>bibliothèques spécialisées</strong>. Il est cependant particulièrement <strong>utilisé comme langage de script</strong> pour automatiser des tâches simples mais fastidieuses.</p>
-      <div class="sourceCode" id="cb14"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="op">-</span> addexemple</span></code></pre></div>
+      <p>Dans le cadre de ce projet, un script en Python a été crée afin de <strong>piloter</strong> une installation locale de <strong>Oracle VM Virtualbox</strong>. Le script peut effectuer, au travers des commandes <code>swarm</code> et <code>stack</code>, les opérations suivantes :</p>
+      <ul>
+      <li>Provisionnement des machines virtuelles légères (avec un docker engine)</li>
+      <li>Configuration de la couche réseau</li>
+      <li>Création et configuration d’un docker swarm</li>
+      <li>Déploiement de stack docker (build, registry, orchestration)</li>
+      </ul>
+      <p>Voici des extraits représentatifs du fichier <code>swarm.py</code>. Veuillez noter que le script est encore en développement (absence de DocStrings, manque de structures de contrôle…) :</p>
+      <!-- cSpell:disable -->
+      <div class="sourceCode" id="cb14"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a></span>
+      <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="co">#!/usr/bin/env python3</span></span>
+      <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a><span class="co">&quot;&quot;&quot;</span></span>
+      <span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a><span class="co">Module Docstring</span></span>
+      <span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a><span class="co">&quot;&quot;&quot;</span></span>
+      <span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a></span>
+      <span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a><span class="co">&quot;&quot;&quot; IMPORTS --------------------------------------------------------------- &quot;&quot;&quot;</span></span>
+      <span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a><span class="im">import</span> argparse</span>
+      <span id="cb14-9"><a href="#cb14-9" aria-hidden="true"></a><span class="im">import</span> logging <span class="co"># see https://docs.python.org/3/library/logging.html</span></span>
+      <span id="cb14-10"><a href="#cb14-10" aria-hidden="true"></a><span class="im">import</span> logging.config</span>
+      <span id="cb14-11"><a href="#cb14-11" aria-hidden="true"></a><span class="im">import</span> os</span>
+      <span id="cb14-12"><a href="#cb14-12" aria-hidden="true"></a><span class="im">import</span> platform</span>
+      <span id="cb14-13"><a href="#cb14-13" aria-hidden="true"></a><span class="im">import</span> signal</span>
+      <span id="cb14-14"><a href="#cb14-14" aria-hidden="true"></a><span class="im">import</span> subprocess</span>
+      <span id="cb14-15"><a href="#cb14-15" aria-hidden="true"></a><span class="im">import</span> sys</span>
+      <span id="cb14-16"><a href="#cb14-16" aria-hidden="true"></a><span class="im">import</span> time</span>
+      <span id="cb14-17"><a href="#cb14-17" aria-hidden="true"></a><span class="co"># import docker</span></span>
+      <span id="cb14-18"><a href="#cb14-18" aria-hidden="true"></a><span class="co"># import pprint # pretty print for dict()</span></span>
+      <span id="cb14-19"><a href="#cb14-19" aria-hidden="true"></a></span>
+      <span id="cb14-20"><a href="#cb14-20" aria-hidden="true"></a><span class="co">&quot;&quot;&quot; GLOBAL VARIABLES ------------------------------------------------------ &quot;&quot;&quot;</span></span>
+      <span id="cb14-21"><a href="#cb14-21" aria-hidden="true"></a><span class="co"># Default LOGLEVEL</span></span>
+      <span id="cb14-22"><a href="#cb14-22" aria-hidden="true"></a>os.environ[<span class="st">&#39;LOGLEVEL&#39;</span>] <span class="op">=</span> <span class="st">&#39;DEBUG&#39;</span></span>
+      <span id="cb14-23"><a href="#cb14-23" aria-hidden="true"></a></span>
+      <span id="cb14-24"><a href="#cb14-24" aria-hidden="true"></a><span class="co"># System</span></span>
+      <span id="cb14-25"><a href="#cb14-25" aria-hidden="true"></a>__env__ <span class="op">=</span> os.environ</span>
+      <span id="cb14-26"><a href="#cb14-26" aria-hidden="true"></a>__start__ <span class="op">=</span> time.time()</span>
+      <span id="cb14-27"><a href="#cb14-27" aria-hidden="true"></a>__platform__ <span class="op">=</span> platform.system()</span>
+      <span id="cb14-28"><a href="#cb14-28" aria-hidden="true"></a></span>
+      <span id="cb14-29"><a href="#cb14-29" aria-hidden="true"></a><span class="co"># Authoring</span></span>
+      <span id="cb14-30"><a href="#cb14-30" aria-hidden="true"></a>__author_name__ <span class="op">=</span> <span class="st">&#39;Thibault HULAUX&#39;</span></span>
+      <span id="cb14-31"><a href="#cb14-31" aria-hidden="true"></a>__author_mail__ <span class="op">=</span> <span class="st">&#39;thibault.hulaux@gmail.com&#39;</span></span>
+      <span id="cb14-32"><a href="#cb14-32" aria-hidden="true"></a>__version__ <span class="op">=</span> <span class="st">&#39;0.1.0&#39;</span></span>
+      <span id="cb14-33"><a href="#cb14-33" aria-hidden="true"></a>__license__ <span class="op">=</span> <span class="st">&#39;MIT&#39;</span></span>
+      <span id="cb14-34"><a href="#cb14-34" aria-hidden="true"></a></span>
+      <span id="cb14-35"><a href="#cb14-35" aria-hidden="true"></a><span class="co"># Magic file and folder paths</span></span>
+      <span id="cb14-36"><a href="#cb14-36" aria-hidden="true"></a>__basename__ <span class="op">=</span> os.path.basename(<span class="va">__file__</span>)</span>
+      <span id="cb14-37"><a href="#cb14-37" aria-hidden="true"></a>__basenamenoext__ <span class="op">=</span> __basename__.split(<span class="st">&quot;.&quot;</span>, <span class="dv">1</span>)[<span class="dv">0</span>]</span>
+      <span id="cb14-38"><a href="#cb14-38" aria-hidden="true"></a>__dirname__ <span class="op">=</span> os.path.dirname(<span class="va">__file__</span>)</span>
+      <span id="cb14-39"><a href="#cb14-39" aria-hidden="true"></a></span>
+      <span id="cb14-40"><a href="#cb14-40" aria-hidden="true"></a><span class="co"># Help strings</span></span>
+      <span id="cb14-41"><a href="#cb14-41" aria-hidden="true"></a>__description__ <span class="op">=</span> <span class="ss">f&#39;</span><span class="sc">{</span>__basename__<span class="sc">}</span><span class="ss"> is a python helper script to administrate a docker swarm and docker services.&#39;</span></span>
+      <span id="cb14-42"><a href="#cb14-42" aria-hidden="true"></a>__epilog__ <span class="op">=</span> <span class="ss">f&#39;Run </span><span class="sc">{</span>__basename__<span class="sc">}</span><span class="ss"> [command] --help for more information on a command.&#39;</span></span>
+      <span id="cb14-43"><a href="#cb14-43" aria-hidden="true"></a></span>
+      <span id="cb14-44"><a href="#cb14-44" aria-hidden="true"></a><span class="co">&quot;&quot;&quot; INITIALIZE WORKING DIRECTORY ------------------------------------------ &quot;&quot;&quot;</span></span>
+      <span id="cb14-45"><a href="#cb14-45" aria-hidden="true"></a><span class="co"># Change working directory to script location</span></span>
+      <span id="cb14-46"><a href="#cb14-46" aria-hidden="true"></a>os.chdir(__dirname__)</span>
+      <span id="cb14-47"><a href="#cb14-47" aria-hidden="true"></a></span>
+      <span id="cb14-48"><a href="#cb14-48" aria-hidden="true"></a><span class="co">&quot;&quot;&quot; INITIALIZE LOGGER ----------------------------------------------------- &quot;&quot;&quot;</span></span>
+      <span id="cb14-49"><a href="#cb14-49" aria-hidden="true"></a>log <span class="op">=</span> <span class="va">None</span></span>
+      <span id="cb14-50"><a href="#cb14-50" aria-hidden="true"></a></span>
+      <span id="cb14-51"><a href="#cb14-51" aria-hidden="true"></a><span class="co"># Add log filepath and filename to the logging namespace, so the config file</span></span>
+      <span id="cb14-52"><a href="#cb14-52" aria-hidden="true"></a><span class="co"># can reference it.</span></span>
+      <span id="cb14-53"><a href="#cb14-53" aria-hidden="true"></a>logging.filepath <span class="op">=</span> <span class="st">&#39;log&#39;</span></span>
+      <span id="cb14-54"><a href="#cb14-54" aria-hidden="true"></a>logging.filename <span class="op">=</span> <span class="ss">f&#39;</span><span class="sc">{</span>__basenamenoext__<span class="sc">}</span><span class="ss">.log&#39;</span></span>
+      <span id="cb14-55"><a href="#cb14-55" aria-hidden="true"></a></span>
+      <span id="cb14-56"><a href="#cb14-56" aria-hidden="true"></a><span class="co"># Load config file</span></span>
+      <span id="cb14-57"><a href="#cb14-57" aria-hidden="true"></a>logging.config.fileConfig(</span>
+      <span id="cb14-58"><a href="#cb14-58" aria-hidden="true"></a>  fname<span class="op">=</span><span class="st">&#39;conf/logging.conf&#39;</span>,</span>
+      <span id="cb14-59"><a href="#cb14-59" aria-hidden="true"></a>  disable_existing_loggers<span class="op">=</span><span class="va">False</span></span>
+      <span id="cb14-60"><a href="#cb14-60" aria-hidden="true"></a>  )</span>
+      <span id="cb14-61"><a href="#cb14-61" aria-hidden="true"></a></span>
+      <span id="cb14-62"><a href="#cb14-62" aria-hidden="true"></a><span class="co"># Create logger</span></span>
+      <span id="cb14-63"><a href="#cb14-63" aria-hidden="true"></a>log <span class="op">=</span> logging.getLogger(__basename__)</span>
+      <span id="cb14-64"><a href="#cb14-64" aria-hidden="true"></a></span>
+      <span id="cb14-65"><a href="#cb14-65" aria-hidden="true"></a><span class="co">&quot;&quot;&quot; INITIALIZE PARSER ----------------------------------------------------- &quot;&quot;&quot;</span></span>
+      <span id="cb14-66"><a href="#cb14-66" aria-hidden="true"></a>parser <span class="op">=</span> <span class="va">None</span></span>
+      <span id="cb14-67"><a href="#cb14-67" aria-hidden="true"></a></span>
+      <span id="cb14-68"><a href="#cb14-68" aria-hidden="true"></a><span class="co"># Create parser</span></span>
+      <span id="cb14-69"><a href="#cb14-69" aria-hidden="true"></a>parser <span class="op">=</span> argparse.ArgumentParser(</span>
+      <span id="cb14-70"><a href="#cb14-70" aria-hidden="true"></a>  add_help <span class="op">=</span> <span class="va">True</span>,</span>
+      <span id="cb14-71"><a href="#cb14-71" aria-hidden="true"></a>  formatter_class <span class="op">=</span> argparse.RawDescriptionHelpFormatter,</span>
+      <span id="cb14-72"><a href="#cb14-72" aria-hidden="true"></a>  description<span class="op">=</span>__description__,</span>
+      <span id="cb14-73"><a href="#cb14-73" aria-hidden="true"></a>  epilog<span class="op">=</span>__epilog__</span>
+      <span id="cb14-74"><a href="#cb14-74" aria-hidden="true"></a>)</span>
+      <span id="cb14-75"><a href="#cb14-75" aria-hidden="true"></a></span>
+      <span id="cb14-76"><a href="#cb14-76" aria-hidden="true"></a><span class="co"># Add parser arguments</span></span>
+      <span id="cb14-77"><a href="#cb14-77" aria-hidden="true"></a>parser.add_argument(</span>
+      <span id="cb14-78"><a href="#cb14-78" aria-hidden="true"></a>  <span class="st">&#39;-d&#39;</span>, <span class="st">&#39;--debug&#39;</span>,</span>
+      <span id="cb14-79"><a href="#cb14-79" aria-hidden="true"></a>  action<span class="op">=</span><span class="st">&#39;store_true&#39;</span>,</span>
+      <span id="cb14-80"><a href="#cb14-80" aria-hidden="true"></a>  default<span class="op">=</span><span class="va">False</span></span>
+      <span id="cb14-81"><a href="#cb14-81" aria-hidden="true"></a>)</span>
+      <span id="cb14-82"><a href="#cb14-82" aria-hidden="true"></a>parser.add_argument(</span>
+      <span id="cb14-83"><a href="#cb14-83" aria-hidden="true"></a>  <span class="st">&#39;--version&#39;</span>,</span>
+      <span id="cb14-84"><a href="#cb14-84" aria-hidden="true"></a>  action<span class="op">=</span><span class="st">&#39;version&#39;</span>,</span>
+      <span id="cb14-85"><a href="#cb14-85" aria-hidden="true"></a>  version<span class="op">=</span><span class="ss">f&#39;</span><span class="sc">{</span>__basename__<span class="sc">}</span><span class="ss"> (version </span><span class="sc">{</span>__version__<span class="sc">}</span><span class="ss">) </span><span class="sc">{</span>__author_name__<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>__author_mail__<span class="sc">}</span><span class="ss">&#39;</span></span>
+      <span id="cb14-86"><a href="#cb14-86" aria-hidden="true"></a>)</span>
+      <span id="cb14-87"><a href="#cb14-87" aria-hidden="true"></a></span>
+      <span id="cb14-88"><a href="#cb14-88" aria-hidden="true"></a><span class="co"># Initialize subparsers</span></span>
+      <span id="cb14-89"><a href="#cb14-89" aria-hidden="true"></a>subparsers <span class="op">=</span> parser.add_subparsers(dest<span class="op">=</span><span class="st">&#39;subcommand&#39;</span>, <span class="bu">help</span><span class="op">=</span><span class="st">&#39;Commands&#39;</span>)</span>
+      <span id="cb14-90"><a href="#cb14-90" aria-hidden="true"></a></span>
+      <span id="cb14-91"><a href="#cb14-91" aria-hidden="true"></a><span class="kw">def</span> argument(<span class="op">*</span>name_or_flags, <span class="op">**</span>kwargs):</span>
+      <span id="cb14-92"><a href="#cb14-92" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Helper function to satisfy argparse.ArgumentParser.add_argument()&#39;s</span></span>
+      <span id="cb14-93"><a href="#cb14-93" aria-hidden="true"></a><span class="co">    input argument syntax.</span></span>
+      <span id="cb14-94"><a href="#cb14-94" aria-hidden="true"></a></span>
+      <span id="cb14-95"><a href="#cb14-95" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
+      <span id="cb14-96"><a href="#cb14-96" aria-hidden="true"></a>    <span class="cf">return</span> (<span class="bu">list</span>(name_or_flags), kwargs)</span>
+      <span id="cb14-97"><a href="#cb14-97" aria-hidden="true"></a></span>
+      <span id="cb14-98"><a href="#cb14-98" aria-hidden="true"></a><span class="kw">def</span> subcommand(args<span class="op">=</span>[], parent<span class="op">=</span>subparsers):</span>
+      <span id="cb14-99"><a href="#cb14-99" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Decorator to define a new subcommand in a sanity-preserving way.</span></span>
+      <span id="cb14-100"><a href="#cb14-100" aria-hidden="true"></a><span class="co">    See https://mike.depalatis.net/blog/simplifying-argparse.html</span></span>
+      <span id="cb14-101"><a href="#cb14-101" aria-hidden="true"></a></span>
+      <span id="cb14-102"><a href="#cb14-102" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
+      <span id="cb14-103"><a href="#cb14-103" aria-hidden="true"></a>    <span class="kw">def</span> decorator(func):</span>
+      <span id="cb14-104"><a href="#cb14-104" aria-hidden="true"></a>        parser <span class="op">=</span> parent.add_parser(func.<span class="va">__name__</span>, description<span class="op">=</span>func.__doc__)</span>
+      <span id="cb14-105"><a href="#cb14-105" aria-hidden="true"></a>        <span class="cf">for</span> arg <span class="kw">in</span> args:</span>
+      <span id="cb14-106"><a href="#cb14-106" aria-hidden="true"></a>            parser.add_argument(<span class="op">*</span>arg[<span class="dv">0</span>], <span class="op">**</span>arg[<span class="dv">1</span>])</span>
+      <span id="cb14-107"><a href="#cb14-107" aria-hidden="true"></a>        parser.set_defaults(func<span class="op">=</span>func)</span>
+      <span id="cb14-108"><a href="#cb14-108" aria-hidden="true"></a>    <span class="cf">return</span> decorator</span>
+      <span id="cb14-109"><a href="#cb14-109" aria-hidden="true"></a></span>
+      <span id="cb14-110"><a href="#cb14-110" aria-hidden="true"></a><span class="co"># &#39;swarm&#39; subcommands definition</span></span>
+      <span id="cb14-111"><a href="#cb14-111" aria-hidden="true"></a><span class="at">@subcommand</span>([</span>
+      <span id="cb14-112"><a href="#cb14-112" aria-hidden="true"></a>  argument(<span class="st">&#39;command&#39;</span>, <span class="bu">help</span><span class="op">=</span><span class="st">&#39;Commands&#39;</span>, choices<span class="op">=</span>[</span>
+      <span id="cb14-113"><a href="#cb14-113" aria-hidden="true"></a>    <span class="st">&#39;create&#39;</span>, <span class="st">&#39;remove&#39;</span>, <span class="st">&#39;start&#39;</span>, <span class="st">&#39;status&#39;</span>, <span class="st">&#39;stop&#39;</span>, <span class="st">&#39;update&#39;</span></span>
+      <span id="cb14-114"><a href="#cb14-114" aria-hidden="true"></a>    ])</span>
+      <span id="cb14-115"><a href="#cb14-115" aria-hidden="true"></a>  ])</span>
+      <span id="cb14-116"><a href="#cb14-116" aria-hidden="true"></a><span class="kw">def</span> swarm(args):</span>
+      <span id="cb14-117"><a href="#cb14-117" aria-hidden="true"></a>    <span class="co">&#39;&#39;&#39;swarm subcommand definition&#39;&#39;&#39;</span></span>
+      <span id="cb14-118"><a href="#cb14-118" aria-hidden="true"></a>    cmd <span class="op">=</span> args.command</span>
+      <span id="cb14-119"><a href="#cb14-119" aria-hidden="true"></a>    <span class="bu">list</span> <span class="op">=</span> get_listfromfile(<span class="st">&#39;conf/swarm.conf&#39;</span>)</span>
+      <span id="cb14-120"><a href="#cb14-120" aria-hidden="true"></a>    <span class="cf">if</span> cmd <span class="op">==</span> <span class="st">&#39;create&#39;</span>:</span>
+      <span id="cb14-121"><a href="#cb14-121" aria-hidden="true"></a>        swarm_create(<span class="bu">list</span>)</span>
+      <span id="cb14-122"><a href="#cb14-122" aria-hidden="true"></a>        swarm_config_network(<span class="bu">list</span>)</span>
+      <span id="cb14-123"><a href="#cb14-123" aria-hidden="true"></a>        <span class="co"># swarm_config_nfs(list)</span></span>
+      <span id="cb14-124"><a href="#cb14-124" aria-hidden="true"></a>        swarm_register(<span class="bu">list</span>)</span>
+      <span id="cb14-125"><a href="#cb14-125" aria-hidden="true"></a>    <span class="cf">if</span> cmd <span class="op">==</span> <span class="st">&#39;remove&#39;</span>:</span>
+      <span id="cb14-126"><a href="#cb14-126" aria-hidden="true"></a>        <span class="co"># swarm_stop(list)</span></span>
+      <span id="cb14-127"><a href="#cb14-127" aria-hidden="true"></a>        swarm_remove(<span class="bu">list</span>)</span>
+      <span id="cb14-128"><a href="#cb14-128" aria-hidden="true"></a>        swarm_cleanup(<span class="bu">list</span>)</span>
+      <span id="cb14-129"><a href="#cb14-129" aria-hidden="true"></a>    <span class="cf">if</span> cmd <span class="op">==</span> <span class="st">&#39;start&#39;</span>:</span>
+      <span id="cb14-130"><a href="#cb14-130" aria-hidden="true"></a>        swarm_start(<span class="bu">list</span>)</span>
+      <span id="cb14-131"><a href="#cb14-131" aria-hidden="true"></a>        <span class="co"># swarm_config_network(list)</span></span>
+      <span id="cb14-132"><a href="#cb14-132" aria-hidden="true"></a>        <span class="co"># swarm_register(list)</span></span>
+      <span id="cb14-133"><a href="#cb14-133" aria-hidden="true"></a>    <span class="cf">if</span> cmd <span class="op">==</span> <span class="st">&#39;status&#39;</span>:</span>
+      <span id="cb14-134"><a href="#cb14-134" aria-hidden="true"></a>        swarm_status(<span class="bu">list</span>)</span>
+      <span id="cb14-135"><a href="#cb14-135" aria-hidden="true"></a>    <span class="cf">if</span> cmd <span class="op">==</span> <span class="st">&#39;stop&#39;</span>:</span>
+      <span id="cb14-136"><a href="#cb14-136" aria-hidden="true"></a>        swarm_stop(<span class="bu">list</span>)</span>
+      <span id="cb14-137"><a href="#cb14-137" aria-hidden="true"></a>    <span class="cf">if</span> cmd <span class="op">==</span> <span class="st">&#39;update&#39;</span>:</span>
+      <span id="cb14-138"><a href="#cb14-138" aria-hidden="true"></a>        <span class="co"># swarm_config_network(list)</span></span>
+      <span id="cb14-139"><a href="#cb14-139" aria-hidden="true"></a>        swarm_config_nfs(<span class="bu">list</span>)</span>
+      <span id="cb14-140"><a href="#cb14-140" aria-hidden="true"></a>        <span class="co"># swarm_config_extras(list)</span></span>
+      <span id="cb14-141"><a href="#cb14-141" aria-hidden="true"></a>        <span class="co"># swarm_register(list)</span></span>
+      <span id="cb14-142"><a href="#cb14-142" aria-hidden="true"></a></span>
+      <span id="cb14-143"><a href="#cb14-143" aria-hidden="true"></a>...</span>
+      <span id="cb14-144"><a href="#cb14-144" aria-hidden="true"></a></span>
+      <span id="cb14-145"><a href="#cb14-145" aria-hidden="true"></a><span class="co">&quot;&quot;&quot; SUBPROCESS FUNCTIONS --------------------------------------------------- &quot;&quot;&quot;</span></span>
+      <span id="cb14-146"><a href="#cb14-146" aria-hidden="true"></a><span class="kw">def</span> subprocess_run(cmd, timeout_s<span class="op">=</span><span class="dv">180</span>, <span class="bu">input</span><span class="op">=</span><span class="va">None</span>):</span>
+      <span id="cb14-147"><a href="#cb14-147" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;_summary_</span></span>
+      <span id="cb14-148"><a href="#cb14-148" aria-hidden="true"></a></span>
+      <span id="cb14-149"><a href="#cb14-149" aria-hidden="true"></a><span class="co">    Args:</span></span>
+      <span id="cb14-150"><a href="#cb14-150" aria-hidden="true"></a><span class="co">        cmd (_type_): _description_</span></span>
+      <span id="cb14-151"><a href="#cb14-151" aria-hidden="true"></a><span class="co">        timeout_s (int, optional): _description_. Defaults to 180.</span></span>
+      <span id="cb14-152"><a href="#cb14-152" aria-hidden="true"></a><span class="co">        input (_type_, optional): _description_. Defaults to None.</span></span>
+      <span id="cb14-153"><a href="#cb14-153" aria-hidden="true"></a></span>
+      <span id="cb14-154"><a href="#cb14-154" aria-hidden="true"></a><span class="co">    Returns:</span></span>
+      <span id="cb14-155"><a href="#cb14-155" aria-hidden="true"></a><span class="co">        _type_: _description_</span></span>
+      <span id="cb14-156"><a href="#cb14-156" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
+      <span id="cb14-157"><a href="#cb14-157" aria-hidden="true"></a>    log.debug(<span class="ss">f&#39;subprocess_run(cmd=</span><span class="sc">{</span>cmd<span class="sc">}</span><span class="ss">, timeout_s=</span><span class="sc">{</span>timeout_s<span class="sc">}</span><span class="ss">, input=</span><span class="sc">{</span><span class="bu">input</span><span class="sc">}</span><span class="ss">)&#39;</span>)</span>
+      <span id="cb14-158"><a href="#cb14-158" aria-hidden="true"></a>    <span class="cf">try</span>:</span>
+      <span id="cb14-159"><a href="#cb14-159" aria-hidden="true"></a>        <span class="co"># proc = subprocess.run(cmd, input=input, timeout=timeout_s, capture_output=True, text=True, shell=True)</span></span>
+      <span id="cb14-160"><a href="#cb14-160" aria-hidden="true"></a>        proc <span class="op">=</span> subprocess.run(cmd, <span class="bu">input</span><span class="op">=</span><span class="bu">input</span>, timeout<span class="op">=</span>timeout_s, capture_output<span class="op">=</span><span class="va">True</span>, text<span class="op">=</span><span class="va">True</span>)</span>
+      <span id="cb14-161"><a href="#cb14-161" aria-hidden="true"></a>    <span class="cf">except</span> subprocess.TimeoutExpired:</span>
+      <span id="cb14-162"><a href="#cb14-162" aria-hidden="true"></a>        log.error(<span class="ss">f&#39;timeout for cmd=</span><span class="sc">{</span>cmd<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>timeout_s<span class="sc">}</span><span class="ss">s) expired.&#39;</span>)</span>
+      <span id="cb14-163"><a href="#cb14-163" aria-hidden="true"></a>        sys.exit(<span class="dv">1</span>)</span>
+      <span id="cb14-164"><a href="#cb14-164" aria-hidden="true"></a>    stdout <span class="op">=</span> []</span>
+      <span id="cb14-165"><a href="#cb14-165" aria-hidden="true"></a>    <span class="cf">for</span> line <span class="kw">in</span> proc.stdout.splitlines():</span>
+      <span id="cb14-166"><a href="#cb14-166" aria-hidden="true"></a>        stdout.append(line)</span>
+      <span id="cb14-167"><a href="#cb14-167" aria-hidden="true"></a>    stderr <span class="op">=</span> []</span>
+      <span id="cb14-168"><a href="#cb14-168" aria-hidden="true"></a>    <span class="cf">for</span> line <span class="kw">in</span> proc.stderr.splitlines():</span>
+      <span id="cb14-169"><a href="#cb14-169" aria-hidden="true"></a>        stderr.append(line)</span>
+      <span id="cb14-170"><a href="#cb14-170" aria-hidden="true"></a>    log.debug(<span class="ss">f&#39;stdout=</span><span class="sc">{</span>stdout<span class="sc">}</span><span class="ss">, stderr=</span><span class="sc">{</span>stderr<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-171"><a href="#cb14-171" aria-hidden="true"></a>    <span class="cf">return</span> proc</span>
+      <span id="cb14-172"><a href="#cb14-172" aria-hidden="true"></a></span>
+      <span id="cb14-173"><a href="#cb14-173" aria-hidden="true"></a>...</span>
+      <span id="cb14-174"><a href="#cb14-174" aria-hidden="true"></a></span>
+      <span id="cb14-175"><a href="#cb14-175" aria-hidden="true"></a><span class="co">&quot;&quot;&quot; MACHINE FUNCTIONS ----------------------------------------------------- &quot;&quot;&quot;</span></span>
+      <span id="cb14-176"><a href="#cb14-176" aria-hidden="true"></a><span class="kw">def</span> machine_env(hostname: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>:</span>
+      <span id="cb14-177"><a href="#cb14-177" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Get docker environment from machine hostname.</span></span>
+      <span id="cb14-178"><a href="#cb14-178" aria-hidden="true"></a></span>
+      <span id="cb14-179"><a href="#cb14-179" aria-hidden="true"></a><span class="co">    Args:</span></span>
+      <span id="cb14-180"><a href="#cb14-180" aria-hidden="true"></a><span class="co">        hostname (str): machine hostname</span></span>
+      <span id="cb14-181"><a href="#cb14-181" aria-hidden="true"></a></span>
+      <span id="cb14-182"><a href="#cb14-182" aria-hidden="true"></a><span class="co">    Returns:</span></span>
+      <span id="cb14-183"><a href="#cb14-183" aria-hidden="true"></a><span class="co">        list: docker environment as ([key, value])</span></span>
+      <span id="cb14-184"><a href="#cb14-184" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
+      <span id="cb14-185"><a href="#cb14-185" aria-hidden="true"></a>    log.debug(<span class="ss">f&#39;</span><span class="sc">{</span>hostname<span class="sc">}</span><span class="ss">: getting machine environment&#39;</span>)</span>
+      <span id="cb14-186"><a href="#cb14-186" aria-hidden="true"></a>    cmd <span class="op">=</span> [get_exec(<span class="st">&#39;machine&#39;</span>), <span class="st">&#39;env&#39;</span>, hostname]</span>
+      <span id="cb14-187"><a href="#cb14-187" aria-hidden="true"></a>    proc <span class="op">=</span> subprocess_run(cmd)</span>
+      <span id="cb14-188"><a href="#cb14-188" aria-hidden="true"></a>    env <span class="op">=</span> []</span>
+      <span id="cb14-189"><a href="#cb14-189" aria-hidden="true"></a>    <span class="cf">for</span> line <span class="kw">in</span> proc.stdout.splitlines():</span>
+      <span id="cb14-190"><a href="#cb14-190" aria-hidden="true"></a>        <span class="cf">if</span> line.startswith(<span class="st">&#39;REM&#39;</span>) <span class="kw">or</span> line.startswith(<span class="st">&#39;#&#39;</span>): <span class="cf">continue</span></span>
+      <span id="cb14-191"><a href="#cb14-191" aria-hidden="true"></a>        line <span class="op">=</span> line.replace(<span class="st">&#39;$Env:&#39;</span>, <span class="st">&#39;&#39;</span>).replace(<span class="st">&#39;SET &#39;</span>, <span class="st">&#39;&#39;</span>)</span>
+      <span id="cb14-192"><a href="#cb14-192" aria-hidden="true"></a>        key <span class="op">=</span> line.split(<span class="st">&#39;=&#39;</span>, <span class="dv">1</span>)[<span class="dv">0</span>].strip()</span>
+      <span id="cb14-193"><a href="#cb14-193" aria-hidden="true"></a>        value <span class="op">=</span> line.split(<span class="st">&#39;=&#39;</span>, <span class="dv">1</span>)[<span class="dv">1</span>].strip()</span>
+      <span id="cb14-194"><a href="#cb14-194" aria-hidden="true"></a>        env.append([key, value])</span>
+      <span id="cb14-195"><a href="#cb14-195" aria-hidden="true"></a>    log.debug(<span class="ss">f&#39;hostname=</span><span class="sc">{</span>hostname<span class="sc">}</span><span class="ss">, env=</span><span class="sc">{</span>env<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-196"><a href="#cb14-196" aria-hidden="true"></a>    <span class="cf">return</span> env</span>
+      <span id="cb14-197"><a href="#cb14-197" aria-hidden="true"></a></span>
+      <span id="cb14-198"><a href="#cb14-198" aria-hidden="true"></a><span class="kw">def</span> machine_activate(hostname: <span class="bu">str</span>):</span>
+      <span id="cb14-199"><a href="#cb14-199" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Set docker environment from machine hostname.</span></span>
+      <span id="cb14-200"><a href="#cb14-200" aria-hidden="true"></a></span>
+      <span id="cb14-201"><a href="#cb14-201" aria-hidden="true"></a><span class="co">    Args:</span></span>
+      <span id="cb14-202"><a href="#cb14-202" aria-hidden="true"></a><span class="co">        hostname (str): machine</span></span>
+      <span id="cb14-203"><a href="#cb14-203" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
+      <span id="cb14-204"><a href="#cb14-204" aria-hidden="true"></a>    env <span class="op">=</span> machine_env(hostname)</span>
+      <span id="cb14-205"><a href="#cb14-205" aria-hidden="true"></a>    log.debug(<span class="ss">f&#39;</span><span class="sc">{</span>hostname<span class="sc">}</span><span class="ss">: Setting machine environment&#39;</span>)</span>
+      <span id="cb14-206"><a href="#cb14-206" aria-hidden="true"></a>    os.environ <span class="op">=</span> __env__</span>
+      <span id="cb14-207"><a href="#cb14-207" aria-hidden="true"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> env:</span>
+      <span id="cb14-208"><a href="#cb14-208" aria-hidden="true"></a>        os.environ[key] <span class="op">=</span> value</span>
+      <span id="cb14-209"><a href="#cb14-209" aria-hidden="true"></a></span>
+      <span id="cb14-210"><a href="#cb14-210" aria-hidden="true"></a>...</span>
+      <span id="cb14-211"><a href="#cb14-211" aria-hidden="true"></a></span>
+      <span id="cb14-212"><a href="#cb14-212" aria-hidden="true"></a><span class="co">&quot;&quot;&quot; SWARM FUNCTIONS ------------------------------------------------------- &quot;&quot;&quot;</span></span>
+      <span id="cb14-213"><a href="#cb14-213" aria-hidden="true"></a></span>
+      <span id="cb14-214"><a href="#cb14-214" aria-hidden="true"></a>...</span>
+      <span id="cb14-215"><a href="#cb14-215" aria-hidden="true"></a></span>
+      <span id="cb14-216"><a href="#cb14-216" aria-hidden="true"></a><span class="kw">def</span> swarm_create(<span class="bu">list</span>):</span>
+      <span id="cb14-217"><a href="#cb14-217" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;&#39;swarm_create(list)&#39; documentation.</span></span>
+      <span id="cb14-218"><a href="#cb14-218" aria-hidden="true"></a><span class="co">    </span></span>
+      <span id="cb14-219"><a href="#cb14-219" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
+      <span id="cb14-220"><a href="#cb14-220" aria-hidden="true"></a>    log.info(<span class="st">&#39;&gt; Creating swarm... (This may take several minutes)&#39;</span>)</span>
+      <span id="cb14-221"><a href="#cb14-221" aria-hidden="true"></a>    log.debug(<span class="ss">f&#39;list=</span><span class="sc">{</span><span class="bu">list</span><span class="sc">}</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-222"><a href="#cb14-222" aria-hidden="true"></a>    <span class="cf">if</span> __platform__ <span class="op">==</span> <span class="st">&#39;Windows&#39;</span>:</span>
+      <span id="cb14-223"><a href="#cb14-223" aria-hidden="true"></a>        options <span class="op">=</span> get_listfromfile(<span class="st">&#39;conf/driver-windows-virtualbox.conf&#39;</span>)</span>
+      <span id="cb14-224"><a href="#cb14-224" aria-hidden="true"></a>    cmd <span class="op">=</span> [get_exec(<span class="st">&#39;machine&#39;</span>)] <span class="op">+</span> [<span class="st">&#39;create&#39;</span>] <span class="op">+</span> options</span>
+      <span id="cb14-225"><a href="#cb14-225" aria-hidden="true"></a>    processes <span class="op">=</span> subprocess_prun(cmd, <span class="bu">list</span>, <span class="dv">120</span>)</span>
+      <span id="cb14-226"><a href="#cb14-226" aria-hidden="true"></a>    log.info(<span class="ss">f&#39;&gt; </span><span class="sc">{</span><span class="bu">len</span>(<span class="bu">list</span>)<span class="sc">}</span><span class="ss"> machines created.&#39;</span>)</span>
+      <span id="cb14-227"><a href="#cb14-227" aria-hidden="true"></a></span>
+      <span id="cb14-228"><a href="#cb14-228" aria-hidden="true"></a><span class="kw">def</span> swarm_register(<span class="bu">list</span>):</span>
+      <span id="cb14-229"><a href="#cb14-229" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;&#39;swarm_register(list)&#39; documentation.</span></span>
+      <span id="cb14-230"><a href="#cb14-230" aria-hidden="true"></a><span class="co">    </span></span>
+      <span id="cb14-231"><a href="#cb14-231" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
+      <span id="cb14-232"><a href="#cb14-232" aria-hidden="true"></a>    log.info(<span class="st">&#39;&gt; Registering swarm...&#39;</span>)</span>
+      <span id="cb14-233"><a href="#cb14-233" aria-hidden="true"></a>    log.debug(<span class="ss">f&#39;list=</span><span class="sc">{</span><span class="bu">list</span><span class="sc">}</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-234"><a href="#cb14-234" aria-hidden="true"></a>    manager <span class="op">=</span> <span class="st">&#39;&#39;</span></span>
+      <span id="cb14-235"><a href="#cb14-235" aria-hidden="true"></a>    port <span class="op">=</span> <span class="st">&#39;2377&#39;</span></span>
+      <span id="cb14-236"><a href="#cb14-236" aria-hidden="true"></a>    token <span class="op">=</span> <span class="st">&#39;&#39;</span></span>
+      <span id="cb14-237"><a href="#cb14-237" aria-hidden="true"></a>    <span class="cf">for</span> hostname <span class="kw">in</span> <span class="bu">list</span>:</span>
+      <span id="cb14-238"><a href="#cb14-238" aria-hidden="true"></a>        machine_activate(hostname)</span>
+      <span id="cb14-239"><a href="#cb14-239" aria-hidden="true"></a>        machine_swarm_leave(hostname)</span>
+      <span id="cb14-240"><a href="#cb14-240" aria-hidden="true"></a>        <span class="cf">if</span> <span class="st">&#39;manager&#39;</span> <span class="kw">in</span> hostname:</span>
+      <span id="cb14-241"><a href="#cb14-241" aria-hidden="true"></a>            ip <span class="op">=</span> machine_ip(hostname)</span>
+      <span id="cb14-242"><a href="#cb14-242" aria-hidden="true"></a>            manager <span class="op">=</span> <span class="ss">f&#39;</span><span class="sc">{ip}</span><span class="ss">:</span><span class="sc">{</span>port<span class="sc">}</span><span class="ss">&#39;</span></span>
+      <span id="cb14-243"><a href="#cb14-243" aria-hidden="true"></a>            log.debug(<span class="ss">f&#39;manager=</span><span class="sc">{</span>manager<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-244"><a href="#cb14-244" aria-hidden="true"></a>            token <span class="op">=</span> machine_swarm_init(hostname, ip)</span>
+      <span id="cb14-245"><a href="#cb14-245" aria-hidden="true"></a>        <span class="cf">else</span>:</span>
+      <span id="cb14-246"><a href="#cb14-246" aria-hidden="true"></a>            machine_swarm_join(hostname, token, manager)</span>
+      <span id="cb14-247"><a href="#cb14-247" aria-hidden="true"></a>    log.info(<span class="ss">f&#39;&gt; </span><span class="sc">{</span><span class="bu">len</span>(<span class="bu">list</span>)<span class="sc">}</span><span class="ss"> nodes registered.&#39;</span>)</span>
+      <span id="cb14-248"><a href="#cb14-248" aria-hidden="true"></a></span>
+      <span id="cb14-249"><a href="#cb14-249" aria-hidden="true"></a>...</span>
+      <span id="cb14-250"><a href="#cb14-250" aria-hidden="true"></a></span>
+      <span id="cb14-251"><a href="#cb14-251" aria-hidden="true"></a><span class="kw">def</span> swarm_config_network(<span class="bu">list</span>):</span>
+      <span id="cb14-252"><a href="#cb14-252" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;&#39;swarm_setup(list)&#39; documentation.</span></span>
+      <span id="cb14-253"><a href="#cb14-253" aria-hidden="true"></a><span class="co">    </span></span>
+      <span id="cb14-254"><a href="#cb14-254" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
+      <span id="cb14-255"><a href="#cb14-255" aria-hidden="true"></a>    log.info(<span class="st">&#39;&gt; Setting up network...&#39;</span>)</span>
+      <span id="cb14-256"><a href="#cb14-256" aria-hidden="true"></a>    log.debug(<span class="ss">f&#39;list=</span><span class="sc">{</span><span class="bu">list</span><span class="sc">}</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-257"><a href="#cb14-257" aria-hidden="true"></a>    <span class="co"># Create temporary hosts file</span></span>
+      <span id="cb14-258"><a href="#cb14-258" aria-hidden="true"></a>    local_path <span class="op">=</span> <span class="st">&#39;tmp/hosts&#39;</span></span>
+      <span id="cb14-259"><a href="#cb14-259" aria-hidden="true"></a>    <span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(local_path, <span class="st">&#39;w&#39;</span>)</span>
+      <span id="cb14-260"><a href="#cb14-260" aria-hidden="true"></a>    <span class="bu">file</span>.write(<span class="st">&#39;# /etc/hosts</span><span class="ch">\n</span><span class="st">&#39;</span>)</span>
+      <span id="cb14-261"><a href="#cb14-261" aria-hidden="true"></a>    <span class="cf">for</span> hostname <span class="kw">in</span> <span class="bu">list</span>:</span>
+      <span id="cb14-262"><a href="#cb14-262" aria-hidden="true"></a>        ip <span class="op">=</span> machine_ip(hostname)</span>
+      <span id="cb14-263"><a href="#cb14-263" aria-hidden="true"></a>        line <span class="op">=</span> <span class="ss">f&#39;</span><span class="sc">{ip}</span><span class="ss"> </span><span class="sc">{</span>hostname<span class="sc">}</span><span class="ss">&#39;</span></span>
+      <span id="cb14-264"><a href="#cb14-264" aria-hidden="true"></a>        log.debug(<span class="ss">f&#39;Adding line=</span><span class="sc">{</span>line<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>local_path<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-265"><a href="#cb14-265" aria-hidden="true"></a>        <span class="bu">file</span>.write(<span class="ss">f&#39;</span><span class="sc">{</span>line<span class="sc">}</span><span class="ch">\n</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-266"><a href="#cb14-266" aria-hidden="true"></a>    <span class="bu">file</span>.close()</span>
+      <span id="cb14-267"><a href="#cb14-267" aria-hidden="true"></a>    <span class="co"># Write to each host</span></span>
+      <span id="cb14-268"><a href="#cb14-268" aria-hidden="true"></a>    tag <span class="op">=</span> <span class="ss">f&#39;# Added by </span><span class="sc">{</span>__basename__<span class="sc">}</span><span class="ss">:swarm_config_network()&#39;</span></span>
+      <span id="cb14-269"><a href="#cb14-269" aria-hidden="true"></a>    remote_path <span class="op">=</span> <span class="st">&#39;/etc/hosts&#39;</span></span>
+      <span id="cb14-270"><a href="#cb14-270" aria-hidden="true"></a>    <span class="cf">for</span> hostname <span class="kw">in</span> <span class="bu">list</span>:</span>
+      <span id="cb14-271"><a href="#cb14-271" aria-hidden="true"></a>        log.info(<span class="ss">f&#39;</span><span class="sc">{</span>hostname<span class="sc">}</span><span class="ss">: Edit </span><span class="sc">{</span>remote_path<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-272"><a href="#cb14-272" aria-hidden="true"></a>        <span class="co"># Remove previous appends depending on tag</span></span>
+      <span id="cb14-273"><a href="#cb14-273" aria-hidden="true"></a>        cmd <span class="op">=</span> <span class="st">&#39;&#39;</span></span>
+      <span id="cb14-274"><a href="#cb14-274" aria-hidden="true"></a>        cmd <span class="op">+=</span> <span class="st">&#39;i=1; while read line; do &#39;</span></span>
+      <span id="cb14-275"><a href="#cb14-275" aria-hidden="true"></a>        cmd <span class="op">+=</span> <span class="st">&#39;if [ &quot;$line&quot; == &quot;&#39;</span><span class="op">+</span> tag <span class="op">+</span><span class="st">&#39;&quot; ]; then break; fi; i=$((i+1)); &#39;</span></span>
+      <span id="cb14-276"><a href="#cb14-276" aria-hidden="true"></a>        cmd <span class="op">+=</span> <span class="st">&#39;done &lt; /etc/hosts; &#39;</span></span>
+      <span id="cb14-277"><a href="#cb14-277" aria-hidden="true"></a>        cmd <span class="op">+=</span> <span class="st">&#39;head -n $((i-1)) /etc/hosts | sudo tee /etc/hosts&#39;</span></span>
+      <span id="cb14-278"><a href="#cb14-278" aria-hidden="true"></a>        proc <span class="op">=</span> machine_ssh(hostname, cmd)</span>
+      <span id="cb14-279"><a href="#cb14-279" aria-hidden="true"></a>        <span class="co"># Append host definitions</span></span>
+      <span id="cb14-280"><a href="#cb14-280" aria-hidden="true"></a>        cmd <span class="op">=</span> <span class="st">&#39;{ echo &quot;&#39;</span> <span class="op">+</span> tag <span class="op">+</span> <span class="st">&#39;&quot;; &#39;</span></span>
+      <span id="cb14-281"><a href="#cb14-281" aria-hidden="true"></a>        <span class="cf">for</span> line <span class="kw">in</span> get_listfromfile(local_path):</span>
+      <span id="cb14-282"><a href="#cb14-282" aria-hidden="true"></a>            <span class="cf">if</span> line.endswith(hostname): <span class="cf">continue</span></span>
+      <span id="cb14-283"><a href="#cb14-283" aria-hidden="true"></a>            cmd <span class="op">=</span> cmd <span class="op">+</span> <span class="st">&#39;echo &quot;&#39;</span> <span class="op">+</span> line <span class="op">+</span> <span class="st">&#39;&quot;; &#39;</span></span>
+      <span id="cb14-284"><a href="#cb14-284" aria-hidden="true"></a>        cmd <span class="op">=</span> cmd <span class="op">+</span> <span class="st">&#39;} | sudo tee -a /etc/hosts&#39;</span></span>
+      <span id="cb14-285"><a href="#cb14-285" aria-hidden="true"></a>        proc <span class="op">=</span> machine_ssh(hostname, cmd)</span>
+      <span id="cb14-286"><a href="#cb14-286" aria-hidden="true"></a>    log.info(<span class="st">&#39;&gt; Network setup complete.&#39;</span>)</span>
+      <span id="cb14-287"><a href="#cb14-287" aria-hidden="true"></a></span>
+      <span id="cb14-288"><a href="#cb14-288" aria-hidden="true"></a>...</span>
+      <span id="cb14-289"><a href="#cb14-289" aria-hidden="true"></a></span>
+      <span id="cb14-290"><a href="#cb14-290" aria-hidden="true"></a><span class="co">&quot;&quot;&quot; STACK FUNCTIONS ------------------------------------------------------- &quot;&quot;&quot;</span></span>
+      <span id="cb14-291"><a href="#cb14-291" aria-hidden="true"></a><span class="kw">def</span> compose_convert():</span>
+      <span id="cb14-292"><a href="#cb14-292" aria-hidden="true"></a>    <span class="co">&#39;&#39;&#39;&#39;&#39;&#39;</span></span>
+      <span id="cb14-293"><a href="#cb14-293" aria-hidden="true"></a>    version <span class="op">=</span> <span class="st">&#39;3.6&#39;</span></span>
+      <span id="cb14-294"><a href="#cb14-294" aria-hidden="true"></a></span>
+      <span id="cb14-295"><a href="#cb14-295" aria-hidden="true"></a>    cmd <span class="op">=</span> [get_exec(<span class="st">&#39;docker&#39;</span>), <span class="st">&#39;compose&#39;</span>, <span class="st">&#39;convert&#39;</span>]</span>
+      <span id="cb14-296"><a href="#cb14-296" aria-hidden="true"></a>    proc <span class="op">=</span> subprocess_run(cmd)</span>
+      <span id="cb14-297"><a href="#cb14-297" aria-hidden="true"></a></span>
+      <span id="cb14-298"><a href="#cb14-298" aria-hidden="true"></a>    <span class="co"># &#39;docker compose convert&#39; needs serious fixing...</span></span>
+      <span id="cb14-299"><a href="#cb14-299" aria-hidden="true"></a>    <span class="co"># 1. add mandatory compose version.</span></span>
+      <span id="cb14-300"><a href="#cb14-300" aria-hidden="true"></a>    compose <span class="op">=</span> <span class="ss">f&quot;version: &#39;</span><span class="sc">{</span>version<span class="sc">}</span><span class="ss">&#39;</span><span class="ch">\n</span><span class="ss">&quot;</span></span>
+      <span id="cb14-301"><a href="#cb14-301" aria-hidden="true"></a>    <span class="cf">for</span> line <span class="kw">in</span> proc.stdout.splitlines():</span>
+      <span id="cb14-302"><a href="#cb14-302" aria-hidden="true"></a>        <span class="co"># 2. remove conflicting name entry.</span></span>
+      <span id="cb14-303"><a href="#cb14-303" aria-hidden="true"></a>        <span class="cf">if</span> line.startswith(<span class="st">&#39;name&#39;</span>) : <span class="cf">continue</span></span>
+      <span id="cb14-304"><a href="#cb14-304" aria-hidden="true"></a>        <span class="co"># 3. remove &#39;&quot;&#39; to define integers.</span></span>
+      <span id="cb14-305"><a href="#cb14-305" aria-hidden="true"></a>        <span class="cf">if</span> <span class="st">&#39;published&#39;</span> <span class="kw">in</span> line : line <span class="op">=</span> line.replace(<span class="st">&#39;&quot;&#39;</span>, <span class="st">&#39;&#39;</span>)</span>
+      <span id="cb14-306"><a href="#cb14-306" aria-hidden="true"></a>        compose <span class="op">=</span> compose <span class="op">+</span> <span class="ss">f&#39;</span><span class="sc">{</span>line<span class="sc">}</span><span class="ch">\n</span><span class="ss">&#39;</span></span>
+      <span id="cb14-307"><a href="#cb14-307" aria-hidden="true"></a></span>
+      <span id="cb14-308"><a href="#cb14-308" aria-hidden="true"></a>    <span class="cf">return</span> compose</span>
+      <span id="cb14-309"><a href="#cb14-309" aria-hidden="true"></a></span>
+      <span id="cb14-310"><a href="#cb14-310" aria-hidden="true"></a>...</span>
+      <span id="cb14-311"><a href="#cb14-311" aria-hidden="true"></a></span>
+      <span id="cb14-312"><a href="#cb14-312" aria-hidden="true"></a><span class="kw">def</span> stack_deploy(stack, manager):</span>
+      <span id="cb14-313"><a href="#cb14-313" aria-hidden="true"></a>    <span class="co">&#39;&#39;&#39;Deploy a single docker stack on swarm manager.&#39;&#39;&#39;</span></span>
+      <span id="cb14-314"><a href="#cb14-314" aria-hidden="true"></a>    log.debug(<span class="ss">f&#39;stack=</span><span class="sc">{</span>stack<span class="sc">}</span><span class="ss">, manager=</span><span class="sc">{</span>manager<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-315"><a href="#cb14-315" aria-hidden="true"></a>    log.info(<span class="ss">f&#39;</span><span class="sc">{</span>stack<span class="sc">}</span><span class="ss">: Deploying stack.&#39;</span>)</span>
+      <span id="cb14-316"><a href="#cb14-316" aria-hidden="true"></a></span>
+      <span id="cb14-317"><a href="#cb14-317" aria-hidden="true"></a>    <span class="co"># Setup working directory and environment</span></span>
+      <span id="cb14-318"><a href="#cb14-318" aria-hidden="true"></a>    os.chdir(<span class="ss">f&#39;</span><span class="sc">{</span>__dirname__<span class="sc">}</span><span class="ss">/stacks/</span><span class="sc">{</span>stack<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-319"><a href="#cb14-319" aria-hidden="true"></a>    machine_activate(manager)</span>
+      <span id="cb14-320"><a href="#cb14-320" aria-hidden="true"></a></span>
+      <span id="cb14-321"><a href="#cb14-321" aria-hidden="true"></a>    <span class="co"># Add environment variables</span></span>
+      <span id="cb14-322"><a href="#cb14-322" aria-hidden="true"></a>    env <span class="op">=</span> [</span>
+      <span id="cb14-323"><a href="#cb14-323" aria-hidden="true"></a>      (<span class="st">&#39;STACK&#39;</span>, stack),</span>
+      <span id="cb14-324"><a href="#cb14-324" aria-hidden="true"></a>      (<span class="st">&#39;MANAGER&#39;</span>, manager)</span>
+      <span id="cb14-325"><a href="#cb14-325" aria-hidden="true"></a>    ]</span>
+      <span id="cb14-326"><a href="#cb14-326" aria-hidden="true"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> env:</span>
+      <span id="cb14-327"><a href="#cb14-327" aria-hidden="true"></a>        os.environ[key] <span class="op">=</span> value</span>
+      <span id="cb14-328"><a href="#cb14-328" aria-hidden="true"></a></span>
+      <span id="cb14-329"><a href="#cb14-329" aria-hidden="true"></a>    <span class="co"># If stack contains builds</span></span>
+      <span id="cb14-330"><a href="#cb14-330" aria-hidden="true"></a>    <span class="cf">if</span> os.path.isdir(<span class="st">&#39;builds&#39;</span>):</span>
+      <span id="cb14-331"><a href="#cb14-331" aria-hidden="true"></a>        <span class="cf">for</span> build <span class="kw">in</span> os.listdir(<span class="st">&#39;builds&#39;</span>):</span>
+      <span id="cb14-332"><a href="#cb14-332" aria-hidden="true"></a>            log.debug(<span class="ss">f&#39;build=</span><span class="sc">{</span>build<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-333"><a href="#cb14-333" aria-hidden="true"></a>            <span class="co"># Build image</span></span>
+      <span id="cb14-334"><a href="#cb14-334" aria-hidden="true"></a>            log.info(<span class="ss">f&#39;</span><span class="sc">{</span>stack<span class="sc">}</span><span class="ss">: Building </span><span class="sc">{</span>build<span class="sc">}</span><span class="ss">.&#39;</span>)</span>
+      <span id="cb14-335"><a href="#cb14-335" aria-hidden="true"></a>            cmd <span class="op">=</span> [get_exec(<span class="st">&#39;docker&#39;</span>), <span class="st">&#39;build&#39;</span>, <span class="st">&#39;-t&#39;</span>, <span class="ss">f&#39;127.0.0.1:5000/</span><span class="sc">{</span>stack<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span>build<span class="sc">}</span><span class="ss">&#39;</span>, <span class="ss">f&#39;builds/</span><span class="sc">{</span>build<span class="sc">}</span><span class="ss">/.&#39;</span>]</span>
+      <span id="cb14-336"><a href="#cb14-336" aria-hidden="true"></a>            proc <span class="op">=</span> subprocess_run(cmd, timeout_s<span class="op">=</span><span class="dv">240</span>)</span>
+      <span id="cb14-337"><a href="#cb14-337" aria-hidden="true"></a>            <span class="co"># Push image to registry</span></span>
+      <span id="cb14-338"><a href="#cb14-338" aria-hidden="true"></a>            log.info(<span class="ss">f&#39;</span><span class="sc">{</span>stack<span class="sc">}</span><span class="ss">: Pushing </span><span class="sc">{</span>build<span class="sc">}</span><span class="ss">.&#39;</span>)</span>
+      <span id="cb14-339"><a href="#cb14-339" aria-hidden="true"></a>            cmd <span class="op">=</span> [get_exec(<span class="st">&#39;docker&#39;</span>), <span class="st">&#39;push&#39;</span>, <span class="ss">f&#39;127.0.0.1:5000/</span><span class="sc">{</span>stack<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span>build<span class="sc">}</span><span class="ss">:latest&#39;</span>]</span>
+      <span id="cb14-340"><a href="#cb14-340" aria-hidden="true"></a>            proc <span class="op">=</span> subprocess_run(cmd, timeout_s<span class="op">=</span><span class="dv">240</span>)</span>
+      <span id="cb14-341"><a href="#cb14-341" aria-hidden="true"></a></span>
+      <span id="cb14-342"><a href="#cb14-342" aria-hidden="true"></a>    <span class="co"># Deploy stack</span></span>
+      <span id="cb14-343"><a href="#cb14-343" aria-hidden="true"></a>    compose <span class="op">=</span> compose_convert()</span>
+      <span id="cb14-344"><a href="#cb14-344" aria-hidden="true"></a>    cmd <span class="op">=</span> [get_exec(<span class="st">&#39;docker&#39;</span>), <span class="st">&#39;stack&#39;</span>, <span class="st">&#39;deploy&#39;</span>, <span class="st">&#39;--compose-file&#39;</span>, <span class="st">&#39;-&#39;</span>, stack]</span>
+      <span id="cb14-345"><a href="#cb14-345" aria-hidden="true"></a>    proc <span class="op">=</span> subprocess_run(cmd, <span class="bu">input</span><span class="op">=</span>compose)</span>
+      <span id="cb14-346"><a href="#cb14-346" aria-hidden="true"></a></span>
+      <span id="cb14-347"><a href="#cb14-347" aria-hidden="true"></a>    <span class="co"># Revert working directory and environment</span></span>
+      <span id="cb14-348"><a href="#cb14-348" aria-hidden="true"></a>    os.chdir(__dirname__)</span>
+      <span id="cb14-349"><a href="#cb14-349" aria-hidden="true"></a>    os.environ <span class="op">=</span> __env__</span>
+      <span id="cb14-350"><a href="#cb14-350" aria-hidden="true"></a>    log.info(<span class="ss">f&#39;</span><span class="sc">{</span>stack<span class="sc">}</span><span class="ss">: Stack deployed.&#39;</span>)</span>
+      <span id="cb14-351"><a href="#cb14-351" aria-hidden="true"></a></span>
+      <span id="cb14-352"><a href="#cb14-352" aria-hidden="true"></a>...</span>
+      <span id="cb14-353"><a href="#cb14-353" aria-hidden="true"></a></span>
+      <span id="cb14-354"><a href="#cb14-354" aria-hidden="true"></a><span class="co">&quot;&quot;&quot; MAIN FUNCTION --------------------------------------------------------- &quot;&quot;&quot;</span></span>
+      <span id="cb14-355"><a href="#cb14-355" aria-hidden="true"></a><span class="kw">def</span> main():</span>
+      <span id="cb14-356"><a href="#cb14-356" aria-hidden="true"></a>    <span class="co">&#39;&#39;&#39; Main entry point&#39;&#39;&#39;</span></span>
+      <span id="cb14-357"><a href="#cb14-357" aria-hidden="true"></a>    <span class="co"># Parse args</span></span>
+      <span id="cb14-358"><a href="#cb14-358" aria-hidden="true"></a>    args <span class="op">=</span> parser.parse_args()</span>
+      <span id="cb14-359"><a href="#cb14-359" aria-hidden="true"></a>    log.debug(<span class="ss">f&#39;args=</span><span class="sc">{</span>args<span class="sc">}</span><span class="ss">, args.subcommand=</span><span class="sc">{</span>args<span class="sc">.</span>subcommand<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+      <span id="cb14-360"><a href="#cb14-360" aria-hidden="true"></a>    <span class="cf">if</span> args.subcommand <span class="kw">is</span> <span class="va">None</span>:</span>
+      <span id="cb14-361"><a href="#cb14-361" aria-hidden="true"></a>        parser.print_help()</span>
+      <span id="cb14-362"><a href="#cb14-362" aria-hidden="true"></a>    <span class="cf">else</span>:</span>
+      <span id="cb14-363"><a href="#cb14-363" aria-hidden="true"></a>        args.func(args)</span>
+      <span id="cb14-364"><a href="#cb14-364" aria-hidden="true"></a></span>
+      <span id="cb14-365"><a href="#cb14-365" aria-hidden="true"></a>    <span class="co"># Debug:</span></span>
+      <span id="cb14-366"><a href="#cb14-366" aria-hidden="true"></a>    <span class="co"># print(&quot;User&#39;s Environment variable:&quot;)</span></span>
+      <span id="cb14-367"><a href="#cb14-367" aria-hidden="true"></a>    <span class="co"># pprint.pprint(dict(__env__), width = 1)</span></span>
+      <span id="cb14-368"><a href="#cb14-368" aria-hidden="true"></a></span>
+      <span id="cb14-369"><a href="#cb14-369" aria-hidden="true"></a>    <span class="co"># Execution time</span></span>
+      <span id="cb14-370"><a href="#cb14-370" aria-hidden="true"></a>    log.debug(<span class="ss">f&#39;Execution time: </span><span class="sc">{</span>(time.time()<span class="op">-</span>__start__)<span class="op">*</span><span class="dv">10</span><span class="op">**</span><span class="dv">3</span><span class="sc">:.03f}</span><span class="ss"> ms&#39;</span>)</span>
+      <span id="cb14-371"><a href="#cb14-371" aria-hidden="true"></a></span>
+      <span id="cb14-372"><a href="#cb14-372" aria-hidden="true"></a><span class="co">&quot;&quot;&quot; RUNTIME --------------------------------------------------------------- &quot;&quot;&quot;</span></span>
+      <span id="cb14-373"><a href="#cb14-373" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+      <span id="cb14-374"><a href="#cb14-374" aria-hidden="true"></a>    <span class="co">&#39;&#39;&#39; This is executed when run from the command line &#39;&#39;&#39;</span></span>
+      <span id="cb14-375"><a href="#cb14-375" aria-hidden="true"></a>    main()</span>
+      <span id="cb14-376"><a href="#cb14-376" aria-hidden="true"></a>sys.exit(<span class="dv">0</span>)</span>
+      <span id="cb14-377"><a href="#cb14-377" aria-hidden="true"></a></span></code></pre></div>
+      <!-- cSpell:enable -->
       <h5 id="shell">7.1.3.3. Shell<!-- OK --></h5>
       <p>Un <strong>shell Unix</strong> est un <strong>interpréteur de commandes</strong> destiné aux systèmes d’exploitation Unix et de type Unix qui permet d’accéder aux fonctionnalités internes du système d’exploitation.</p>
       <p>Un <strong>script shell</strong> est une <strong>liste de commandes</strong> dans un programme qui est <strong>exécute par le shell Unix</strong>. Un script shell comprends des commandes et des commentaires décrivant les opérations effectuées. Ce sont généralement des exécutions de programmes, de la manipulation de fichiers et de l’affichage de texte.</p>
@@ -1334,7 +1726,7 @@
       <p>PlantUML est un <strong>outil libre</strong> permettant de <strong>créer des diagrammes UML a partir de fichiers texte</strong>. En dehors des UML classiques, PlantUML supporte de nombreux autres formats (Archimate, Block diagram, BPMN, C4, Computer network diagram, ERD, Gantt chart, Mind map, and WBD), ainsi que la visualisation des fichier JSON et YAML.</p>
       <p>La création et l’édition d’UML simples permet de représenter et de concevoir la structure ou les fonctionnalités recherches d’un logiciel (Activité, Acteurs, Processus, Schéma de base de données, Composants logiciels), et fait partie intégrante du prototypage.</p>
       <div class="sourceCode" id="cb21"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
-      <h3 id="plateforme-de-développement">7.6. Plateforme de développement</h3>
+      <h3 id="plateforme-de-développement">7.6. Plateforme de développement<!-- OK --></h3>
       <h4 id="automatisation-de-build">7.6.1. Automatisation de build<!-- OK --></h4>
       <p>Le choix du moteur de production s’est appuyé sur les elements suivants :</p>
       <ul>
@@ -1541,7 +1933,7 @@
       <h5 id="docker-compose">7.6.2.2. Docker Compose<!-- OK --></h5>
       <p>Docker Compose est une extension de docker permettant de définir et d’exécuter des applications à partir de <strong>multiples conteneurs</strong>. Il est basé sur un fichier YAML qui permet de <strong>définir les services et les paramètres de leurs créations</strong> et ainsi de les démarrer par une commande unique.</p>
       <figure>
-      <img src="img/docker-compose.png" alt="" /><figcaption>Docker Compose Diagram</figcaption>
+      <img src="img/docker-compose-uml.png" alt="" /><figcaption>Docker Compose Diagram</figcaption>
       </figure>
       <p>Voici en exemple le fichier <code>docker-compose.yml</code> qui définit le démarrage d’une grappe de 3 services composant la plateforme de développement attachée au projet (les variables sont interprétées au travers d’un fichier d’environnement) :</p>
       <!-- cSpell:disable -->
@@ -1622,7 +2014,7 @@
       <li><strong>Sécurisé</strong> par défaut (TLS authentification et encryption)</li>
       </ul>
       <figure>
-      <img src="img/docker-swarm.png" alt="" /><figcaption>Docker Swarm Diagram</figcaption>
+      <img src="img/docker-swarm-uml.png" alt="" /><figcaption>Docker Swarm Diagram</figcaption>
       </figure>
       <p>Voici en exemple un autre fichier <code>docker-compose.yml</code>, cette fois-ci utilise par un script python d’intégration chargé de déployer des stacks de services sur un swarm (Les parties commentées correspondent à la configuration nécessaire pour la persistance des données grâce à un partage nfs) :</p>
       <!-- cSpell:disable -->
@@ -1745,36 +2137,68 @@
       </tr>
       </tbody>
       </table>
-      <h5 id="oracle-vm-virtualbox">7.6.3.1. Oracle VM Virtualbox<!-- EX --></h5>
+      <h5 id="oracle-vm-virtualbox">7.6.3.1. Oracle VM Virtualbox<!-- OK --></h5>
       <p>Oracle VM VirtualBox (anciennement VirtualBox) est un <strong>logiciel libre de virtualisation</strong> publié par Oracle. C’est un <strong>hyperviseur de type 2</strong>, c’est-à-dire qu’il doit être installé sur un système d’exploitation, et non directement sur un ordinateur en tant que système d’exploitation.</p>
-      <div class="sourceCode" id="cb26"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="ss">- </span>addcontexte</span></code></pre></div>
-      <h5 id="vmware-esxi">7.6.3.2. VMware ESXi<!-- EX --></h5>
+      <p>L’essentiel du travail de <strong>recherche et de développement</strong>, quant à la validation de l’infrastructure finale d’accueil de l’application a été effectué sur cette solution.</p>
+      <p>Dans le cadre de ces tests, nous avons également créé un script Python (Cf. <a href="#7132-python">Python</a>) permettant d’automatiser le processus complet de création des différents environnements, en <strong>pilotant</strong> localement <strong>Oracle VM Virtualbox</strong>.</p>
+      <h5 id="vmware-esxi">7.6.3.2. VMware ESXi<!-- OK --></h5>
       <p>VMware ESXi est un <strong>hyperviseur de type 1</strong> développé par VMware pour le déploiement et la mise en service de <strong>machines virtuelles</strong>. En tant qu’hyperviseur de type 1, ESXi s’installe directement en tant que système d’exploitation.</p>
-      <div class="sourceCode" id="cb27"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="ss">- </span>addcontexte</span></code></pre></div>
+      <p>Par soucis de <strong>prise en compte des standards de l’industrie</strong>, de <strong>nombreux tests</strong> de création et de configuration de machines virtuelles ont été réalisés <strong>sur VMware ESXi</strong>. l’environnement de production définitif, dans le cadre d’un hébergement sur site (on premise installation), fera très vraisemblablement appel à cette technologie.</p>
       <h3 id="outils-de-conception-de-la-documentation">7.7. Outils de conception de la documentation</h3>
-      <h4 id="markdown">7.7.1. Markdown</h4>
+      <h4 id="markdown">7.7.1. Markdown<!-- OK --></h4>
       <p>Markdown est un <strong>langage de balisage</strong> léger facile à lire et à écrire. Un document balisé par Markdown peut être <strong>lu en l’état sans donner l’impression d’avoir été balisé</strong> ou formaté par des instructions particulières. Markdown est largement utilisé dans les blogs, la messagerie instantanée, les forums en ligne, les logiciels collaboratifs, les pages de documentation et les fichiers readme.</p>
       <p>Un document balisé par Markdown peut être <strong>converti en HTML</strong>, en PDF ou en bien d’autres formats. Ceci en fait un excellent support pour stocker le contenu d’un document, tandis que la paramétrisation lors de son export se chargera de le styliser (CSS), séparant de manière effective le fond de la forme.</p>
-      <div class="sourceCode" id="cb28"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span>
-      <span id="cb28-2"><a href="#cb28-2" aria-hidden="true"></a><span class="ss">- </span>github</span>
-      <span id="cb28-3"><a href="#cb28-3" aria-hidden="true"></a><span class="ss">- </span>This very document</span></code></pre></div>
+      <p>L’ensemble de la <strong>documentation de ce projet</strong> (dont le present rapport) a été créée à partir de fichiers en Markdown. Les fichiers sont <strong>nativement affiches en HTML sur GitHub et GitLab</strong>, ou bien transformés a l’aide d’un programme comme <a href="https://pandoc.org/">Pandoc</a> (Cf. Exemple d’utilisation <a href="#7621-docker">Docker</a>).</p>
+      <p>Voici un exemple de la syntaxe :</p>
+      <!-- cSpell:disable -->
+      <div class="sourceCode" id="cb26"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a></span>
+      <span id="cb26-2"><a href="#cb26-2" aria-hidden="true"></a><span class="fu"># Heading 1</span></span>
+      <span id="cb26-3"><a href="#cb26-3" aria-hidden="true"></a><span class="fu">## Heading 2</span></span>
+      <span id="cb26-4"><a href="#cb26-4" aria-hidden="true"></a><span class="fu">### Heading 3</span></span>
+      <span id="cb26-5"><a href="#cb26-5" aria-hidden="true"></a></span>
+      <span id="cb26-6"><a href="#cb26-6" aria-hidden="true"></a>---</span>
+      <span id="cb26-7"><a href="#cb26-7" aria-hidden="true"></a></span>
+      <span id="cb26-8"><a href="#cb26-8" aria-hidden="true"></a>**Bold** __Bold__</span>
+      <span id="cb26-9"><a href="#cb26-9" aria-hidden="true"></a>*Italic* _Italic_</span>
+      <span id="cb26-10"><a href="#cb26-10" aria-hidden="true"></a>~~Strikethrough~~</span>
+      <span id="cb26-11"><a href="#cb26-11" aria-hidden="true"></a></span>
+      <span id="cb26-12"><a href="#cb26-12" aria-hidden="true"></a><span class="ss">- </span>Bullet point 1</span>
+      <span id="cb26-13"><a href="#cb26-13" aria-hidden="true"></a><span class="ss">- </span>Bullet point 2</span>
+      <span id="cb26-14"><a href="#cb26-14" aria-hidden="true"></a><span class="ss">    - </span>Sub-bullet point</span>
+      <span id="cb26-15"><a href="#cb26-15" aria-hidden="true"></a><span class="ss">1. </span>Numbered point 1</span>
+      <span id="cb26-16"><a href="#cb26-16" aria-hidden="true"></a><span class="ss">2. </span>Numbered point 2</span>
+      <span id="cb26-17"><a href="#cb26-17" aria-hidden="true"></a></span>
+      <span id="cb26-18"><a href="#cb26-18" aria-hidden="true"></a>Links: <span class="co">[</span><span class="ot">Link text</span><span class="co">](http://linkurl.com)</span></span>
+      <span id="cb26-19"><a href="#cb26-19" aria-hidden="true"></a></span>
+      <span id="cb26-20"><a href="#cb26-20" aria-hidden="true"></a>Images: <span class="al">![Alt text](imageurl.jpg)</span></span>
+      <span id="cb26-21"><a href="#cb26-21" aria-hidden="true"></a></span>
+      <span id="cb26-22"><a href="#cb26-22" aria-hidden="true"></a>| Column 1 | Column 2 | Column 3 |</span>
+      <span id="cb26-23"><a href="#cb26-23" aria-hidden="true"></a>|----------|----------|----------|</span>
+      <span id="cb26-24"><a href="#cb26-24" aria-hidden="true"></a>| Row 1, Column 1 | Row 1, Column 2 | Row 1, Column 3 |</span>
+      <span id="cb26-25"><a href="#cb26-25" aria-hidden="true"></a>| Row 2, Column 1 | Row 2, Column 2 | Row 2, Column 3 |</span></code></pre></div>
+      <!-- cSpell:enable -->
       <h4 id="javadoc">7.7.2. Javadoc</h4>
       <p>Javadoc est un outil développé par Oracle, permettant de <strong>créer une documentation d’API en format HTML</strong> depuis les commentaires présents dans un code source en Java. C’est le standard industriel pour la documentation des classes Java.</p>
       <p>La plupart des IDE aident a la génération et au formatage des blocs de commentaires Javadoc. Ces commentaires permettent également aux IDE modernes d’apporter a l’utilisateur des informations contextuelles (definition de classe, de méthode, paramètres d’entrée et valeur de retour attendue).</p>
-      <div class="sourceCode" id="cb29"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
-      <h4 id="plantuml-1">7.7.3. PlantUML</h4>
+      <div class="sourceCode" id="cb27"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
+      <h4 id="plantuml-1">7.7.3. PlantUML<!-- EX --></h4>
       <p>PlantUML est un <strong>outil libre</strong> permettant de <strong>créer des diagrammes UML a partir de fichier texte</strong>.</p>
       <p>Du fait du format texte des fichiers utilises par PlantUML, cet outil <strong>s’intègre parfaitement dans un pipeline</strong> d’integration et de d2ploiement.</p>
       <p>Il est par exemple possible de <strong>générer automatiquement des UML</strong> de Modèle Physique de Donnees (MPD), afin d’avoir une représentation actualisée d’une base de données, ou bien de créer dynamiquement des diagrammes de classes a partir du code source.</p>
-      <div class="sourceCode" id="cb30"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
+      <p>La majorité des diagrammes ont été réalisés grâce à cet outil. Voici en exemple le fichier PlantUML <code>something.puml</code> qui permet de générer le fichier PNG <code>.png</code> inséré dans le présent rapport.</p>
+      <!-- cSpell:disable -->
+      <pre class="puml"><code>
+      - contexte
+      </code></pre>
+      <!-- cSpell:enable -->
       <div style="page-break-after: always;">
 
       </div>
       <h2 id="réalisations">8. Réalisations</h2>
-      <div class="sourceCode" id="cb31"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="ss">  - </span>Description des features réalisées</span>
-      <span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a><span class="ss">  - </span>Description des fonctions implémentées</span>
-      <span id="cb31-3"><a href="#cb31-3" aria-hidden="true"></a><span class="ss">  - </span>Description des actions réalisées sur la BDD</span>
-      <span id="cb31-4"><a href="#cb31-4" aria-hidden="true"></a><span class="ss">  - </span>Description des tests unitaires/EtE (EndtoEnd)</span></code></pre></div>
+      <div class="sourceCode" id="cb29"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="ss">  - </span>Description des features réalisées</span>
+      <span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a><span class="ss">  - </span>Description des fonctions implémentées</span>
+      <span id="cb29-3"><a href="#cb29-3" aria-hidden="true"></a><span class="ss">  - </span>Description des actions réalisées sur la BDD</span>
+      <span id="cb29-4"><a href="#cb29-4" aria-hidden="true"></a><span class="ss">  - </span>Description des tests unitaires/EtE (EndtoEnd)</span></code></pre></div>
       <h3 id="description-des-features-réalisées">8.1. Description des features réalisées</h3>
       <h3 id="description-des-fonctions-implémentées">8.2. Description des fonctions implémentées</h3>
       <h3 id="description-des-actions-réalisées-sur-la-bdd">8.3. Description des actions réalisées sur la BDD</h3>
@@ -1790,16 +2214,16 @@
 
       </div>
       <h2 id="présentation-du-jeu-dessai-le-plus-représentatif">9. Présentation du jeu d’essai le plus représentatif</h2>
-      <div class="sourceCode" id="cb32"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a><span class="ss">- </span>Description des scénarios désirées sur la fonctionnalité et vérification de la conformité du résultat</span>
-      <span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a><span class="ss">- </span>Le jeu d&#39;essai permet de contrôler la réaction du code pour tous les types de données reçus par les méthodes et fonctions, qu&#39;ils soient valides ou non. Pour la fonctionnalité la plus complète de votre application, expliquez &quot;Données en entrée -&gt; données attendues -&gt; Données obtenues&quot;</span></code></pre></div>
+      <div class="sourceCode" id="cb30"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a><span class="ss">- </span>Description des scénarios désirées sur la fonctionnalité et vérification de la conformité du résultat</span>
+      <span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a><span class="ss">- </span>Le jeu d&#39;essai permet de contrôler la réaction du code pour tous les types de données reçus par les méthodes et fonctions, qu&#39;ils soient valides ou non. Pour la fonctionnalité la plus complète de votre application, expliquez &quot;Données en entrée -&gt; données attendues -&gt; Données obtenues&quot;</span></code></pre></div>
       <div style="page-break-after: always;">
 
       </div>
       <h2 id="veille-sur-les-vulnérabilités-de-sécurité">10. Veille sur les vulnérabilités de sécurité</h2>
-      <div class="sourceCode" id="cb33"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a><span class="ss">- </span>Description de la veille, effectuée par le candidat pendant le projet, sur les vulnérabilités de sécurité</span>
-      <span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a><span class="ss">- </span>Prise en compte des conventions liées à la sécurité imposée par la structure d&#39;accueil du stagiaire</span>
-      <span id="cb33-3"><a href="#cb33-3" aria-hidden="true"></a><span class="ss">- </span>Mise à jour éventuelle des librairies/frameworks</span>
-      <span id="cb33-4"><a href="#cb33-4" aria-hidden="true"></a><span class="ss">- </span>Auto-formation aux failles de sécurité déclarées sur telle ou telle technologie (lecture des documentations officielles, prise en compte des mesures préventives, mise en place des verrous recommandés)</span></code></pre></div>
+      <div class="sourceCode" id="cb31"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="ss">- </span>Description de la veille, effectuée par le candidat pendant le projet, sur les vulnérabilités de sécurité</span>
+      <span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a><span class="ss">- </span>Prise en compte des conventions liées à la sécurité imposée par la structure d&#39;accueil du stagiaire</span>
+      <span id="cb31-3"><a href="#cb31-3" aria-hidden="true"></a><span class="ss">- </span>Mise à jour éventuelle des librairies/frameworks</span>
+      <span id="cb31-4"><a href="#cb31-4" aria-hidden="true"></a><span class="ss">- </span>Auto-formation aux failles de sécurité déclarées sur telle ou telle technologie (lecture des documentations officielles, prise en compte des mesures préventives, mise en place des verrous recommandés)</span></code></pre></div>
       <h3 id="sql-injection">10.1. SQL Injection</h3>
       <p>[https://www.journaldev.com/34028/sql-injection-in-java]</p>
       <p>[https://sqlmap.org/] [https://github.com/sqlmapproject/sqlmap]</p>

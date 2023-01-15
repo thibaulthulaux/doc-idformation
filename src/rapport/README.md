@@ -157,7 +157,7 @@ For the sake of this demonstration, we're going to assume the following:
 
 <div style="page-break-after: always;"></div>
 
-## 4. Cahier des charges
+## 4. Cahier des charges<!-- OK -->
 
 ```md
 - Contexte de l'entreprise
@@ -250,7 +250,7 @@ Les **gains** attendus pour l'entreprise de service pourraient être les suivant
 - Génération de **revenus supplémentaires** grâce à la vente de l'application en ligne en tant que service payant.
 - **Augmentation de la productivité** des clients grâce à l'utilisation de l'application de gestion de stockage.
 
-### 4.4. Description de toutes les fonctionnalités attendues
+### 4.4. Description de toutes les fonctionnalités attendues<!-- OK -->
 
 <!-- TODO: PlantUml integration:  $feature description > $feature.puml -->
 
@@ -414,7 +414,7 @@ Les **gains** attendus pour l'entreprise de service pourraient être les suivant
 - Alors j'accède à la page info de cette catégorie
 - Et je suis redirigé2 vers la page info de celle-ci
 
-#### 4.4.4. Produit
+#### 4.4.4. Produit<!-- OK -->
 
 ##### 4.4.4.1. Fonctionnalité: Ajouter un produit<!-- OK -->
 
@@ -452,7 +452,7 @@ Les **gains** attendus pour l'entreprise de service pourraient être les suivant
 - Alors je supprime un produit
 - Et je suis redirigé sur la page info catégorie qui contenait le produit
 
-##### 4.4.4.4. Fonctionnalité: Accéder aux informations d'un produit<!-- CHECK: search result -->
+##### 4.4.4.4. Fonctionnalité: Accéder aux informations d'un produit<!-- OK -->
 
 *"En tant qu'utilisateur, je veux pouvoir accéder au informations de mes produits afin d'y relever les différentes valeurs."*
 
@@ -463,21 +463,27 @@ Les **gains** attendus pour l'entreprise de service pourraient être les suivant
 - Alors j'accède à ces informations
 - Et je suis redirigé sur la page information de ce produit
 
-**Scénario 2:** Accéder aux informations d'un produit depuis la barre de recherche en écrivant le nom d'un produit<!-- CHECK: search result like 4,5 product.name is not UNIQUE -->
+**Scénario 2:** Accéder aux informations d'un produit depuis la barre de recherche en écrivant le nom d'un produit
 
 - Étant donné que je suis sur n'importe quel page de mon compte utilisateur
 - Et que je clique sur la barre de recherche
 - Et que j'écris le nom d'un produit
 - Et que je clique sur la touche entrée de mon clavier
+- Et que j'accède à la page m'indiquant les produits trouvé selon ma recherche
+- Et que je clique sur le produit voulu
 - Alors j'accède à la page information du produit
+- Et je suis redirigé sur la page information du produit
 
-**Scénario 3:** Accéder aux informations d'un produit depuis la barre de recherche en écrivant la référence d'un produit<!-- CHECK: search result like 4,5 product.name is not UNIQUE -->
+**Scénario 3:** Accéder aux informations d'un produit depuis la barre de recherche en écrivant la référence d'un produit
 
 - Étant donné que je suis sur n'importe quel page de mon compte utilisateur
 - Et que je clique sur la barre de recherche
 - Et que j'écris la référence d'un produit
 - Et que je clique sur la touche entrée de mon clavier
+- Et que j'accède à la page m'indiquant les produits trouvé selon ma recherche
+- Et que je clique sur le produit voulu
 - Alors j'accède à la page information du produit
+- Et je suis redirigé sur la page information du produit
 
 **Scénario 4:** Accéder aux informations d'un produit depuis la barre de recherche en écrivant le début du nom (1 lettre obligatoire)
 
@@ -844,7 +850,7 @@ Il permet de gérer les données d'une base de données en utilisant des command
 
 Le SQL est reconnu par la grande majorité des systèmes de gestion de bases de données relationnelles (abrégé SGBDR) du marché.
 
-Voici un exemple partiel de SQL utilisé pour construire trois tables nécessaires a l'authentification de l'utilisateur dans la base de données :
+Voici un extrait du fichier `_app.sql`, dont le code SQL est utilisé pour construire trois tables nécessaires a l'authentification de l'utilisateur dans la base de données :
 
 <!-- cSpell:disable -->
 ```sql
@@ -929,7 +935,7 @@ INSERT INTO `user_role`(`user_id`,`role_id`)
 
 Docker (Cf. [docker](#7621-docker)) peut **construire des images automatiquement** grâce aux instructions présentes dans un Dockerfile. Un Dockerfile est un **document texte contenant toutes les commandes** qu'un utilisateur peut utiliser en ligne de commandes.
 
-Voici un exemple de Dockerfile pour construire une image de conteneur Tomcat dans le cadre d'un environnement de développement :
+Voici en exemple le fichier `Dockerfile` pour construire une image de conteneur Tomcat dans le cadre d'un environnement de développement :
 
 <!-- cSpell:disable -->
 ```Dockerfile
@@ -972,15 +978,403 @@ CMD ["/bin/bash", "/start.sh"]
 ```
 <!-- cSpell:enable -->
 
-##### 7.1.3.2. Python<!-- EX -->
+##### 7.1.3.2. Python<!-- OK -->
 
 Python est un **langage de programmation interprété**, multi paradigme et **multi plateformes**. Il favorise la programmation impérative structurée, fonctionnelle et **orientée objet**. Il est doté d'un typage dynamique fort, d'une gestion automatique de la mémoire par garbage collector et d'un système de gestion d'exceptions.
 
 C'est un langage qui peut s'utiliser dans de nombreux contextes et s'adapter à tout type d'utilisation grâce à des **bibliothèques spécialisées**. Il est cependant particulièrement **utilisé comme langage de script** pour automatiser des tâches simples mais fastidieuses.
 
+Dans le cadre de ce projet, un script en Python a été crée afin de **piloter** une installation locale de **Oracle VM Virtualbox**. Le script peut effectuer, au travers des commandes `swarm` et `stack`, les opérations suivantes :
+
+- Provisionnement des machines virtuelles légères (avec un docker engine)
+- Configuration de la couche réseau
+- Création et configuration d'un docker swarm
+- Déploiement de stack docker (build, registry, orchestration)
+
+Voici des extraits représentatifs du fichier `swarm.py`. Veuillez noter que le script est encore en développement (absence de DocStrings, manque de structures de contrôle...) :
+
+<!-- cSpell:disable -->
 ```py
-- addexemple
+
+#!/usr/bin/env python3
+"""
+Module Docstring
+"""
+
+""" IMPORTS --------------------------------------------------------------- """
+import argparse
+import logging # see https://docs.python.org/3/library/logging.html
+import logging.config
+import os
+import platform
+import signal
+import subprocess
+import sys
+import time
+# import docker
+# import pprint # pretty print for dict()
+
+""" GLOBAL VARIABLES ------------------------------------------------------ """
+# Default LOGLEVEL
+os.environ['LOGLEVEL'] = 'DEBUG'
+
+# System
+__env__ = os.environ
+__start__ = time.time()
+__platform__ = platform.system()
+
+# Authoring
+__author_name__ = 'Thibault HULAUX'
+__author_mail__ = 'thibault.hulaux@gmail.com'
+__version__ = '0.1.0'
+__license__ = 'MIT'
+
+# Magic file and folder paths
+__basename__ = os.path.basename(__file__)
+__basenamenoext__ = __basename__.split(".", 1)[0]
+__dirname__ = os.path.dirname(__file__)
+
+# Help strings
+__description__ = f'{__basename__} is a python helper script to administrate a docker swarm and docker services.'
+__epilog__ = f'Run {__basename__} [command] --help for more information on a command.'
+
+""" INITIALIZE WORKING DIRECTORY ------------------------------------------ """
+# Change working directory to script location
+os.chdir(__dirname__)
+
+""" INITIALIZE LOGGER ----------------------------------------------------- """
+log = None
+
+# Add log filepath and filename to the logging namespace, so the config file
+# can reference it.
+logging.filepath = 'log'
+logging.filename = f'{__basenamenoext__}.log'
+
+# Load config file
+logging.config.fileConfig(
+  fname='conf/logging.conf',
+  disable_existing_loggers=False
+  )
+
+# Create logger
+log = logging.getLogger(__basename__)
+
+""" INITIALIZE PARSER ----------------------------------------------------- """
+parser = None
+
+# Create parser
+parser = argparse.ArgumentParser(
+  add_help = True,
+  formatter_class = argparse.RawDescriptionHelpFormatter,
+  description=__description__,
+  epilog=__epilog__
+)
+
+# Add parser arguments
+parser.add_argument(
+  '-d', '--debug',
+  action='store_true',
+  default=False
+)
+parser.add_argument(
+  '--version',
+  action='version',
+  version=f'{__basename__} (version {__version__}) {__author_name__} - {__author_mail__}'
+)
+
+# Initialize subparsers
+subparsers = parser.add_subparsers(dest='subcommand', help='Commands')
+
+def argument(*name_or_flags, **kwargs):
+    """Helper function to satisfy argparse.ArgumentParser.add_argument()'s
+    input argument syntax.
+
+    """
+    return (list(name_or_flags), kwargs)
+
+def subcommand(args=[], parent=subparsers):
+    """Decorator to define a new subcommand in a sanity-preserving way.
+    See https://mike.depalatis.net/blog/simplifying-argparse.html
+
+    """
+    def decorator(func):
+        parser = parent.add_parser(func.__name__, description=func.__doc__)
+        for arg in args:
+            parser.add_argument(*arg[0], **arg[1])
+        parser.set_defaults(func=func)
+    return decorator
+
+# 'swarm' subcommands definition
+@subcommand([
+  argument('command', help='Commands', choices=[
+    'create', 'remove', 'start', 'status', 'stop', 'update'
+    ])
+  ])
+def swarm(args):
+    '''swarm subcommand definition'''
+    cmd = args.command
+    list = get_listfromfile('conf/swarm.conf')
+    if cmd == 'create':
+        swarm_create(list)
+        swarm_config_network(list)
+        # swarm_config_nfs(list)
+        swarm_register(list)
+    if cmd == 'remove':
+        # swarm_stop(list)
+        swarm_remove(list)
+        swarm_cleanup(list)
+    if cmd == 'start':
+        swarm_start(list)
+        # swarm_config_network(list)
+        # swarm_register(list)
+    if cmd == 'status':
+        swarm_status(list)
+    if cmd == 'stop':
+        swarm_stop(list)
+    if cmd == 'update':
+        # swarm_config_network(list)
+        swarm_config_nfs(list)
+        # swarm_config_extras(list)
+        # swarm_register(list)
+
+...
+
+""" SUBPROCESS FUNCTIONS --------------------------------------------------- """
+def subprocess_run(cmd, timeout_s=180, input=None):
+    """_summary_
+
+    Args:
+        cmd (_type_): _description_
+        timeout_s (int, optional): _description_. Defaults to 180.
+        input (_type_, optional): _description_. Defaults to None.
+
+    Returns:
+        _type_: _description_
+    """
+    log.debug(f'subprocess_run(cmd={cmd}, timeout_s={timeout_s}, input={input})')
+    try:
+        # proc = subprocess.run(cmd, input=input, timeout=timeout_s, capture_output=True, text=True, shell=True)
+        proc = subprocess.run(cmd, input=input, timeout=timeout_s, capture_output=True, text=True)
+    except subprocess.TimeoutExpired:
+        log.error(f'timeout for cmd={cmd} ({timeout_s}s) expired.')
+        sys.exit(1)
+    stdout = []
+    for line in proc.stdout.splitlines():
+        stdout.append(line)
+    stderr = []
+    for line in proc.stderr.splitlines():
+        stderr.append(line)
+    log.debug(f'stdout={stdout}, stderr={stderr}')
+    return proc
+
+...
+
+""" MACHINE FUNCTIONS ----------------------------------------------------- """
+def machine_env(hostname: str) -> list:
+    """Get docker environment from machine hostname.
+
+    Args:
+        hostname (str): machine hostname
+
+    Returns:
+        list: docker environment as ([key, value])
+    """
+    log.debug(f'{hostname}: getting machine environment')
+    cmd = [get_exec('machine'), 'env', hostname]
+    proc = subprocess_run(cmd)
+    env = []
+    for line in proc.stdout.splitlines():
+        if line.startswith('REM') or line.startswith('#'): continue
+        line = line.replace('$Env:', '').replace('SET ', '')
+        key = line.split('=', 1)[0].strip()
+        value = line.split('=', 1)[1].strip()
+        env.append([key, value])
+    log.debug(f'hostname={hostname}, env={env}')
+    return env
+
+def machine_activate(hostname: str):
+    """Set docker environment from machine hostname.
+
+    Args:
+        hostname (str): machine
+    """
+    env = machine_env(hostname)
+    log.debug(f'{hostname}: Setting machine environment')
+    os.environ = __env__
+    for key, value in env:
+        os.environ[key] = value
+
+...
+
+""" SWARM FUNCTIONS ------------------------------------------------------- """
+
+...
+
+def swarm_create(list):
+    """'swarm_create(list)' documentation.
+    
+    """
+    log.info('> Creating swarm... (This may take several minutes)')
+    log.debug(f'list={list}')
+    if __platform__ == 'Windows':
+        options = get_listfromfile('conf/driver-windows-virtualbox.conf')
+    cmd = [get_exec('machine')] + ['create'] + options
+    processes = subprocess_prun(cmd, list, 120)
+    log.info(f'> {len(list)} machines created.')
+
+def swarm_register(list):
+    """'swarm_register(list)' documentation.
+    
+    """
+    log.info('> Registering swarm...')
+    log.debug(f'list={list}')
+    manager = ''
+    port = '2377'
+    token = ''
+    for hostname in list:
+        machine_activate(hostname)
+        machine_swarm_leave(hostname)
+        if 'manager' in hostname:
+            ip = machine_ip(hostname)
+            manager = f'{ip}:{port}'
+            log.debug(f'manager={manager}')
+            token = machine_swarm_init(hostname, ip)
+        else:
+            machine_swarm_join(hostname, token, manager)
+    log.info(f'> {len(list)} nodes registered.')
+
+...
+
+def swarm_config_network(list):
+    """'swarm_setup(list)' documentation.
+    
+    """
+    log.info('> Setting up network...')
+    log.debug(f'list={list}')
+    # Create temporary hosts file
+    local_path = 'tmp/hosts'
+    file = open(local_path, 'w')
+    file.write('# /etc/hosts\n')
+    for hostname in list:
+        ip = machine_ip(hostname)
+        line = f'{ip} {hostname}'
+        log.debug(f'Adding line={line} to {local_path}')
+        file.write(f'{line}\n')
+    file.close()
+    # Write to each host
+    tag = f'# Added by {__basename__}:swarm_config_network()'
+    remote_path = '/etc/hosts'
+    for hostname in list:
+        log.info(f'{hostname}: Edit {remote_path}')
+        # Remove previous appends depending on tag
+        cmd = ''
+        cmd += 'i=1; while read line; do '
+        cmd += 'if [ "$line" == "'+ tag +'" ]; then break; fi; i=$((i+1)); '
+        cmd += 'done < /etc/hosts; '
+        cmd += 'head -n $((i-1)) /etc/hosts | sudo tee /etc/hosts'
+        proc = machine_ssh(hostname, cmd)
+        # Append host definitions
+        cmd = '{ echo "' + tag + '"; '
+        for line in get_listfromfile(local_path):
+            if line.endswith(hostname): continue
+            cmd = cmd + 'echo "' + line + '"; '
+        cmd = cmd + '} | sudo tee -a /etc/hosts'
+        proc = machine_ssh(hostname, cmd)
+    log.info('> Network setup complete.')
+
+...
+
+""" STACK FUNCTIONS ------------------------------------------------------- """
+def compose_convert():
+    ''''''
+    version = '3.6'
+
+    cmd = [get_exec('docker'), 'compose', 'convert']
+    proc = subprocess_run(cmd)
+
+    # 'docker compose convert' needs serious fixing...
+    # 1. add mandatory compose version.
+    compose = f"version: '{version}'\n"
+    for line in proc.stdout.splitlines():
+        # 2. remove conflicting name entry.
+        if line.startswith('name') : continue
+        # 3. remove '"' to define integers.
+        if 'published' in line : line = line.replace('"', '')
+        compose = compose + f'{line}\n'
+
+    return compose
+
+...
+
+def stack_deploy(stack, manager):
+    '''Deploy a single docker stack on swarm manager.'''
+    log.debug(f'stack={stack}, manager={manager}')
+    log.info(f'{stack}: Deploying stack.')
+
+    # Setup working directory and environment
+    os.chdir(f'{__dirname__}/stacks/{stack}')
+    machine_activate(manager)
+
+    # Add environment variables
+    env = [
+      ('STACK', stack),
+      ('MANAGER', manager)
+    ]
+    for key, value in env:
+        os.environ[key] = value
+
+    # If stack contains builds
+    if os.path.isdir('builds'):
+        for build in os.listdir('builds'):
+            log.debug(f'build={build}')
+            # Build image
+            log.info(f'{stack}: Building {build}.')
+            cmd = [get_exec('docker'), 'build', '-t', f'127.0.0.1:5000/{stack}-{build}', f'builds/{build}/.']
+            proc = subprocess_run(cmd, timeout_s=240)
+            # Push image to registry
+            log.info(f'{stack}: Pushing {build}.')
+            cmd = [get_exec('docker'), 'push', f'127.0.0.1:5000/{stack}-{build}:latest']
+            proc = subprocess_run(cmd, timeout_s=240)
+
+    # Deploy stack
+    compose = compose_convert()
+    cmd = [get_exec('docker'), 'stack', 'deploy', '--compose-file', '-', stack]
+    proc = subprocess_run(cmd, input=compose)
+
+    # Revert working directory and environment
+    os.chdir(__dirname__)
+    os.environ = __env__
+    log.info(f'{stack}: Stack deployed.')
+
+...
+
+""" MAIN FUNCTION --------------------------------------------------------- """
+def main():
+    ''' Main entry point'''
+    # Parse args
+    args = parser.parse_args()
+    log.debug(f'args={args}, args.subcommand={args.subcommand}')
+    if args.subcommand is None:
+        parser.print_help()
+    else:
+        args.func(args)
+
+    # Debug:
+    # print("User's Environment variable:")
+    # pprint.pprint(dict(__env__), width = 1)
+
+    # Execution time
+    log.debug(f'Execution time: {(time.time()-__start__)*10**3:.03f} ms')
+
+""" RUNTIME --------------------------------------------------------------- """
+if __name__ == '__main__':
+    ''' This is executed when run from the command line '''
+    main()
+sys.exit(0)
+
+
 ```
+<!-- cSpell:enable -->
 
 ##### 7.1.3.3. Shell<!-- OK -->
 
@@ -1229,7 +1623,7 @@ La création et l'édition d'UML simples permet de représenter et de concevoir 
 - contexte
 ```
 
-### 7.6. Plateforme de développement
+### 7.6. Plateforme de développement<!-- OK -->
 
 #### 7.6.1. Automatisation de build<!-- OK -->
 
@@ -1458,7 +1852,7 @@ Cette commande suppose que le fichier markdown se trouve dans le répertoire cou
 
 Docker Compose est une extension de docker permettant de définir et d'exécuter des applications à partir de **multiples conteneurs**. Il est basé sur un fichier YAML qui permet de **définir les services et les paramètres de leurs créations** et ainsi de les démarrer par une commande unique.
 
-![Docker Compose Diagram](img/docker-compose.png)
+![Docker Compose Diagram](img/docker-compose-uml.png)
 
 Voici en exemple le fichier `docker-compose.yml` qui définit le démarrage d'une grappe de 3 services composant la plateforme de développement attachée au projet (les variables sont interprétées au travers d'un fichier d’environnement) :
 
@@ -1545,7 +1939,7 @@ Les fonctions les plus représentatives sont les suivantes :
 - **Réseau** multi-host (overlays)
 - **Sécurisé** par défaut (TLS authentification et encryption)
 
-![Docker Swarm Diagram](img/docker-swarm.png)
+![Docker Swarm Diagram](img/docker-swarm-uml.png)
 
 Voici en exemple un autre fichier `docker-compose.yml`, cette fois-ci utilise par un script python d'intégration chargé de déployer des stacks de services sur un swarm (Les parties commentées correspondent à la configuration nécessaire pour la persistance des données grâce à un partage nfs) :
 
@@ -1645,35 +2039,62 @@ Utiliser les hyperviseurs de type 1 (bare-metal) ou de type 2 (logiciels) pour l
 | Ils n'ont pas besoin d'un accès direct aux ressources matérielles de l'hôte, ils **utilisent donc moins de ressources** système.    |
 | Ils peuvent être **facilement déplacés** d'un système d'exploitation à un autre.                                                    |
 
-##### 7.6.3.1. Oracle VM Virtualbox<!-- EX -->
+##### 7.6.3.1. Oracle VM Virtualbox<!-- OK -->
 
 Oracle VM VirtualBox (anciennement VirtualBox) est un **logiciel libre de virtualisation** publié par Oracle. C'est un **hyperviseur de type 2**, c'est-à-dire qu'il doit être installé sur un système d'exploitation, et non directement sur un ordinateur en tant que système d'exploitation.
 
-```md
-- addcontexte
-```
+L'essentiel du travail de **recherche et de développement**, quant à la validation de l’infrastructure finale d'accueil de l'application a été effectué sur cette solution.
 
-##### 7.6.3.2. VMware ESXi<!-- EX -->
+Dans le cadre de ces tests, nous avons également créé un script Python (Cf. [Python](#7132-python)) permettant d'automatiser le processus complet de création des différents environnements, en **pilotant** localement **Oracle VM Virtualbox**.
+
+##### 7.6.3.2. VMware ESXi<!-- OK -->
 
 VMware ESXi est un **hyperviseur de type 1** développé par VMware pour le déploiement et la mise en service de **machines virtuelles**. En tant qu'hyperviseur de type 1, ESXi s'installe directement en tant que système d'exploitation.
 
-```md
-- addcontexte
-```
+Par soucis de **prise en compte des standards de l'industrie**, de **nombreux tests** de création et de configuration de machines virtuelles ont été réalisés **sur VMware ESXi**. l’environnement de production définitif, dans le cadre d'un hébergement sur site (on premise installation), fera très vraisemblablement appel à cette technologie.
 
 ### 7.7. Outils de conception de la documentation
 
-#### 7.7.1. Markdown
+#### 7.7.1. Markdown<!-- OK -->
 
 Markdown est un **langage de balisage** léger facile à lire et à écrire. Un document balisé par Markdown peut être **lu en l'état sans donner l’impression d'avoir été balisé** ou formaté par des instructions particulières. Markdown est largement utilisé dans les blogs, la messagerie instantanée, les forums en ligne, les logiciels collaboratifs, les pages de documentation et les fichiers readme.
 
 Un document balisé par Markdown peut être **converti en HTML**, en PDF ou en bien d'autres formats. Ceci en fait un excellent support pour stocker le contenu d'un document, tandis que la paramétrisation lors de son export se chargera de le styliser (CSS), séparant de manière effective le fond de la forme.
 
+L'ensemble de la **documentation de ce projet** (dont le present rapport) a été créée à partir de fichiers en Markdown. Les fichiers sont **nativement affiches en HTML sur GitHub et GitLab**, ou bien transformés a l'aide d'un programme comme [Pandoc](https://pandoc.org/) (Cf. Exemple d'utilisation [Docker](#7621-docker)).
+
+Voici un exemple de la syntaxe :
+
+<!-- cSpell:disable -->
 ```md
-- contexte
-- github
-- This very document
+
+# Heading 1
+## Heading 2
+### Heading 3
+
+---
+
+**Bold** __Bold__
+*Italic* _Italic_
+~~Strikethrough~~
+
+- Bullet point 1
+- Bullet point 2
+    - Sub-bullet point
+1. Numbered point 1
+2. Numbered point 2
+
+Links: [Link text](http://linkurl.com)
+
+Images: ![Alt text](imageurl.jpg)
+
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Row 1, Column 1 | Row 1, Column 2 | Row 1, Column 3 |
+| Row 2, Column 1 | Row 2, Column 2 | Row 2, Column 3 |
+
 ```
+<!-- cSpell:enable -->
 
 #### 7.7.2. Javadoc
 
@@ -1685,7 +2106,7 @@ La plupart des IDE aident a la génération et au formatage des blocs de comment
 - contexte
 ```
 
-#### 7.7.3. PlantUML
+#### 7.7.3. PlantUML<!-- EX -->
 
 PlantUML est un **outil libre** permettant de **créer des diagrammes UML a partir de fichier texte**.
 
@@ -1693,9 +2114,15 @@ Du fait du format texte des fichiers utilises par PlantUML, cet outil **s’int�
 
 Il est par exemple possible de **générer automatiquement des UML** de Modèle Physique de Donnees (MPD), afin d'avoir une représentation actualisée d'une base de données, ou bien de créer dynamiquement des diagrammes de classes a partir du code source.
 
-```md
+La majorité des diagrammes ont été réalisés grâce à cet outil. Voici en exemple le fichier PlantUML `something.puml` qui permet de générer le fichier PNG `.png` inséré dans le présent rapport.
+
+<!-- cSpell:disable -->
+```puml
+
 - contexte
+
 ```
+<!-- cSpell:enable -->
 
 <div style="page-break-after: always;"></div>
 

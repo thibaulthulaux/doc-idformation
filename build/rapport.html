@@ -1018,13 +1018,80 @@
       <p>Une particularité de Java est que les logiciels écrits dans ce langage sont <strong>compilés vers une représentation binaire</strong> intermédiaire qui peut être <strong>exécutée dans une machine virtuelle Java</strong> (JVM) en faisant abstraction du système d’exploitation.</p>
       <p>Java permet de développer des applications client-serveur. Côté client, les applets sont à l’origine de la notoriété du langage. C’est surtout côté serveur que Java s’est imposé dans le milieu de l’entreprise grâce aux <strong>servlets</strong>, le pendant serveur des applets, et plus récemment les <strong>JSP</strong> (JavaServer Pages) qui peuvent se substituer à PHP, ASP et ASP.NET.</p>
       <div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>- addexemple</span></code></pre></div>
-      <h5 id="jsp">7.1.2.2. JSP<!-- EX --></h5>
+      <h5 id="jsp">7.1.2.2. JSP<!-- OK --></h5>
       <p><strong>Jakarta Server Pages</strong> (anciennement JavaServer Pages) ou JSP est une collection de technologies qui permet aux développeurs de <strong>créer dynamiquement du code HTML</strong>, XML, SOAP ou tout autre type de page web. JSP est semblable a PHP ou ASP, mais pour le langage de programmation Java.</p>
-      <div class="sourceCode" id="cb10"><pre class="sourceCode jsp"><code class="sourceCode jsp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>- addexemple</span></code></pre></div>
-      <h5 id="jstl">7.1.2.3. JSTL<!-- EX --></h5>
+      <p>Voici en exemple le fichier <code>CategoryInfo.jsp</code>, fichier de vue de notre modèle, qui est utilisé pour produire le code de la page HTML renvoyée à l’utilisateur.</p>
+      <p>Veuillez également noter l’utilisation de la balise <code>&lt;jsp:include&gt;</code> afin d’agréger les différents éléments constitutifs de la page complète :</p>
+      <!-- cSpell:disable -->
+      <div class="sourceCode" id="cb10"><pre class="sourceCode jsp"><code class="sourceCode jsp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a></span>
+      <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="bu">&lt;%@ taglib</span><span class="ot"> uri</span>=<span class="st">&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span class="ot"> prefix</span>=<span class="st">&quot;c&quot;</span><span class="ot"> </span><span class="bu">%&gt;</span></span>
+      <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/__head.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span>
+      <span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/_aside.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span>
+      <span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/_nav.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span>
+      <span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/_header.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span>
+      <span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/_search.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span>
+      <span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a>&lt;main&gt;</span>
+      <span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a>  &lt;article&gt;</span>
+      <span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a>    &lt;h2&gt;Product List&lt;/h2&gt;</span>
+      <span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a>    &lt;ul<span class="ot"> class</span>=<span class="dt">&quot;productList&quot;</span>&gt;</span>
+      <span id="cb10-12"><a href="#cb10-12" aria-hidden="true"></a>    <span class="kw">&lt;c:forEach</span><span class="ot"> var</span>=<span class="dt">&quot;product&quot;</span><span class="ot"> items</span>=<span class="dt">&quot;</span><span class="pp">${</span>productList<span class="pp">}</span><span class="dt">&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb10-13"><a href="#cb10-13" aria-hidden="true"></a>      &lt;li&gt;</span>
+      <span id="cb10-14"><a href="#cb10-14" aria-hidden="true"></a>        &lt;a<span class="ot"> class</span>=<span class="dt">&quot;product-list&quot;</span></span>
+      <span id="cb10-15"><a href="#cb10-15" aria-hidden="true"></a><span class="ot">          href</span>=<span class="dt">&quot;/ProductInfo?productId=</span><span class="pp">${</span>product.<span class="fu">id</span><span class="pp">}</span><span class="dt">&amp;categoryId=</span><span class="pp">${</span>category.<span class="fu">id</span><span class="pp">}</span><span class="dt">&quot;</span>&gt;</span>
+      <span id="cb10-16"><a href="#cb10-16" aria-hidden="true"></a>          <span class="co">&lt;!-- JSP interprete la variable </span><span class="pp">${</span>product.<span class="fu">name</span><span class="pp">}</span><span class="co">--&gt;</span></span>
+      <span id="cb10-17"><a href="#cb10-17" aria-hidden="true"></a>          <span class="pp">${</span>product.<span class="fu">name</span><span class="pp">}</span></span>
+      <span id="cb10-18"><a href="#cb10-18" aria-hidden="true"></a>        &lt;/a&gt;</span>
+      <span id="cb10-19"><a href="#cb10-19" aria-hidden="true"></a>      &lt;/li&gt;</span>
+      <span id="cb10-20"><a href="#cb10-20" aria-hidden="true"></a>    <span class="kw">&lt;/c:forEach&gt;</span></span>
+      <span id="cb10-21"><a href="#cb10-21" aria-hidden="true"></a>    &lt;/ul&gt;</span>
+      <span id="cb10-22"><a href="#cb10-22" aria-hidden="true"></a>      &lt;div<span class="ot"> class</span>=<span class="dt">&quot;form-actions&quot;</span><span class="ot"> id</span>=<span class="dt">&quot;form-bottom&quot;</span>&gt;</span>
+      <span id="cb10-23"><a href="#cb10-23" aria-hidden="true"></a>        &lt;button<span class="ot"> class</span>=<span class="dt">&quot;cancel&quot;</span><span class="ot"> onclick</span>=<span class="dt">&quot;history.back()&quot;</span>&gt;</span>
+      <span id="cb10-24"><a href="#cb10-24" aria-hidden="true"></a>          &lt;i<span class="ot"> class</span>=<span class="dt">&quot;fa-solid fa-arrow-left&quot;</span>&gt;&lt;/i&gt;</span>
+      <span id="cb10-25"><a href="#cb10-25" aria-hidden="true"></a>        &lt;/button&gt;</span>
+      <span id="cb10-26"><a href="#cb10-26" aria-hidden="true"></a>        &lt;a<span class="ot"> class</span>=<span class="dt">&quot;info&quot;</span><span class="ot"> href</span>=<span class="dt">&quot;CategoryEdit?categoryId=</span><span class="pp">${</span>category.<span class="fu">id</span><span class="pp">}</span><span class="dt">&quot;</span>&gt;Update category&lt;/a&gt;</span>
+      <span id="cb10-27"><a href="#cb10-27" aria-hidden="true"></a>        &lt;a<span class="ot"> class</span>=<span class="dt">&quot;add&quot;</span><span class="ot"> href</span>=<span class="dt">&quot;/ProductAdd?categoryId=</span><span class="pp">${</span>category.<span class="fu">id</span><span class="pp">}</span><span class="dt">&quot;</span>&gt;Add a product&lt;/a&gt;</span>
+      <span id="cb10-28"><a href="#cb10-28" aria-hidden="true"></a>  &lt;/article&gt;</span>
+      <span id="cb10-29"><a href="#cb10-29" aria-hidden="true"></a>&lt;/main&gt;</span>
+      <span id="cb10-30"><a href="#cb10-30" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/_footer.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span>
+      <span id="cb10-31"><a href="#cb10-31" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/__tail.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span></code></pre></div>
+      <!-- cSpell:enable -->
+      <h5 id="jstl">7.1.2.3. JSTL<!-- OK --></h5>
       <p>La <strong>Jakarta Standard Tag Library</strong> (anciennement JavaServer Pages Standard Tag Library) ou JSTL est un composant de la plateforme de développement Java EE Web application.</p>
       <p>Il <strong>étend les spécifications du JSP</strong> and ajoutant une librairie de tag pour les tâches communes, comme le traitement des données XML, l’exécution conditionnelle, l’accès a une base de données, les boucles ou l’internationalisation.</p>
-      <pre class="jstl"><code>- addexemple</code></pre>
+      <p>Le fichier <code>CategoryInfo.jsp</code> de l’exemple précédent illustre également l’utilisation du JSTL dans le cadre d’une boucle qui génère dynamiquement du code HTML dans la page :</p>
+      <!-- cSpell:disable -->
+      <div class="sourceCode" id="cb11"><pre class="sourceCode jsp"><code class="sourceCode jsp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a></span>
+      <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="bu">&lt;%@ taglib</span><span class="ot"> uri</span>=<span class="st">&quot;http://java.sun.com/jsp/jstl/core&quot;</span><span class="ot"> prefix</span>=<span class="st">&quot;c&quot;</span><span class="ot"> </span><span class="bu">%&gt;</span></span>
+      <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/__head.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span>
+      <span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/_aside.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span>
+      <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/_nav.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span>
+      <span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/_header.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span>
+      <span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/_search.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span>
+      <span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a>&lt;main&gt;</span>
+      <span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a>  &lt;article&gt;</span>
+      <span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a>    &lt;h2&gt;Product List&lt;/h2&gt;</span>
+      <span id="cb11-11"><a href="#cb11-11" aria-hidden="true"></a>    &lt;ul<span class="ot"> class</span>=<span class="dt">&quot;productList&quot;</span>&gt;</span>
+      <span id="cb11-12"><a href="#cb11-12" aria-hidden="true"></a>    <span class="co">&lt;!-- JSTL exemple de boucle sur </span><span class="pp">${</span>productList<span class="pp">}</span><span class="co">--&gt;</span></span>
+      <span id="cb11-13"><a href="#cb11-13" aria-hidden="true"></a>    <span class="kw">&lt;c:forEach</span><span class="ot"> var</span>=<span class="dt">&quot;product&quot;</span><span class="ot"> items</span>=<span class="dt">&quot;</span><span class="pp">${</span>productList<span class="pp">}</span><span class="dt">&quot;</span><span class="kw">&gt;</span></span>
+      <span id="cb11-14"><a href="#cb11-14" aria-hidden="true"></a>      &lt;li&gt;</span>
+      <span id="cb11-15"><a href="#cb11-15" aria-hidden="true"></a>        &lt;a<span class="ot"> class</span>=<span class="dt">&quot;product-list&quot;</span></span>
+      <span id="cb11-16"><a href="#cb11-16" aria-hidden="true"></a><span class="ot">          href</span>=<span class="dt">&quot;/ProductInfo?productId=</span><span class="pp">${</span>product.<span class="fu">id</span><span class="pp">}</span><span class="dt">&amp;categoryId=</span><span class="pp">${</span>category.<span class="fu">id</span><span class="pp">}</span><span class="dt">&quot;</span>&gt;</span>
+      <span id="cb11-17"><a href="#cb11-17" aria-hidden="true"></a>          <span class="pp">${</span>product.<span class="fu">name</span><span class="pp">}</span></span>
+      <span id="cb11-18"><a href="#cb11-18" aria-hidden="true"></a>        &lt;/a&gt;</span>
+      <span id="cb11-19"><a href="#cb11-19" aria-hidden="true"></a>      &lt;/li&gt;</span>
+      <span id="cb11-20"><a href="#cb11-20" aria-hidden="true"></a>    <span class="kw">&lt;/c:forEach&gt;</span></span>
+      <span id="cb11-21"><a href="#cb11-21" aria-hidden="true"></a>    &lt;/ul&gt;</span>
+      <span id="cb11-22"><a href="#cb11-22" aria-hidden="true"></a>      &lt;div<span class="ot"> class</span>=<span class="dt">&quot;form-actions&quot;</span><span class="ot"> id</span>=<span class="dt">&quot;form-bottom&quot;</span>&gt;</span>
+      <span id="cb11-23"><a href="#cb11-23" aria-hidden="true"></a>        &lt;button<span class="ot"> class</span>=<span class="dt">&quot;cancel&quot;</span><span class="ot"> onclick</span>=<span class="dt">&quot;history.back()&quot;</span>&gt;</span>
+      <span id="cb11-24"><a href="#cb11-24" aria-hidden="true"></a>          &lt;i<span class="ot"> class</span>=<span class="dt">&quot;fa-solid fa-arrow-left&quot;</span>&gt;&lt;/i&gt;</span>
+      <span id="cb11-25"><a href="#cb11-25" aria-hidden="true"></a>        &lt;/button&gt;</span>
+      <span id="cb11-26"><a href="#cb11-26" aria-hidden="true"></a>        &lt;a<span class="ot"> class</span>=<span class="dt">&quot;info&quot;</span><span class="ot"> href</span>=<span class="dt">&quot;CategoryEdit?categoryId=</span><span class="pp">${</span>category.<span class="fu">id</span><span class="pp">}</span><span class="dt">&quot;</span>&gt;Update category&lt;/a&gt;</span>
+      <span id="cb11-27"><a href="#cb11-27" aria-hidden="true"></a>        &lt;a<span class="ot"> class</span>=<span class="dt">&quot;add&quot;</span><span class="ot"> href</span>=<span class="dt">&quot;/ProductAdd?categoryId=</span><span class="pp">${</span>category.<span class="fu">id</span><span class="pp">}</span><span class="dt">&quot;</span>&gt;Add a product&lt;/a&gt;</span>
+      <span id="cb11-28"><a href="#cb11-28" aria-hidden="true"></a>  &lt;/article&gt;</span>
+      <span id="cb11-29"><a href="#cb11-29" aria-hidden="true"></a>&lt;/main&gt;</span>
+      <span id="cb11-30"><a href="#cb11-30" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/_footer.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span>
+      <span id="cb11-31"><a href="#cb11-31" aria-hidden="true"></a><span class="bu">&lt;jsp:include</span><span class="ot"> page</span>=<span class="st">&quot;/WEB-INF/views/template/__tail.jsp&quot;</span><span class="bu">&gt;&lt;/jsp:include&gt;</span></span></code></pre></div>
+      <!-- cSpell:enable -->
       <h5 id="sql">7.1.2.4. SQL<!-- OK --></h5>
       <p>Le <strong>langage de requête structurée</strong>, abrégé SQL de l’anglais Structured Query Language est un <strong>langage informatique normalisé</strong> servant à exploiter des <strong>bases de données relationnelles</strong>.</p>
       <p>Il permet de gérer les données d’une base de données en utilisant des commandes pour <strong>créer, lire, mettre à jour et supprimer des données</strong> (CRUD operations). Il permet également de <strong>gérer les relations</strong> entre les tables de la base de données et de faire des requêtes pour <strong>récupérer des données spécifiques</strong>.</p>

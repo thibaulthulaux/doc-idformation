@@ -824,23 +824,95 @@ Java permet de développer des applications client-serveur. Côté client, les a
 - addexemple
 ```
 
-##### 7.1.2.2. JSP<!-- EX -->
+##### 7.1.2.2. JSP<!-- OK -->
 
 **Jakarta Server Pages** (anciennement JavaServer Pages) ou JSP est une collection de technologies qui permet aux développeurs de **créer dynamiquement du code HTML**, XML, SOAP ou tout autre type de page web. JSP est semblable a PHP ou ASP, mais pour le langage de programmation Java.
 
-```jsp
-- addexemple
-```
+Voici en exemple le fichier `CategoryInfo.jsp`, fichier de vue de notre modèle, qui est utilisé pour produire le code de la page HTML renvoyée à l'utilisateur.
 
-##### 7.1.2.3. JSTL<!-- EX -->
+Veuillez également noter l'utilisation de la balise `<jsp:include>` afin d’agréger les différents éléments constitutifs de la page complète :
+
+<!-- cSpell:disable -->
+```jsp
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:include page="/WEB-INF/views/template/__head.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/_aside.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/_nav.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/_header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/_search.jsp"></jsp:include>
+<main>
+  <article>
+    <h2>Product List</h2>
+    <ul class="productList">
+    <c:forEach var="product" items="${productList}">
+      <li>
+        <a class="product-list"
+          href="/ProductInfo?productId=${product.id}&categoryId=${category.id}">
+          <!-- JSP interprete la variable ${product.name}-->
+          ${product.name}
+        </a>
+      </li>
+    </c:forEach>
+    </ul>
+      <div class="form-actions" id="form-bottom">
+        <button class="cancel" onclick="history.back()">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <a class="info" href="CategoryEdit?categoryId=${category.id}">Update category</a>
+        <a class="add" href="/ProductAdd?categoryId=${category.id}">Add a product</a>
+  </article>
+</main>
+<jsp:include page="/WEB-INF/views/template/_footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/__tail.jsp"></jsp:include>
+
+```
+<!-- cSpell:enable -->
+
+##### 7.1.2.3. JSTL<!-- OK -->
 
 La **Jakarta Standard Tag Library** (anciennement JavaServer Pages Standard Tag Library) ou JSTL est un composant de la plateforme de développement Java EE Web application.
 
 Il **étend les spécifications du JSP** and ajoutant une librairie de tag pour les tâches communes, comme le traitement des données XML, l'exécution conditionnelle, l'accès a une base de données, les boucles ou l'internationalisation.
 
-```jstl
-- addexemple
+Le fichier `CategoryInfo.jsp` de l'exemple précédent illustre également l'utilisation du JSTL dans le cadre d'une boucle qui génère dynamiquement du code HTML dans la page :
+
+<!-- cSpell:disable -->
+```jsp
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:include page="/WEB-INF/views/template/__head.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/_aside.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/_nav.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/_header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/_search.jsp"></jsp:include>
+<main>
+  <article>
+    <h2>Product List</h2>
+    <ul class="productList">
+    <!-- JSTL exemple de boucle sur ${productList}-->
+    <c:forEach var="product" items="${productList}">
+      <li>
+        <a class="product-list"
+          href="/ProductInfo?productId=${product.id}&categoryId=${category.id}">
+          ${product.name}
+        </a>
+      </li>
+    </c:forEach>
+    </ul>
+      <div class="form-actions" id="form-bottom">
+        <button class="cancel" onclick="history.back()">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <a class="info" href="CategoryEdit?categoryId=${category.id}">Update category</a>
+        <a class="add" href="/ProductAdd?categoryId=${category.id}">Add a product</a>
+  </article>
+</main>
+<jsp:include page="/WEB-INF/views/template/_footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/__tail.jsp"></jsp:include>
+
 ```
+<!-- cSpell:enable -->
 
 ##### 7.1.2.4. SQL<!-- OK -->
 

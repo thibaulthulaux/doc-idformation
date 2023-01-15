@@ -81,7 +81,6 @@ Mlle Lylou PONSING
     - [7.2.2. reveal.js](#722-revealjs)
   - [7.3. Versioning (gitlab/github)](#73-versioning-gitlabgithub)
     - [7.3.1. GitLab](#731-gitlab)
-      - [7.3.1.1. GitHub](#7311-github)
   - [7.4. SGBD utilisé (MYSQL/PostgreSQL)](#74-sgbd-utilisé-mysqlpostgresql)
     - [7.4.1. MariaDB](#741-mariadb)
   - [7.5. Outils de maquettage](#75-outils-de-maquettage)
@@ -975,7 +974,7 @@ Veuillez également noter l'utilisation de la balise `<jsp:include>` afin d’ag
       <li>
         <a class="product-list"
           href="/ProductInfo?productId=${product.id}&categoryId=${category.id}">
-          <!-- JSP interprete la variable ${product.name}-->
+          <!-- JSP parsing variable ${product.name}-->
           ${product.name}
         </a>
       </li>
@@ -1016,7 +1015,7 @@ Le fichier `CategoryInfo.jsp` de l'exemple précédent illustre également l'uti
   <article>
     <h2>Product List</h2>
     <ul class="productList">
-    <!-- JSTL exemple de boucle sur ${productList}-->
+    <!-- JSTL foreach looping on ${productList}-->
     <c:forEach var="product" items="${productList}">
       <li>
         <a class="product-list"
@@ -2058,9 +2057,9 @@ Dans l'exemple suivant on utilise un fichier `README.md` en **Markdown** pour cr
 ```
 <!-- cSpell:enable -->
 
-### 7.3. Versioning (gitlab/github)
+### 7.3. Versioning (gitlab/github)<!-- OK -->
 
-#### 7.3.1. GitLab<!-- CHECK: Add my stuff -->
+#### 7.3.1. GitLab<!-- OK -->
 
 GitLab est un **logiciel libre de forge** (système de gestion et de maintenance collaborative) basé sur git, proposant les fonctionnalités de wiki, un système de suivi des bugs, l’intégration continue et la livraison continue. Ses fonctionnalités étendues en font bien plus qu'un simple un outil de contrôle de version.
 
@@ -2068,11 +2067,86 @@ Il est par exemple possible d'y attacher un **helpdesk**, lié au système de **
 
 GitLab permet aussi, au travers de sa **gestion du pipeline et des runners**, de tester et de construire la couche applicative, de produire la documentation, d'automatiser le provisionnement des serveurs nécessaires et d'y déployer l'application finalisée.
 
-```md
-- contexte
-```
+L'ensemble du **projet est versionné sur GitLab**. Le projet **exploite Gitlab CI/CD**, nous permettant d'automatiser le pipeline Devops pour la compilation, les tests et le déploiement.
 
-##### 7.3.1.1. GitHub<!-- CHECK: Do everything -->
+Vous trouverez ci-après un extrait du fichier `.gitlab-ci.yml`, construit lui aussi sur le principe du template, utilisé pour la configuration de pipeline :
+
+<!-- cSpell:disable -->
+```md
+
+...
+
+# Include templates
+include:
+  - project: 'thx-lpg/thx-lpg-java-storagemanagement'
+    # ref: 0.5.0 #Project `thx-lpg/thx-lpg-java-storagemanagement` reference `0.5.0` does not exist!
+    # ref: main
+    file:
+    - 'ci/java/debug.yml'
+    - 'ci/java/build.yml'
+    - 'ci/java/test.yml'
+    # - 'ci/java/terraform_dev.yml'
+    # - 'ci/java/deploy_dev.yml'
+
+# Workflow
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+
+# Default docker image
+image: alpine
+
+# Default variables
+variables:
+  CI_DEBUG_TRACE: "false" # Debug
+  BUILD_PATH: "app/build"
+  GRADLE_PATH: ".gradle"
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+# Pipeline stages
+stages:
+  - debug
+  - build
+  - test
+  - docker
+  - deploy
+  - clean
+
+# Execute before each job
+before_script:
+  - echo "Start ${CI_JOB_NAME} - stage:${CI_JOB_STAGE}"
+  - export GRADLE_USER_HOME=`pwd`/${GRADLE_PATH}
+
+# Execute after each job
+after_script:
+  - echo "End ${CI_JOB_NAME} - stage:${CI_JOB_STAGE}"
+
+# Debug
+job:debug:
+  tags:
+  - thx
+  stage: debug
+  extends: .template:ci:java:debug
+
+# Build
+job:build:
+  tags:
+  - thx
+  stage: build
+  extends: .template:ci:java:build
+
+# Test
+job:test:
+  tags:
+  - thx
+  stage: test
+  extends: .template:ci:java:test
+
+...
+
+```
+<!-- cSpell:enable -->
 
 ### 7.4. SGBD utilisé (MYSQL/PostgreSQL)<!-- OK -->
 
@@ -2139,7 +2213,7 @@ Le choix du moteur de production s'est appuyé sur les elements suivants :
   - requiert une installation locale
   - lent
 
-Apres une série de tests, notre choix s'est oriente vers Gradle.
+Après une série de tests, notre choix s'est oriente vers Gradle.
 
 **Gradle** est un **moteur de production** fonctionnant sur la plateforme Java. Il permet de construire des projets en Java, Scala, Groovy voire C++. Il allie l'utilisation de conventions à la manière de Maven (convention plutôt que configuration) avec la flexibilité de Ant pour décrire les tâches de construction.
 

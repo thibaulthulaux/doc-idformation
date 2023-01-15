@@ -133,10 +133,7 @@
       </ul></li>
       <li><a href="#73-versioning-gitlabgithub">7.3. Versioning (gitlab/github)</a>
       <ul>
-      <li><a href="#731-gitlab">7.3.1. GitLab</a>
-      <ul>
-      <li><a href="#7311-github">7.3.1.1. GitHub</a></li>
-      </ul></li>
+      <li><a href="#731-gitlab">7.3.1. GitLab</a></li>
       </ul></li>
       <li><a href="#74-sgbd-utilisé-mysqlpostgresql">7.4. SGBD utilisé (MYSQL/PostgreSQL)</a>
       <ul>
@@ -1162,7 +1159,7 @@
       <span id="cb10-13"><a href="#cb10-13" aria-hidden="true"></a>      &lt;li&gt;</span>
       <span id="cb10-14"><a href="#cb10-14" aria-hidden="true"></a>        &lt;a<span class="ot"> class</span>=<span class="dt">&quot;product-list&quot;</span></span>
       <span id="cb10-15"><a href="#cb10-15" aria-hidden="true"></a><span class="ot">          href</span>=<span class="dt">&quot;/ProductInfo?productId=</span><span class="pp">${</span>product.<span class="fu">id</span><span class="pp">}</span><span class="dt">&amp;categoryId=</span><span class="pp">${</span>category.<span class="fu">id</span><span class="pp">}</span><span class="dt">&quot;</span>&gt;</span>
-      <span id="cb10-16"><a href="#cb10-16" aria-hidden="true"></a>          <span class="co">&lt;!-- JSP interprete la variable </span><span class="pp">${</span>product.<span class="fu">name</span><span class="pp">}</span><span class="co">--&gt;</span></span>
+      <span id="cb10-16"><a href="#cb10-16" aria-hidden="true"></a>          <span class="co">&lt;!-- JSP parsing variable </span><span class="pp">${</span>product.<span class="fu">name</span><span class="pp">}</span><span class="co">--&gt;</span></span>
       <span id="cb10-17"><a href="#cb10-17" aria-hidden="true"></a>          <span class="pp">${</span>product.<span class="fu">name</span><span class="pp">}</span></span>
       <span id="cb10-18"><a href="#cb10-18" aria-hidden="true"></a>        &lt;/a&gt;</span>
       <span id="cb10-19"><a href="#cb10-19" aria-hidden="true"></a>      &lt;/li&gt;</span>
@@ -1195,7 +1192,7 @@
       <span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a>  &lt;article&gt;</span>
       <span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a>    &lt;h2&gt;Product List&lt;/h2&gt;</span>
       <span id="cb11-11"><a href="#cb11-11" aria-hidden="true"></a>    &lt;ul<span class="ot"> class</span>=<span class="dt">&quot;productList&quot;</span>&gt;</span>
-      <span id="cb11-12"><a href="#cb11-12" aria-hidden="true"></a>    <span class="co">&lt;!-- JSTL exemple de boucle sur </span><span class="pp">${</span>productList<span class="pp">}</span><span class="co">--&gt;</span></span>
+      <span id="cb11-12"><a href="#cb11-12" aria-hidden="true"></a>    <span class="co">&lt;!-- JSTL foreach looping on </span><span class="pp">${</span>productList<span class="pp">}</span><span class="co">--&gt;</span></span>
       <span id="cb11-13"><a href="#cb11-13" aria-hidden="true"></a>    <span class="kw">&lt;c:forEach</span><span class="ot"> var</span>=<span class="dt">&quot;product&quot;</span><span class="ot"> items</span>=<span class="dt">&quot;</span><span class="pp">${</span>productList<span class="pp">}</span><span class="dt">&quot;</span><span class="kw">&gt;</span></span>
       <span id="cb11-14"><a href="#cb11-14" aria-hidden="true"></a>      &lt;li&gt;</span>
       <span id="cb11-15"><a href="#cb11-15" aria-hidden="true"></a>        &lt;a<span class="ot"> class</span>=<span class="dt">&quot;product-list&quot;</span></span>
@@ -2153,13 +2150,86 @@
       <span id="cb24-48"><a href="#cb24-48" aria-hidden="true"></a><span class="kw">&lt;/html&gt;</span></span>
       <span id="cb24-49"><a href="#cb24-49" aria-hidden="true"></a></span></code></pre></div>
       <!-- cSpell:enable -->
-      <h3 id="versioning-gitlabgithub">7.3. Versioning (gitlab/github)</h3>
-      <h4 id="gitlab">7.3.1. GitLab<!-- CHECK: Add my stuff --></h4>
+      <h3 id="versioning-gitlabgithub">7.3. Versioning (gitlab/github)<!-- OK --></h3>
+      <h4 id="gitlab">7.3.1. GitLab<!-- OK --></h4>
       <p>GitLab est un <strong>logiciel libre de forge</strong> (système de gestion et de maintenance collaborative) basé sur git, proposant les fonctionnalités de wiki, un système de suivi des bugs, l’intégration continue et la livraison continue. Ses fonctionnalités étendues en font bien plus qu’un simple un outil de contrôle de version.</p>
       <p>Il est par exemple possible d’y attacher un <strong>helpdesk</strong>, lié au système de <strong>suivi de bugs</strong>, afin de <strong>planifier et allouer des taches</strong> aux différents intervenants du projet.</p>
       <p>GitLab permet aussi, au travers de sa <strong>gestion du pipeline et des runners</strong>, de tester et de construire la couche applicative, de produire la documentation, d’automatiser le provisionnement des serveurs nécessaires et d’y déployer l’application finalisée.</p>
-      <div class="sourceCode" id="cb25"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="ss">- </span>contexte</span></code></pre></div>
-      <h5 id="github">7.3.1.1. GitHub<!-- CHECK: Do everything --></h5>
+      <p>L’ensemble du <strong>projet est versionné sur GitLab</strong>. Le projet <strong>exploite Gitlab CI/CD</strong>, nous permettant d’automatiser le pipeline Devops pour la compilation, les tests et le déploiement.</p>
+      <p>Vous trouverez ci-après un extrait du fichier <code>.gitlab-ci.yml</code>, construit lui aussi sur le principe du template, utilisé pour la configuration de pipeline :</p>
+      <!-- cSpell:disable -->
+      <div class="sourceCode" id="cb25"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a></span>
+      <span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a>...</span>
+      <span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a></span>
+      <span id="cb25-4"><a href="#cb25-4" aria-hidden="true"></a><span class="fu"># Include templates</span></span>
+      <span id="cb25-5"><a href="#cb25-5" aria-hidden="true"></a>include:</span>
+      <span id="cb25-6"><a href="#cb25-6" aria-hidden="true"></a><span class="ss">  - </span>project: &#39;thx-lpg/thx-lpg-java-storagemanagement&#39;</span>
+      <span id="cb25-7"><a href="#cb25-7" aria-hidden="true"></a>    # ref: 0.5.0 #Project <span class="in">`thx-lpg/thx-lpg-java-storagemanagement`</span> reference <span class="in">`0.5.0`</span> does not exist!</span>
+      <span id="cb25-8"><a href="#cb25-8" aria-hidden="true"></a>    # ref: main</span>
+      <span id="cb25-9"><a href="#cb25-9" aria-hidden="true"></a>    file:</span>
+      <span id="cb25-10"><a href="#cb25-10" aria-hidden="true"></a><span class="ss">    - </span>&#39;ci/java/debug.yml&#39;</span>
+      <span id="cb25-11"><a href="#cb25-11" aria-hidden="true"></a><span class="ss">    - </span>&#39;ci/java/build.yml&#39;</span>
+      <span id="cb25-12"><a href="#cb25-12" aria-hidden="true"></a><span class="ss">    - </span>&#39;ci/java/test.yml&#39;</span>
+      <span id="cb25-13"><a href="#cb25-13" aria-hidden="true"></a>    # - &#39;ci/java/terraform_dev.yml&#39;</span>
+      <span id="cb25-14"><a href="#cb25-14" aria-hidden="true"></a>    # - &#39;ci/java/deploy_dev.yml&#39;</span>
+      <span id="cb25-15"><a href="#cb25-15" aria-hidden="true"></a></span>
+      <span id="cb25-16"><a href="#cb25-16" aria-hidden="true"></a><span class="fu"># Workflow</span></span>
+      <span id="cb25-17"><a href="#cb25-17" aria-hidden="true"></a>workflow:</span>
+      <span id="cb25-18"><a href="#cb25-18" aria-hidden="true"></a>  rules:</span>
+      <span id="cb25-19"><a href="#cb25-19" aria-hidden="true"></a><span class="ss">    - </span>if: &#39;$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;&#39;</span>
+      <span id="cb25-20"><a href="#cb25-20" aria-hidden="true"></a><span class="ss">    - </span>if: &#39;$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH&#39;</span>
+      <span id="cb25-21"><a href="#cb25-21" aria-hidden="true"></a></span>
+      <span id="cb25-22"><a href="#cb25-22" aria-hidden="true"></a><span class="fu"># Default docker image</span></span>
+      <span id="cb25-23"><a href="#cb25-23" aria-hidden="true"></a>image: alpine</span>
+      <span id="cb25-24"><a href="#cb25-24" aria-hidden="true"></a></span>
+      <span id="cb25-25"><a href="#cb25-25" aria-hidden="true"></a><span class="fu"># Default variables</span></span>
+      <span id="cb25-26"><a href="#cb25-26" aria-hidden="true"></a>variables:</span>
+      <span id="cb25-27"><a href="#cb25-27" aria-hidden="true"></a>  CI_DEBUG_TRACE: &quot;false&quot; # Debug</span>
+      <span id="cb25-28"><a href="#cb25-28" aria-hidden="true"></a>  BUILD_PATH: &quot;app/build&quot;</span>
+      <span id="cb25-29"><a href="#cb25-29" aria-hidden="true"></a>  GRADLE_PATH: &quot;.gradle&quot;</span>
+      <span id="cb25-30"><a href="#cb25-30" aria-hidden="true"></a>  GRADLE_OPTS: &quot;-Dorg.gradle.daemon=false&quot;</span>
+      <span id="cb25-31"><a href="#cb25-31" aria-hidden="true"></a></span>
+      <span id="cb25-32"><a href="#cb25-32" aria-hidden="true"></a><span class="fu"># Pipeline stages</span></span>
+      <span id="cb25-33"><a href="#cb25-33" aria-hidden="true"></a>stages:</span>
+      <span id="cb25-34"><a href="#cb25-34" aria-hidden="true"></a><span class="ss">  - </span>debug</span>
+      <span id="cb25-35"><a href="#cb25-35" aria-hidden="true"></a><span class="ss">  - </span>build</span>
+      <span id="cb25-36"><a href="#cb25-36" aria-hidden="true"></a><span class="ss">  - </span>test</span>
+      <span id="cb25-37"><a href="#cb25-37" aria-hidden="true"></a><span class="ss">  - </span>docker</span>
+      <span id="cb25-38"><a href="#cb25-38" aria-hidden="true"></a><span class="ss">  - </span>deploy</span>
+      <span id="cb25-39"><a href="#cb25-39" aria-hidden="true"></a><span class="ss">  - </span>clean</span>
+      <span id="cb25-40"><a href="#cb25-40" aria-hidden="true"></a></span>
+      <span id="cb25-41"><a href="#cb25-41" aria-hidden="true"></a><span class="fu"># Execute before each job</span></span>
+      <span id="cb25-42"><a href="#cb25-42" aria-hidden="true"></a>before_script:</span>
+      <span id="cb25-43"><a href="#cb25-43" aria-hidden="true"></a><span class="ss">  - </span>echo &quot;Start ${CI_JOB_NAME} - stage:${CI_JOB_STAGE}&quot;</span>
+      <span id="cb25-44"><a href="#cb25-44" aria-hidden="true"></a><span class="ss">  - </span>export GRADLE_USER_HOME=<span class="in">`pwd`</span>/${GRADLE_PATH}</span>
+      <span id="cb25-45"><a href="#cb25-45" aria-hidden="true"></a></span>
+      <span id="cb25-46"><a href="#cb25-46" aria-hidden="true"></a><span class="fu"># Execute after each job</span></span>
+      <span id="cb25-47"><a href="#cb25-47" aria-hidden="true"></a>after_script:</span>
+      <span id="cb25-48"><a href="#cb25-48" aria-hidden="true"></a><span class="ss">  - </span>echo &quot;End ${CI_JOB_NAME} - stage:${CI_JOB_STAGE}&quot;</span>
+      <span id="cb25-49"><a href="#cb25-49" aria-hidden="true"></a></span>
+      <span id="cb25-50"><a href="#cb25-50" aria-hidden="true"></a><span class="fu"># Debug</span></span>
+      <span id="cb25-51"><a href="#cb25-51" aria-hidden="true"></a>job:debug:</span>
+      <span id="cb25-52"><a href="#cb25-52" aria-hidden="true"></a>  tags:</span>
+      <span id="cb25-53"><a href="#cb25-53" aria-hidden="true"></a><span class="ss">  - </span>thx</span>
+      <span id="cb25-54"><a href="#cb25-54" aria-hidden="true"></a>  stage: debug</span>
+      <span id="cb25-55"><a href="#cb25-55" aria-hidden="true"></a>  extends: .template:ci:java:debug</span>
+      <span id="cb25-56"><a href="#cb25-56" aria-hidden="true"></a></span>
+      <span id="cb25-57"><a href="#cb25-57" aria-hidden="true"></a><span class="fu"># Build</span></span>
+      <span id="cb25-58"><a href="#cb25-58" aria-hidden="true"></a>job:build:</span>
+      <span id="cb25-59"><a href="#cb25-59" aria-hidden="true"></a>  tags:</span>
+      <span id="cb25-60"><a href="#cb25-60" aria-hidden="true"></a><span class="ss">  - </span>thx</span>
+      <span id="cb25-61"><a href="#cb25-61" aria-hidden="true"></a>  stage: build</span>
+      <span id="cb25-62"><a href="#cb25-62" aria-hidden="true"></a>  extends: .template:ci:java:build</span>
+      <span id="cb25-63"><a href="#cb25-63" aria-hidden="true"></a></span>
+      <span id="cb25-64"><a href="#cb25-64" aria-hidden="true"></a><span class="fu"># Test</span></span>
+      <span id="cb25-65"><a href="#cb25-65" aria-hidden="true"></a>job:test:</span>
+      <span id="cb25-66"><a href="#cb25-66" aria-hidden="true"></a>  tags:</span>
+      <span id="cb25-67"><a href="#cb25-67" aria-hidden="true"></a><span class="ss">  - </span>thx</span>
+      <span id="cb25-68"><a href="#cb25-68" aria-hidden="true"></a>  stage: test</span>
+      <span id="cb25-69"><a href="#cb25-69" aria-hidden="true"></a>  extends: .template:ci:java:test</span>
+      <span id="cb25-70"><a href="#cb25-70" aria-hidden="true"></a></span>
+      <span id="cb25-71"><a href="#cb25-71" aria-hidden="true"></a>...</span></code></pre></div>
+      <!-- cSpell:enable -->
       <h3 id="sgbd-utilisé-mysqlpostgresql">7.4. SGBD utilisé (MYSQL/PostgreSQL)<!-- OK --></h3>
       <p>Le choix du Système de Gestion de Base de Données s’est appuyé sur les elements suivants :</p>
       <ul>
@@ -2212,7 +2282,7 @@
       <li>lent</li>
       </ul></li>
       </ul>
-      <p>Apres une série de tests, notre choix s’est oriente vers Gradle.</p>
+      <p>Après une série de tests, notre choix s’est oriente vers Gradle.</p>
       <p><strong>Gradle</strong> est un <strong>moteur de production</strong> fonctionnant sur la plateforme Java. Il permet de construire des projets en Java, Scala, Groovy voire C++. Il allie l’utilisation de conventions à la manière de Maven (convention plutôt que configuration) avec la flexibilité de Ant pour décrire les tâches de construction.</p>
       <p>Gradle permet d’écrire des tâches dans un fichier de construction en utilisant le langage Groovy, qui permettent d’exécuter des activités d’<strong>ingénierie logicielle</strong> (compilation, assemblage, test unitaires, qualité du code, déploiement…)</p>
       <p><strong>Notes :</strong> Les taches construites pour gradle sont également appelées lors des différentes phases du pipeline DevOps.</p>

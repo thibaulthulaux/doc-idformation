@@ -2069,7 +2069,7 @@ GitLab permet aussi, au travers de sa **gestion du pipeline et des runners**, de
 
 L'ensemble du **projet est versionné sur GitLab**. Le projet **exploite Gitlab CI/CD**, nous permettant d'automatiser le pipeline Devops pour la compilation, les tests et le déploiement.
 
-Vous trouverez ci-après un extrait du fichier `.gitlab-ci.yml`, construit lui aussi sur le principe du template, utilisé pour la configuration de pipeline :
+Vous trouverez ci-après un extrait du fichier `.gitlab-ci.yml`, construit lui aussi sur le principe du template, utilisé pour la configuration de pipeline. Il reprend les tâches configurées dans Gradle (Cf. [Gradle](#761-automatisation-de-build)) :
 
 <!-- cSpell:disable -->
 ```md

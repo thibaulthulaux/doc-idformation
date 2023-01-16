@@ -35,6 +35,8 @@
 ```
 <!-- cSpell:enable -->
 
+Chat gpt debug
+
 im processing a markdown file with pandoc into an html file.
 In this markdown file, i have links in my table of content (linking to my headers), like this: `- [2. Liste des compétences couvertes](#2-liste-des-compétences-couvertes)`
 My header looks like this: `## 2. Liste des compétences couvertes`
@@ -58,5 +60,8 @@ You can also use a custom filter for pandoc, which allows to modify the elements
 It's important to note that the solution that will work best for you will depend on the specific requirements of your project and your own skill set.
 
 
+chat gpt UML
 
+plantuml code for a common use case diagram in which we can find:
+a user login in an application, then accessing a private collection of categories, in which the user access a private collection of products
 

@@ -1,4 +1,4 @@
-@startuml app-class-concept-uml
+@startuml request-seq-uml
 
 ' left to right direction
 
@@ -6,7 +6,7 @@ header
 
 endheader
 
-title Application Class Diagram - Conceptual View
+title Request Sequential Diagram
 
 footer
 <font color=red>Warning:</font> Do not use in production

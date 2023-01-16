@@ -642,12 +642,10 @@ Les objectifs qualité sont:
 
 ## 6. Spécifications fonctionnelles du projet
 
-```md
 - Front office
 - Back office
 - Arborescence
 - Aperçu des contenus
-```
 
 ### 6.1. Front office
 
@@ -756,15 +754,15 @@ Le diagramme de flux est utile dans la création de nouveaux processus métiers.
 
 **Référence :**
 
-|                                                                               | Couleur                               |
-| ----------------------------------------------------------------------------- | ------------------------------------- |
-| Fond du site                                                                  | #f7f7f7<font color="#f7f7f7">#</font> |
-| Aside et menu utilisateur                                                     | #151515<font color="#151515">#</font> |
-| Éléments de la barre de recherche, de l'aside et du menu utilisateur (:hover) | #0e2b9e<font color="#0e2b9e">#</font> |
-| Couleur pour la validation                                                    | #7feb15<font color="#7feb15">#</font> |
-| Couleur pour la suppression                                                   | #eb6a44<font color="#eb6a44">#</font> |
-| Couleur pour naviguer vers la page d'information des produits et catégories   | #2c52eb<font color="#2c52eb">#</font> |
-| Couleur pour naviguer vers la page de mise à jour des produits et catégories  | #0e2b9e<font color="#0e2b9e">#</font> |
+|                                                                               | Couleur |
+| ----------------------------------------------------------------------------- | ------- |
+| Fond du site                                                                  | #f7f7f7 |
+| Aside et menu utilisateur                                                     | #151515 |
+| Éléments de la barre de recherche, de l'aside et du menu utilisateur (:hover) | #0e2b9e |
+| Couleur pour la validation                                                    | #7feb15 |
+| Couleur pour la suppression                                                   | #eb6a44 |
+| Couleur pour naviguer vers la page d'information des produits et catégories   | #2c52eb |
+| Couleur pour naviguer vers la page de mise à jour des produits et catégories  | #0e2b9e |
 
 **Explication :**
 
@@ -794,9 +792,6 @@ Les formulaires sur les pages de connexion et d'inscription ont un fond transpar
 
 Dans la maquette ci-dessus, les éléments présents sur toutes les pages pour les utilisateurs connectés incluent un header avec le logo de l'entreprise et un menu de navigation, un aside avec un menu utilisateur pour gérer les produits et catégories, un footer avec des liens vers l'aide, les mentions légales et les coordonnées de l'entreprise, et une barre de recherche pour chercher des produits spécifiques.
 
-Avantage figma : 
-
-Pour une bonne pratique de design dans Figma, il est conseillé de créer des frames avec des noms correspondant à leur contenu, de disposer les éléments de la page (header, footer, etc.) pour une meilleure visualisation de l'espace utilisé, de nommer les formes en fonction de ce qu'elles représentent et de les transformer en composants pour une réutilisation et modification facile. Il est également recommandé de créer des groupes pour organiser les éléments similaires, comme le  groupe "bouton d'inscription" qui comprend une forme et un texte, ce qui permet de centrer horizontalement et/ou verticalement le texte par rapport au bouton plutôt que par rapport au frame. 
 
 <div style="page-break-after: always;"></div>
 
@@ -1912,6 +1907,8 @@ public class RolePrincipal implements Principal {
 <!-- cSpell:disable -->
 ```java
 
+  ...
+
   /*
    * (non-Javadoc)
    * 
@@ -1961,6 +1958,8 @@ public class RolePrincipal implements Principal {
     log.info("Done");
     return loginSucceeded;
   }
+
+  ...
 
 ```
 <!-- cSpell:enable -->
@@ -2245,18 +2244,49 @@ Figma est une **application web collaborative d'édition de graphiques vectoriel
 L'ensemble des fonctionnalités de Figma est **axé sur l'utilisation**, dans la conception, **de l'interface utilisateur et de l'expérience utilisateur**, en mettant l'accent sur la collaboration en temps réel.
 
 ```md
-- contexte
+Pour une bonne pratique de design dans Figma, il est conseillé de créer des frames avec des noms correspondant à leur contenu, de disposer les éléments de la page (header, footer, etc.) pour une meilleure visualisation de l'espace utilisé, de nommer les formes en fonction de ce qu'elles représentent et de les transformer en composants pour une réutilisation et modification facile.
+
+Il est également recommandé de créer des groupes pour organiser les éléments similaires, comme le  groupe "bouton d'inscription" qui comprend une forme et un texte, ce qui permet de centrer horizontalement et/ou verticalement le texte par rapport au bouton plutôt que par rapport au frame. 
 ```
 
-#### 7.5.2. PlantUML<!-- CHECK -->
+#### 7.5.2. PlantUML<!-- OK -->
 
 PlantUML est un **outil libre** permettant de **créer des diagrammes UML a partir de fichiers texte**. En dehors des UML classiques, PlantUML supporte de nombreux autres formats (Archimate, Block diagram, BPMN, C4, Computer network diagram, ERD, Gantt chart, Mind map, and WBD), ainsi que la visualisation des fichier JSON et YAML.
 
 La création et l'édition d'UML simples permet de représenter et de concevoir la structure ou les fonctionnalités recherches d'un logiciel (Activité, Acteurs, Processus, Schéma de base de données, Composants logiciels), et fait partie intégrante du prototypage.
 
-```md
-- contexte
+Voici en exemple le fichier `mvc-seq-uml.puml` qui produit un diagramme de séquence pour un modèle MVC :
+
+![Sequence MVC](img/mvc-seq-uml.png)
+
+<!-- cSpell:disable -->
+```puml
+
+@startuml mvc-seq-uml
+
+skinparam roundcorner 20
+skinparam responseMessageBelowArrow true
+
+title Model View Controller
+
+actor User as U
+participant "View" as V  #LightBlue
+participant "Controller" as C  #LightCoral
+participant "Model" as M  #LightGreen
+database DB as D
+
+U -> C : Request
+C -> M : Update
+M -> D : Query
+M <-- D : Response
+C <-- M : Notify
+C -> V : Update
+U <-- V : Response
+
+@enduml
+
 ```
+<!-- cSpell:enable -->
 
 ### 7.6. Plateforme de développement
 

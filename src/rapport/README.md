@@ -754,17 +754,17 @@ Le diagramme de flux est utile dans la création de nouveaux processus métiers.
 
 #### 6.4.1. Charte graphique
 
-**Couleurs :**
+**Référence :**
 
-|                                                                                                                   | Couleur                              |
-| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| Fond du site                                                                                                      | <font color="#f7f7f7">#f7f7f7</font> |
-| Aside et menu utilisateur                                                                                         | <font color="#151515">#151515</font> |
-| Pseudo-classe :hover pour les éléments de la barre de recherche et les éléments de l'aside et du menu utilisateur | <font color="#0e2b9e">#0e2b9e</font> |
-| Couleur pour la validation                                                                                        | <font color="#7feb15">#7feb15</font> |
-| Couleur pour la suppression                                                                                       | <font color="#eb6a44">#eb6a44</font> |
-| Couleur pour naviguer vers la page d'information des produits et catégories                                       | <font color="#2c52eb">#2c52eb</font> |
-| Couleur pour naviguer vers la page de mise à jour des produits et catégories                                      | <font color="#0e2b9e">#0e2b9e</font> |
+|                                                                               | Couleur                               |
+| ----------------------------------------------------------------------------- | ------------------------------------- |
+| Fond du site                                                                  | #f7f7f7<font color="#f7f7f7">#</font> |
+| Aside et menu utilisateur                                                     | #151515<font color="#151515">#</font> |
+| Éléments de la barre de recherche, de l'aside et du menu utilisateur (:hover) | #0e2b9e<font color="#0e2b9e">#</font> |
+| Couleur pour la validation                                                    | #7feb15<font color="#7feb15">#</font> |
+| Couleur pour la suppression                                                   | #eb6a44<font color="#eb6a44">#</font> |
+| Couleur pour naviguer vers la page d'information des produits et catégories   | #2c52eb<font color="#2c52eb">#</font> |
+| Couleur pour naviguer vers la page de mise à jour des produits et catégories  | #0e2b9e<font color="#0e2b9e">#</font> |
 
 **Explication :**
 
@@ -780,7 +780,7 @@ La couleur pour naviguer vers la page de mise à jour des produits et catégorie
 
 Une maquette est un outil graphique utilisé pour prévisualiser l'apparence d'un site web ou d'une application avant sa mise en production. Il s'agit d'une représentation simplifiée de la structure et de la mise en page d'un site, qui permet de visualiser les éléments qui seront visibles sur toutes les pages.
 
-![welcome](img/mockup-welcome.png)
+![welcome](img/mockup-auth.png)
 
 Cette maquette représente la page d’authentification du site. Le body de la maquette est conçu avec un fondu dégradé allant du blanc au bleu clair pour donner un look élégant et moderne.
 

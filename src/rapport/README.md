@@ -114,23 +114,23 @@ Mlle Lylou PONSING
 
 La liste des compétences couvertes, conformément au référentiel de certification, est la suivante:
 
-|     | Description                                                     |
-| --- | --------------------------------------------------------------- |
-| 1   | Maquetter une application                                       |
-| 2   | Développer une interface utilisateur de type desktop            |
-| 3   | Développer des composants d'accès aux données                   |
-| 4   | Développer la partie front-end d'une interface utilisateur web  |
-| 5   | Développer la partie back-end d'une interface utilisateur web   |
-| 6   | Concevoir une base de données                                   |
-| 7   | Mettre en place une base de données                             |
-| 8   | Développer des composants dans le langage d'une base de données |
+|     | Description                                                                                              |
+| --- | -------------------------------------------------------------------------------------------------------- |
+| 1   | Maquetter une application                                                                                |
+| 2   | Développer une interface utilisateur de type desktop                                                     |
+| 3   | Développer des composants d'accès aux données                                                            |
+| 4   | Développer la partie front-end d'une interface utilisateur web                                           |
+| 5   | Développer la partie back-end d'une interface utilisateur web                                            |
+| 6   | Concevoir une base de données                                                                            |
+| 7   | Mettre en place une base de données                                                                      |
+| 8   | Développer des composants dans le langage d'une base de données                                          |
 | 9   | Collaborer à la gestion d'un projet informatique et à l'organisation de l'environnement de développement |
-| 10  | Concevoir une application                                       |
-| 11  | Développer des composants métier                                |
-| 12  | Construire une application organisée en couches                 |
-| 13  | Développer une application mobile                               |
-| 14  | Préparer et exécuter les plans de tests d'une application       |
-| 15  | Préparer et exécuter le déploiement d'une application           |
+| 10  | Concevoir une application                                                                                |
+| 11  | Développer des composants métier                                                                         |
+| 12  | Construire une application organisée en couches                                                          |
+| 13  | Développer une application mobile                                                                        |
+| 14  | Préparer et exécuter les plans de tests d'une application                                                |
+| 15  | Préparer et exécuter le déploiement d'une application                                                    |
 
 <div style="page-break-after: always;"></div>
 
@@ -726,7 +726,7 @@ Il sera redirigé vers la page de modification du produit, dans laquelle il pour
 
 Sur la **page de modification d’un produit**, l’utilisateur peut **cliquer sur supprimer** le produit pour supprimer le produit.
 
-#### 6.1.5. Menu user<!-- CHECK -->
+#### 6.1.5. Menu user
 
 Une fois l’utilisateur **connecté**, il pourra accéder au **menu user**. L’utilisateur devra **cliquer sur le user ou son symbole**. A partir de là un **menu déroulant** s’abaisse et l’utilisateur peut cliquer sur : modification du profil, modification du mot de passe ou déconnexion.
 
@@ -766,7 +766,7 @@ Le diagramme de flux est utile dans la création de nouveaux processus métiers.
 
 **Explication :**
 
-La couleur choisie pour le fond du site (#f7f7f7) est une couleur claire qui apporte de la luminosité et une sensation de propreté. Elle permet également de mettre en avant les autres éléments de la page.
+
 La couleur choisie pour l'aside et le menu utilisateur (#151515) est une couleur foncée qui apporte de la profondeur et un contraste avec le fond du site. Elle permet également de mettre en avant les éléments importants de ces zones.
 La pseudo-classe :hover pour les éléments de la barre de recherche et les éléments de l'aside et du menu utilisateur est définie à #0e2b9e, une couleur bleue qui apporte une touche de dynamisme et de modernité. Elle permet également de mettre en avant les actions possibles pour l'utilisateur lorsqu'il survole ces éléments avec sa souris.
 La couleur pour la validation est #7feb15, une couleur verte qui apporte une touche de confirmation et de sécurité. Elle permet également de montrer clairement que l'action est effective.
@@ -784,14 +784,13 @@ Cette maquette représente la page d’authentification du site. Le body de la m
 
 Le header comprend un logo de l'application, un bouton d'inscription et un bouton de connexion. Le logo est placé à gauche du header et les boutons d'inscription et de connexion sont placés à droite.
 
-Sous le header, il y a un formulaire de connexion qui comprend des champs pour saisir l'adresse email et le mot de passe de l'utilisateur. Les champs sont bien espacés et clairement étiquetés pour une utilisation facile. Il y a également des boutons d'inscription et de connexion pour permettre à l'utilisateur de s'inscrire ou de se connecter. 
+Sous le header, il y a un formulaire de connexion qui comprend des champs pour saisir l'adresse email et le mot de passe de l'utilisateur. Les champs sont bien espacés et clairement étiquetés pour une utilisation facile. Il y a également des boutons d'inscription et de connexion pour permettre à l'utilisateur de s'inscrire ou de se connecter.
 
 Les formulaires sur les pages de connexion et d'inscription ont un fond transparent pour permettre de voir le dégradé en arrière-plan et sont mis en valeur avec une bordure et une ombre qui les fait ressortir.
 
 ![desktop](img/mockup-desktop.png)
 
 Dans la maquette ci-dessus, les éléments présents sur toutes les pages pour les utilisateurs connectés incluent un header avec le logo de l'entreprise et un menu de navigation, un aside avec un menu utilisateur pour gérer les produits et catégories, un footer avec des liens vers l'aide, les mentions légales et les coordonnées de l'entreprise, et une barre de recherche pour chercher des produits spécifiques.
-
 
 <div style="page-break-after: always;"></div>
 
@@ -1797,8 +1796,8 @@ Dans la mesure ou ce **projet est réalisé dans le cadre d'une formation**, le 
 
 En effet, les diverses couches d’abstractions, bien que simplifiant grandement le développement d'une application, peuvent ici être contre-productifs :
 
-- ils **masquent les détails de la conception et de la mise en œuvre**, ce qui rend plus difficile de comprendre comment les choses fonctionnent réellement.
-- ils rendent plus difficile l'apprentissage des concepts de base de la programmation, car ils **fournissent des solutions toutes faites**, plutôt que de permettre aux développeurs de les **résoudre les problemes par eux-mêmes**.
+- ils **masquent les détails de la conception et de la mise en œuvre**, ce qui rend plus difficile la comprehension comment les choses fonctionnent réellement.
+- ils rendent plus difficile l'apprentissage des concepts de base de la programmation, car ils **fournissent des solutions toutes faites**, plutôt que de permettre aux développeurs de les **résoudre les problèmes par eux-mêmes**.
 - ils rendent les **applications plus lourdes et plus difficiles à déboguer**, car ils ajoutent une couche supplémentaire d'abstraction.
 - les différentes **options existantes pour résoudre un problème donné sont limités** aux solutions proposées par le framework.
 

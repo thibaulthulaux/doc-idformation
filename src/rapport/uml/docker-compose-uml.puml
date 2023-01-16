@@ -13,7 +13,7 @@ endfooter
 ' !define engine(x)
 
 !define service(x) entity x << (S, LightBlue) >>
-!define port(x) card <b><color:#000000><&transfer></color> x</b>
+!define port(x) <b><color:#000000><&transfer></color> x</b>
 !define vol(x) <b><color:#000000><&folder></color> x </b>
 !define env(x) <b><color:#000000><&dollar></color> x </b>
 

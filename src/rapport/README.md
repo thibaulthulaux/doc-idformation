@@ -59,6 +59,8 @@ Mlle Lylou PONSING
   - [6.2. Back office](#62-back-office)
   - [6.3. Arborescence](#63-arborescence)
   - [6.4. Aperçu des contenus](#64-aperçu-des-contenus)
+    - [6.4.1. Charte graphique](#641-charte-graphique)
+    - [6.4.2. Maquette](#642-maquette)
 - [7. Spécifications techniques du projet](#7-spécifications-techniques-du-projet)
   - [7.1. Langages](#71-langages)
     - [7.1.1. Front-end](#711-front-end)
@@ -660,6 +662,7 @@ Sur la page informative d’une catégorie, il y a la **liste des produits que c
 #### 6.1.1. Landing page<!-- OK -->
 
 La landing page a une **interface stylisée différemment** du reste du site. Une landing page se doit d’être attractive et de pousser l’utilisateur à utiliser le produit ou le service qu’elle essaie de vendre.
+
 Pour la landing page, nous avons fait le choix de faire une **animation qui s’active une fois** au lancement de la page.
 
 Cette animation comporte trois boîtes qui s’ouvrent et qui se referment. Pendant que la boite s’ouvre, il y a 4 petites boîtes qui descendent jusqu’à se retrouver dans les grandes boîtes. Les grandes boîtes symbolisent les catégories et les petites boîtes symbolisent les produits.
@@ -669,18 +672,28 @@ Sur la landing page l’utilisateur peut **accéder aux espaces d’inscription 
 #### 6.1.2. Inscription et connexion<!-- OK -->
 
 Les espaces de connexion et d’inscription sont accessibles à partir du **header de la landing page**. Comme fait conventionnellement, tout à droite on retrouve en premier l’inscription et ensuite la connexion.
+
 La page de connexion contient le label : email avec son input, ainsi que le label : mot de passe avec son input.
-A droite, l’utilisateur peut cliquer sur **se connecter** et à gauche **s’inscrire**.
+
+Sur la landing page, l’utilisateur peut cliquer sur **se connecter** et à gauche **s’inscrire**.
 
 #### 6.1.3. Catégories<!-- OK -->
 
 ##### 6.1.3.1. Menu catégorie<!-- OK -->
 
-Une fois connecté, l’utilisateur aura accès à un **menu disposé à gauche de l’interface** et qui sera **disponible sur toutes les pages** du site. Ce menu contient une **liste des catégories** que l’utilisateur aura créé au préalable. Pour chaque catégorie, un lien sera créé avec comme valeur le nom que l’utilisateur lui aura donné. Au survol du bouton, le bouton changera de couleur afin d’indiquer à l’utilisateur qu’il s’agit d’un lien cliquable. Ce lien dirige vers la **page informative de la catégorie**.
+Une fois connecté, l’utilisateur aura accès à un **menu disposé à gauche de l’interface** et qui sera **disponible sur toutes les pages** du site.
+
+Ce menu contient une **liste des catégories** que l’utilisateur aura créé au préalable. Pour chaque catégorie, un lien sera créé avec comme valeur le nom que l’utilisateur lui aura donné.
+
+Au survol du bouton, le bouton changera de couleur afin d’indiquer à l’utilisateur qu’il s’agit d’un lien cliquable. Ce lien dirige vers la **page informative de la catégorie**.
 
 ##### 6.1.3.2. Ajout d’une catégorie<!-- OK -->
 
-Quand l’utilisateur se sera connecté, la première page du site auquel il aura accès est la page d’ajout d’une catégorie. Sur cette page, l’utilisateur devra **indiquer le nom de la catégorie ainsi que sa description** puis il devra ajouter la catégorie en cliquant sur le bouton correspondant. Lorsque l’utilisateur ajoute une catégorie, elle est **directement visible dans le menu catégorie**.
+Quand l’utilisateur se sera connecté, la première page du site auquel il aura accès est la page d’ajout d’une catégorie.
+
+Sur cette page, l’utilisateur devra **indiquer le nom de la catégorie ainsi que sa description** puis il devra ajouter la catégorie en cliquant sur le bouton correspondant.
+
+Lorsque l’utilisateur ajoute une catégorie, elle est **directement visible dans le menu catégorie**.
 
 ##### 6.1.3.3. Information et modification d’une catégorie<!-- OK -->
 
@@ -701,11 +714,15 @@ L’utilisateur peut accéder aux informations d’un produit de deux manières 
 
 ##### 6.1.4.2. Ajout d’un produit<!-- OK -->
 
-Sur la **page d’information de la catégorie** contenant la liste des produits de celle-ci, si l’utilisateur clique sur ajouter un produit, il atterrira sur la page d’édition du produit. Il devra **remplir les champs** et appuyer sur le bouton ajouter pour **valider l'ajout du produit**.
+Sur la **page d’information de la catégorie** contenant la liste des produits de celle-ci, si l’utilisateur clique sur ajouter un produit, il atterrira sur la page d’édition du produit.
+
+Il devra **remplir les champs** et appuyer sur le bouton ajouter pour **valider l'ajout du produit**.
 
 ##### 6.1.4.3. Modifier un produit<!-- OK -->
 
-Pour modifier le produit, l’utilisateur devra cliquer sur le bouton **modifier le produit sur la page d’information du produit.** Il sera redirigé vers la page de modification du produit, dans laquelle il pourra modifier les champs et **valider les modifications**.
+Pour modifier le produit, l’utilisateur devra cliquer sur le bouton **modifier le produit sur la page d’information du produit.**
+
+Il sera redirigé vers la page de modification du produit, dans laquelle il pourra modifier les champs et **valider les modifications**.
 
 ##### 6.1.4.4. Supprimer un produit<!-- OK -->
 
@@ -717,11 +734,69 @@ Une fois l’utilisateur **connecté**, il pourra accéder au **menu user**. L�
 
 ### 6.2. Back office<!-- CHECK -->
 
+La partie admin de notre site de gestion de stock est conçue pour faciliter la gestion des données de l'application. Elle est accessible uniquement aux utilisateurs ayant le rôle "admin" (ou "dev" dans notre cas) et offre une vue complète des entrées de la table de stock.
+
+L'interface utilisateur affiche les entrées de manière dynamique dans un tableau, avec des boutons "éditer" et "supprimer" pour chaque entrée. Cela permet aux utilisateurs de facilement mettre à jour ou supprimer les entrées de la table de stock.
+
+En outre, la partie admin liste également toutes les clés de la table de stock et des tables jointes, ce qui permet aux utilisateurs de facilement identifier les relations entre les différentes données de l'application.
+
+Enfin, en bas de l'interface, il y a une ligne de saisie pour permettre aux utilisateurs d'ajouter de nouvelles entrées à la table de stock.
+
+Le système est conçu pour être extensible. Ainsi, d’autres rôles pourraient par la suite être rajoutés ainsi que d'autres fonctionnalités. Cela inclut des fonctionnalités comme la gestion des utilisateurs, des rapports, des alertes, etc.
+
 ### 6.3. Arborescence<!-- CHECK -->
 
 Le diagramme de flux est utile dans la création de nouveaux processus métiers. Il permet d’identifier les éléments clés et de définir clairement le début et la fin. Modéliser un processus permet de gagner en qualité et en efficacité.
 
+![Use case diagram](img/nofile.png)
+
 ### 6.4. Aperçu des contenus<!-- CHECK -->
+
+#### 6.4.1. Charte graphique
+
+**Couleurs :**
+
+|                                                                                                                   | Couleur                              |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| Fond du site                                                                                                      | <font color="#f7f7f7">#f7f7f7</font> |
+| Aside et menu utilisateur                                                                                         | <font color="#151515">#151515</font> |
+| Pseudo-classe :hover pour les éléments de la barre de recherche et les éléments de l'aside et du menu utilisateur | <font color="#0e2b9e">#0e2b9e</font> |
+| Couleur pour la validation                                                                                        | <font color="#7feb15">#7feb15</font> |
+| Couleur pour la suppression                                                                                       | <font color="#eb6a44">#eb6a44</font> |
+| Couleur pour naviguer vers la page d'information des produits et catégories                                       | <font color="#2c52eb">#2c52eb</font> |
+| Couleur pour naviguer vers la page de mise à jour des produits et catégories                                      | <font color="#0e2b9e">#0e2b9e</font> |
+
+**Explication :**
+
+La couleur choisie pour le fond du site (#f7f7f7) est une couleur claire qui apporte de la luminosité et une sensation de propreté. Elle permet également de mettre en avant les autres éléments de la page.
+La couleur choisie pour l'aside et le menu utilisateur (#151515) est une couleur foncée qui apporte de la profondeur et un contraste avec le fond du site. Elle permet également de mettre en avant les éléments importants de ces zones.
+La pseudo-classe :hover pour les éléments de la barre de recherche et les éléments de l'aside et du menu utilisateur est définie à #0e2b9e, une couleur bleue qui apporte une touche de dynamisme et de modernité. Elle permet également de mettre en avant les actions possibles pour l'utilisateur lorsqu'il survole ces éléments avec sa souris.
+La couleur pour la validation est #7feb15, une couleur verte qui apporte une touche de confirmation et de sécurité. Elle permet également de montrer clairement que l'action est effective.
+La couleur pour la suppression est #eb6a44, une couleur orange qui apporte une touche d'urgence et d'attention. Elle permet également de mettre en avant les actions les plus importantes pour l'utilisateur.
+La couleur pour naviguer vers la page d'information des produits et catégories est #2c52eb, une couleur bleue qui permet de montrer clairement la différence entre cette action et celle de mise à jour.
+La couleur pour naviguer vers la page de mise à jour des produits et catégories est #0e2b9e, une couleur bleue qui permet de montrer clairement la différence entre cette action et celle de consultation.
+
+#### 6.4.2. Maquette
+
+Une maquette est un outil graphique utilisé pour prévisualiser l'apparence d'un site web ou d'une application avant sa mise en production. Il s'agit d'une représentation simplifiée de la structure et de la mise en page d'un site, qui permet de visualiser les éléments qui seront visibles sur toutes les pages.
+
+![welcome](img/mockup-welcome.png)
+
+Cette maquette représente la page d’authentification du site. Le body de la maquette est conçu avec un fondu dégradé allant du blanc au bleu clair pour donner un look élégant et moderne.
+
+Le header comprend un logo de l'application, un bouton d'inscription et un bouton de connexion. Le logo est placé à gauche du header et les boutons d'inscription et de connexion sont placés à droite.
+
+Sous le header, il y a un formulaire de connexion qui comprend des champs pour saisir l'adresse email et le mot de passe de l'utilisateur. Les champs sont bien espacés et clairement étiquetés pour une utilisation facile. Il y a également des boutons d'inscription et de connexion pour permettre à l'utilisateur de s'inscrire ou de se connecter. 
+
+Les formulaires sur les pages de connexion et d'inscription ont un fond transparent pour permettre de voir le dégradé en arrière-plan et sont mis en valeur avec une bordure et une ombre qui les fait ressortir.
+
+![desktop](img/mockup-desktop.png)
+
+Dans la maquette ci-dessus, les éléments présents sur toutes les pages pour les utilisateurs connectés incluent un header avec le logo de l'entreprise et un menu de navigation, un aside avec un menu utilisateur pour gérer les produits et catégories, un footer avec des liens vers l'aide, les mentions légales et les coordonnées de l'entreprise, et une barre de recherche pour chercher des produits spécifiques.
+
+Avantage figma : 
+
+Pour une bonne pratique de design dans Figma, il est conseillé de créer des frames avec des noms correspondant à leur contenu, de disposer les éléments de la page (header, footer, etc.) pour une meilleure visualisation de l'espace utilisé, de nommer les formes en fonction de ce qu'elles représentent et de les transformer en composants pour une réutilisation et modification facile. Il est également recommandé de créer des groupes pour organiser les éléments similaires, comme le  groupe "bouton d'inscription" qui comprend une forme et un texte, ce qui permet de centrer horizontalement et/ou verticalement le texte par rapport au bouton plutôt que par rapport au frame. 
 
 <div style="page-break-after: always;"></div>
 

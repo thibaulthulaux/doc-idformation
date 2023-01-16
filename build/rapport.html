@@ -98,7 +98,11 @@
       </ul></li>
       <li><a href="#62-back-office">6.2. Back office</a></li>
       <li><a href="#63-arborescence">6.3. Arborescence</a></li>
-      <li><a href="#64-aperçu-des-contenus">6.4. Aperçu des contenus</a></li>
+      <li><a href="#64-aperçu-des-contenus">6.4. Aperçu des contenus</a>
+      <ul>
+      <li><a href="#641-charte-graphique">6.4.1. Charte graphique</a></li>
+      <li><a href="#642-maquette">6.4.2. Maquette</a></li>
+      </ul></li>
       </ul></li>
       <li><a href="#7-spécifications-techniques-du-projet">7. Spécifications techniques du projet</a>
       <ul>
@@ -922,16 +926,23 @@
       <p>Le site contient une page d’<strong>ajout de catégorie</strong>, une <strong>page informative</strong> d’une catégorie et une page de <strong>modification d’une catégorie</strong>.</p>
       <p>Sur la page informative d’une catégorie, il y a la <strong>liste des produits que contient la catégorie</strong>. Les produits sont représentés par des boutons. Si l’utilisateur <strong>clique</strong> dessus il atterrira sur la <strong>page d’information du produit</strong>. Il y aura aussi une page de <strong>modification du produit</strong> qui sera accessible à partir des informations du produit.</p>
       <h4 id="landing-page">6.1.1. Landing page<!-- OK --></h4>
-      <p>La landing page a une <strong>interface stylisée différemment</strong> du reste du site. Une landing page se doit d’être attractive et de pousser l’utilisateur à utiliser le produit ou le service qu’elle essaie de vendre. Pour la landing page, nous avons fait le choix de faire une <strong>animation qui s’active une fois</strong> au lancement de la page.</p>
+      <p>La landing page a une <strong>interface stylisée différemment</strong> du reste du site. Une landing page se doit d’être attractive et de pousser l’utilisateur à utiliser le produit ou le service qu’elle essaie de vendre.</p>
+      <p>Pour la landing page, nous avons fait le choix de faire une <strong>animation qui s’active une fois</strong> au lancement de la page.</p>
       <p>Cette animation comporte trois boîtes qui s’ouvrent et qui se referment. Pendant que la boite s’ouvre, il y a 4 petites boîtes qui descendent jusqu’à se retrouver dans les grandes boîtes. Les grandes boîtes symbolisent les catégories et les petites boîtes symbolisent les produits.</p>
       <p>Sur la landing page l’utilisateur peut <strong>accéder aux espaces d’inscription et de connexion</strong>.</p>
       <h4 id="inscription-et-connexion">6.1.2. Inscription et connexion<!-- OK --></h4>
-      <p>Les espaces de connexion et d’inscription sont accessibles à partir du <strong>header de la landing page</strong>. Comme fait conventionnellement, tout à droite on retrouve en premier l’inscription et ensuite la connexion. La page de connexion contient le label : email avec son input, ainsi que le label : mot de passe avec son input. A droite, l’utilisateur peut cliquer sur <strong>se connecter</strong> et à gauche <strong>s’inscrire</strong>.</p>
+      <p>Les espaces de connexion et d’inscription sont accessibles à partir du <strong>header de la landing page</strong>. Comme fait conventionnellement, tout à droite on retrouve en premier l’inscription et ensuite la connexion.</p>
+      <p>La page de connexion contient le label : email avec son input, ainsi que le label : mot de passe avec son input.</p>
+      <p>Sur la landing page, l’utilisateur peut cliquer sur <strong>se connecter</strong> et à gauche <strong>s’inscrire</strong>.</p>
       <h4 id="catégories">6.1.3. Catégories<!-- OK --></h4>
       <h5 id="menu-catégorie">6.1.3.1. Menu catégorie<!-- OK --></h5>
-      <p>Une fois connecté, l’utilisateur aura accès à un <strong>menu disposé à gauche de l’interface</strong> et qui sera <strong>disponible sur toutes les pages</strong> du site. Ce menu contient une <strong>liste des catégories</strong> que l’utilisateur aura créé au préalable. Pour chaque catégorie, un lien sera créé avec comme valeur le nom que l’utilisateur lui aura donné. Au survol du bouton, le bouton changera de couleur afin d’indiquer à l’utilisateur qu’il s’agit d’un lien cliquable. Ce lien dirige vers la <strong>page informative de la catégorie</strong>.</p>
+      <p>Une fois connecté, l’utilisateur aura accès à un <strong>menu disposé à gauche de l’interface</strong> et qui sera <strong>disponible sur toutes les pages</strong> du site.</p>
+      <p>Ce menu contient une <strong>liste des catégories</strong> que l’utilisateur aura créé au préalable. Pour chaque catégorie, un lien sera créé avec comme valeur le nom que l’utilisateur lui aura donné.</p>
+      <p>Au survol du bouton, le bouton changera de couleur afin d’indiquer à l’utilisateur qu’il s’agit d’un lien cliquable. Ce lien dirige vers la <strong>page informative de la catégorie</strong>.</p>
       <h5 id="ajout-dune-catégorie">6.1.3.2. Ajout d’une catégorie<!-- OK --></h5>
-      <p>Quand l’utilisateur se sera connecté, la première page du site auquel il aura accès est la page d’ajout d’une catégorie. Sur cette page, l’utilisateur devra <strong>indiquer le nom de la catégorie ainsi que sa description</strong> puis il devra ajouter la catégorie en cliquant sur le bouton correspondant. Lorsque l’utilisateur ajoute une catégorie, elle est <strong>directement visible dans le menu catégorie</strong>.</p>
+      <p>Quand l’utilisateur se sera connecté, la première page du site auquel il aura accès est la page d’ajout d’une catégorie.</p>
+      <p>Sur cette page, l’utilisateur devra <strong>indiquer le nom de la catégorie ainsi que sa description</strong> puis il devra ajouter la catégorie en cliquant sur le bouton correspondant.</p>
+      <p>Lorsque l’utilisateur ajoute une catégorie, elle est <strong>directement visible dans le menu catégorie</strong>.</p>
       <h5 id="information-et-modification-dune-catégorie">6.1.3.3. Information et modification d’une catégorie<!-- OK --></h5>
       <p>Une fois que l’utilisateur a accès à la page informative de la catégorie, il peut cliquer sur le bouton modifier la catégorie. En cliquant sur ce bouton l’utilisateur est redirigé vers la page de <strong>modification de la catégorie</strong>. Il peut <strong>modifier les champs <code>nom</code> et <code>description</code></strong> et pour valider les modifications, l’utilisateur devra cliquer sur le bouton <strong>valider les modifications</strong>.</p>
       <h5 id="suppression-dune-catégorie">6.1.3.4. Suppression d’une catégorie<!-- OK --></h5>
@@ -944,17 +955,88 @@
       <li>Quand l’utilisateur recherche un produit, <strong>depuis la barre de recherche</strong>, il obtient une liste de produits correspondant à sa recherche. Si l’utilisateur <strong>clique sur un produit souhaité</strong> il atterrira sur la page d’information du produit.</li>
       </ul>
       <h5 id="ajout-dun-produit">6.1.4.2. Ajout d’un produit<!-- OK --></h5>
-      <p>Sur la <strong>page d’information de la catégorie</strong> contenant la liste des produits de celle-ci, si l’utilisateur clique sur ajouter un produit, il atterrira sur la page d’édition du produit. Il devra <strong>remplir les champs</strong> et appuyer sur le bouton ajouter pour <strong>valider l’ajout du produit</strong>.</p>
+      <p>Sur la <strong>page d’information de la catégorie</strong> contenant la liste des produits de celle-ci, si l’utilisateur clique sur ajouter un produit, il atterrira sur la page d’édition du produit.</p>
+      <p>Il devra <strong>remplir les champs</strong> et appuyer sur le bouton ajouter pour <strong>valider l’ajout du produit</strong>.</p>
       <h5 id="modifier-un-produit">6.1.4.3. Modifier un produit<!-- OK --></h5>
-      <p>Pour modifier le produit, l’utilisateur devra cliquer sur le bouton <strong>modifier le produit sur la page d’information du produit.</strong> Il sera redirigé vers la page de modification du produit, dans laquelle il pourra modifier les champs et <strong>valider les modifications</strong>.</p>
+      <p>Pour modifier le produit, l’utilisateur devra cliquer sur le bouton <strong>modifier le produit sur la page d’information du produit.</strong></p>
+      <p>Il sera redirigé vers la page de modification du produit, dans laquelle il pourra modifier les champs et <strong>valider les modifications</strong>.</p>
       <h5 id="supprimer-un-produit">6.1.4.4. Supprimer un produit<!-- OK --></h5>
       <p>Sur la <strong>page de modification d’un produit</strong>, l’utilisateur peut <strong>cliquer sur supprimer</strong> le produit pour supprimer le produit.</p>
       <h4 id="menu-user">6.1.5. Menu user<!-- CHECK --></h4>
       <p>Une fois l’utilisateur <strong>connecté</strong>, il pourra accéder au <strong>menu user</strong>. L’utilisateur devra <strong>cliquer sur le user ou son symbole</strong>. A partir de là un <strong>menu déroulant</strong> s’abaisse et l’utilisateur peut cliquer sur : modification du profil, modification du mot de passe ou déconnexion.</p>
       <h3 id="back-office">6.2. Back office<!-- CHECK --></h3>
+      <p>La partie admin de notre site de gestion de stock est conçue pour faciliter la gestion des données de l’application. Elle est accessible uniquement aux utilisateurs ayant le rôle “admin” (ou “dev” dans notre cas) et offre une vue complète des entrées de la table de stock.</p>
+      <p>L’interface utilisateur affiche les entrées de manière dynamique dans un tableau, avec des boutons “éditer” et “supprimer” pour chaque entrée. Cela permet aux utilisateurs de facilement mettre à jour ou supprimer les entrées de la table de stock.</p>
+      <p>En outre, la partie admin liste également toutes les clés de la table de stock et des tables jointes, ce qui permet aux utilisateurs de facilement identifier les relations entre les différentes données de l’application.</p>
+      <p>Enfin, en bas de l’interface, il y a une ligne de saisie pour permettre aux utilisateurs d’ajouter de nouvelles entrées à la table de stock.</p>
+      <p>Le système est conçu pour être extensible. Ainsi, d’autres rôles pourraient par la suite être rajoutés ainsi que d’autres fonctionnalités. Cela inclut des fonctionnalités comme la gestion des utilisateurs, des rapports, des alertes, etc.</p>
       <h3 id="arborescence">6.3. Arborescence<!-- CHECK --></h3>
       <p>Le diagramme de flux est utile dans la création de nouveaux processus métiers. Il permet d’identifier les éléments clés et de définir clairement le début et la fin. Modéliser un processus permet de gagner en qualité et en efficacité.</p>
+      <figure>
+      <img src="img/nofile.png" alt="" /><figcaption>Use case diagram</figcaption>
+      </figure>
       <h3 id="aperçu-des-contenus">6.4. Aperçu des contenus<!-- CHECK --></h3>
+      <h4 id="charte-graphique">6.4.1. Charte graphique</h4>
+      <p><strong>Couleurs :</strong></p>
+      <table>
+      <colgroup>
+      <col style="width: 75%" />
+      <col style="width: 24%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th></th>
+      <th>Couleur</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Fond du site</td>
+      <td><font color="#f7f7f7">#f7f7f7</font></td>
+      </tr>
+      <tr class="even">
+      <td>Aside et menu utilisateur</td>
+      <td><font color="#151515">#151515</font></td>
+      </tr>
+      <tr class="odd">
+      <td>Pseudo-classe :hover pour les éléments de la barre de recherche et les éléments de l’aside et du menu utilisateur</td>
+      <td><font color="#0e2b9e">#0e2b9e</font></td>
+      </tr>
+      <tr class="even">
+      <td>Couleur pour la validation</td>
+      <td><font color="#7feb15">#7feb15</font></td>
+      </tr>
+      <tr class="odd">
+      <td>Couleur pour la suppression</td>
+      <td><font color="#eb6a44">#eb6a44</font></td>
+      </tr>
+      <tr class="even">
+      <td>Couleur pour naviguer vers la page d’information des produits et catégories</td>
+      <td><font color="#2c52eb">#2c52eb</font></td>
+      </tr>
+      <tr class="odd">
+      <td>Couleur pour naviguer vers la page de mise à jour des produits et catégories</td>
+      <td><font color="#0e2b9e">#0e2b9e</font></td>
+      </tr>
+      </tbody>
+      </table>
+      <p><strong>Explication :</strong></p>
+      <p>La couleur choisie pour le fond du site (#f7f7f7) est une couleur claire qui apporte de la luminosité et une sensation de propreté. Elle permet également de mettre en avant les autres éléments de la page. La couleur choisie pour l’aside et le menu utilisateur (#151515) est une couleur foncée qui apporte de la profondeur et un contraste avec le fond du site. Elle permet également de mettre en avant les éléments importants de ces zones. La pseudo-classe :hover pour les éléments de la barre de recherche et les éléments de l’aside et du menu utilisateur est définie à #0e2b9e, une couleur bleue qui apporte une touche de dynamisme et de modernité. Elle permet également de mettre en avant les actions possibles pour l’utilisateur lorsqu’il survole ces éléments avec sa souris. La couleur pour la validation est #7feb15, une couleur verte qui apporte une touche de confirmation et de sécurité. Elle permet également de montrer clairement que l’action est effective. La couleur pour la suppression est #eb6a44, une couleur orange qui apporte une touche d’urgence et d’attention. Elle permet également de mettre en avant les actions les plus importantes pour l’utilisateur. La couleur pour naviguer vers la page d’information des produits et catégories est #2c52eb, une couleur bleue qui permet de montrer clairement la différence entre cette action et celle de mise à jour. La couleur pour naviguer vers la page de mise à jour des produits et catégories est #0e2b9e, une couleur bleue qui permet de montrer clairement la différence entre cette action et celle de consultation.</p>
+      <h4 id="maquette">6.4.2. Maquette</h4>
+      <p>Une maquette est un outil graphique utilisé pour prévisualiser l’apparence d’un site web ou d’une application avant sa mise en production. Il s’agit d’une représentation simplifiée de la structure et de la mise en page d’un site, qui permet de visualiser les éléments qui seront visibles sur toutes les pages.</p>
+      <figure>
+      <img src="img/mockup-welcome.png" alt="" /><figcaption>welcome</figcaption>
+      </figure>
+      <p>Cette maquette représente la page d’authentification du site. Le body de la maquette est conçu avec un fondu dégradé allant du blanc au bleu clair pour donner un look élégant et moderne.</p>
+      <p>Le header comprend un logo de l’application, un bouton d’inscription et un bouton de connexion. Le logo est placé à gauche du header et les boutons d’inscription et de connexion sont placés à droite.</p>
+      <p>Sous le header, il y a un formulaire de connexion qui comprend des champs pour saisir l’adresse email et le mot de passe de l’utilisateur. Les champs sont bien espacés et clairement étiquetés pour une utilisation facile. Il y a également des boutons d’inscription et de connexion pour permettre à l’utilisateur de s’inscrire ou de se connecter.</p>
+      <p>Les formulaires sur les pages de connexion et d’inscription ont un fond transparent pour permettre de voir le dégradé en arrière-plan et sont mis en valeur avec une bordure et une ombre qui les fait ressortir.</p>
+      <figure>
+      <img src="img/mockup-desktop.png" alt="" /><figcaption>desktop</figcaption>
+      </figure>
+      <p>Dans la maquette ci-dessus, les éléments présents sur toutes les pages pour les utilisateurs connectés incluent un header avec le logo de l’entreprise et un menu de navigation, un aside avec un menu utilisateur pour gérer les produits et catégories, un footer avec des liens vers l’aide, les mentions légales et les coordonnées de l’entreprise, et une barre de recherche pour chercher des produits spécifiques.</p>
+      <p>Avantage figma :</p>
+      <p>Pour une bonne pratique de design dans Figma, il est conseillé de créer des frames avec des noms correspondant à leur contenu, de disposer les éléments de la page (header, footer, etc.) pour une meilleure visualisation de l’espace utilisé, de nommer les formes en fonction de ce qu’elles représentent et de les transformer en composants pour une réutilisation et modification facile. Il est également recommandé de créer des groupes pour organiser les éléments similaires, comme le groupe “bouton d’inscription” qui comprend une forme et un texte, ce qui permet de centrer horizontalement et/ou verticalement le texte par rapport au bouton plutôt que par rapport au frame.</p>
       <div style="page-break-after: always;">
 
       </div>

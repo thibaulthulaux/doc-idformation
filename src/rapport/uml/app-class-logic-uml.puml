@@ -1,4 +1,4 @@
-@startuml class-concept-UML
+@startuml app-class-logic-UML
 
 ' left to right direction
 
@@ -6,12 +6,11 @@ header
 
 endheader
 
-title Class Diagram - Conceptual
+title Application Class Diagram - Logical
 
 footer
 <font color=red>Warning:</font> Do not use in production
 endfooter
-
 
 
 !define filter(x) entity x << (F, Orange) >>

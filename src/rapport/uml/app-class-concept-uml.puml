@@ -1,0 +1,31 @@
+@startuml app-class-logic-UML
+
+' left to right direction
+
+header 
+
+endheader
+
+title Application Class Diagram - Concept
+
+footer
+<font color=red>Warning:</font> Do not use in production
+endfooter
+
+
+actor User
+
+usecase Login
+usecase as Categories [
+Access Categories
+==
+name
+description
+]
+usecase "Access Private Products" as Products
+
+User -> Login : Access Application
+Login --> Categories : Success
+Categories --> Products : Selects category
+
+@enduml

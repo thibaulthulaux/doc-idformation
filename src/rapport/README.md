@@ -2718,7 +2718,7 @@ VMware ESXi est un **hyperviseur de type 1** développé par VMware pour le dép
 
 Par soucis de **prise en compte des standards de l'industrie**, de **nombreux tests** de création et de configuration de machines virtuelles ont été réalisés **sur VMware ESXi**. l’environnement de production définitif, dans le cadre d'un hébergement sur site (on premise installation), fera très vraisemblablement appel à cette technologie.
 
-### 7.7. Outils de conception de la documentation
+### 7.7. Outils de conception de la documentation<!-- OK -->
 
 #### 7.7.1. Markdown<!-- OK -->
 
@@ -2767,7 +2767,7 @@ Javadoc est un outil développé par Oracle, permettant de **créer une document
 
 La plupart des **IDE aident à la génération** et au formatage des blocs de commentaires Javadoc. Ces commentaires permettent également aux IDE modernes d'apporter à l'utilisateur des **informations contextuelles** (definition de classe, de méthode, paramètres d'entrée et valeur de retour attendue).
 
-#### 7.7.3. PlantUML<!-- EX -->
+#### 7.7.3. PlantUML<!-- OK -->
 
 PlantUML est un **outil libre** permettant de **créer des diagrammes UML à partir de fichier texte**.
 
@@ -2775,15 +2775,7 @@ Du fait du format texte des fichiers utilisés par PlantUML, cet outil **s’int
 
 Il est par exemple possible de **générer automatiquement des UML** de Modèle Physique de Données (MPD), afin d'avoir une représentation actualisée d'une base de données, ou bien de créer dynamiquement des diagrammes de classes à partir du code source.
 
-La majorité des diagrammes ont été réalisés grâce à cet outil. Voici en exemple le fichier PlantUML `something.puml` qui permet de générer le fichier PNG `.png` inséré dans le présent rapport.
-
-<!-- cSpell:disable -->
-```puml
-
-- contexte
-
-```
-<!-- cSpell:enable -->
+La majorité des diagrammes ont été réalisés grâce à cet outil. Pour un exemple veuillez vous référer son utilisation en maquettage. (Cf. [PlantUML](#752-plantuml))
 
 <div style="page-break-after: always;"></div>
 

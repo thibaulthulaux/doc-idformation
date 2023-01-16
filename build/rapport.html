@@ -2790,7 +2790,7 @@
       <h5 id="vmware-esxi">7.6.3.2. VMware ESXi<!-- OK --></h5>
       <p>VMware ESXi est un <strong>hyperviseur de type 1</strong> développé par VMware pour le déploiement et la mise en service de <strong>machines virtuelles</strong>. En tant qu’hyperviseur de type 1, ESXi s’installe directement en tant que système d’exploitation.</p>
       <p>Par soucis de <strong>prise en compte des standards de l’industrie</strong>, de <strong>nombreux tests</strong> de création et de configuration de machines virtuelles ont été réalisés <strong>sur VMware ESXi</strong>. l’environnement de production définitif, dans le cadre d’un hébergement sur site (on premise installation), fera très vraisemblablement appel à cette technologie.</p>
-      <h3 id="outils-de-conception-de-la-documentation">7.7. Outils de conception de la documentation</h3>
+      <h3 id="outils-de-conception-de-la-documentation">7.7. Outils de conception de la documentation<!-- OK --></h3>
       <h4 id="markdown">7.7.1. Markdown<!-- OK --></h4>
       <p>Markdown est un <strong>langage de balisage</strong> léger facile à lire et à écrire. Un document balisé par Markdown peut être <strong>lu en l’état sans donner l’impression d’avoir été balisé</strong> ou formaté par des instructions particulières. Markdown est largement utilisé dans les blogs, la messagerie instantanée, les forums en ligne, les logiciels collaboratifs, les pages de documentation et les fichiers readme.</p>
       <p>Un document balisé par Markdown peut être <strong>converti en HTML</strong>, en PDF ou en bien d’autres formats. Ceci en fait un excellent support pour stocker le contenu d’un document, tandis que la paramétrisation lors de son export se chargera de le styliser (CSS), séparant de manière effective le fond de la forme.</p>
@@ -2826,35 +2826,30 @@
       <h4 id="javadoc">7.7.2. Javadoc<!-- OK --></h4>
       <p>Javadoc est un outil développé par Oracle, permettant de <strong>créer une documentation d’API en format HTML</strong> depuis les commentaires présents dans un code source en Java. C’est le standard industriel pour la documentation des classes Java.</p>
       <p>La plupart des <strong>IDE aident à la génération</strong> et au formatage des blocs de commentaires Javadoc. Ces commentaires permettent également aux IDE modernes d’apporter à l’utilisateur des <strong>informations contextuelles</strong> (definition de classe, de méthode, paramètres d’entrée et valeur de retour attendue).</p>
-      <h4 id="plantuml-1">7.7.3. PlantUML<!-- EX --></h4>
+      <h4 id="plantuml-1">7.7.3. PlantUML<!-- OK --></h4>
       <p>PlantUML est un <strong>outil libre</strong> permettant de <strong>créer des diagrammes UML à partir de fichier texte</strong>.</p>
       <p>Du fait du format texte des fichiers utilisés par PlantUML, cet outil <strong>s’intègre parfaitement dans un pipeline</strong> d’intégration et de déploiement.</p>
       <p>Il est par exemple possible de <strong>générer automatiquement des UML</strong> de Modèle Physique de Données (MPD), afin d’avoir une représentation actualisée d’une base de données, ou bien de créer dynamiquement des diagrammes de classes à partir du code source.</p>
-      <p>La majorité des diagrammes ont été réalisés grâce à cet outil. Voici en exemple le fichier PlantUML <code>something.puml</code> qui permet de générer le fichier PNG <code>.png</code> inséré dans le présent rapport.</p>
-      <!-- cSpell:disable -->
-      <pre class="puml"><code>
-      - contexte
-      </code></pre>
-      <!-- cSpell:enable -->
+      <p>La majorité des diagrammes ont été réalisés grâce à cet outil. Pour un exemple veuillez vous référer son utilisation en maquettage. (Cf. <a href="#752-plantuml">PlantUML</a>)</p>
       <div style="page-break-after: always;">
 
       </div>
       <h2 id="réalisations">8. Réalisations</h2>
-      <div class="sourceCode" id="cb33"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a><span class="ss">  - </span>Description des features réalisées</span>
-      <span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a><span class="ss">  - </span>Description des fonctions implémentées</span>
-      <span id="cb33-3"><a href="#cb33-3" aria-hidden="true"></a><span class="ss">  - </span>Description des actions réalisées sur la BDD</span>
-      <span id="cb33-4"><a href="#cb33-4" aria-hidden="true"></a><span class="ss">  - </span>Description des tests unitaires/EtE (EndtoEnd)</span></code></pre></div>
+      <div class="sourceCode" id="cb32"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a><span class="ss">  - </span>Description des features réalisées</span>
+      <span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a><span class="ss">  - </span>Description des fonctions implémentées</span>
+      <span id="cb32-3"><a href="#cb32-3" aria-hidden="true"></a><span class="ss">  - </span>Description des actions réalisées sur la BDD</span>
+      <span id="cb32-4"><a href="#cb32-4" aria-hidden="true"></a><span class="ss">  - </span>Description des tests unitaires/EtE (EndtoEnd)</span></code></pre></div>
       <h2 id="présentation-du-jeu-dessai-le-plus-représentatif">9. Présentation du jeu d’essai le plus représentatif</h2>
-      <div class="sourceCode" id="cb34"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a><span class="ss">- </span>Description des scénarios désirées sur la fonctionnalité et vérification de la conformité du résultat</span>
-      <span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a><span class="ss">- </span>Le jeu d&#39;essai permet de contrôler la réaction du code pour tous les types de données reçus par les méthodes et fonctions, qu&#39;ils soient valides ou non. Pour la fonctionnalité la plus complète de votre application, expliquez &quot;Données en entrée -&gt; données attendues -&gt; Données obtenues&quot;</span></code></pre></div>
+      <div class="sourceCode" id="cb33"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a><span class="ss">- </span>Description des scénarios désirées sur la fonctionnalité et vérification de la conformité du résultat</span>
+      <span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a><span class="ss">- </span>Le jeu d&#39;essai permet de contrôler la réaction du code pour tous les types de données reçus par les méthodes et fonctions, qu&#39;ils soient valides ou non. Pour la fonctionnalité la plus complète de votre application, expliquez &quot;Données en entrée -&gt; données attendues -&gt; Données obtenues&quot;</span></code></pre></div>
       <div style="page-break-after: always;">
 
       </div>
       <h2 id="veille-sur-les-vulnérabilités-de-sécurité">10. Veille sur les vulnérabilités de sécurité</h2>
-      <div class="sourceCode" id="cb35"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a><span class="ss">- </span>Description de la veille, effectuée par le candidat pendant le projet, sur les vulnérabilités de sécurité</span>
-      <span id="cb35-2"><a href="#cb35-2" aria-hidden="true"></a><span class="ss">- </span>Prise en compte des conventions liées à la sécurité imposée par la structure d&#39;accueil du stagiaire</span>
-      <span id="cb35-3"><a href="#cb35-3" aria-hidden="true"></a><span class="ss">- </span>Mise à jour éventuelle des librairies/frameworks</span>
-      <span id="cb35-4"><a href="#cb35-4" aria-hidden="true"></a><span class="ss">- </span>Auto-formation aux failles de sécurité déclarées sur telle ou telle technologie (lecture des documentations officielles, prise en compte des mesures préventives, mise en place des verrous recommandés)</span></code></pre></div>
+      <div class="sourceCode" id="cb34"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a><span class="ss">- </span>Description de la veille, effectuée par le candidat pendant le projet, sur les vulnérabilités de sécurité</span>
+      <span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a><span class="ss">- </span>Prise en compte des conventions liées à la sécurité imposée par la structure d&#39;accueil du stagiaire</span>
+      <span id="cb34-3"><a href="#cb34-3" aria-hidden="true"></a><span class="ss">- </span>Mise à jour éventuelle des librairies/frameworks</span>
+      <span id="cb34-4"><a href="#cb34-4" aria-hidden="true"></a><span class="ss">- </span>Auto-formation aux failles de sécurité déclarées sur telle ou telle technologie (lecture des documentations officielles, prise en compte des mesures préventives, mise en place des verrous recommandés)</span></code></pre></div>
       <h3 id="sql-injection">10.1. SQL Injection</h3>
       <p>[https://www.journaldev.com/34028/sql-injection-in-java]</p>
       <p>[https://sqlmap.org/] [https://github.com/sqlmapproject/sqlmap]</p>

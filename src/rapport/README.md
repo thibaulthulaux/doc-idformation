@@ -128,14 +128,13 @@ Periode d'exercice du 19/04/2022 du 20/01/2023
     - [8.3.3. Update](#833-update)
     - [8.3.4. Delete](#834-delete)
   - [8.4. Description des tests unitaires/EtE(EndtoEnd)](#84-description-des-tests-unitaireseteendtoend)
-    - [Test Unitaires](#test-unitaires)
-    - [Static Application Security Testing](#static-application-security-testing)
-    - [Tests fonctionnels](#tests-fonctionnels)
-- [9. Présentation du jeu d'essai le plus représentatif](#9-présentation-du-jeu-dessai-le-plus-représentatif)
-- [10. Veille sur les vulnérabilités de sécurité](#10-veille-sur-les-vulnérabilités-de-sécurité)
-  - [Securiser HTTP (SSL)](#securiser-http-ssl)
-  - [SQL Injection](#sql-injection)
-- [11. Description d'une situation de travail ayant nécessité une recherche](#11-description-dune-situation-de-travail-ayant-nécessité-une-recherche)
+    - [8.4.1. Test Unitaires](#841-test-unitaires)
+    - [8.4.2. Static Application Security Testing](#842-static-application-security-testing)
+    - [8.4.3. Tests fonctionnels](#843-tests-fonctionnels)
+- [9. Veille sur les vulnérabilités de sécurité](#9-veille-sur-les-vulnérabilités-de-sécurité)
+  - [9.1. Securiser HTTP (SSL)](#91-securiser-http-ssl)
+  - [9.2. SQL Injection](#92-sql-injection)
+- [10. Description d'une situation de travail ayant nécessité une recherche](#10-description-dune-situation-de-travail-ayant-nécessité-une-recherche)
 <!-- cSpell:enable -->
 
 <div style="page-break-after: always;"></div>
@@ -3217,44 +3216,109 @@ La méthode utilise une requête SQL pour supprimer le produit de la table "prod
 
 ### 8.4. Description des tests unitaires/EtE(EndtoEnd)<!-- CHECK -->
 
-#### Test Unitaires
+#### 8.4.1. Test Unitaires<!-- OK -->
 
-L'ensemble de l'automatisation du projet est orchestrée par Gradle. L'une de ses tâches est la verification du bon fonctionnement des differentes fonctions et propriétés des classes.
+L'ensemble de l'automatisation du projet est **orchestrée par Gradle**. L'une de ses tâches est la vérification du bon fonctionnement des différentes fonctions et propriétés des classes.
 
-Pour ce faire, Gradle utilise la librairie `Junit` et une bibliotheque de classe de test. Ces classes de test utilisent des assertions pour vérifier que les valeurs attendues sont retournées lorsque les méthodes de la classe sont appelées, s'assurerant que la classe fonctionne comme prévu.
+Pour ce faire, Gradle utilise la librairie `Junit` et une **bibliothèque de classe de test**. Ces classes de test utilisent des **assertions** pour vérifier que les valeurs attendues sont retournées lorsque les méthodes de la classe sont appelées, s'assurerant que la **classe fonctionne comme prévu**.
 
-Ce code est un ensemble de tests unitaires pour la classe Product de l'application, il utilise la librairie JUnit pour vérifier que les différentes fonctions et propriétés de la classe Product fonctionnent correctement.
+Ce code est un extrait de tests unitaires pour la classe `ProductTest.java` de l'application :
 
 <!-- cSpell:disable -->
-```shell
+```java
 
-# Content
+package junit;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
+import app.model.Product;
+
+public class ProductTest {
+    @Test
+    void testCategory_id() {
+        int id = 1;
+        assertEquals(1, id);
+    }
+
+    @Test
+    void testCreateTime() {
+        String createTime = "createTime";
+        assertEquals("createTime", createTime);
+    }
+
+    @Test
+    void testDescription() {
+        String description = "description";
+        assertEquals("description", description);
+    }
+
+    @Test
+    void testEquals() {
+        Product pr1 = new Product();
+        Product pr2 = new Product();
+        assertTrue(pr1.equals(pr2));
+    }
+
+    @Test
+    void testGetCategory_id() {
+        Product pr1 = new Product();
+        int id = 1;
+        pr1.setCategory_id(id);
+        assertEquals(1, pr1.getCategory_id());
+    }
+
+...
+
+    @Test
+    void testSetPrice() {
+        Float price = 789.99f;
+        Product pr = new Product();
+        pr.setPrice(price);
+        assertEquals(789.99, pr.getPrice(), 0.0001);
+    }
+
+    @Test
+    void testSetQuantity() {
+        int quantity = 1;
+        Product pr = new Product();
+        pr.setQuantity(quantity);
+        assertEquals(1, pr.getQuantity());
+
+    }
+
+    @Test
+    void testSetReference() {
+        Product pr = new Product();
+        String ref = "ref1";
+        pr.setReference(ref);
+        assertEquals("ref1", pr.getReference());
+    }
+
+...
+
+}
+
 
 ```
 <!-- cSpell:enable -->
 
+#### 8.4.2. Static Application Security Testing
 
-#### Static Application Security Testing
 
 
-#### Tests fonctionnels
+#### 8.4.3. Tests fonctionnels
 
-Les test fonctionnels d'une application dependront grandement de sa structure, de ses fonctionnalites, des ses methodes d'acces, et du perimetre souhaite par les tests. Chaque envirronement de test fonctionnel est construit sur mesure.
+Les test fonctionnels d'une application dépendent grandement de sa structure, de ses fonctionnalites, des ses méthodes d'acces, et du périmètre souhaité par les tests. Chaque envirronement de test fonctionnel est **construit sur mesure**.
 
-Dans le cadre d'une application web multi-couche, tester le bon fonctionnement final revient a utiliser l'interface comme le ferait un etre humain, et en valider les differentes fonctionnalites.
+Dans le cadre d'une **application web multi-couche**, tester le bon fonctionnement final revient à utiliser l'interface comme le ferait un être humain, et à en valider les différentes fonctionnalités.
 
-Un systeme de test automatique permettant ce genre d'operations peut etre construit avec Python et Selenium. 
+Un système de test automatique permettant ce genre d'opérations peut etre construit avec **Python et Selenium**.
 
-## 9. Présentation du jeu d'essai le plus représentatif
-
-```md
-- Description des scénarios désirées sur la fonctionnalité et vérification de la conformité du résultat
-- Le jeu d'essai permet de contrôler la réaction du code pour tous les types de données reçus par les méthodes et fonctions, qu'ils soient valides ou non. Pour la fonctionnalité la plus complète de votre application, expliquez "Données en entrée -> données attendues -> Données obtenues"
-```
-
-<div style="page-break-after: always;"></div>
-
-## 10. Veille sur les vulnérabilités de sécurité
+## 9. Veille sur les vulnérabilités de sécurité
 
 ```md
 - Description de la veille, effectuée par le candidat pendant le projet, sur les vulnérabilités de sécurité
@@ -3263,9 +3327,9 @@ Un systeme de test automatique permettant ce genre d'operations peut etre constr
 - Auto-formation aux failles de sécurité déclarées sur telle ou telle technologie (lecture des documentations officielles, prise en compte des mesures préventives, mise en place des verrous recommandés)
 ```
 
-### Securiser HTTP (SSL)
+### 9.1. Securiser HTTP (SSL)
 
-### SQL Injection
+### 9.2. SQL Injection
 
 [https://www.journaldev.com/34028/sql-injection-in-java]
 
@@ -3333,7 +3397,7 @@ Best Practices to avoid SQL Injection
 
 <div style="page-break-after: always;"></div>
 
-## 11. Description d'une situation de travail ayant nécessité une recherche<!-- OK Lylou -->
+## 10. Description d'une situation de travail ayant nécessité une recherche<!-- OK Lylou -->
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes)
 

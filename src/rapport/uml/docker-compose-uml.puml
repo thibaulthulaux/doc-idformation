@@ -1,16 +1,13 @@
 @startuml
 
-left to right direction
 
-header 
-<font color=red>Warning:</font> Do not use in production
-endheader
+skinparam roundcorner 20
+
+title Docker Compose - Services Map
 
 footer
-"Generated with plantuml"
+<font color=red>Warning:</font> Do not use in production
 endfooter
-
-' !define engine(x)
 
 !define service(x) entity x << (S, LightBlue) >>
 !define port(x) <b><color:#000000><&transfer></color> x</b>
@@ -27,14 +24,13 @@ service( NGINX ) {
     '   - app
     ' links:
     '   - app
---
 PORTS:
   port( "80:80" ) Unsecure http
   port( "80:443" ) Secure http
 --
 VOLUMES:
   vol( "${WEB_CONF}nginx/nginx.conf:/etc/nginx/nginx.conf:ro" )  # Nginx conf (read-only)
-  vol( "${WEB_CONF}nginx/conf.d:/etc/nginx/conf.d:ro" ) # Nginx conf subsets for proxypass (read-only)
+  vol( "${WEB_CONF}nginx/conf.d:/etc/nginx/conf.d:ro" ) # Nginx conf proxypass (read-only)
   vol( "${WEB_LOG}nginx:/var/log/nginx" ) # Logs
   vol( "${WEB_DATA}nginx:/usr/share/nginx/html" ) # Data
 }
@@ -47,9 +43,8 @@ service( TOMCAT ) {
     '   - db
     ' links:
     '   - db
---
 PORTS:
-  port( "8080:8080" ) unsecure http
+  port( "8080:8080" ) Unsecure http
   port( "2222:22" ) ssh
 --
 VOLUMES:
@@ -58,19 +53,19 @@ VOLUMES:
   vol( "${APP_DATA}:/usr/local/tomcat/webapps" ) # Data
 --
 ENVIRONMENT:
-# Starts tomcat with jaas config file
+"JAAS"
   env( "JAVA_OPTS: $JAVA_OPTS '-Djava.security.auth.login.config=$CATALINA_HOME/conf/jaas.config'" )
-# Database
+"Database"
   env( "MARIADB_DATABASE=app") # Database name
   env( "MARIADB_USER=app") # Database user name
   env( "MARIADB_PASSWORD=app") # Database user password
 }
+
 service( MARIADB ) {
     ' build:
     '   context: ${DB_BUILD}
     ' container_name: ${PROJECT}-${DB}
     ' restart: unless-stopped
---
 PORTS:
   port( "3306:3306" )
 --
@@ -87,4 +82,6 @@ ENVIRONMENT:
   env( "MARIADB_PASSWORD=app") # Database user password
 }
 
+NGINX -[hidden]down- TOMCAT
+TOMCAT -[hidden]down- MARIADB
 @enduml

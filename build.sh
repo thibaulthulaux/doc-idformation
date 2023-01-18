@@ -20,7 +20,7 @@ readonly TEMPLATE="template.html"
 readonly TITLE="rapport"
 
 # ----------------------------------------------------------------- Functions -
-eexit() { printf "%s\n" "${_PROG}: Error: ${*}" 1>&2; exit 1; }
+eexit() { printf "%s\n" "${_PROG}: Error: ${*}, exiting.", 1>&2; exit 1; }
 info() { printf "%s\n" "${_PROG}: ${*}"; }
 
 # ---------------------------------------------------------------------- Main -
@@ -29,7 +29,7 @@ main() {
   [ -d "${SOURCE}" ] || eexit "${SOURCE} doesn't exits"
   [ -e "${SOURCE}/${FILE}" ] || eexit "${SOURCE}/${FILE} doesn't exits"
   [ -e "${SOURCE}/${CSS}" ] || eexit "${SOURCE}/${CSS} doesn't exits"
-  [ -e "${SOURCE}/${TEMPLATE}" ] || eexit "${SOURCE}/${TEMPLATE} doesn't exits"
+  [ -e "${SOURCE}/${TEMPLATE}" ] || eexit "${SOURCE}/${TEMPLATE} doesn't exists"
 
   info "Clean build folder"
   [ -d "${BUILD}" ] && rm -r "${BUILD}"

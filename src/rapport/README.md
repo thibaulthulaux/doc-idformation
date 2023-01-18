@@ -655,7 +655,7 @@ Les objectifs qualité sont:
 
 <div style="page-break-after: always;"></div>
 
-## 6. Spécifications fonctionnelles du projet
+## 6. Spécifications fonctionnelles du projet<!-- OK -->
 
 - Front office
 - Back office
@@ -757,17 +757,17 @@ Enfin, en bas de l'interface, on trouve une ligne de saisie pour permettre aux u
 
 Le système est conçu pour être **extensible**. Ainsi, d’autres rôles pourraient par la suite être rajoutés ainsi que d'autres fonctionnalités. Cela inclut des fonctionnalités comme la gestion des utilisateurs, des rapports, des alertes, etc.
 
-### 6.3. Arborescence<!-- CHECK -->
+### 6.3. Arborescence<!-- OK -->
 
 Le diagramme de flux est utile dans la création de nouveaux processus métiers. Il permet d’identifier les éléments clés et de définir clairement le début et la fin. Modéliser un processus permet de gagner en qualité et en efficacité.
 
-![Use case diagram](img/_empty_640x480.png)
+![Use case diagram](img/usecase-all-uml.png)
 
-### 6.4. Aperçu des contenus<!-- CHECK -->
+### 6.4. Aperçu des contenus<!-- OK -->
 
 #### 6.4.1. Charte graphique<!-- OK -->
 
-![Charte graphique](img/_empty_640x480.pmg)
+![Charte graphique](img/palette.png)
 
 | Emplacement                                                                   | Couleur | Explication                                                                                                       |
 | ----------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -779,7 +779,7 @@ Le diagramme de flux est utile dans la création de nouveaux processus métiers.
 | Bouton d'information des produits et catégories                               | #2c52eb | Couleur bleue, montre la différence avec "mise à jour".                                                           |
 | Bouton de mise à jour des produits et catégories                              | #0e2b9e | Couleur bleue qui permet de montrer clairement la différence entre cette action et celle de consultation.         |
 
-#### 6.4.2. Maquette<!-- CHECK -->
+#### 6.4.2. Maquette<!-- OK -->
 
 Une maquette est un **outil graphique utilisé pour prévisualiser l'apparence** d'un site web ou d'une application avant sa mise en production. Il s'agit d'une **représentation simplifiée** de la structure et de la mise en page d'un site, qui permet de visualiser les éléments qui seront visibles sur toutes les pages.
 

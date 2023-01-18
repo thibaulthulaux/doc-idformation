@@ -3407,12 +3407,13 @@ Best Practices to avoid SQL Injection
 
 ## 10. Description d'une situation de travail ayant nécessité une recherche<!-- OK Lylou -->
 
-[https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes)
+Source : [https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes)
 
 ```md
 @keyframes
-The @keyframes CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence. This gives more control over the intermediate steps of the animation sequence than transitions. 
-
+The @keyframes CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles
+for keyframes (or waypoints) along the animation sequence. This gives more control over the intermediate
+steps of the animation sequence than transitions. 
 
 Values
 <custom-ident>

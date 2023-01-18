@@ -123,7 +123,8 @@ Periode d'exercice du 19/04/2022 du 20/01/2023
   - [8.4. Description des tests unitaires/EtE(EndtoEnd)](#84-description-des-tests-unitaireseteendtoend)
 - [9. Présentation du jeu d'essai le plus représentatif](#9-présentation-du-jeu-dessai-le-plus-représentatif)
 - [10. Veille sur les vulnérabilités de sécurité](#10-veille-sur-les-vulnérabilités-de-sécurité)
-  - [10.1. SQL Injection](#101-sql-injection)
+  - [Securiser HTTP (SSL)](#securiser-http-ssl)
+  - [SQL Injection](#sql-injection)
 - [11. Description d'une situation de travail ayant nécessité une recherche](#11-description-dune-situation-de-travail-ayant-nécessité-une-recherche)
 <!-- cSpell:enable -->
 
@@ -2529,7 +2530,7 @@ task itest(type: Test) {
 ```
 <!-- cSpell:enable -->
 
-#### 7.6.2. Containérisation et services
+#### 7.6.2. Containérisation et services<!-- OK -->
 
 Docker est un outil qui permet de gérer les conteneurs logiciels.
 
@@ -2873,7 +2874,7 @@ La majorité des diagrammes ont été réalisés grâce à cet outil. Pour un ex
 
 ### 8.2. Description des fonctions implémentées
 
-#### 8.2.1. Supprimer une catégorie<!-- CHECK products in it ?-->
+#### 8.2.1. Supprimer une catégorie<!-- CHECK -->
 
 La méthode `doGet()` du servlet `CategoryDelete.java` récupère l'identifiant de la catégorie à supprimer à partir de la requête HTTP (à travers le paramètre "categoryId") et utilise la méthode `delete()` de l'objet `CategoryDAO` pour **supprimer cette catégorie** de la base de données.
 
@@ -2885,10 +2886,11 @@ Elle utilise les paramètres de la requête pour récupérer l’Id du produit e
 
 Puis la méthode **modifie les données en base** avec les informations correspondantes.
 
-#### 8.2.3. Authentification<!-- CHECK -->
+#### 8.2.3. Authentification<!-- OK -->
 
-La méthode `doPost()` du servlet `Login.java` utilise l'objet `User` pour stocker les données d'un utilisateur
-le UserDAO pour accéder aux données utilisateurs stockées dans la base de données. La méthode “sha512Hex” de la bibliothèque Apache Commons Codec est utilisée pour hasher le mot de passe de l’utilisateur avant de l’envoyer en base de données et utilise des cookies pour stocker les informations de session de l’utilisateur.
+La méthode `doPost()` du servlet `Login.java` utilise l'objet `User` pour stocker les données d'un utilisateur et le `UserDAO` pour accéder aux données utilisateurs stockées dans la base de données.
+
+La méthode **“sha512Hex”** de la bibliothèque Apache Commons Codec est utilisée pour hasher le mot de passe de l’utilisateur avant de l’envoyer en base de données.
 
 ### 8.3. Description des actions réalisées sur la BDD<!-- OK -->
 
@@ -3085,7 +3087,9 @@ Ce code est un ensemble de tests unitaires pour la classe Product de l'applicati
 - Auto-formation aux failles de sécurité déclarées sur telle ou telle technologie (lecture des documentations officielles, prise en compte des mesures préventives, mise en place des verrous recommandés)
 ```
 
-### 10.1. SQL Injection
+### Securiser HTTP (SSL)
+
+### SQL Injection
 
 [https://www.journaldev.com/34028/sql-injection-in-java]
 
@@ -3153,7 +3157,7 @@ Best Practices to avoid SQL Injection
 
 <div style="page-break-after: always;"></div>
 
-## 11. Description d'une situation de travail ayant nécessité une recherche
+## 11. Description d'une situation de travail ayant nécessité une recherche<!-- OK Lylou -->
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes)
 

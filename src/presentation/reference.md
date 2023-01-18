@@ -15,7 +15,7 @@
 3. Gestion du projet
 4. Analyse du besoin
 5. Conception et codage
-6. Présentation des éléments les plus significatis de l'interface de l'application
+6. Présentation des éléments les plus significatifs de l'interface de l'application
   - Détailler les tâches qui furent les vôtres et dérouler l'implémentation du code, de l'analyse de l'attendu jusqu'à la conception des écrans, des entitées, classes et tables.
 7. Présentation des jeux d'essai de la fonctionnalité la plus représentative (données entrées, attendues, obtenues) et analyse des écarts éventuels
   - Présenter le catalogue de données que vous avez utilisé pour effectuer les tests unitaires permettant de valider le fonctionnement de toutes les fonctions/méthodes que vous avez implémentées.

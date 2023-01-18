@@ -3,10 +3,10 @@
 M. Thibault HULAUX
 Mlle Lylou PONSING
 
-Google drive:
-- Maquette login ?
-- Arborescence ?
-- palette ?
+Concepteur et Developpeur d'Application
+Niveau II
+
+Periode d'exercice du 19/04/2022 du 20/01/2023
 
 <div style="page-break-after: always;"></div>
 
@@ -2281,19 +2281,15 @@ Nous avons fait le choix de retenir MariaDB.
 
 MariaDB est un **système de gestion de base de données relationnelles** édité sous licence GPL. Il s'agit d'une **branche communautaire** de MySQL. L'objectif est de maintenir une haute **compatibilité avec MySQL**, une parité des librairies et une correspondance parfaite avec l'API ainsi que les commandes MySQL. Ceci permettant, dans la plupart des cas de fonctionner en remplacement direct de MySQL.
 
-### 7.5. Outils de maquettage
+### 7.5. Outils de maquettage<!-- OK -->
 
-#### 7.5.1. Figma<!-- CHECK  -->
+#### 7.5.1. Figma<!-- OK  -->
 
 Figma est une **application web collaborative d'édition de graphiques vectoriels et de prototypage**. Il est principalement basé sur le web, avec des fonctionnalités hors ligne supplémentaires activées par des applications de bureau.
 
 L'ensemble des fonctionnalités de Figma est **axé sur l'utilisation**, dans la conception, **de l'interface utilisateur et de l'expérience utilisateur**, en mettant l'accent sur la collaboration en temps réel.
 
-```md
-Pour une bonne pratique de design dans Figma, il est conseillé de créer des frames avec des noms correspondant à leur contenu, de disposer les éléments de la page (header, footer, etc.) pour une meilleure visualisation de l'espace utilisé, de nommer les formes en fonction de ce qu'elles représentent et de les transformer en composants pour une réutilisation et modification facile.
-
-Il est également recommandé de créer des groupes pour organiser les éléments similaires, comme le  groupe "bouton d'inscription" qui comprend une forme et un texte, ce qui permet de centrer horizontalement et/ou verticalement le texte par rapport au bouton plutôt que par rapport au frame. 
-```
+Dans le cadre de ce projet, Figma a ete utilisé pour la création de wireframe et de maquettes dans les pahses d'élaboration du projet.
 
 #### 7.5.2. PlantUML<!-- OK -->
 
@@ -2541,7 +2537,7 @@ Containériser une application facilite **l'isolation des différentes parties**
 
 Docker est populaire pour la création, le déploiement et la gestion des conteneurs dans les applications modernes containérisées.
 
-##### 7.6.2.1. Docker<!-- DONE -->
+##### 7.6.2.1. Docker<!-- OK -->
 
 **Docker** permet la mise en œuvre de **conteneurs** s'exécutant en isolation, via une API de haut-niveau.
 
@@ -2559,7 +2555,7 @@ docker run --rm -v $(pwd):/data pandoc/core pandoc -s -o sortie.html entree.md
 
 Cette commande suppose que le fichier markdown se trouve dans le répertoire courant et créera un fichier HTML nommé `sortie.html` dans le même répertoire.
 
-##### 7.6.2.2. Docker Compose<!-- UML -->
+##### 7.6.2.2. Docker Compose<!-- OK -->
 
 Docker Compose est une extension de docker permettant de définir et d'exécuter des applications à partir de **multiples conteneurs**. Il est basé sur un fichier YAML qui permet de **définir les services et les paramètres de leurs créations** et ainsi de les démarrer par une commande unique.
 
@@ -2636,7 +2632,7 @@ services:
 ```
 <!-- cSpell:enable -->
 
-##### 7.6.2.3. Docker Swarm<!-- UML -->
+##### 7.6.2.3. Docker Swarm<!-- OK -->
 
 Docker swarm mode, inclus dans les versions actuelles de Docker, permet de **gérer un cluster de moteur Docker**, appelé swarm. En utilisant la ligne de commande docker, il est possible de créer un swarm, d'y déployer des services applicatifs, et de gérer le comportement du swarm. Docker swarm est **l'orchestrateur natif de docker** (équivalent Kubernetes).
 
@@ -3158,3 +3154,25 @@ Best Practices to avoid SQL Injection
 <div style="page-break-after: always;"></div>
 
 ## 11. Description d'une situation de travail ayant nécessité une recherche
+
+[https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes)
+
+```md
+@keyframes
+The @keyframes CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence. This gives more control over the intermediate steps of the animation sequence than transitions. 
+
+
+Values
+<custom-ident>
+A name identifying the keyframe list. This must match the identifier production in CSS syntax.
+from
+A starting offset of 0%.
+to
+An ending offset of 100%.
+<percentage>
+A percentage of the time through the animation sequence at which the specified keyframe should occur.
+```
+
+Les @keyframes définissent les étapes intermédiaires d’une animation, ce qui donne plus de contrôle sur la séquence de l’animation que sur la transition. Les valeurs à indiquer sont le nom de la @keyframe, le début qui correspond à 0% et la fin de l’animation qui correspond à 100%.
+
+Il est possible d’indiquer des pourcentages (durée de la séquence) supplémentaires qui définissent l’endroit de l’animation à laquel elle doit se produire.

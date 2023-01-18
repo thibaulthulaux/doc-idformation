@@ -833,7 +833,7 @@ C'est un **langage de description** de format de document qui se présente sous 
 - addexemple
 ```
 
-##### 7.1.1.2. CSS / SASS<!-- EX -->
+##### 7.1.1.2. CSS / SASS<!-- OK -->
 
 Les **feuilles de style en cascade**, abrégé CSS de l'anglais Cascading Style Sheets, est un **langage de description** de la présentation des documents HTML et XML. Les standards définissant CSS sont publiés par le World Wide Web Consortium (W3C).
 
@@ -841,9 +841,35 @@ Le **Sass** (Syntactically awesome stylesheets) est un **langage de script prép
 
 Il permet d'utiliser une syntaxe (SCSS dans sa nouvelle version) qui utilise les mêmes séparateurs de blocs que le CSS mais en fournissant les mécanismes supplémentaires suivants : variables, imbrication, mixins et héritage des sélecteurs.
 
+Voici en exemple le fichier `welcome.css`, responsable de l'affichage de l'animation de la **landing page** :
+
+<!-- cSpell:disable -->
 ```css
-- addexemple
+
+.little-cube {
+  height: 40px;
+  width: 40px;
+  margin: 1px;
+  top: 70px;
+  /* Trigger animation (8s) once with slow start/stop */
+  animation: move-little-cube 8s 1 ease-in-out;
+}
+
+...
+
+ /* Key part of the animation */
+@keyframes move-little-cube {
+  0% {
+    top: -370px;
+  }
+  100% {
+    top: 70px;
+    margin: 0%;
+  }
+}
+
 ```
+<!-- cSpell:enable -->
 
 ##### 7.1.1.3. JavaScript<!-- EX -->
 
@@ -851,9 +877,27 @@ Il permet d'utiliser une syntaxe (SCSS dans sa nouvelle version) qui utilise les
 
 C'est un langage **orienté objet à prototype** : les bases du langage et ses principales interfaces sont fournies par des objets. C'est un langage extrêmement populaire, possédant le plus large écosystème grâce à son gestionnaire de dépendances npm.
 
+js -> dev.js  (context = mettre et enlever des classes sur le body afin de modifier le style de l’affichage en jouant avec les classes que contient le body).
+
+La couche applicative du front-end est volontairement légère, de manière a limiter les exécutions cote client. Voici néanmoins un extrait du fichier `dev.js`, qui permet d'intervenir sur le Document Object Model du HTML :
+
+<!-- cSpell:disable -->
 ```javascript
-- addexemple
+
+function openUser() {
+  // Removed conflicting view
+  body.classList.remove('openCategory');
+  body.classList.remove('openSearch');
+  //ajoute la classe 'openUser' au body
+  body.classList.toggle('openUser');
+  // body contains 'openUser'
+  if(body.classList.contains('openUser')=== true) {
+    console.log(body.classList.contains('openUser'));
+  }
+}
+
 ```
+<!-- cSpell:enable -->
 
 #### 7.1.2. Back-end<!-- OK -->
 
@@ -2848,7 +2892,7 @@ Puis la méthode **modifie les données en base** avec les informations correspo
 #### 8.2.3. Authentification<!-- CHECK -->
 
 La méthode `doPost()` du servlet `Login.java` utilise l'objet `User` pour stocker les données d'un utilisateur
-le UserDAO pour accéder aux données utilisateurs stockées dans la base de données. La méthode “sha512Hex” de la bibliothèque Apache Commons Codec est utilisée pour hasher le mot de passe de l’utilisateur avant de l’envoyer en base de données et utilise des cookies pour stocker les informations de session de l’utilisateur. 
+le UserDAO pour accéder aux données utilisateurs stockées dans la base de données. La méthode “sha512Hex” de la bibliothèque Apache Commons Codec est utilisée pour hasher le mot de passe de l’utilisateur avant de l’envoyer en base de données et utilise des cookies pour stocker les informations de session de l’utilisateur.
 
 ### 8.3. Description des actions réalisées sur la BDD<!-- OK -->
 

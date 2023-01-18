@@ -1101,15 +1101,54 @@
       <p>Le <strong>HyperText Markup Language</strong>, abrégé HTML (ou HTML5 dans sa dernière version), est le langage standard conçu pour représenter des documents dans un navigateur web.</p>
       <p>C’est un <strong>langage de description</strong> de format de document qui se présente sous la forme d’un langage de balisage. Il est souvent assisté par des technologies telles que les feuilles de style en cascade (CSS) et le langage de programmation JavaScript.</p>
       <div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>- addexemple</span></code></pre></div>
-      <h5 id="css-sass">7.1.1.2. CSS / SASS<!-- EX --></h5>
+      <h5 id="css-sass">7.1.1.2. CSS / SASS<!-- OK --></h5>
       <p>Les <strong>feuilles de style en cascade</strong>, abrégé CSS de l’anglais Cascading Style Sheets, est un <strong>langage de description</strong> de la présentation des documents HTML et XML. Les standards définissant CSS sont publiés par le World Wide Web Consortium (W3C).</p>
       <p>Le <strong>Sass</strong> (Syntactically awesome stylesheets) est un <strong>langage de script préprocesseur</strong> qui est compilé ou <strong>interprété en CSS</strong> (Cascading Style Sheets). C’est qu’on appelle un <strong>métalangage imbriqué</strong>, car un CSS valide est un SCSS valide sans modification de syntaxe.</p>
       <p>Il permet d’utiliser une syntaxe (SCSS dans sa nouvelle version) qui utilise les mêmes séparateurs de blocs que le CSS mais en fournissant les mécanismes supplémentaires suivants : variables, imbrication, mixins et héritage des sélecteurs.</p>
-      <div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>- addexemple</span></code></pre></div>
+      <p>Voici en exemple le fichier <code>welcome.css</code>, responsable de l’affichage de l’animation de la <strong>landing page</strong> :</p>
+      <!-- cSpell:disable -->
+      <div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a></span>
+      <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="fu">.little-cube</span> {</span>
+      <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>  <span class="kw">height</span>: <span class="dv">40</span><span class="dt">px</span><span class="op">;</span></span>
+      <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>  <span class="kw">width</span>: <span class="dv">40</span><span class="dt">px</span><span class="op">;</span></span>
+      <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>  <span class="kw">margin</span>: <span class="dv">1</span><span class="dt">px</span><span class="op">;</span></span>
+      <span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>  <span class="kw">top</span>: <span class="dv">70</span><span class="dt">px</span><span class="op">;</span></span>
+      <span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>  <span class="co">/* Trigger animation (8s) once with slow start/stop */</span></span>
+      <span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>  <span class="kw">animation</span>: move-little-cube <span class="dv">8</span><span class="dt">s</span> <span class="dv">1</span> <span class="dv">ease-in-out</span><span class="op">;</span></span>
+      <span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>}</span>
+      <span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a></span>
+      <span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="fu">...</span></span>
+      <span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a></span>
+      <span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a> <span class="co">/* Key part of the animation */</span></span>
+      <span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a><span class="im">@keyframes</span> move-little-cube {</span>
+      <span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a>  <span class="dv">0%</span> {</span>
+      <span id="cb3-16"><a href="#cb3-16" aria-hidden="true"></a>    <span class="kw">top</span>: <span class="dv">-370</span><span class="dt">px</span><span class="op">;</span></span>
+      <span id="cb3-17"><a href="#cb3-17" aria-hidden="true"></a>  }</span>
+      <span id="cb3-18"><a href="#cb3-18" aria-hidden="true"></a>  <span class="dv">100%</span> {</span>
+      <span id="cb3-19"><a href="#cb3-19" aria-hidden="true"></a>    <span class="kw">top</span>: <span class="dv">70</span><span class="dt">px</span><span class="op">;</span></span>
+      <span id="cb3-20"><a href="#cb3-20" aria-hidden="true"></a>    <span class="kw">margin</span>: <span class="dv">0</span><span class="dt">%</span><span class="op">;</span></span>
+      <span id="cb3-21"><a href="#cb3-21" aria-hidden="true"></a>  }</span>
+      <span id="cb3-22"><a href="#cb3-22" aria-hidden="true"></a>}</span></code></pre></div>
+      <!-- cSpell:enable -->
       <h5 id="javascript">7.1.1.3. JavaScript<!-- EX --></h5>
       <p><strong>JavaScript</strong> est un <strong>langage de programmation</strong> de scripts principalement employé dans les pages web interactives et à ce titre est une partie essentielle des applications web. Il est également employé pour les serveurs Web avec l’utilisation par exemple de Node.js (Cf. <a href="#722-revealjs">reveal.js</a>).</p>
       <p>C’est un langage <strong>orienté objet à prototype</strong> : les bases du langage et ses principales interfaces sont fournies par des objets. C’est un langage extrêmement populaire, possédant le plus large écosystème grâce à son gestionnaire de dépendances npm.</p>
-      <div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="op">-</span> addexemple</span></code></pre></div>
+      <p>js -&gt; dev.js (context = mettre et enlever des classes sur le body afin de modifier le style de l’affichage en jouant avec les classes que contient le body).</p>
+      <p>La couche applicative du front-end est volontairement légère, de manière a limiter les exécutions cote client. Voici néanmoins un extrait du fichier <code>dev.js</code>, qui permet d’intervenir sur le Document Object Model du HTML :</p>
+      <!-- cSpell:disable -->
+      <div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a></span>
+      <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="kw">function</span> <span class="fu">openUser</span>() {</span>
+      <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>  <span class="co">// Removed conflicting view</span></span>
+      <span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>  body<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">remove</span>(<span class="st">&#39;openCategory&#39;</span>)<span class="op">;</span></span>
+      <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>  body<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">remove</span>(<span class="st">&#39;openSearch&#39;</span>)<span class="op">;</span></span>
+      <span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>  <span class="co">//ajoute la classe &#39;openUser&#39; au body</span></span>
+      <span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>  body<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">toggle</span>(<span class="st">&#39;openUser&#39;</span>)<span class="op">;</span></span>
+      <span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>  <span class="co">// body contains &#39;openUser&#39;</span></span>
+      <span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a>  <span class="cf">if</span>(body<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">&#39;openUser&#39;</span>)<span class="op">===</span> <span class="kw">true</span>) {</span>
+      <span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(body<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">&#39;openUser&#39;</span>))<span class="op">;</span></span>
+      <span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a>  }</span>
+      <span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>}</span></code></pre></div>
+      <!-- cSpell:enable -->
       <h4 id="back-end">7.1.2. Back-end<!-- OK --></h4>
       <p>Nous avons choisi d’utiliser Java, JSP, JSTL et SQL pour le back-end d’une application web basée sur le modèle MVC (Model-View-Controller) pour les raisons suivantes :</p>
       <ul>

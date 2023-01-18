@@ -3,6 +3,10 @@
 M. Thibault HULAUX
 Mlle Lylou PONSING
 
+
+- Maquette login ?
+- Arborescence ?
+
 <div style="page-break-after: always;"></div>
 
 ## 1. Table des matières<!-- OK -->
@@ -59,7 +63,7 @@ Mlle Lylou PONSING
   - [6.2. Back office](#62-back-office)
   - [6.3. Arborescence](#63-arborescence)
   - [6.4. Aperçu des contenus](#64-aperçu-des-contenus)
-    - [6.4.1. Charte graphique](#641-charte-graphique)
+    - [6.4.1. Charte graphique ](#641-charte-graphique-)
     - [6.4.2. Maquette](#642-maquette)
 - [7. Spécifications techniques du projet](#7-spécifications-techniques-du-projet)
   - [7.1. Langages](#71-langages)
@@ -102,6 +106,17 @@ Mlle Lylou PONSING
     - [7.7.2. Javadoc](#772-javadoc)
     - [7.7.3. PlantUML](#773-plantuml)
 - [8. Réalisations](#8-réalisations)
+  - [8.1 Description des features réalisées](#81-description-des-features-réalisées)
+    - [8.1.1. Authentification et inscription](#811-authentification-et-inscription)
+    - [8.1.2. Gestion des catégories](#812-gestion-des-catégories)
+    - [8.1.3. Gestion des produits](#813-gestion-des-produits)
+  - [8.2 Description des fonctions implémentées](#82-description-des-fonctions-implémentées)
+  - [8.3 Description des actions réalisées sur la BDD](#83-description-des-actions-réalisées-sur-la-bdd)
+    - [Create](#create)
+    - [Read](#read)
+    - [Update](#update)
+    - [Delete](#delete)
+  - [8.4 Description des tests unitaires/EtE(EndtoEnd)](#84-description-des-tests-unitaireseteendtoend)
 - [9. Présentation du jeu d'essai le plus représentatif](#9-présentation-du-jeu-dessai-le-plus-représentatif)
 - [10. Veille sur les vulnérabilités de sécurité](#10-veille-sur-les-vulnérabilités-de-sécurité)
   - [10.1. SQL Injection](#101-sql-injection)
@@ -156,19 +171,17 @@ For the sake of this demonstration, we're going to assume the following:
 
 ## 4. Cahier des charges<!-- OK -->
 
-```md
 - Contexte de l'entreprise
 - Définition du besoin
 - Objectif du projet
 - Description de toutes les fonctionnalités attendues
 - Délais
-```
 
 ### 4.1. Contexte de l'entreprise<!-- OK -->
 
 Nous avons supposé pour ce projet que l’entreprise qui nous fournissait la demande de projet est une **entreprise de service qui est spécialisée dans la gestion de stockage** et qu’elle souhaite offrir à ses clients un service en ligne lié.
 
-Nous avons supposé que ses clients pouvaient être des **associations**, ou des **petites entreprises** (cf. [personas](#422-les-personas)).
+Nous avons supposé que ses clients pouvaient être des **associations**, ou des **petites entreprises** (cf. [personas](#les-personas)).
 
 ### 4.2. Définition du besoin<!-- OK -->
 
@@ -523,11 +536,9 @@ La date prévisionnelle de remise du livrable est fixée au **4 novembre 2022**.
 
 ## 5. Gestion de projet<!-- OK -->
 
-```md
 - Planning et suivi
 - Environnement humain et technique
 - Objectif qualité
-```
 
 Pour la gestion du projet, nous avons utilisé une **méthode Agile**.
 
@@ -647,7 +658,7 @@ Les objectifs qualité sont:
 - Arborescence
 - Aperçu des contenus
 
-### 6.1. Front office
+### 6.1. Front office<!-- OK -->
 
 Ce projet contient une **landing page avec une animation**. Une page de **connexion et d’inscription**.
 
@@ -726,85 +737,73 @@ Il sera redirigé vers la page de modification du produit, dans laquelle il pour
 
 Sur la **page de modification d’un produit**, l’utilisateur peut **cliquer sur supprimer** le produit pour supprimer le produit.
 
-#### 6.1.5. Menu user
+#### 6.1.5. Menu user<!-- OK -->
 
 Une fois l’utilisateur **connecté**, il pourra accéder au **menu user**. L’utilisateur devra **cliquer sur le user ou son symbole**. A partir de là un **menu déroulant** s’abaisse et l’utilisateur peut cliquer sur : modification du profil, modification du mot de passe ou déconnexion.
 
-### 6.2. Back office<!-- CHECK -->
+### 6.2. Back office<!-- OK -->
 
-La partie admin de notre site de gestion de stock est conçue pour faciliter la gestion des données de l'application. Elle est accessible uniquement aux utilisateurs ayant le rôle "admin" (ou "dev" dans notre cas) et offre une vue complète des entrées de la table de stock.
+La **partie administration** de l'interface de notre site de gestion de stock est conçue pour **faciliter la gestion des données** de l'application. Elle a été nécessaire pour l'elaboration et les tests de l'application. Elle est accessible uniquement aux utilisateurs ayant le **rôle "admin"**. Elle offre plusieurs 3 vues d'administrations : **utilisateurs**, **catégories** et **produits**.
 
-L'interface utilisateur affiche les entrées de manière dynamique dans un tableau, avec des boutons "éditer" et "supprimer" pour chaque entrée. Cela permet aux utilisateurs de facilement mettre à jour ou supprimer les entrées de la table de stock.
+Les **vues sont construites sous forme de tableau**, affichant l'intégralité des entrées de la base de données, avec pour chaque entrée, des boutons "éditer" et "supprimer". Cela permet aux utilisateurs de facilement **mettre à jour ou supprimer les entrées** de la table.
 
-En outre, la partie admin liste également toutes les clés de la table de stock et des tables jointes, ce qui permet aux utilisateurs de facilement identifier les relations entre les différentes données de l'application.
+La partie administration liste également toutes les clés de la table concernée et des tables jointes, ce qui permet aux utilisateurs de visualiser l'integralité des données en rapport avec la vue utilisée.
 
-Enfin, en bas de l'interface, il y a une ligne de saisie pour permettre aux utilisateurs d'ajouter de nouvelles entrées à la table de stock.
+Enfin, en bas de l'interface, on trouve une ligne de saisie pour permettre aux utilisateurs d'**ajouter de nouvelles entrées** à la table.
 
-Le système est conçu pour être extensible. Ainsi, d’autres rôles pourraient par la suite être rajoutés ainsi que d'autres fonctionnalités. Cela inclut des fonctionnalités comme la gestion des utilisateurs, des rapports, des alertes, etc.
+Le système est conçu pour être **extensible**. Ainsi, d’autres rôles pourraient par la suite être rajoutés ainsi que d'autres fonctionnalités. Cela inclut des fonctionnalités comme la gestion des utilisateurs, des rapports, des alertes, etc.
 
 ### 6.3. Arborescence<!-- CHECK -->
 
 Le diagramme de flux est utile dans la création de nouveaux processus métiers. Il permet d’identifier les éléments clés et de définir clairement le début et la fin. Modéliser un processus permet de gagner en qualité et en efficacité.
 
-![Use case diagram](img/nofile.png)
+![Use case diagram](img/_empty_640x480.png)
 
 ### 6.4. Aperçu des contenus<!-- CHECK -->
 
-#### 6.4.1. Charte graphique
+#### 6.4.1. Charte graphique <!-- OK -->
 
-**Référence :**
+![Charte graphique](img/_empty_640x480.pmg)
 
-|                                                                               | Couleur |
-| ----------------------------------------------------------------------------- | ------- |
-| Fond du site                                                                  | #f7f7f7 |
-| Aside et menu utilisateur                                                     | #151515 |
-| Éléments de la barre de recherche, de l'aside et du menu utilisateur (:hover) | #0e2b9e |
-| Couleur pour la validation                                                    | #7feb15 |
-| Couleur pour la suppression                                                   | #eb6a44 |
-| Couleur pour naviguer vers la page d'information des produits et catégories   | #2c52eb |
-| Couleur pour naviguer vers la page de mise à jour des produits et catégories  | #0e2b9e |
+| Emplacement                                                                   | Couleur | Explication                                                                                                       |
+| ----------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
+| Fond du site                                                                  | #f7f7f7 | Couleur claire, luminosité et propreté. Mise en avant des autres éléments.                                        |
+| Aside et menu utilisateur                                                     | #151515 | Couleur foncée, profondeur et contraste avec le fond du site. Mise en avant des éléments importants de ces zones. |
+| Éléments de la barre de recherche, de l'aside et du menu utilisateur (:hover) | #0e2b9e | Couleur bleue, dynamisme et de modernité. Mise en avant d'une action au survol.                                   |
+| Validation                                                                    | #7feb15 | Couleur verte, confirmation. Montre clairement que l'action est effective.                                        |
+| Suppression                                                                   | #eb6a44 | Couleur orange, urgence et attention. Mise en avant d'une action importante.                                      |
+| Bouton d'information des produits et catégories                               | #2c52eb | Couleur bleue, montre la différence avec "mise à jour".                                                           |
+| Bouton de mise à jour des produits et catégories                              | #0e2b9e | Couleur bleue qui permet de montrer clairement la différence entre cette action et celle de consultation.         |
 
-**Explication :**
+#### 6.4.2. Maquette<!-- CHECK -->
 
-
-La couleur choisie pour l'aside et le menu utilisateur (#151515) est une couleur foncée qui apporte de la profondeur et un contraste avec le fond du site. Elle permet également de mettre en avant les éléments importants de ces zones.
-La pseudo-classe :hover pour les éléments de la barre de recherche et les éléments de l'aside et du menu utilisateur est définie à #0e2b9e, une couleur bleue qui apporte une touche de dynamisme et de modernité. Elle permet également de mettre en avant les actions possibles pour l'utilisateur lorsqu'il survole ces éléments avec sa souris.
-La couleur pour la validation est #7feb15, une couleur verte qui apporte une touche de confirmation et de sécurité. Elle permet également de montrer clairement que l'action est effective.
-La couleur pour la suppression est #eb6a44, une couleur orange qui apporte une touche d'urgence et d'attention. Elle permet également de mettre en avant les actions les plus importantes pour l'utilisateur.
-La couleur pour naviguer vers la page d'information des produits et catégories est #2c52eb, une couleur bleue qui permet de montrer clairement la différence entre cette action et celle de mise à jour.
-La couleur pour naviguer vers la page de mise à jour des produits et catégories est #0e2b9e, une couleur bleue qui permet de montrer clairement la différence entre cette action et celle de consultation.
-
-#### 6.4.2. Maquette
-
-Une maquette est un outil graphique utilisé pour prévisualiser l'apparence d'un site web ou d'une application avant sa mise en production. Il s'agit d'une représentation simplifiée de la structure et de la mise en page d'un site, qui permet de visualiser les éléments qui seront visibles sur toutes les pages.
+Une maquette est un **outil graphique utilisé pour prévisualiser l'apparence** d'un site web ou d'une application avant sa mise en production. Il s'agit d'une **représentation simplifiée** de la structure et de la mise en page d'un site, qui permet de visualiser les éléments qui seront visibles sur toutes les pages.
 
 ![welcome](img/mockup-auth.png)
 
-Cette maquette représente la page d’authentification du site. Le body de la maquette est conçu avec un fondu dégradé allant du blanc au bleu clair pour donner un look élégant et moderne.
+Cette maquette représente **la page d’authentification du site**. Le body de la maquette est conçu avec un fondu dégradé allant du blanc au bleu clair pour donner un look élégant et moderne.
 
-Le header comprend un logo de l'application, un bouton d'inscription et un bouton de connexion. Le logo est placé à gauche du header et les boutons d'inscription et de connexion sont placés à droite.
+Le header comprend un **logo de l'application**, un bouton d'**inscription** et un bouton de **connexion**. Le logo est placé à gauche du header et les boutons d'inscription et de connexion sont placés à droite.
 
-Sous le header, il y a un formulaire de connexion qui comprend des champs pour saisir l'adresse email et le mot de passe de l'utilisateur. Les champs sont bien espacés et clairement étiquetés pour une utilisation facile. Il y a également des boutons d'inscription et de connexion pour permettre à l'utilisateur de s'inscrire ou de se connecter.
+Sous le header, il y a un formulaire de connexion qui comprend des champs pour saisir l'**adresse email** et le **mot de passe** de l'utilisateur. Les champs sont bien espacés et clairement étiquetés pour une **utilisation facile**. Il y a également des boutons d'inscription et de connexion pour permettre à l'utilisateur de s'inscrire ou de se connecter.
 
-Les formulaires sur les pages de connexion et d'inscription ont un fond transparent pour permettre de voir le dégradé en arrière-plan et sont mis en valeur avec une bordure et une ombre qui les fait ressortir.
+Les formulaires sur les pages de connexion et d'inscription sont mis en valeur avec une bordure et une ombre qui les font ressortir.
 
 ![desktop](img/mockup-desktop.png)
 
-Dans la maquette ci-dessus, les éléments présents sur toutes les pages pour les utilisateurs connectés incluent un header avec le logo de l'entreprise et un menu de navigation, un aside avec un menu utilisateur pour gérer les produits et catégories, un footer avec des liens vers l'aide, les mentions légales et les coordonnées de l'entreprise, et une barre de recherche pour chercher des produits spécifiques.
+Dans la maquette ci-dessus, les **éléments présents sur toutes les pages** pour les utilisateurs connectés incluent un header avec le logo de l'entreprise et un menu de **gestion du profil** utilisateur, un aside avec un menu pour **gérer les produits et catégories**, un footer avec des **liens vers l'aide**, les **mentions légales** et les **coordonnées de l'entreprise**, et une **barre de recherche** pour chercher des produits spécifiques.
 
 <div style="page-break-after: always;"></div>
 
 ## 7. Spécifications techniques du projet
 
-```md
-  - Langages
-  - Frameworks
-  - Versioning (gitlab/github)
-  - SGBD utilisé (MYSQL/PostgreSQL) 
-  - Outils de maquettage
-  - Plateforme de développement
-  - Outils de conception de la documentation
-```
+- Langages
+- Frameworks
+- Versioning (gitlab/github)
+- SGBD utilisé (MYSQL/PostgreSQL)
+- Outils de maquettage
+- Plateforme de développement
+- Outils de conception de la documentation
 
 ### 7.1. Langages<!-- OK -->
 
@@ -2780,12 +2779,236 @@ La majorité des diagrammes ont été réalisés grâce à cet outil. Pour un ex
 
 ## 8. Réalisations
 
-```md
-  - Description des features réalisées
-  - Description des fonctions implémentées
-  - Description des actions réalisées sur la BDD
-  - Description des tests unitaires/EtE (EndtoEnd)
+- Description des features réalisées
+- Description des fonctions implémentées
+- Description des actions réalisées sur la BDD
+- Description des tests unitaires/EtE (EndtoEnd)
+
+### 8.1 Description des features réalisées
+
+#### 8.1.1. Authentification et inscription
+
+**Description :** Cette feature permettra aux utilisateurs de s'authentifier et de s'inscrire sur le site de manière efficace. Ils pourront créer un compte, se connecter avec un nom d'utilisateur et un mot de passe, et réinitialiser leur mot de passe en cas d'oubli.
+
+**Stories associées :**
+
+- Story 1 : Ajout de la fonctionnalité d'inscription
+- Story 2 : Ajout de la fonctionnalité de connexion
+- Story 3 : Ajout de la fonctionnalité de réinitialisation de mot de passe
+- Story 4 : Ajout de la fonctionnalité de déconnexion
+- Story 5 : Test de la fonctionnalité d'authentification et d'inscription
+
+**État :** En cours
+
+#### 8.1.2. Gestion des catégories
+
+**Description :** Cette feature permettra aux utilisateurs de gérer les catégories de produits de manière efficace. Ils pourront créer, éditer et supprimer des catégories de produits, ainsi que leur rajouter des produits spécifiques.
+
+**Stories associées :**
+
+- Story 1 : Ajout de la fonctionnalité de création de catégories
+- Story 2 : Ajout de la fonctionnalité d'édition des catégories
+- Story 3 : Ajout de la fonctionnalité de suppression des catégories
+- Story 4 : Test de la fonctionnalité de gestion des catégories de produits
+
+**État :** En cours
+
+#### 8.1.3. Gestion des produits
+
+**Description :** Cette feature permettra aux utilisateurs de gérer les produits de manière efficace. Ils pourront créer, éditer et supprimer des produits, ainsi que les assigner à une catégorie.
+
+**Stories associées :**
+
+- Story 1 : Ajout de la fonctionnalité de création de produits
+- Story 2 : Ajout de la fonctionnalité d'édition des produits
+- Story 3 : Ajout de la fonctionnalité de suppression des produits
+- Story 4 : Ajout de la fonctionnalité de recherche d’un produit ou d’une liste de produits
+- Story 5 : Test de la fonctionnalité de gestion des produits
+
+**État :** En cours
+
+### 8.2 Description des fonctions implémentées
+
+Supprimer une catégorie : La méthode "doGet" du servlet “CategoryDelete.java” récupère l'identifiant de la catégorie à supprimer à partir de la requête HTTP (à travers le paramètre "categoryId") et utilise la méthode "delete" de l'objet "CategoryDAO" pour supprimer cette catégorie de la base de données.
+
+Modifier un produit : La méthode “doPost” du servlet “ProductEdit.java” commence par récupérer l’utilisateur connecté à partir de la session, utilise les paramètres de la requête pour récupérer l’Id du produit et de la catégorie associée et utilise les méthode "getCategoryById" de l'objet "CategoryDAO" pour récupérer la catégorie et la méthode et “getProductById” de l’objet “ProductDAO” le produit de la base de données. Puis la méthode modifie les données avec les informations correspondantes. 
+
+Authentification : La méthode “doPost” du servlet “Login.java” utilise l'objet User pour stocker les données d'un utilisateur le UserDAO pour accéder aux données utilisateurs stockées dans la base de données. La méthode “sha512Hex” de la bibliothèque Apache Commons Codec est utilisée pour hasher le mot de passe de l’utilisateur avant de l’envoyer en base de données et utilise des cookies pour stocker les informations de session de l’utilisateur. 
+
+### 8.3 Description des actions réalisées sur la BDD
+
+Create
+Read
+Update
+Delete
+
+#### Create
+
+<!-- cSpell:disable -->
+```java
+
+/**
+   * Add category.
+   * 
+   * @param category
+   * @return Number of affected rows
+   * @throws SQLException
+   */
+  public Integer add(Category category)
+      throws SQLException {
+    String sql = "INSERT INTO `category`"
+        + " (`user_id`,`name`,`description`)"
+        + " VALUES (?,?,?)"
+        + " RETURNING id;";
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setInt(1, category.getUser_id());
+    ps.setString(2, category.getName());
+    ps.setString(3, category.getDescription());
+    Integer result = ps.executeUpdate();
+
+    return result;
+  }
+
 ```
+<!-- cSpell:enable -->
+
+Ce code définit une méthode appelée "add" qui prend en entrée un objet de type Catégorie et ajoute une nouvelle catégorie dans la base de données. La méthode utilise une requête SQL pour insérer les informations de la catégorie dans la table "category" de la base de données en utilisant les informations de l'objet catégorie en entrée. Elle utilise la fonction executeUpdate() pour executer cette insertion. La méthode retourne le nombre de lignes affectées par l'insertion. La requête SQL utilise RETURNING id; pour retourner l'id de la nouvelle catégorie créée.
+
+#### Read
+
+<!-- cSpell:disable -->
+```java
+
+  /**
+   * Given user credentials, returns the corresponding User object, or null.
+   * 
+   * @param login    String containing the user login (email)
+   * @param password String containing the user password
+   * @return the corresponding User object, or null
+   */
+  public User getUserByCredentials(String login, String password)
+      throws SQLException {
+    String sql = "SELECT `user`.*,`role`.`name` AS `role` "
+        + "FROM `user_role` "
+        + "INNER JOIN `role` ON `user_role`.`role_id` = `role`.`id` " // Join `role`
+        + "LEFT JOIN `user` ON `user`.`id` = `user_role`.`user_id` " // Join `user`
+        + "WHERE `user`.`email` = ? AND `user`.`password` = ?";
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setString(1, login); // login = email
+    ps.setString(2, DigestUtils.sha512Hex(password)); // Hash password
+    User result = new User();
+    List<String> roleList = new ArrayList<>();
+    ResultSet rs = ps.executeQuery();
+    boolean check = false;
+    while (rs.next()) {
+      if (!check) {
+        result.setId(rs.getInt("id"));
+        result.setEmail(rs.getString("email"));
+        result.setPassword(rs.getString("password"));
+        result.setTitle(rs.getString("title"));
+        result.setFirstName(rs.getString("firstName"));
+        result.setLastName(rs.getString("lastName"));
+        result.setCompany(rs.getString("company"));
+        result.setAddress(rs.getString("address"));
+        result.setCity(rs.getString("city"));
+        result.setPostalCode(rs.getString("postalCode"));
+        result.setCountry(rs.getString("country"));
+        result.setPhone(rs.getString("phone"));
+        result.setValid(rs.getBoolean("valid"));
+        result.setValidationUid(rs.getString("validationUid"));
+        result.setCreateTime(rs.getString("createTime"));
+        result.setUpdateTime(rs.getString("updateTime"));
+      }
+      check = true;
+      roleList.add(rs.getString("role"));
+    }
+    if (check) {
+      result.setRoleList(roleList);
+      return result;
+    } else
+      return null;
+  }
+
+```
+<!-- cSpell:enable -->
+
+Ce code définit une méthode appelée "getUserByCredentials" qui prend en entrée les identifiants d'un utilisateur (login et mot de passe) et retourne l'objet utilisateur correspondant, ou null s'il n'est pas trouvé. La méthode utilise une requête SQL pour sélectionner les informations de l'utilisateur à partir de la base de données, en utilisant les identifiants fournis en entrée pour filtrer les résultats. Elle utilise également une jointure pour récupérer les rôles de l'utilisateur. Si un utilisateur est trouvé, l'objet utilisateur est créé et rempli avec les informations récupérées à partir de la base de données, sinon la méthode retourne null.
+
+#### Update
+
+<!-- cSpell:disable -->
+```java
+
+  /** Update product.
+   *
+   * @param product a Product type object
+   * @return Number of affected rows
+   * @throws SQLException
+   */
+  public Integer update(Product product)
+      throws SQLException {
+    String sql = "UPDATE `product` SET "
+        + "`user_id`=?,"
+        + "`category_id`=?,"
+        + "`name`=?,"
+        + "`description`=?,"
+        + "`reference`=?,"
+        + "`price`=?,"
+        + "`quantity`=?,"
+        + "`updateTime`=?"
+        + "WHERE `product`.`id` = ?";
+    String dateTime = LocalDateTime.now().format(dateTimeFormatter);
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setInt(1, product.getUser_id());
+    ps.setInt(2, product.getCategory_id());
+    ps.setString(3, product.getName());
+    ps.setString(4, product.getDescription());
+    ps.setString(5, product.getReference());
+    ps.setFloat(6, product.getPrice());
+    ps.setInt(7, product.getQuantity());
+    ps.setString(8, dateTime);
+    ps.setInt(9, product.getId());
+    Integer result = ps.executeUpdate();
+    return result;
+  }
+
+```
+<!-- cSpell:enable -->
+
+Ce code définit une méthode appelée "update" qui prend en entrée un objet de type Produit et met à jour les informations de ce produit dans la base de données. La méthode utilise une requête SQL pour mettre à jour les informations du produit dans la table "product" de la base de données en utilisant les informations de l'objet produit en entrée. La méthode retourne le nombre de lignes affectées par la mise à jour.
+
+#### Delete
+
+<!-- cSpell:disable -->
+```java
+
+  /**
+   * Delete product by id.
+   * 
+   * @param id
+   * @return Number of affected rows
+   * @throws SQLException
+   */
+  public Integer delete(Integer id)
+      throws SQLException {
+    String sql = "DELETE FROM `product` WHERE `product`.`id`=?";
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setInt(1, id);
+    Integer result = ps.executeUpdate();
+    return result;
+  }
+
+```
+<!-- cSpell:enable -->
+
+Ce code définit une méthode appelée "delete" qui prend en entrée un identifiant (id) et supprime le produit correspondant dans la base de données. La méthode utilise une requête SQL pour supprimer le produit de la table "product" de la base de données en utilisant l'identifiant fourni en entrée pour filtrer les résultats. Elle utilise la fonction executeUpdate() pour executer cette suppression. La méthode retourne le nombre de lignes affectées par la suppression.
+
+### 8.4 Description des tests unitaires/EtE(EndtoEnd)
+
+Static Application Security Testing
+
+Ce code est un ensemble de tests unitaires pour la classe Product de l'application, il utilise la librairie JUnit pour vérifier que les différentes fonctions et propriétés de la classe Product fonctionnent correctement. Il utilise des assertions pour vérifier que les valeurs attendues sont retournées lorsque les méthodes de la classe Product sont appelées, pour s'assurer que la classe fonctionne comme prévu.
+
 
 ## 9. Présentation du jeu d'essai le plus représentatif
 

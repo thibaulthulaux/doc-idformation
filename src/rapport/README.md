@@ -3,9 +3,10 @@
 M. Thibault HULAUX
 Mlle Lylou PONSING
 
-
+Google drive:
 - Maquette login ?
 - Arborescence ?
+- palette ?
 
 <div style="page-break-after: always;"></div>
 
@@ -63,7 +64,7 @@ Mlle Lylou PONSING
   - [6.2. Back office](#62-back-office)
   - [6.3. Arborescence](#63-arborescence)
   - [6.4. Aperçu des contenus](#64-aperçu-des-contenus)
-    - [6.4.1. Charte graphique ](#641-charte-graphique-)
+    - [6.4.1. Charte graphique](#641-charte-graphique)
     - [6.4.2. Maquette](#642-maquette)
 - [7. Spécifications techniques du projet](#7-spécifications-techniques-du-projet)
   - [7.1. Langages](#71-langages)
@@ -106,17 +107,20 @@ Mlle Lylou PONSING
     - [7.7.2. Javadoc](#772-javadoc)
     - [7.7.3. PlantUML](#773-plantuml)
 - [8. Réalisations](#8-réalisations)
-  - [8.1 Description des features réalisées](#81-description-des-features-réalisées)
+  - [8.1. Description des features réalisées](#81-description-des-features-réalisées)
     - [8.1.1. Authentification et inscription](#811-authentification-et-inscription)
     - [8.1.2. Gestion des catégories](#812-gestion-des-catégories)
     - [8.1.3. Gestion des produits](#813-gestion-des-produits)
-  - [8.2 Description des fonctions implémentées](#82-description-des-fonctions-implémentées)
-  - [8.3 Description des actions réalisées sur la BDD](#83-description-des-actions-réalisées-sur-la-bdd)
-    - [Create](#create)
-    - [Read](#read)
-    - [Update](#update)
-    - [Delete](#delete)
-  - [8.4 Description des tests unitaires/EtE(EndtoEnd)](#84-description-des-tests-unitaireseteendtoend)
+  - [8.2. Description des fonctions implémentées](#82-description-des-fonctions-implémentées)
+    - [8.2.1. Supprimer une catégorie](#821-supprimer-une-catégorie)
+    - [8.2.2. Modifier un produit](#822-modifier-un-produit)
+    - [8.2.3. Authentification](#823-authentification)
+  - [8.3. Description des actions réalisées sur la BDD](#83-description-des-actions-réalisées-sur-la-bdd)
+    - [8.3.1. Create](#831-create)
+    - [8.3.2. Read](#832-read)
+    - [8.3.3. Update](#833-update)
+    - [8.3.4. Delete](#834-delete)
+  - [8.4. Description des tests unitaires/EtE(EndtoEnd)](#84-description-des-tests-unitaireseteendtoend)
 - [9. Présentation du jeu d'essai le plus représentatif](#9-présentation-du-jeu-dessai-le-plus-représentatif)
 - [10. Veille sur les vulnérabilités de sécurité](#10-veille-sur-les-vulnérabilités-de-sécurité)
   - [10.1. SQL Injection](#101-sql-injection)
@@ -761,7 +765,7 @@ Le diagramme de flux est utile dans la création de nouveaux processus métiers.
 
 ### 6.4. Aperçu des contenus<!-- CHECK -->
 
-#### 6.4.1. Charte graphique <!-- OK -->
+#### 6.4.1. Charte graphique<!-- OK -->
 
 ![Charte graphique](img/_empty_640x480.pmg)
 
@@ -2784,9 +2788,9 @@ La majorité des diagrammes ont été réalisés grâce à cet outil. Pour un ex
 - Description des actions réalisées sur la BDD
 - Description des tests unitaires/EtE (EndtoEnd)
 
-### 8.1 Description des features réalisées
+### 8.1. Description des features réalisées<!-- OK -->
 
-#### 8.1.1. Authentification et inscription
+#### 8.1.1. Authentification et inscription<!-- OK -->
 
 **Description :** Cette feature permettra aux utilisateurs de s'authentifier et de s'inscrire sur le site de manière efficace. Ils pourront créer un compte, se connecter avec un nom d'utilisateur et un mot de passe, et réinitialiser leur mot de passe en cas d'oubli.
 
@@ -2800,7 +2804,7 @@ La majorité des diagrammes ont été réalisés grâce à cet outil. Pour un ex
 
 **État :** En cours
 
-#### 8.1.2. Gestion des catégories
+#### 8.1.2. Gestion des catégories<!-- OK -->
 
 **Description :** Cette feature permettra aux utilisateurs de gérer les catégories de produits de manière efficace. Ils pourront créer, éditer et supprimer des catégories de produits, ainsi que leur rajouter des produits spécifiques.
 
@@ -2813,7 +2817,7 @@ La majorité des diagrammes ont été réalisés grâce à cet outil. Pour un ex
 
 **État :** En cours
 
-#### 8.1.3. Gestion des produits
+#### 8.1.3. Gestion des produits<!-- OK -->
 
 **Description :** Cette feature permettra aux utilisateurs de gérer les produits de manière efficace. Ils pourront créer, éditer et supprimer des produits, ainsi que les assigner à une catégorie.
 
@@ -2827,22 +2831,28 @@ La majorité des diagrammes ont été réalisés grâce à cet outil. Pour un ex
 
 **État :** En cours
 
-### 8.2 Description des fonctions implémentées
+### 8.2. Description des fonctions implémentées
 
-Supprimer une catégorie : La méthode "doGet" du servlet “CategoryDelete.java” récupère l'identifiant de la catégorie à supprimer à partir de la requête HTTP (à travers le paramètre "categoryId") et utilise la méthode "delete" de l'objet "CategoryDAO" pour supprimer cette catégorie de la base de données.
+#### 8.2.1. Supprimer une catégorie<!-- CHECK products in it ?-->
 
-Modifier un produit : La méthode “doPost” du servlet “ProductEdit.java” commence par récupérer l’utilisateur connecté à partir de la session, utilise les paramètres de la requête pour récupérer l’Id du produit et de la catégorie associée et utilise les méthode "getCategoryById" de l'objet "CategoryDAO" pour récupérer la catégorie et la méthode et “getProductById” de l’objet “ProductDAO” le produit de la base de données. Puis la méthode modifie les données avec les informations correspondantes. 
+La méthode `doGet()` du servlet `CategoryDelete.java` récupère l'identifiant de la catégorie à supprimer à partir de la requête HTTP (à travers le paramètre "categoryId") et utilise la méthode `delete()` de l'objet `CategoryDAO` pour **supprimer cette catégorie** de la base de données.
 
-Authentification : La méthode “doPost” du servlet “Login.java” utilise l'objet User pour stocker les données d'un utilisateur le UserDAO pour accéder aux données utilisateurs stockées dans la base de données. La méthode “sha512Hex” de la bibliothèque Apache Commons Codec est utilisée pour hasher le mot de passe de l’utilisateur avant de l’envoyer en base de données et utilise des cookies pour stocker les informations de session de l’utilisateur. 
+#### 8.2.2. Modifier un produit<!-- OK -->
 
-### 8.3 Description des actions réalisées sur la BDD
+La méthode `doPost()` du servlet `ProductEdit.java` commence par récupérer l’utilisateur connecté à partir de la session.
 
-Create
-Read
-Update
-Delete
+Elle utilise les paramètres de la requête pour récupérer l’Id du produit et de la catégorie associée, les méthode `getCategoryById()` de l'objet `CategoryDAO` pour récupérer la catégorie, la méthode `getProductById()` de l’objet `ProductDAO` pour récupérer le produit de la base de données.
 
-#### Create
+Puis la méthode **modifie les données en base** avec les informations correspondantes.
+
+#### 8.2.3. Authentification<!-- CHECK -->
+
+La méthode `doPost()` du servlet `Login.java` utilise l'objet `User` pour stocker les données d'un utilisateur
+le UserDAO pour accéder aux données utilisateurs stockées dans la base de données. La méthode “sha512Hex” de la bibliothèque Apache Commons Codec est utilisée pour hasher le mot de passe de l’utilisateur avant de l’envoyer en base de données et utilise des cookies pour stocker les informations de session de l’utilisateur. 
+
+### 8.3. Description des actions réalisées sur la BDD<!-- OK -->
+
+#### 8.3.1. Create<!-- OK -->
 
 <!-- cSpell:disable -->
 ```java
@@ -2872,9 +2882,11 @@ Delete
 ```
 <!-- cSpell:enable -->
 
-Ce code définit une méthode appelée "add" qui prend en entrée un objet de type Catégorie et ajoute une nouvelle catégorie dans la base de données. La méthode utilise une requête SQL pour insérer les informations de la catégorie dans la table "category" de la base de données en utilisant les informations de l'objet catégorie en entrée. Elle utilise la fonction executeUpdate() pour executer cette insertion. La méthode retourne le nombre de lignes affectées par l'insertion. La requête SQL utilise RETURNING id; pour retourner l'id de la nouvelle catégorie créée.
+Ce code définit une méthode appelée "add" qui prend en entrée un objet de type Catégorie et **ajoute une nouvelle catégorie** dans la base de données.
 
-#### Read
+La méthode utilise une requête SQL pour insérer les informations de la catégorie dans la table "category" de la base de données en utilisant les informations de l'objet catégorie en entrée. Elle utilise la fonction executeUpdate() pour executer cette insertion. La méthode retourne le nombre de lignes affectées par l'insertion. La requête SQL utilise RETURNING id; pour retourner l'id de la nouvelle catégorie créée.
+
+#### 8.3.2. Read<!-- OK -->
 
 <!-- cSpell:disable -->
 ```java
@@ -2932,9 +2944,11 @@ Ce code définit une méthode appelée "add" qui prend en entrée un objet de ty
 ```
 <!-- cSpell:enable -->
 
-Ce code définit une méthode appelée "getUserByCredentials" qui prend en entrée les identifiants d'un utilisateur (login et mot de passe) et retourne l'objet utilisateur correspondant, ou null s'il n'est pas trouvé. La méthode utilise une requête SQL pour sélectionner les informations de l'utilisateur à partir de la base de données, en utilisant les identifiants fournis en entrée pour filtrer les résultats. Elle utilise également une jointure pour récupérer les rôles de l'utilisateur. Si un utilisateur est trouvé, l'objet utilisateur est créé et rempli avec les informations récupérées à partir de la base de données, sinon la méthode retourne null.
+Ce code définit une méthode appelée "getUserByCredentials" qui prend en entrée les identifiants d'un utilisateur (login et mot de passe) et **retourne l'objet utilisateur correspondant, ou null** s'il n'est pas trouvé.
 
-#### Update
+La méthode utilise une requête SQL pour sélectionner les informations de l'utilisateur à partir de la base de données, en utilisant les identifiants fournis en entrée pour filtrer les résultats. Elle utilise également une jointure pour récupérer les rôles de l'utilisateur. Si un utilisateur est trouvé, l'objet utilisateur est créé et rempli avec les informations récupérées à partir de la base de données, sinon la méthode retourne null.
+
+#### 8.3.3. Update<!-- OK -->
 
 <!-- cSpell:disable -->
 ```java
@@ -2975,9 +2989,11 @@ Ce code définit une méthode appelée "getUserByCredentials" qui prend en entr�
 ```
 <!-- cSpell:enable -->
 
-Ce code définit une méthode appelée "update" qui prend en entrée un objet de type Produit et met à jour les informations de ce produit dans la base de données. La méthode utilise une requête SQL pour mettre à jour les informations du produit dans la table "product" de la base de données en utilisant les informations de l'objet produit en entrée. La méthode retourne le nombre de lignes affectées par la mise à jour.
+Ce code définit une méthode appelée "update" qui prend en entrée un objet de type Produit et **met à jour les informations de ce produit** dans la base de données.
 
-#### Delete
+La méthode utilise une requête SQL pour mettre à jour les informations du produit dans la table "product" de la base de données en utilisant les informations de l'objet produit en entrée. La méthode retourne le nombre de lignes affectées par la mise à jour.
+
+#### 8.3.4. Delete<!-- OK -->
 
 <!-- cSpell:disable -->
 ```java
@@ -3001,14 +3017,15 @@ Ce code définit une méthode appelée "update" qui prend en entrée un objet de
 ```
 <!-- cSpell:enable -->
 
-Ce code définit une méthode appelée "delete" qui prend en entrée un identifiant (id) et supprime le produit correspondant dans la base de données. La méthode utilise une requête SQL pour supprimer le produit de la table "product" de la base de données en utilisant l'identifiant fourni en entrée pour filtrer les résultats. Elle utilise la fonction executeUpdate() pour executer cette suppression. La méthode retourne le nombre de lignes affectées par la suppression.
+Ce code définit une méthode appelée "delete" qui prend en entrée un identifiant (id) et **supprime le produit correspondant** dans la base de données.
 
-### 8.4 Description des tests unitaires/EtE(EndtoEnd)
+La méthode utilise une requête SQL pour supprimer le produit de la table "product" de la base de données en utilisant l'identifiant fourni en entrée pour filtrer les résultats. Elle utilise la fonction executeUpdate() pour executer cette suppression. La méthode retourne le nombre de lignes affectées par la suppression.
+
+### 8.4. Description des tests unitaires/EtE(EndtoEnd)<!-- CHECK -->
 
 Static Application Security Testing
 
 Ce code est un ensemble de tests unitaires pour la classe Product de l'application, il utilise la librairie JUnit pour vérifier que les différentes fonctions et propriétés de la classe Product fonctionnent correctement. Il utilise des assertions pour vérifier que les valeurs attendues sont retournées lorsque les méthodes de la classe Product sont appelées, pour s'assurer que la classe fonctionne comme prévu.
-
 
 ## 9. Présentation du jeu d'essai le plus représentatif
 

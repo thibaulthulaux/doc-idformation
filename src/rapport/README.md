@@ -128,6 +128,9 @@ Periode d'exercice du 19/04/2022 du 20/01/2023
     - [8.3.3. Update](#833-update)
     - [8.3.4. Delete](#834-delete)
   - [8.4. Description des tests unitaires/EtE(EndtoEnd)](#84-description-des-tests-unitaireseteendtoend)
+    - [Test Unitaires](#test-unitaires)
+    - [Static Application Security Testing](#static-application-security-testing)
+    - [Tests fonctionnels](#tests-fonctionnels)
 - [9. Présentation du jeu d'essai le plus représentatif](#9-présentation-du-jeu-dessai-le-plus-représentatif)
 - [10. Veille sur les vulnérabilités de sécurité](#10-veille-sur-les-vulnérabilités-de-sécurité)
   - [Securiser HTTP (SSL)](#securiser-http-ssl)
@@ -807,7 +810,7 @@ Dans la maquette ci-dessus, les **éléments présents sur toutes les pages** po
 
 <div style="page-break-after: always;"></div>
 
-## 7. Spécifications techniques du projet
+## 7. Spécifications techniques du projet<!-- OK -->
 
 - Langages
 - Frameworks
@@ -831,15 +834,157 @@ Nous avons choisi d'utiliser HTML, CSS et JavaScript pour développer le front-e
 
 En somme, HTML, CSS et JavaScript sont des **technologies éprouvées** qui permettent de créer des **applications web accessibles**, **supportées par les navigateurs**, **interactives** et **faciles à développer et maintenir**. Leur combinaison permet de créer des **interfaces utilisateur riches et performantes**.
 
-##### 7.1.1.1. HTML<!-- EX -->
+##### 7.1.1.1. HTML<!-- OK -->
 
 Le **HyperText Markup Language**, abrégé HTML (ou HTML5 dans sa dernière version), est le langage standard conçu pour représenter des documents dans un navigateur web.
 
 C'est un **langage de description** de format de document qui se présente sous la forme d’un langage de balisage. Il est souvent assisté par des technologies telles que les feuilles de style en cascade (CSS) et le langage de programmation JavaScript.
 
+Voici en exemple code HTML produit par la methode `doGet()` du servlet `CategoryAdd.java` de l'application :
+
+<!-- cSpell:disable -->
 ```html
-- addexemple
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="/www/favicon-ico-32.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/www/css/general.css" />
+    <link rel="stylesheet" href="/www/css/aside.css" />
+    <link rel="stylesheet" href="/www/css/header.css" />
+    <link rel="stylesheet" href="/www/css/nav.css" />
+    <link rel="stylesheet" href="/www/css/search.css" />
+    <link rel="stylesheet" href="/www/css/footer.css" />
+    <link rel="stylesheet" href="/www/css/mobile.css" />
+    <link rel="stylesheet" href="/www/css/cta.css" />
+    <link rel="stylesheet" href="/www/css/category.css" />
+    <link rel="stylesheet" href="/www/css/product.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <aside>
+      <ul id="categoryList">
+        <li class="empty"></li>
+        <li><a id="addAside" class="add" href="CategoryAdd">Add a category</a></li>
+        <li><hr /></li>
+          <li class="category-categoryList">
+            <a href="/CategoryInfo?categoryId=1">Coffee tables</a>
+          </li>
+          <li class="category-categoryList">
+            <a href="/CategoryInfo?categoryId=2">Side tables</a>
+          </li>
+          <li class="category-categoryList">
+            <a href="/CategoryInfo?categoryId=3">Sideboards</a>
+          </li>
+          <li class="category-categoryList">
+            <a href="/CategoryInfo?categoryId=4">Bookcases and shelves</a>
+          </li>
+          <li class="category-categoryList">
+            <a href="/CategoryInfo?categoryId=5">TV cabinets</a>
+          </li>
+          <li class="category-categoryList">
+            <a href="/CategoryInfo?categoryId=6">Armchairs</a>
+          </li>
+          <li class="category-categoryList">
+            <a href="/CategoryInfo?categoryId=7">sofas</a>
+          </li>
+        <li><hr /></li>
+      </ul>
+    </aside>
+    <nav>
+      <a id="userEdit" href="/UserEdit">Edit profil</a>
+      <a id="changePassword" href="/UserChangePassword">Edit password</a>
+      <a id="logout" href="/Logout">Logout</a>
+    </nav>
+    <header>
+      <img src="../../../www/logo.png" class="logo"></img>
+      <div id="logo">Storage Management</div>
+      <div class="user">
+        <p>user</p>
+        <i class="fa-solid fa-user"></i>
+      </div>
+    </header>
+    <div class="contentSearch">
+      <form action="/Search" method="post">
+        <input
+          class="searchBar"
+          onkeyup=""
+          type="text"
+          name="searchString"
+          placeholder="Search product.."
+          required
+        />
+        <button type="submit">
+          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
+    <main>
+      <h2>Add a category</h2>
+      <form
+        class="form-category"
+        id="category-add"
+        action="/CategoryAdd"
+        method="post"
+      >
+        <label id="label-category-name" for="input-category-name">Name</label>
+        <input id="input-category-name" type="text" name="categoryName" required />
+        <label id="label-category-description" for="input-category-description">Description</label>
+        <textarea
+          id="input-category-description"
+          name="categoryDescription"
+        ></textarea>
+        <div class="form-actions">
+          <button class="cancel" onclick="history.back()">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <button type="reset" class="reset">Reset</button>
+          <button class="add" type="submit">Add a category</button>
+        </div>
+      </form>
+    </main>
+    <footer style="clear: both">
+      <div class="toggle" id="toggleCategory">
+        <button onclick="disableScroll()">
+          <i class="fa-solid fa-bars open"></i>
+        </button>
+        <button onclick="enableScroll()">
+          <i class="fa-solid fa-xmark close"></i>
+        </button>
+      </div>
+      <div class="toggle" id="toggleUser">
+        <button onclick="disableScroll()">
+          <i class="fa-solid fa-user open"></i>
+        </button>
+        <button onclick="enableScroll()">
+          <i class="fa-solid fa-xmark close"></i>
+        </button>
+      </div>
+      <ul>
+        <li>Version: 0.5.0</li>
+        <li>Release date: 2022-09-22</li>
+      </ul>
+    </footer>
+<!-- Debug -->
+    <script type="text/javascript" src="/www/js/dev.js" async defer></script>
+  </body>
+</html>
+
 ```
+<!-- cSpell:enable -->
 
 ##### 7.1.1.2. CSS / SASS<!-- OK -->
 
@@ -879,7 +1024,7 @@ Voici en exemple le fichier `welcome.css`, responsable de l'affichage de l'anima
 ```
 <!-- cSpell:enable -->
 
-##### 7.1.1.3. JavaScript<!-- EX -->
+##### 7.1.1.3. JavaScript<!-- OK -->
 
 **JavaScript** est un **langage de programmation** de scripts principalement employé dans les pages web interactives et à ce titre est une partie essentielle des applications web. Il est également employé pour les serveurs Web avec l'utilisation par exemple de Node.js (Cf. [reveal.js](#722-revealjs)).
 
@@ -887,18 +1032,18 @@ C'est un langage **orienté objet à prototype** : les bases du langage et ses p
 
 js -> dev.js  (context = mettre et enlever des classes sur le body afin de modifier le style de l’affichage en jouant avec les classes que contient le body).
 
-La couche applicative du front-end est volontairement légère, de manière a limiter les exécutions cote client. Voici néanmoins un extrait du fichier `dev.js`, qui permet d'intervenir sur le Document Object Model du HTML :
+La couche applicative du front-end est volontairement légère, de manière a limiter les exécutions côté client. Voici néanmoins un extrait du fichier `dev.js`, qui permet d'intervenir sur le Document Object Model du HTML :
 
 <!-- cSpell:disable -->
 ```javascript
 
 function openUser() {
-  // Removed conflicting view
+  // Removed conflicting classes
   body.classList.remove('openCategory');
   body.classList.remove('openSearch');
-  //ajoute la classe 'openUser' au body
+  // Add 'openUser' class
   body.classList.toggle('openUser');
-  // body contains 'openUser'
+  // Check body contains 'openUser'
   if(body.classList.contains('openUser')=== true) {
     console.log(body.classList.contains('openUser'));
   }
@@ -2297,7 +2442,7 @@ Figma est une **application web collaborative d'édition de graphiques vectoriel
 
 L'ensemble des fonctionnalités de Figma est **axé sur l'utilisation**, dans la conception, **de l'interface utilisateur et de l'expérience utilisateur**, en mettant l'accent sur la collaboration en temps réel.
 
-Dans le cadre de ce projet, Figma a ete utilisé pour la création de wireframe et de maquettes dans les pahses d'élaboration du projet.
+Dans le cadre de ce projet, Figma a été utilisé pour la création de wireframe et de maquettes durant les phases d'élaboration du projet.
 
 #### 7.5.2. PlantUML<!-- OK -->
 
@@ -2305,7 +2450,7 @@ PlantUML est un **outil libre** permettant de **créer des diagrammes UML a part
 
 La création et l'édition d'UML simples permet de représenter et de concevoir la structure ou les fonctionnalités recherches d'un logiciel (Activité, Acteurs, Processus, Schéma de base de données, Composants logiciels), et fait partie intégrante du prototypage.
 
-Voici en exemple le fichier `mvc-seq-uml.puml` qui produit un diagramme de séquence pour un modèle MVC :
+Voici en exemple le fichier `mvc-seq-uml.puml` qui produit le diagramme de séquence pour un modèle MVC ci-joint :
 
 ![Sequence MVC](img/mvc-seq-uml.png)
 
@@ -2338,7 +2483,7 @@ U <-- V : Response
 ```
 <!-- cSpell:enable -->
 
-### 7.6. Plateforme de développement
+### 7.6. Plateforme de développement<!-- OK -->
 
 #### 7.6.1. Automatisation de build<!-- OK -->
 
@@ -2879,9 +3024,9 @@ La majorité des diagrammes ont été réalisés grâce à cet outil. Pour un ex
 
 **État :** En cours
 
-### 8.2. Description des fonctions implémentées
+### 8.2. Description des fonctions implémentées<!-- OK -->
 
-#### 8.2.1. Supprimer une catégorie<!-- CHECK -->
+#### 8.2.1. Supprimer une catégorie<!-- OK -->
 
 La méthode `doGet()` du servlet `CategoryDelete.java` récupère l'identifiant de la catégorie à supprimer à partir de la requête HTTP (à travers le paramètre "categoryId") et utilise la méthode `delete()` de l'objet `CategoryDAO` pour **supprimer cette catégorie** de la base de données.
 
@@ -3072,9 +3217,33 @@ La méthode utilise une requête SQL pour supprimer le produit de la table "prod
 
 ### 8.4. Description des tests unitaires/EtE(EndtoEnd)<!-- CHECK -->
 
-Static Application Security Testing
+#### Test Unitaires
 
-Ce code est un ensemble de tests unitaires pour la classe Product de l'application, il utilise la librairie JUnit pour vérifier que les différentes fonctions et propriétés de la classe Product fonctionnent correctement. Il utilise des assertions pour vérifier que les valeurs attendues sont retournées lorsque les méthodes de la classe Product sont appelées, pour s'assurer que la classe fonctionne comme prévu.
+L'ensemble de l'automatisation du projet est orchestrée par Gradle. L'une de ses tâches est la verification du bon fonctionnement des differentes fonctions et propriétés des classes.
+
+Pour ce faire, Gradle utilise la librairie `Junit` et une bibliotheque de classe de test. Ces classes de test utilisent des assertions pour vérifier que les valeurs attendues sont retournées lorsque les méthodes de la classe sont appelées, s'assurerant que la classe fonctionne comme prévu.
+
+Ce code est un ensemble de tests unitaires pour la classe Product de l'application, il utilise la librairie JUnit pour vérifier que les différentes fonctions et propriétés de la classe Product fonctionnent correctement.
+
+<!-- cSpell:disable -->
+```shell
+
+# Content
+
+```
+<!-- cSpell:enable -->
+
+
+#### Static Application Security Testing
+
+
+#### Tests fonctionnels
+
+Les test fonctionnels d'une application dependront grandement de sa structure, de ses fonctionnalites, des ses methodes d'acces, et du perimetre souhaite par les tests. Chaque envirronement de test fonctionnel est construit sur mesure.
+
+Dans le cadre d'une application web multi-couche, tester le bon fonctionnement final revient a utiliser l'interface comme le ferait un etre humain, et en valider les differentes fonctionnalites.
+
+Un systeme de test automatique permettant ce genre d'operations peut etre construit avec Python et Selenium. 
 
 ## 9. Présentation du jeu d'essai le plus représentatif
 

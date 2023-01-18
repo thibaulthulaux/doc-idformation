@@ -132,8 +132,9 @@ Periode d'exercice du 19/04/2022 du 20/01/2023
     - [8.4.2. Static Application Security Testing](#842-static-application-security-testing)
     - [8.4.3. Tests fonctionnels](#843-tests-fonctionnels)
 - [9. Veille sur les vulnérabilités de sécurité](#9-veille-sur-les-vulnérabilités-de-sécurité)
-  - [9.1. Securiser HTTP (SSL)](#91-securiser-http-ssl)
+  - [9.1. HTTP (SSL)](#91-http-ssl)
   - [9.2. SQL Injection](#92-sql-injection)
+  - [9.3. Couches applicatives embarquées (Nginx, Tomcat, MariaDB)](#93-couches-applicatives-embarquées-nginx-tomcat-mariadb)
 - [10. Description d'une situation de travail ayant nécessité une recherche](#10-description-dune-situation-de-travail-ayant-nécessité-une-recherche)
 <!-- cSpell:enable -->
 
@@ -3326,82 +3327,87 @@ Dans le cadre d'une **application web multi-couche**, tester le bon fonctionneme
 
 Un système de test automatique permettant ce genre d'opérations peut etre construit avec **Python et Selenium**.
 
-## 9. Veille sur les vulnérabilités de sécurité
+## 9. Veille sur les vulnérabilités de sécurité<!-- OK -->
 
-```md
-- Description de la veille, effectuée par le candidat pendant le projet, sur les vulnérabilités de sécurité
-- Prise en compte des conventions liées à la sécurité imposée par la structure d'accueil du stagiaire
-- Mise à jour éventuelle des librairies/frameworks
-- Auto-formation aux failles de sécurité déclarées sur telle ou telle technologie (lecture des documentations officielles, prise en compte des mesures préventives, mise en place des verrous recommandés)
+Dans le cadre de la veille sur les vulnérabilités de sécurité, nous avons considéré les attaques définies par le WASC et les menaces identifiées par l'OWASP (dont une partie sont couvertes par le **Framework JAAS**).
+
+| Risques identifiés par l'OWASP en 2010                | Attaques identifiées par le WASC en 2010              | Catégories                                                |
+| ----------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------------- |
+| **Injection**                                         | **SQL Injection (WASC-19)**                           | **Exécution de commandes**                                |
+| Injection                                             | XML Injection (WASC-23)                               | Exécution de commandes                                    |
+| Injection                                             | Null Byte Injection (WASC-28)                         | Exécution de commandes                                    |
+| Injection                                             | LDAP Injection (WASC-29)                              | Exécution de commandes                                    |
+| Injection                                             | Mail Command Injection (WASC-30)                      | Exécution de commandes                                    |
+| Injection                                             | OS Commanding (WASC-31)                               | Exécution de commandes                                    |
+| Injection                                             | XPath Injection (WASC-39)                             | Exécution de commandes                                    |
+| Injection                                             | XQuery Injection (WASC-46)                            | Exécution de commandes                                    |
+| Cross-Site Scripting                                  | Cross-Site Scripting (WASC-08)                        | Attaques côté client                                      |
+| Violation de Gestion d'Authentification et de Session | Insufficient Authentication (WASC-01)                 | Autorisation, authentification                            |
+| Violation de Gestion d'Authentification et de Session | Brute Force (WASC-11)                                 | Autorisation, authentification                            |
+| Violation de Gestion d'Authentification et de Session | Credential/Session Prediction (WASC-18)               | Autorisation, authentification                            |
+| Violation de Gestion d'Authentification et de Session | Session Fixation (WASC-37)                            | Autorisation, authentification                            |
+| Violation de Gestion d'Authentification et de Session | Insufficient Session Expiration (WASC-47)             | Autorisation, authentification                            |
+| Référence directe à un objet non sécurisée            | Insufficient Authentication (WASC-01)                 | Autorisation, authentification, révélation d'informations |
+| Référence directe à un objet non sécurisée            | Insufficient Authorization (WASC-02)                  | Autorisation, authentification, révélation d'informations |
+| Référence directe à un objet non sécurisée            | Path Traversal (WASC-33)                              | Autorisation, authentification, révélation d'informations |
+| Référence directe à un objet non sécurisée            | Predictable Location (WASC-34)                        | Autorisation, authentification, révélation d'informations |
+| Falsification de requêtes intersites                  | Cross-Site Request Forgery (WASC-09)                  | Attaques logiques                                         |
+| Gestion de configuration non sécurisée                | Server Misconfiguration (WASC-14)                     | Révélation d'informations                                 |
+| Gestion de configuration non sécurisée                | Application Misconfiguration (WASC-15)                | Révélation d'informations                                 |
+| Stockage de données non sécurisé                      | Insufficient Data Protection (WASC-50)                | Révélation d'informations                                 |
+| Défaillance de restriction d'accès à une URL          | Insufficient Authorization (WASC-02)                  | Autorisation, authentification, révélation d'informations |
+| Défaillance de restriction d'accès à une URL          | Denial of Service (WASC-10)                           | Autorisation, authentification, révélation d'informations |
+| Défaillance de restriction d'accès à une URL          | Brute Force (WASC-11)                                 | Autorisation, authentification, révélation d'informations |
+| Défaillance de restriction d'accès à une URL          | Insufficient Antiautomation (WASC-21)                 | Autorisation, authentification, révélation d'informations |
+| Défaillance de restriction d'accès à une URL          | Predictable Location (WASC-34)                        | Autorisation, authentification, révélation d'informations |
+| **Communications non sécurisées**                     | **Insufficient Transport Layer Protection (WASC-04)** | **Révélation d'informations**                             |
+| Redirection et renvoi non validés                     | URL Redirector Abuse (WASC-38)                        | Attaques logiques                                         |
+
+### 9.1. HTTP (SSL)<!-- OK -->
+
+La faille de securité en relation avec une **absence de chiffrement de la couche transport** est aujourd'hui connue de presaue tous les utilisateurs.
+
+En effet, les navigateurs recents requiert de multiple validations avant de vous laisser acceder à un **site non securisé** (Port 80). Sur Internet il existe un risque qu'une requête ou une réponse HTTP soit interceptée. Si elle contient des informations confidentielles, elles sont **transmises en clair**, et l'attaquant n'aura aucun mal à les expoiter. Tous les réseaux de l'architecture de l'application Web sont concernés, depuis le navigateur de l'utilisateur jusqu'au stockage des données, en passant par le serveur Web.
+
+L'attaque du type « Homme du milieu » (ou « **Man-in-the-Middle** ») est une des attaques les plus répandues pour **accéder aux données d'une application**. Si un attaquant réussit à compromettre un serveur proxy, il pourra intercepter toutes les communications. Si en plus ce serveur est responsable du chiffrement des flux HTTP, il aura accès aux données les plus sensibles qui devaient être chiffrées.
+
+Il convient donc de mettre en place du **chiffrement SSL** et un **certificat** valide, permettant une sécurisation "bout à bout" de la couche de transport (Port 443).
+
+### 9.2. SQL Injection<!-- OK -->
+
+L'attaque par injection est évaluée par l'OWASP comme étant **la plus risquée**, car la faille est assez **répandue**, il est facile de l'exploiter et l'**impact peut être très important**. Cela va de la simple **récupération de données** à la **prise totale de contrôle** du serveur. La victime de l'attaque est un des composants techniques de l'application Web.
+
+L'attaque par injection SQL consiste à **injecter du code SQL** qui sera **interprété** par le moteur de base de données. Le code malicieux le plus répandu est d'ajouter une instruction pour faire en sorte que la requête sous-jacente soit toujours positive :
+
+<!-- cSpell:disable -->
+```sql
+
+SELECT numerocarte FROM comptes WHERE nom = '' OR 1=1 -- '' AND motdepasse = PASSWORD( 'x' )
+
 ```
+<!-- cSpell:enable -->
 
-### 9.1. Securiser HTTP (SSL)
+Les différentes attaques **reposent** principalement sur l'utilisation de **caractères spécifiques** :
 
-### 9.2. SQL Injection
+<!-- cSpell:disable -->
+```md
 
-[https://www.journaldev.com/34028/sql-injection-in-java]
+& ~ " # ' { } ( [ ] ( ) - | ` _ \ ^ @ \ * / . < > , ; : ! $
 
-[https://sqlmap.org/]
-[https://github.com/sqlmapproject/sqlmap]
+```
+<!-- cSpell:enable -->
 
-What is SQL Injection ?
+Il suffit de vérifier que les caractères utilisés sont ceux attendus. Ce **contrôle** doit être effectué au niveau du **client** grâce à **JavaScript** et au niveau du **serveur lorsque les paramètres sont récupérés** (PreparedStatement) pour fermer la faille de sécurité.
 
-SQL Injection is one of the top 10 web application vulnerabilities. In simple words, SQL Injection means injecting/inserting SQL code in a query via user-inputted data. It can occur in any applications using relational databases like Oracle, MySQL, PostgreSQL and SQL Server.
+### 9.3. Couches applicatives embarquées (Nginx, Tomcat, MariaDB)<!-- OK -->
 
-To perform SQL Injection, a malicious user first tries to find a place in the application where he can embed SQL code along with data. It can be the login page of any web application or any other place. So when data embedded with SQL code is received by the application, SQL code will be executed along with the application query.
+La dernière forme de veille est **systémique**.
 
-Impact of SQL Injection
+En effet, l'envirronement de développement (à contrario de l'envirronement de production), utilise des containers docker dont les **images sources du build sont automatiquement mise à jour** (flag `latest`).
 
-- A malicious user can obtain unauthorized access to your application and steal data.
-- They can alter, delete data in your database and take your application down.
-- A hacker can also get control of the system on which database server is running by executing database specific system commands.
+Lorsque l'envirronement de développement démarre, il est aisé de voir si une telle mise a jour intervient. Si l'envirronement ne démarre pas complètement, la mise à jour de l'**image du container en échec est responsable de la régression**.
 
-Example
-...
-
-Types of SQL Injection
-
-1. Boolean Based SQL Injection
-
-The above example is a case of Boolean Based SQL Injection. It uses a boolean expression that evaluates to true or false. It can be used to get additional information from the database. For example;
-
-Input Data: 2 or 1=1
-
-SQL Query:  select first_name, last_name from tbl_employee where empId=2 or 1=1
-
-2. Union Based SQL Injection
-
-SQL union operator combines data from two different queries with the same number of columns. In this case, the union operator is used to get data from other tables.
-
-Input Data: 2 union select username, password from tbluser
-
-Query:  Select first_name, last_name from tbl_employee where empId=2 union select username, password from tbluser
-
-By using Union Based SQL Injection,  an attacker can obtain user credentials.
-3. Time-Based SQL Injection
-
-In  Time Based SQL Injection, special functions are injected in the query which can pause execution for a specified amount of time. This attack slows down the database server. It can bring down your application by affecting the database server performance. For example, In MySQL:
-
-Input Data: 2 + SLEEP(5)
-
-Query:  select emp_id, first_name, last_name from tbl_employee where empId=2 + SLEEP(5)
-
-In the above example, query execution will pause for 5 seconds.
-4. Error Based SQL Injection
-
-In this variation, the attacker tries to get information like an error code and a message from the database. The attacker injects SQL which are syntactically incorrect so database server will return error code and messages which can be used to get database and system information.
-
-Best Practices to avoid SQL Injection
-
-1. Validate data before using them in the query.
-2. Do not use common words as your table name or column name. For example, many applications use tbluser or tblaccount to store user data. Email, firstname, lastname are common column names.
-3. Do not directly concatenate data ( received as user input) to create SQL queries.
-4. Use frameworks like Hibernate and Spring Data JPA for the data layer of an application.
-5. Use positional parameters in the query. If you are using plain JDBC, then use PreparedStatement to execute the query.
-6. Limit the application’s access to the database via permissions & grants.
-7. Do not return sensitive error code and message to the end-user.
-8. Do proper code review so that no developer accidentally write unsafe SQL code.
-9. Use tools like SQLMap to find and fix SQL Injection vulnerabilities in your application.
+Il convient donc de **fixer les versions** logicielles sur l'envirronement de **production**, et d'en **suivre le cours** en **développement** dans le cadre de cette veille.
 
 <div style="page-break-after: always;"></div>
 

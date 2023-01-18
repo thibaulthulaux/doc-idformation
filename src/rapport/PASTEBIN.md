@@ -39,6 +39,14 @@
 ```
 <!-- cSpell:enable -->
 
-## PlantUML 
+## PlantUML
 
 -[hidden]down-
+
+## Casing
+
+caterpillar-case
+camelCase
+PascalCase
+snake_case
+COBOL-CASE

@@ -1,12 +1,19 @@
-# Rapport
+<center>
 
-M. Thibault HULAUX
-Mlle Lylou PONSING
+# DOSSIER DE PROJET
 
-Concepteur et Developpeur d'Application
-Niveau II
+**M. Thibault HULAUX**
+
+**Mlle Lylou PONSING**
+
+---
+
+# Concepteur et Developpeur d'Application
+**Niveau II**
 
 Periode d'exercice du 19/04/2022 du 20/01/2023
+
+</center>
 
 <div style="page-break-after: always;"></div>
 

@@ -262,6 +262,8 @@ Pour ce projet, nous avons imaginé **deux profils d’utilisateur**, qui seraie
 
 ### 4.3. Objectif du projet<!-- OK -->
 
+![Concept initial](img/app-class-concept-uml.png)
+
 Les **objectifs** de l'entreprise de service qui développe cette application de gestion de stockage pourraient être les suivants :
 
 - Offrir une **solution de gestion de stockage simple et efficace** aux associations et aux petites entreprises qui en ont besoin.

@@ -1,8 +1,5 @@
 @startuml docker-swarm-uml
 
-' left to right direction
-' !pragma ratio 2.0
-
 skinparam roundcorner 20
 
 title Docker Swarm - Stacks

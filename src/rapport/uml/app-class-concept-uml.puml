@@ -1,23 +1,12 @@
 @startuml app-class-concept-uml
 
-' left to right direction
-
-header 
-
-endheader
-
 title Application Class Diagram - Conceptual View
-
-footer
-<font color=red>Warning:</font> Do not use in production
-endfooter
-
 
 actor User
 
-usecase Login
-usecase "Access Private Categories" as Categories
-usecase "Access Private Products" as Products
+usecase Login #LightCoral
+usecase "Access Private Categories" as Categories #LightBlue
+usecase "Access Private Products" as Products #LightGreen
 
 User -> Login : Access Application
 Login --> Categories : Success

@@ -1,3 +1,12 @@
+:root {
+    --color-link: #0000ff;
+    --color-code-background: #f0f0f0;
+    --color-code-color: #000000;
+
+    --blue: #1e90ff;
+    --white: #ffffff;
+  }
+
 /* Body */
 body {
     font-family: Arial, sans-serif;
@@ -15,27 +24,27 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
 }
 h1 {
-    font-size: 36px;
+    font-size: 30px;
 }
 h2 {
     font-size: 28px;
 }
 h3 {
-    font-size: 24px;
+    font-size: 26px;
 }
 h4 {
-    font-size: 20px;
+    font-size: 24px;
 }
 h5 {
-    font-size: 18px;
+    font-size: 22px;
 }
 h6 {
-    font-size: 16px;
+    font-size: 20px;
 }
 
 /* Links */
 a {
-    color: #0000ff;
+    color: var(--color-link);
     text-decoration: none;
 }
 a:hover {
@@ -44,8 +53,8 @@ a:hover {
 
 /* Code Blocks */
 code {
-    background-color: #f0f0f0;
-    color: #000000;
+    background-color: var(--color-code-background);
+    color: var(--color-code-color);
     padding: 2px 4px;
     border-radius: 3px;
     font-size: 14px;
@@ -92,6 +101,6 @@ img {
     max-width: 100%;
 }
 
-strong {
+/* strong {
     color: blue;
-}
+} */

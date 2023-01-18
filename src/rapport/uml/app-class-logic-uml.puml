@@ -1,4 +1,4 @@
-@startuml app-class-logic-UML
+@startuml app-class-logic-uml
 
 ' left to right direction
 
@@ -6,7 +6,7 @@ header
 
 endheader
 
-title Application Class Diagram - Logical View
+title Application Class Diagram - Packaging View
 
 footer
 <font color=red>Warning:</font> Do not use in production

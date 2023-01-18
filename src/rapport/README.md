@@ -2973,7 +2973,7 @@ La majorité des diagrammes ont été réalisés grâce à cet outil. Pour un ex
 
 <div style="page-break-after: always;"></div>
 
-## 8. Réalisations
+## 8. Réalisations<!-- OK -->
 
 - Description des features réalisées
 - Description des fonctions implémentées
@@ -3214,7 +3214,7 @@ Ce code définit une méthode appelée "delete" qui prend en entrée un identifi
 
 La méthode utilise une requête SQL pour supprimer le produit de la table "product" de la base de données en utilisant l'identifiant fourni en entrée pour filtrer les résultats. Elle utilise la fonction executeUpdate() pour executer cette suppression. La méthode retourne le nombre de lignes affectées par la suppression.
 
-### 8.4. Description des tests unitaires/EtE(EndtoEnd)<!-- CHECK -->
+### 8.4. Description des tests unitaires/EtE(EndtoEnd)<!-- OK -->
 
 #### 8.4.1. Test Unitaires<!-- OK -->
 
@@ -3306,11 +3306,19 @@ public class ProductTest {
 ```
 <!-- cSpell:enable -->
 
-#### 8.4.2. Static Application Security Testing
+#### 8.4.2. Static Application Security Testing<!-- OK -->
 
+ Le SAST (Static Application Security Testing) est un **outil de sécurité** des applications (AppSec) qui **analyse le code source**, binaire ou octet d'une application. Il identifie la cause des vulnérabilités et aide à corriger les failles de sécurité sous-jacentes.
 
+ Les solutions SAST **analysent une application de l'intérieur** vers l'extérieur et ne relancent **pas un système en cours d'exécution** pour effectuer une analyse.
 
-#### 8.4.3. Tests fonctionnels
+ SAST **réduit les risques de sécurité** en fournissant un retour immédiat aux développeurs sur les problèmes introduits dans le code pendant le développement. Il aide à éduquer les développeurs pendant qu'ils travaillent, en leur fournissant un accès en temps réel aux recommandations.
+
+ L'outil de SAST utilisé dans le cadre de ce développement est **exécuté au travers d'une tâche de vérification de Gradle**. Cette tache genere un **rapport HTML** lors de chaque execution du pipeline; directement accessible dans les sources.
+
+![SpotBug Report](img/spotbug-report.png)
+
+#### 8.4.3. Tests fonctionnels<!-- OK -->
 
 Les test fonctionnels d'une application dépendent grandement de sa structure, de ses fonctionnalites, des ses méthodes d'acces, et du périmètre souhaité par les tests. Chaque envirronement de test fonctionnel est **construit sur mesure**.
 

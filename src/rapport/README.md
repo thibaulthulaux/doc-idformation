@@ -8,10 +8,11 @@
 
 ---
 
-# Concepteur et Developpeur d'Application
+# Concepteur et Développeur d'Application
+
 **Niveau II**
 
-Periode d'exercice du 19/04/2022 du 20/01/2023
+Période d'exercice du 19/04/2022 du 20/01/2023
 
 </center>
 
@@ -196,7 +197,7 @@ For the sake of this demonstration, we're going to assume the following:
 
 Nous avons supposé pour ce projet que l’entreprise qui nous fournissait la demande de projet est une **entreprise de service qui est spécialisée dans la gestion de stockage** et qu’elle souhaite offrir à ses clients un service en ligne lié.
 
-Nous avons supposé que ses clients pouvaient être des **associations**, ou des **petites entreprises** (cf. [personas](#les-personas)).
+Nous avons supposé que ses clients pouvaient être des **associations**, ou des **petites entreprises** (cf. [personas](#422-les-personas)).
 
 ### 4.2. Définition du besoin<!-- OK -->
 
@@ -762,7 +763,7 @@ La **partie administration** de l'interface de notre site de gestion de stock es
 
 Les **vues sont construites sous forme de tableau**, affichant l'intégralité des entrées de la base de données, avec pour chaque entrée, des boutons "éditer" et "supprimer". Cela permet aux utilisateurs de facilement **mettre à jour ou supprimer les entrées** de la table.
 
-La partie administration liste également toutes les clés de la table concernée et des tables jointes, ce qui permet aux utilisateurs de visualiser l'integralité des données en rapport avec la vue utilisée.
+La partie administration liste également toutes les clés de la table concernée et des tables jointes, ce qui permet aux utilisateurs de visualiser l’intégralité des données en rapport avec la vue utilisée.
 
 Enfin, en bas de l'interface, on trouve une ligne de saisie pour permettre aux utilisateurs d'**ajouter de nouvelles entrées** à la table.
 
@@ -840,7 +841,7 @@ Le **HyperText Markup Language**, abrégé HTML (ou HTML5 dans sa dernière vers
 
 C'est un **langage de description** de format de document qui se présente sous la forme d’un langage de balisage. Il est souvent assisté par des technologies telles que les feuilles de style en cascade (CSS) et le langage de programmation JavaScript.
 
-Voici en exemple code HTML produit par la methode `doGet()` du servlet `CategoryAdd.java` de l'application :
+Voici en exemple code HTML produit par la méthode `doGet()` du servlet `CategoryAdd.java` de l'application :
 
 <!-- cSpell:disable -->
 ```html
@@ -3042,7 +3043,7 @@ Puis la méthode **modifie les données en base** avec les informations correspo
 
 La méthode `doPost()` du servlet `Login.java` utilise l'objet `User` pour stocker les données d'un utilisateur et le `UserDAO` pour accéder aux données utilisateurs stockées dans la base de données.
 
-La méthode **“sha512Hex”** de la bibliothèque Apache Commons Codec est utilisée pour hasher le mot de passe de l’utilisateur avant de l’envoyer en base de données.
+La méthode **“sha512Hex”** de la bibliothèque Apache Commons Codec est utilisée pour encrypter le mot de passe de l’utilisateur avant de l’envoyer en base de données.
 
 ### 8.3. Description des actions réalisées sur la BDD<!-- OK -->
 
@@ -3221,7 +3222,7 @@ La méthode utilise une requête SQL pour supprimer le produit de la table "prod
 
 L'ensemble de l'automatisation du projet est **orchestrée par Gradle**. L'une de ses tâches est la vérification du bon fonctionnement des différentes fonctions et propriétés des classes.
 
-Pour ce faire, Gradle utilise la librairie `Junit` et une **bibliothèque de classe de test**. Ces classes de test utilisent des **assertions** pour vérifier que les valeurs attendues sont retournées lorsque les méthodes de la classe sont appelées, s'assurerant que la **classe fonctionne comme prévu**.
+Pour ce faire, Gradle utilise la librairie `Junit` et une **bibliothèque de classe de test**. Ces classes de test utilisent des **assertions** pour vérifier que les valeurs attendues sont retournées lorsque les méthodes de la classe sont appelées, s’assurant que la **classe fonctionne comme prévu**.
 
 Ce code est un extrait de tests unitaires pour la classe `ProductTest.java` de l'application :
 
@@ -3315,22 +3316,23 @@ public class ProductTest {
 
  SAST **réduit les risques de sécurité** en fournissant un retour immédiat aux développeurs sur les problèmes introduits dans le code pendant le développement. Il aide à éduquer les développeurs pendant qu'ils travaillent, en leur fournissant un accès en temps réel aux recommandations.
 
- L'outil de SAST utilisé dans le cadre de ce développement est **exécuté au travers d'une tâche de vérification de Gradle**. Cette tache genere un **rapport HTML** lors de chaque execution du pipeline; directement accessible dans les sources.
+ L'outil de SAST utilisé dans le cadre de ce développement est **exécuté au travers d'une tâche de vérification de Gradle**. Cette tache génère un **rapport HTML** lors de chaque exécution du pipeline; directement accessible dans les sources.
 
 ![SpotBug Report](img/spotbug-report.png)
 
 #### 8.4.3. Tests fonctionnels<!-- OK -->
 
-Les test fonctionnels d'une application dépendent grandement de sa structure, de ses fonctionnalites, des ses méthodes d'acces, et du périmètre souhaité par les tests. Chaque envirronement de test fonctionnel est **construit sur mesure**.
+Les test fonctionnels d'une application dépendent grandement de sa structure, de ses fonctionnalités, des ses méthodes d’accès, et du périmètre souhaité par les tests. Chaque environnement de test fonctionnel est **construit sur mesure**.
 
 Dans le cadre d'une **application web multi-couche**, tester le bon fonctionnement final revient à utiliser l'interface comme le ferait un être humain, et à en valider les différentes fonctionnalités.
 
-Un système de test automatique permettant ce genre d'opérations peut etre construit avec **Python et Selenium**.
+Un système de test automatique permettant ce genre d'opérations peut être construit avec **Python et Selenium**.
 
 ## 9. Veille sur les vulnérabilités de sécurité<!-- OK -->
 
 Dans le cadre de la veille sur les vulnérabilités de sécurité, nous avons considéré les attaques définies par le WASC et les menaces identifiées par l'OWASP (dont une partie sont couvertes par le **Framework JAAS**).
 
+<!-- cSpell:disable -->
 | Risques identifiés par l'OWASP en 2010                | Attaques identifiées par le WASC en 2010              | Catégories                                                |
 | ----------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------------- |
 | **Injection**                                         | **SQL Injection (WASC-19)**                           | **Exécution de commandes**                                |
@@ -3362,12 +3364,13 @@ Dans le cadre de la veille sur les vulnérabilités de sécurité, nous avons co
 | Défaillance de restriction d'accès à une URL          | Predictable Location (WASC-34)                        | Autorisation, authentification, révélation d'informations |
 | **Communications non sécurisées**                     | **Insufficient Transport Layer Protection (WASC-04)** | **Révélation d'informations**                             |
 | Redirection et renvoi non validés                     | URL Redirector Abuse (WASC-38)                        | Attaques logiques                                         |
+<!-- cSpell:enable -->
 
 ### 9.1. HTTP (SSL)<!-- OK -->
 
-La faille de securité en relation avec une **absence de chiffrement de la couche transport** est aujourd'hui connue de presaue tous les utilisateurs.
+La faille de sécurité en relation avec une **absence de chiffrement de la couche transport** est aujourd’hui connue de presque tous les utilisateurs.
 
-En effet, les navigateurs recents requiert de multiple validations avant de vous laisser acceder à un **site non securisé** (Port 80). Sur Internet il existe un risque qu'une requête ou une réponse HTTP soit interceptée. Si elle contient des informations confidentielles, elles sont **transmises en clair**, et l'attaquant n'aura aucun mal à les expoiter. Tous les réseaux de l'architecture de l'application Web sont concernés, depuis le navigateur de l'utilisateur jusqu'au stockage des données, en passant par le serveur Web.
+En effet, les navigateurs récents requiert de multiple validations avant de vous laisser acceder à un **site non sécurisé** (Port 80). Sur Internet il existe un risque qu'une requête ou une réponse HTTP soit interceptée. Si elle contient des informations confidentielles, elles sont **transmises en clair**, et l'attaquant n'aura aucun mal à les exploiter. Tous les réseaux de l'architecture de l'application Web sont concernés, depuis le navigateur de l'utilisateur jusqu'au stockage des données, en passant par le serveur Web.
 
 L'attaque du type « Homme du milieu » (ou « **Man-in-the-Middle** ») est une des attaques les plus répandues pour **accéder aux données d'une application**. Si un attaquant réussit à compromettre un serveur proxy, il pourra intercepter toutes les communications. Si en plus ce serveur est responsable du chiffrement des flux HTTP, il aura accès aux données les plus sensibles qui devaient être chiffrées.
 
@@ -3403,11 +3406,11 @@ Il suffit de vérifier que les caractères utilisés sont ceux attendus. Ce **co
 
 La dernière forme de veille est **systémique**.
 
-En effet, l'envirronement de développement (à contrario de l'envirronement de production), utilise des containers docker dont les **images sources du build sont automatiquement mise à jour** (flag `latest`).
+En effet, l’environnement de développement (à contrario de l’environnement de production), utilise des containers docker dont les **images sources du build sont automatiquement mise à jour** (flag `latest`).
 
-Lorsque l'envirronement de développement démarre, il est aisé de voir si une telle mise a jour intervient. Si l'envirronement ne démarre pas complètement, la mise à jour de l'**image du container en échec est responsable de la régression**.
+Lorsque l’environnement de développement démarre, il est aisé de voir si une telle mise a jour intervient. Si l’environnement ne démarre pas complètement, la mise à jour de l'**image du container en échec est responsable de la régression**.
 
-Il convient donc de **fixer les versions** logicielles sur l'envirronement de **production**, et d'en **suivre le cours** en **développement** dans le cadre de cette veille.
+Il convient donc de **fixer les versions** logicielles sur l’environnement de **production**, et d'en **suivre le cours** en **développement** dans le cadre de cette veille.
 
 <div style="page-break-after: always;"></div>
 
@@ -3415,6 +3418,7 @@ Il convient donc de **fixer les versions** logicielles sur l'envirronement de **
 
 Source : [https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes)
 
+<!-- cSpell:disable -->
 ```md
 @keyframes
 The @keyframes CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles
@@ -3431,7 +3435,8 @@ An ending offset of 100%.
 <percentage>
 A percentage of the time through the animation sequence at which the specified keyframe should occur.
 ```
+<!-- cSpell:enable -->
 
 Les @keyframes définissent les étapes intermédiaires d’une animation, ce qui donne plus de contrôle sur la séquence de l’animation que sur la transition. Les valeurs à indiquer sont le nom de la @keyframe, le début qui correspond à 0% et la fin de l’animation qui correspond à 100%.
 
-Il est possible d’indiquer des pourcentages (durée de la séquence) supplémentaires qui définissent l’endroit de l’animation à laquel elle doit se produire.
+Il est possible d’indiquer des pourcentages (durée de la séquence) supplémentaires qui définissent l’endroit de l’animation à laquelle elle doit se produire.
